@@ -5,7 +5,7 @@ COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 COPY frontend ./
 COPY adapter/frontend-production-config.json ./mempool-frontend-config.json
-RUN npm run generate-themes && npm run generate-config && node node_modules/@angular/cli/bin/ng.js build --configuration production --localize=false
+RUN npm run generate-themes && npm run generate-config && node node_modules/@angular/cli/bin/ng.js build --configuration production --localize=false && node async-native-styles.cjs
 
 FROM node:24-bookworm-slim
 WORKDIR /app
