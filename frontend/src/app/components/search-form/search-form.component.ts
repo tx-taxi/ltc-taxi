@@ -49,6 +49,7 @@ export class SearchFormComponent implements OnInit {
   isTypeaheading$ = new BehaviorSubject<boolean>(false);
   typeAhead$: Observable<any>;
   explorers$: Observable<TxTaxiExplorer[]>;
+  thirdPartyExplorers$: typeof this.explorerRegistry.thirdPartyExplorers$;
   selectedChainId$ = new BehaviorSubject<string | undefined>(this.sourceChainId);
   activeTarget$ = new BehaviorSubject<SearchTarget>({
     kind: 'explorer',
@@ -129,6 +130,7 @@ export class SearchFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.env = this.stateService.env;
+    this.thirdPartyExplorers$ = this.explorerRegistry.thirdPartyExplorers$;
     this.stateService.networkChanged$.subscribe((network) => {
       this.network = network;
       // TODO: Eventually change network type here from string to enum of consts
