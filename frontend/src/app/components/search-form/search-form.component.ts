@@ -530,9 +530,11 @@ export class SearchFormComponent implements OnInit {
       const entity = destination.pathname.match(/^\/(tx|block|address)\/([a-zA-Z0-9]+)$/);
       if (target.chainId === this.sourceChainId && entity) {
         this.navigate('/' + entity[1] + '/', entity[2]);
-      } else if (entity && ['bitcoin', 'ethereum', 'monero'].includes(target.chainId || '') && destination.protocol === 'https:' && ['btc.tx.taxi', 'eth.tx.taxi', 'xmr.tx.taxi'].includes(destination.hostname)) {
-        this.router.navigate(['/cab', target.chainId, entity[1], entity[2]]);
-        this.isSearching = false;
+      } else if (entity && destination.protocol === 'https:' && destination.hostname === {
+        bitcoin: 'btc.tx.taxi', ethereum: 'eth.tx.taxi', monero: 'xmr.tx.taxi',
+        litecoin: 'ltc.tx.taxi', 'bitcoin-cash': 'bch.tx.taxi', dash: 'dash.tx.taxi', dogecoin: 'doge.tx.taxi',
+      }[target.chainId || '']) {
+        window.location.assign(destination.href);
       } else {
         this.searchRouter(searchText);
       }

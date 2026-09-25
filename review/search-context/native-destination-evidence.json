@@ -1,0 +1,32 @@
+[
+  {
+    "version": "before",
+    "chain": "bitcoin",
+    "destination": "/cab/bitcoin/tx/abcdef"
+  },
+  {
+    "version": "before",
+    "chain": "ethereum",
+    "destination": "/cab/ethereum/tx/abcdef"
+  },
+  {
+    "version": "before",
+    "chain": "monero",
+    "destination": "/cab/monero/tx/abcdef"
+  },
+  {
+    "version": "after",
+    "chain": "bitcoin",
+    "destination": "https://btc.tx.taxi/tx/abcdef"
+  },
+  {
+    "version": "after",
+    "chain": "ethereum",
+    "destination": "https://eth.tx.taxi/tx/abcdef"
+  },
+  {
+    "version": "after",
+    "chain": "monero",
+    "destination": "https://xmr.tx.taxi/tx/abcdef"
+  }
+]
