@@ -11,7 +11,7 @@ class SharedFeed {
   Object.assign(this, {url, health, store, observe, maxDetails, staleMs, WebSocketClass});
   this.clients = new Map(); this.details = new Map(); this.stopped = false; this.connectionAttempts = [];
   const saved = store?.get('ws:snapshot');
-  this.snapshot = saved?.data || {}; this.observedAt = saved?.at || 0;
+  this.snapshot = saved?.data || {}; this.observedAt = saved?.at || 0; this.blocksObservedAt = saved?.blocksAt || 0;
   this.core = this.channel(null);
   this.timer = setInterval(() => {
    const now = Date.now();
@@ -83,12 +83,13 @@ class SharedFeed {
      this.snapshot.blocks = [...blocks.filter(b=>b.height < message.block.height), message.block].sort((a,b)=>a.height-b.height).slice(-15);
      useful = true;
     }
+    if (message.blocks || message.block) this.blocksObservedAt = Date.now();
     if (useful) {
      channel.hasData=true;
      this.observedAt = Date.now(); this.health.lastSuccess = this.observedAt;
      this.observe(message);
      if (!this.lastPersist || Date.now()-this.lastPersist > 5000 || message.block) {
-      this.store?.put('ws:snapshot', {data:this.snapshot, at:this.observedAt}); this.lastPersist = Date.now();
+      this.store?.put('ws:snapshot', {data:this.snapshot, at:this.observedAt, blocksAt:this.blocksObservedAt}); this.lastPersist = Date.now();
      }
     }
     // Never broadcast entity-specific responses through the shared channel.

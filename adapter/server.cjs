@@ -8,6 +8,7 @@ const sharp = require('sharp');
 const {providerStatus} = require('./provider-health.cjs');
 const {DataStore} = require('./data-store.cjs');
 const {ProviderCache} = require('./provider-cache.cjs');
+const {snapshotApi} = require('./snapshot-api.cjs');
 const {SharedFeed} = require('./shared-feed.cjs');
 const {ObservedStats} = require('./observed-stats.cjs');
 const STATIC_ROOT = process.env.LTC_STATIC_ROOT && path.resolve(process.env.LTC_STATIC_ROOT);
@@ -45,7 +46,11 @@ function positiveSetting(name, defaultValue) {
 }
 const provider = new ProviderCache({primary:PRIMARY,fallback,health,failedPaths,store,
  maxRequests:positiveSetting('LTC_REST_REQUESTS_PER_MINUTE',60)});
-const api = requestPath => provider.get(requestPath);
+const api = requestPath => {
+ const live = snapshotApi(sharedFeed, requestPath);
+ if (live) { failedPaths.delete(requestPath); return Promise.resolve(live); }
+ return provider.get(requestPath);
+};
 const sharedFeed = new SharedFeed({url:PRIMARY.replace(/^http/,'ws')+'/api/v1/ws',health,store,
  observe:message=>observedStats.observe(message),maxDetails:positiveSetting('LTC_MAX_DETAIL_FEEDS',8)});
 let localHistoryUsed = false;

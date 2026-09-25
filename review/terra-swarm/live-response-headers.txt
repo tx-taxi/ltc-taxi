@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+X-LTC-Source: litecoinspace-websocket
+X-LTC-Stale: false
+X-LTC-Observed-At: 1790374909330
+Date: Fri, 25 Sep 2026 22:21:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+

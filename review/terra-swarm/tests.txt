@@ -1,0 +1,30 @@
+✔ values and their timestamps survive reopening (2.385805ms)
+✔ retention evicts old entries and rejects oversized values (1.136285ms)
+✔ persists native observations across restart and does not recount init blocks (4.157381ms)
+✔ does not fabricate absent metrics or mining attribution (1.781163ms)
+✔ retains exact native chart samples, deduplicates, and filters by source time newest-first (2.927919ms)
+✔ merges partial mempool measurements within 30 seconds and postpones full pruning (1.472892ms)
+✔ counts unusual pool names without prototype collisions (1.282992ms)
+✔ replaces a conflicting height and drops later observed blocks (1.288554ms)
+✔ confirmed history is available after restart when primary is down (22.472869ms)
+✔ concurrent callers share one primary request (1.189886ms)
+✔ rate budget and Retry-After cooldown suppress primary calls (1.702415ms)
+✔ request budget resumes after its window without refreshing success on fallback (1.322988ms)
+✔ stale cache is bounded and independent fallback takes precedence (1.2973ms)
+✔ cached fallback survives restart and unsupported routes do not hammer it (1.089338ms)
+✔ fallback request budget and 429 cooldown are independent of primary (1.253106ms)
+✔ distinct-route burst respects primary concurrency and fallback limits (1.97535ms)
+✔ hash-addressed block has finite historical stale window, status remains mutable (1.086993ms)
+✔ healthy live data does not retain a warning from an abandoned failed route (0.713697ms)
+✔ current partial failure and stale aggregate data remain distinct (0.138491ms)
+✔ visitors share upstream, detail subscriptions stay isolated, cached init survives outage (56.521566ms)
+✔ gateway collects without visitors and restores cache/snapshot after process restart (201.620775ms)
+✔ live block feed supplies list, identity and tip without REST; unknown history remains unresolved (1.240703ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 261.487798

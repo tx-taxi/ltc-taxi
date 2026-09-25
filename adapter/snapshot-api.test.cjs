@@ -1,0 +1,21 @@
+'use strict';
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const {snapshotApi}=require('./snapshot-api.cjs');
+const blocks=[{id:'a'.repeat(64),height:12,tx_count:4},{id:'b'.repeat(64),height:13,tx_count:8}];
+test('live block feed supplies list, identity and tip without REST; unknown history remains unresolved',()=>{
+ const feed={snapshot:{blocks},blocksObservedAt:Date.now()-1000,freshness:()=>({state:'live'})};
+ assert.deepEqual(snapshotApi(feed,'/api/blocks').data,[blocks[1],blocks[0]]);
+ assert.equal(snapshotApi(feed,'/api/block/'+blocks[0].id).data,blocks[0]);
+ assert.equal(snapshotApi(feed,'/api/blocks/tip/height').data,'13');
+ assert.equal(snapshotApi(feed,'/api/block-height/12').data,blocks[0].id);
+ assert.equal(snapshotApi(feed,'/api/blocks').at,feed.blocksObservedAt);
+ assert.equal(snapshotApi(feed,'/api/block-height/11'),null);
+ assert.equal(snapshotApi(feed,'/api/tx/'+blocks[0].id),null);
+ feed.blocksObservedAt=Date.now()-91000;
+ assert.equal(snapshotApi(feed,'/api/blocks').stale,true);
+ feed.blocksObservedAt=Date.now()-900001;
+ assert.equal(snapshotApi(feed,'/api/blocks'),null);
+ feed.blocksObservedAt=Date.now();feed.freshness=()=>({state:'stale'});
+ assert.equal(snapshotApi(feed,'/api/blocks').stale,true);
+});
