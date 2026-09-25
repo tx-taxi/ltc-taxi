@@ -1,0 +1,25 @@
+{
+  "chain": "ltc",
+  "runs": [
+    {
+      "kind": "before",
+      "initial": [
+        "hub"
+      ],
+      "completed": [
+        "hub"
+      ]
+    },
+    {
+      "kind": "after",
+      "initial": [
+        "probe:true"
+      ],
+      "completed": [
+        "probe:true",
+        "native:xmr"
+      ]
+    }
+  ],
+  "sourceUrl": "passed"
+}

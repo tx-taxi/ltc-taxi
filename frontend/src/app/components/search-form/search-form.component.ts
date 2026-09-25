@@ -90,7 +90,7 @@ export class SearchFormComponent implements OnInit {
   private querySearchOptions(searchText: string, probe = false): Observable<TxTaxiSearchOptions | undefined> {
     return defer(() => {
       this.pendingSearchRequests++;
-      return this.explorerRegistry.searchOptions$(searchText, probe).pipe(
+      return this.explorerRegistry.searchOptions$(searchText, probe, this.sourceChainId).pipe(
         finalize(() => this.pendingSearchRequests--),
       );
     });
@@ -431,13 +431,13 @@ export class SearchFormComponent implements OnInit {
       return;
     }
 
-    if (this.searchOptions?.input === searchText && this.searchOptions.candidates.length) {
+    if (this.searchOptions?.input === searchText && this.searchOptions.phase === 'resolved' && this.searchOptions.candidates.length) {
       this.searchRouter(searchText);
       return;
     }
 
     this.isSearching = true;
-    this.querySearchOptions(searchText).subscribe((options) => {
+    this.querySearchOptions(searchText, true).subscribe((options) => {
       if (this.currentSearchText() !== searchText) {
         this.isSearching = false;
         return;
@@ -550,7 +550,7 @@ export class SearchFormComponent implements OnInit {
   private searchRouter(searchText: string): void {
     this.isSearching = true;
     this.searchTriggered.emit();
-    window.location.assign(this.explorerRegistry.routerSearchUrl(searchText));
+    window.location.assign(this.explorerRegistry.routerSearchUrl(searchText, this.sourceChainId));
   }
 
   private clearManualOverrideOnInputChange(searchText: string): void {
@@ -570,7 +570,7 @@ export class SearchFormComponent implements OnInit {
   }
 
   private resolvedCandidate(): TxTaxiSearchCandidate | undefined {
-    if (!this.searchOptions?.resolvedChainId) {
+    if (!this.searchOptions?.resolvedChainId || this.searchOptions.phase !== 'resolved' || this.searchOptions.input !== this.currentSearchText()) {
       return undefined;
     }
 
