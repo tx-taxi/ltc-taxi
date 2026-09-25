@@ -19,14 +19,22 @@ export class MasterPageComponent implements OnInit, OnDestroy {
   @Input() headerVisible = true;
   @Input() footerVisibleOverride: boolean | null = null;
 
-  providerWarning = '';
+  providerHttpWarning = '';
+  providerFeedWarning = '';
+  providerFeedSubscription: Subscription;
+  get providerWarning(): string { return this.providerHttpWarning || this.providerFeedWarning; }
   providerTimer: any;
   checkProvider(): void {
     this.http.get<any>('/api/provider-health').subscribe({
-      next: h => this.providerWarning = h.stale
-        ? 'Provider data has not updated recently. Displayed data may be stale.'
-        : h.degraded ? 'Some provider requests recently failed. Affected data may be unavailable or stale.' : '',
-      error: () => this.providerWarning = 'The data service is unavailable. Retrying.'
+      next: h => {
+        this.providerHttpWarning = h.stale
+          ? 'Provider data has not updated recently. Displayed data may be stale.'
+          : h.degraded ? 'Some provider requests recently failed. Affected data may be unavailable or stale.' : '';
+        if (h.localHistory?.count) {
+          this.providerHttpWarning += ' Chart history contains only locally collected observations; earlier coverage is unavailable.';
+        }
+      },
+      error: () => this.providerHttpWarning = 'The data service is unavailable. Retrying.'
     });
   }
   env: Env;
@@ -63,6 +71,7 @@ export class MasterPageComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.providerFeedSubscription = this.stateService.providerFeedWarning$.subscribe(warning => this.providerFeedWarning = warning);
     this.checkProvider(); this.providerTimer = setInterval(() => this.checkProvider(), 15000);
     this.env = this.stateService.env;
     this.connectionState$ = this.stateService.connectionState$;
@@ -148,6 +157,7 @@ export class MasterPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.providerFeedSubscription?.unsubscribe();
     clearInterval(this.providerTimer);
     if (this.enterpriseInfo$) {
       this.enterpriseInfo$.unsubscribe();

@@ -207,6 +207,7 @@ export class StateService {
   viewAmountMode$: BehaviorSubject<'btc' | 'sats' | 'fiat'>;
   timezone$: BehaviorSubject<string>;
   connectionState$ = new BehaviorSubject<0 | 1 | 2>(2);
+  providerFeedWarning$ = new BehaviorSubject<string>('');
   isTabHidden$: Observable<boolean>;
 
   markBlock$ = new BehaviorSubject<MarkBlockState>({});

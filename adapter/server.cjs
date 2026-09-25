@@ -3,21 +3,27 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
-const {WebSocket, WebSocketServer} = require('ws');
+const {WebSocketServer} = require('ws');
 const sharp = require('sharp');
 const {providerStatus} = require('./provider-health.cjs');
+const {DataStore} = require('./data-store.cjs');
+const {ProviderCache} = require('./provider-cache.cjs');
+const {SharedFeed} = require('./shared-feed.cjs');
+const {ObservedStats} = require('./observed-stats.cjs');
 const STATIC_ROOT = process.env.LTC_STATIC_ROOT && path.resolve(process.env.LTC_STATIC_ROOT);
 const ROUTER_ORIGIN = process.env.LTC_ROUTER_ORIGIN || 'http://127.0.0.1:4312';
 const SITE_ORIGIN = process.env.LTC_SITE_ORIGIN || 'http://127.0.0.1:4310';
 const PRIMARY = process.env.LTC_PROVIDER || 'https://litecoinspace.org';
-const cache = new Map(), inflight = new Map(), failedPaths = new Map();
+const failedPaths = new Map();
 const health = {primary: PRIMARY, lastSuccess: null, lastFailure: null, websocket: 'connecting'};
-const MAX_CACHE = 500;
+const directory = process.env.LTC_DATA_DIR || path.join(__dirname,'data');
+const store = new DataStore({dir:directory});
+const observedStats = new ObservedStats({directory});
 function result(data, source='litecoinspace', status=200) {return {data,source,status,at:Date.now()};}
 async function fetchData(url, timeout=7000, metadata=false) {
  const r=await fetch(url,{signal:AbortSignal.timeout(timeout)});
  const raw=await r.text(); let data;try {data=JSON.parse(raw);}catch {data=raw;}
- if(!r.ok) throw Object.assign(new Error(`Provider HTTP ${r.status}`),{status:r.status});
+ if(!r.ok) throw Object.assign(new Error(`Provider HTTP ${r.status}`),{status:r.status,retryAfter:r.headers.get('retry-after')});
  return metadata ? {data,headers:Object.fromEntries(['x-total-count','retry-after'].filter(h=>r.headers.has(h)).map(h=>[h,r.headers.get(h)]))} : data;
 }
 async function fallback(path) {
@@ -34,33 +40,25 @@ async function fallback(path) {
  }
  throw new Error('No independent equivalent for this capability');
 }
-function ttl(path) {
- if(/^\/api\/block-height\/\d+$/.test(path) || /^\/api\/(?:v1\/)?block\/[a-f0-9]{64}(?:\/.*)?$/.test(path))return 300000;
- if(path.includes('statistics')||path.includes('/mining/'))return 60000;
- if(path.includes('prices'))return 60000;
- return 5000;
+function positiveSetting(name, defaultValue) {
+ const value=Number(process.env[name]);return Number.isFinite(value)&&value>0?Math.floor(value):defaultValue;
 }
-async function api(path) {
- const saved=cache.get(path);
- if(saved && Date.now()-saved.at<ttl(path))return saved;
- if(inflight.has(path))return inflight.get(path);
- const pending=(async()=>{
-  try {
-   const {data,headers}=await fetchData(PRIMARY+path,7000,true);
-   health.lastSuccess=Date.now();failedPaths.delete(path);
-   const r={...result(data),headers};cache.delete(path);cache.set(path,r);
-   if(cache.size>MAX_CACHE)cache.delete(cache.keys().next().value);
-   return r;
-  } catch(e) {
-   // 404 is entity absence, never convert a timeout/outage to absence.
-   if(e.status===404) {failedPaths.delete(path);return result({error:'Not found'},'litecoinspace',404);}
-   failedPaths.set(path,Date.now());if(failedPaths.size>500)failedPaths.delete(failedPaths.keys().next().value);
-   health.lastFailure={at:Date.now(),message:e.message};
-   try{return await fallback(path);}catch{}
-   if(saved && Date.now()-saved.at<3600000)return {...saved,stale:true};
-   return result({error:'Provider unavailable',retryable:true},'unavailable',503);
-  } finally {inflight.delete(path);}
- })();inflight.set(path,pending);return pending;
+const provider = new ProviderCache({primary:PRIMARY,fallback,health,failedPaths,store,
+ maxRequests:positiveSetting('LTC_REST_REQUESTS_PER_MINUTE',60)});
+const api = requestPath => provider.get(requestPath);
+const sharedFeed = new SharedFeed({url:PRIMARY.replace(/^http/,'ws')+'/api/v1/ws',health,store,
+ observe:message=>observedStats.observe(message),maxDetails:positiveSetting('LTC_MAX_DETAIL_FEEDS',8)});
+let localHistoryUsed = false;
+let coverageCache = null, coverageAt = 0;
+function coverage() {
+ if (!coverageCache || Date.now()-coverageAt>30000) {coverageCache=observedStats.summary();coverageAt=Date.now();}
+ return coverageCache;
+}
+function currentHealth() {
+ const status=providerStatus(health,failedPaths);
+ const feed=sharedFeed.freshness();
+ return {...status,feed,stale:status.stale||feed.state!=='live',cacheEntries:provider.cache.size,
+  sharedClients:sharedFeed.clients.size,detailFeeds:sharedFeed.details.size,localHistory:localHistoryUsed?coverage().coverage.native:null};
 }
 function send(res,status,data,type='application/json',headers={}) {
  res.writeHead(status,{'Content-Type':type,'Cache-Control':'no-store',...headers});res.end(typeof data==='string'||Buffer.isBuffer(data)?data:JSON.stringify(data));
@@ -113,14 +111,28 @@ const server=http.createServer(async(req,res)=>{
    // An idle gateway has no observations, not evidence of an upstream outage.
    // Probe current mempool data before reporting stale health to a visitor.
    if(!health.lastSuccess || Date.now()-health.lastSuccess>30000)await api('/api/mempool');
-   return send(res,200,{...providerStatus(health,failedPaths),cacheEntries:cache.size});
+   return send(res,200,currentHealth());
   }
-  if(u.pathname==='/healthz')return send(res,200,{...providerStatus(health,failedPaths),cacheEntries:cache.size});
+  if(u.pathname==='/healthz')return send(res,200,currentHealth());
+  if(u.pathname==='/api/local-statistics/coverage')return send(res,200,coverage());
+  if(u.pathname==='/api/local-statistics/series')return send(res,200,observedStats.series());
   if(u.pathname==='/api/local-resolve') {
    try {return send(res,200,await fetchData(ROUTER_ORIGIN+'/api/v1/resolve?value='+encodeURIComponent(u.searchParams.get('value')||''),12000));} catch {return send(res,503,{unavailable:true});}
   }
   if(u.pathname.startsWith('/api/')) {
    const r=await api(u.pathname+u.search);
+   if(u.pathname==='/api/v1/statistics/2h') {
+    const samples=observedStats.nativeSeries(2*3600000);
+    // Keep upstream history when available. Only real locally observed chart
+    // samples can fill an outage; never synthesize fee buckets or old history.
+    if((r.status!==200 || r.stale) && samples.length) {
+     localHistoryUsed=true;
+     return send(res,200,samples,'application/json',{'X-LTC-Source':'local-observations',
+      'X-LTC-Coverage':'observed-only','X-LTC-Stale':String(sharedFeed.freshness().state!=='live'),
+      'X-LTC-Observed-At':String(coverage().coverage.native.end)});
+    }
+    if(r.status===200&&!r.stale)localHistoryUsed=false;
+   }
    return send(res,r.status,r.data,typeof r.data==='string'?'text/plain':'application/json',{...r.headers,'X-LTC-Source':r.source,'X-LTC-Stale':String(!!r.stale),'X-LTC-Observed-At':String(r.at)});
   }
   if(u.pathname.startsWith('/resources/mining-pools/')) {
@@ -158,15 +170,12 @@ server.on('upgrade',(req,socket,head)=>{
   upstream.on('upgrade',(r,s,h)=>{socket.write('HTTP/1.1 101 Switching Protocols\r\n'+Object.entries(r.headers).map(([k,v])=>`${k}: ${v}`).join('\r\n')+'\r\n\r\n');if(h.length)socket.write(h);if(head.length)s.write(head);s.pipe(socket).pipe(s);});upstream.on('error',()=>socket.destroy());upstream.end();
  }
 });
-wss.on('connection',client=>{
- const upstream=new WebSocket(PRIMARY.replace(/^http/,'ws')+'/api/v1/ws',{handshakeTimeout:7000});let queue=[];
- upstream.on('open',()=>{health.websocket='live';for(const m of queue)upstream.send(m);queue=[];});
- client.on('message',m=>{if(upstream.readyState===1)upstream.send(m);else if(queue.length<25)queue.push(m.toString());});
- upstream.on('message',m=>{health.lastSuccess=Date.now();if(client.readyState===1)client.send(m.toString());});
- upstream.on('error',()=>{health.websocket='unavailable';client.close(1013,'Provider unavailable');});
- upstream.on('close',()=>{health.websocket='disconnected';if(client.readyState===1)client.close(1012,'Reconnect provider');});
- client.on('close',()=>upstream.close());client.on('error',()=>upstream.close());
-});
+wss.on('connection',client=>sharedFeed.attach(client));
 server.listen(Number(process.env.PORT||9332),process.env.LTC_HOST||'127.0.0.1',()=>console.log('LTC adapter on 127.0.0.1:'+ (process.env.PORT||9332)));
 // Separate public local review port; same handler includes initial metadata.
 if(!process.env.PORT)http.createServer(server.listeners('request')[0]).on('upgrade',server.listeners('upgrade')[0]).listen(4310,'127.0.0.1');
+function shutdown() {
+ sharedFeed.close();provider.close();observedStats.close();store.close();
+ server.close(()=>process.exit(0));setTimeout(()=>process.exit(0),2000).unref();
+}
+process.once('SIGTERM',shutdown);process.once('SIGINT',shutdown);

@@ -21,6 +21,9 @@ ENV LTC_STATIC_ROOT=/app/public
 ENV LTC_SITE_ORIGIN=https://ltc.tx.taxi
 ENV LTC_ROUTER_ORIGIN=https://tx.taxi
 ENV PORT=8080
+ENV LTC_DATA_DIR=/app/data
+RUN mkdir -p /app/data && chown node:node /app/data
+VOLUME ["/app/data"]
 USER node
 EXPOSE 8080
 HEALTHCHECK --interval=15s --timeout=5s --start-period=15s --retries=3 CMD node -e "fetch('http://127.0.0.1:8080/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"

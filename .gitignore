@@ -8,4 +8,4 @@ frontend/src/resources/config.js
 target
 docker/backend/start_ci.sh
 .local/
-adapter/node_modules/
+adapter/node_modules

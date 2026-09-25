@@ -18,4 +18,7 @@ frontend/cypress/videos
 !.env.sample
 .local
 review
+adapter/data
+**/*.sqlite
+**/*.sqlite-*
 **/mempool-frontend-config.json
