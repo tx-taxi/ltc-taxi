@@ -16,7 +16,7 @@
               [class.is-current]="isAutomaticRoutingSelected()" style="--chain-option-accent: #ffd21f">
               <button type="button" ngbDropdownItem class="search-chain-select"
                 [attr.aria-pressed]="isAutomaticRoutingSelected()" (click)="selectAutomaticRouting()">
-                <img src="https://tx.taxi/assets/brand/taxi-logo.svg" alt="">
+                <img src="https://tx.taxi/assets/brand/router-favicon.svg" alt="">
                 <span class="search-chain-copy">
                   <span class="search-chain-name">Automatic Routing</span>
                   <span class="search-chain-host">tx.taxi</span>
@@ -131,7 +131,7 @@
             </ng-template>
           </div>
         </div>
-        <input #searchInput (focus)="showSourceSuggestions(); focus$.next($any($event).target.value)" (click)="showSourceSuggestions(); click$.next($any($event).target.value)" (input)="chainMenu.open()" formControlName="searchText" type="text" class="form-control" [placeholder]="defaultSearchPlaceholder" [attr.aria-label]="defaultSearchPlaceholder">
+        <input #searchInput (focus)="onSearchInputFocus(); focus$.next($any($event).target.value)" (click)="showSourceSuggestions(); click$.next($any($event).target.value)" (input)="showSourceSuggestions()" formControlName="searchText" type="text" class="form-control" [placeholder]="defaultSearchPlaceholder" [attr.aria-label]="defaultSearchPlaceholder">
       </div>
       <app-search-results #searchResults [hidden]="dropdownHidden || !isSourceChainSelected()" [results]="typeAhead$ | async" (selectedResult)="selectedResult($event)"></app-search-results>
     </div>

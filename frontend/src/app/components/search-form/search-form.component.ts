@@ -68,6 +68,7 @@ export class SearchFormComponent implements OnInit {
   private manualOverrideSearchText: string | undefined;
   private manualOverrideTarget: SearchTarget | undefined;
   private searchOptions: TxTaxiSearchOptions | undefined;
+  private suppressMenuOnFocus = false;
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event) {
@@ -147,9 +148,9 @@ export class SearchFormComponent implements OnInit {
 
     this.stateService.searchFocus$.subscribe(() => {
       if (!this.searchInput) { // Try again a bit later once the view is properly initialized
-        setTimeout(() => this.searchInput.nativeElement.focus(), 100);
+        setTimeout(() => this.focusSearchInputWithoutMenu(), 100);
       } else if (this.searchInput) {
-        this.searchInput.nativeElement.focus();
+        this.focusSearchInputWithoutMenu();
       }
     });
 
@@ -383,8 +384,22 @@ export class SearchFormComponent implements OnInit {
     setTimeout(() => this.dropdownHidden = true);
   }
 
+  private focusSearchInputWithoutMenu(): void {
+    if (!this.searchInput) return;
+    this.suppressMenuOnFocus = true;
+    this.searchInput.nativeElement.focus();
+    this.suppressMenuOnFocus = false;
+  }
+
+  onSearchInputFocus(): void {
+    if (!this.suppressMenuOnFocus) this.showSourceSuggestions();
+  }
+
   showSourceSuggestions(): void {
     this.chainMenu?.open();
+    if (document.activeElement !== this.searchInput?.nativeElement) {
+      this.searchInput?.nativeElement.focus();
+    }
     this.dropdownHidden = !this.isSourceChainSelected();
   }
 
@@ -678,7 +693,7 @@ export class SearchFormComponent implements OnInit {
     kind: 'router',
     name: 'tx.taxi',
     accentColor: '#ffd21f',
-    iconUrl: 'https://tx.taxi/assets/brand/taxi-logo.svg',
+    iconUrl: 'https://tx.taxi/assets/brand/router-favicon.svg',
     iconAlt: 'tx.taxi',
     searchPlaceholder: 'Search any supported chain',
   };
