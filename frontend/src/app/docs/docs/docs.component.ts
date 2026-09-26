@@ -42,10 +42,10 @@ export class DocsComponent implements OnInit {
 
     const url = this.route.snapshot.url;
 
-    if (url[0].path === 'faq' ) {
+    if (url[0]?.path === 'faq' ) {
       this.activeTab = 0;
       this.seoService.setTitle($localize`:@@meta.title.docs.faq:FAQ`);
-      this.seoService.setDescription($localize`:@@meta.description.docs.faq:Get answers to common Litecoin questions, including mempool behavior, transaction confirmation, fees, and self-hosted explorers.`);
+      this.seoService.setDescription($localize`:@@meta.description.docs.faq:Get answers to common Litecoin questions, including MWEB privacy, mempool behavior, transaction confirmation, fees, mining, and blocks.`);
       this.ogService.setManualOgImage('faq.jpg');
     } else if( url[1].path === 'rest' ) {
       this.activeTab = 1;
@@ -63,10 +63,6 @@ export class DocsComponent implements OnInit {
       } else {
         this.seoService.setDescription($localize`:@@meta.description.docs.websocket-bitcoin:Documentation for the ltc.tx.taxi WebSocket API: receive real-time Litecoin block, mempool, transaction, and address updates.`);
       }
-    } else {
-      this.activeTab = 3;
-      this.seoService.setTitle($localize`:@@meta.title.docs.electrum:Electrum RPC`);
-      this.seoService.setDescription($localize`:@@meta.description.docs.electrumrpc:Documentation for our Electrum RPC interface: get instant, convenient, and reliable access to an Esplora instance.`);
     }
   }
 

@@ -2,8 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Env, StateService } from '@app/services/state.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { restApiDocsData, wsApiDocsData, electrumApiDocsData } from '@app/docs/api-docs/api-docs-data';
-import { faqData } from '@app/docs/api-docs/api-docs-data';
+import { litecoinFaqData, litecoinRestApiDocsData, litecoinWsApiDocsData } from '@app/docs/api-docs/litecoin-docs-data';
 
 @Component({
   selector: 'app-api-docs-nav',
@@ -37,13 +36,11 @@ export class ApiDocsNavComponent implements OnInit {
     });
     this.auditEnabled = this.env.AUDIT;
     if (this.whichTab === 'rest') {
-      this.tabData = restApiDocsData;
+      this.tabData = litecoinRestApiDocsData;
     } else if (this.whichTab === 'websocket') {
-      this.tabData = wsApiDocsData;
+      this.tabData = litecoinWsApiDocsData;
     } else if (this.whichTab === 'faq') {
-      this.tabData = faqData;
-    } else if (this.whichTab === 'electrs') {
-      this.tabData = electrumApiDocsData;
+      this.tabData = litecoinFaqData;
     }
   }
 

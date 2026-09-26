@@ -3,7 +3,7 @@ import { Env, StateService } from '@app/services/state.service';
 import { Observable, merge, of, Subject, Subscription } from 'rxjs';
 import { tap, takeUntil } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { faqData, restApiDocsData, wsApiDocsData, electrumApiDocsData } from '@app/docs/api-docs/api-docs-data';
+import { litecoinFaqData, litecoinRestApiDocsData, litecoinWsApiDocsData } from '@app/docs/api-docs/litecoin-docs-data';
 import { FaqTemplateDirective } from '@app/docs/faq-template/faq-template.component';
 
 @Component({
@@ -14,8 +14,6 @@ import { FaqTemplateDirective } from '@app/docs/faq-template/faq-template.compon
 })
 export class ApiDocsComponent implements OnInit, AfterViewInit {
   private destroy$: Subject<any> = new Subject<any>();
-  plainHostname = document.location.hostname;
-  electrsPort = 0;
   hostname = document.location.hostname;
   network$: Observable<string>;
   active = 0;
@@ -23,11 +21,10 @@ export class ApiDocsComponent implements OnInit, AfterViewInit {
   code: any;
   baseNetworkUrl = '';
   @Input() whichTab: string;
-  desktopDocsNavPosition = 'relative';
+  desktopDocsNavPosition = 'sticky';
   faq: any[];
   restDocs: any[];
   wsDocs: any;
-  electrumDocs: any[];
   screenWidth: number;
   officialMempoolInstance: boolean;
   runningElectrs: boolean;
@@ -50,7 +47,6 @@ export class ApiDocsComponent implements OnInit, AfterViewInit {
     if (this.faqTemplates) {
       this.faqTemplates.forEach((x) => this.dict[x.type] = x.template);
     }
-    this.desktopDocsNavPosition = ( window.pageYOffset > 115 ) ? 'fixed' : 'relative';
     this.mobileViewport = window.innerWidth <= 992;
   }
 
@@ -96,29 +92,12 @@ export class ApiDocsComponent implements OnInit, AfterViewInit {
 
     this.hostname = `${document.location.protocol}//${this.hostname}`;
 
-    this.faq = faqData;
-    this.restDocs = restApiDocsData;
-    this.wsDocs = wsApiDocsData;
-    this.electrumDocs = electrumApiDocsData;
+    this.faq = litecoinFaqData;
+    this.restDocs = litecoinRestApiDocsData;
+    this.wsDocs = litecoinWsApiDocsData;
 
     this.network$.pipe(takeUntil(this.destroy$)).subscribe((network) => {
       this.active = (network === 'liquid' || network === 'liquidtestnet') ? 2 : 0;
-      switch( network ) {
-        case '':
-          this.electrsPort = 50002; break;
-        case 'mainnet':
-          this.electrsPort = 50002; break;
-        case 'testnet':
-          this.electrsPort = 60002; break;
-        case 'testnet4':
-          this.electrsPort = 40002; break;
-        case 'signet':
-          this.electrsPort = 60602; break;
-        case 'liquid':
-          this.electrsPort = 51002; break;
-        case 'liquidtestnet':
-          this.electrsPort = 51302; break;
-      }
     });
 
     this.timeLtrSubscription = this.stateService.timeLtr.subscribe((ltr) => {
@@ -134,7 +113,8 @@ export class ApiDocsComponent implements OnInit, AfterViewInit {
   }
 
   onDocScroll() {
-    this.desktopDocsNavPosition = ( window.pageYOffset > 115 ) ? 'fixed' : 'relative';
+    // The documentation introduction changes page height. CSS sticky keeps the
+    // sidebar aligned with the tab content without a hard-coded scroll offset.
   }
 
   anchorLinkClick( e ) {
@@ -239,4 +219,3 @@ export class ApiDocsComponent implements OnInit, AfterViewInit {
   }
 
 }
-
