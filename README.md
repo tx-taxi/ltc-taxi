@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="frontend/src/resources/branding/ltc-favicon.svg" width="88" height="88" alt="ltc.tx.taxi logo">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="frontend/src/resources/branding/ltc-dark-full.svg">
+    <img src="frontend/src/resources/branding/ltc-light-full.svg" width="360" alt="ltc.tx.taxi banner logo">
+  </picture>
 </p>
 
 <h1 align="center">Litecoin Explorer · ltc.tx.taxi</h1>
