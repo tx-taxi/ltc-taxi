@@ -384,6 +384,7 @@ export class SearchFormComponent implements OnInit {
   }
 
   showSourceSuggestions(): void {
+    this.chainMenu?.open();
     this.dropdownHidden = !this.isSourceChainSelected();
   }
 
