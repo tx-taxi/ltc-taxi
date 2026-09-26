@@ -1,28 +1,29 @@
 <div class="container-xl about-page">
-  <div class="intro">
-    <h1 class="visually-hidden">About ltc.tx.taxi</h1>
-    <img src="/resources/branding/ltc-dark-full.svg" alt="ltc.tx.taxi Litecoin explorer" class="mempool-logo">
-    <div class="version">
-      <span>ltc.tx.taxi - Litecoin block and mempool explorer</span>
-      <span class="version-sub">A tx.taxi explorer built from <a href="https://github.com/mempool/mempool" target="_blank" rel="noopener noreferrer">mempool/mempool</a></span>
-    </div>
-  </div>
-
-  <div class="about-text">
-    <h5>About ltc.tx.taxi</h5>
+  <app-tx-taxi-docs-intro chainName="Litecoin" chainHost="ltc.tx.taxi" context="explorer"></app-tx-taxi-docs-intro>
+  <div class="about-layout">
+    <aside class="about-identity">
+      <img src="/resources/branding/ltc-dark-full.svg" alt="ltc.tx.taxi" class="about-logo">
+      <h1>About ltc.tx.taxi</h1>
+      <p>The Litecoin explorer in the tx.taxi family.</p>
+      <nav class="about-links" aria-label="Project links">
+        <a routerLink="/docs">Litecoin documentation</a>
+        <a href="https://github.com/tx-taxi/ltc-taxi" target="_blank" rel="noopener noreferrer">Explorer source</a>
+        <a href="https://t.me/hiss" target="_blank" rel="noopener noreferrer">Contact the maintainer</a>
+      </nav>
+    </aside>
+    <main class="about-text">
+      <h2>About ltc.tx.taxi</h2>
     <p>ltc.tx.taxi is the Litecoin explorer in the tx.taxi multi-chain family. It preserves Mempool's proven interface for inspecting blocks, transactions, addresses, mining activity, fee estimates, and the live Litecoin mempool while using a Litecoin-specific tx.taxi identity.</p>
 
-    <h5>Bitcoin-native data</h5>
-    <p>Values are denominated in LTC, litoshis, or the selected fiat currency. Fee rates remain lit/vB, transaction sizes remain vB or weight units, and all block, address, mining, concepts shown by the interface retain their Litecoin meaning.</p>
+    <h2>Litecoin-native data</h2>
+    <p>Values are denominated in LTC, litoshis, or the selected fiat currency. Fee rates remain lit/vB, transaction sizes remain vB or weight units, and all block, address, and mining concepts shown by the interface retain their Litecoin meaning.</p>
 
-    <h5>MWEB coverage</h5><p>This explorer shows transparent-chain transactions and indexed addresses. Private MWEB amounts and recipient history are not publicly observable. HogEx transactions connect the extension block to the transparent chain.</p><h5>Infrastructure</h5>
+    <h2>MWEB coverage</h2><p>This explorer shows transparent-chain transactions and indexed addresses. Private MWEB amounts and recipient history are not publicly observable. HogEx transactions connect the extension block to the transparent chain.</p><h2>Infrastructure</h2>
     <p>The explorer reads public Litecoin network data through its configured backend. Explorer results are informational and can differ from another node's view of the mempool. Always verify payment details in your wallet and use your own node when independent verification matters.</p>
-  </div>
-
-  <div class="contributors" id="links">
-    <h5>Project links</h5>
-    <p><a [routerLink]="['/docs']">ltc.tx.taxi documentation</a></p>
-    <p><a href="https://github.com/mempool/mempool" target="_blank" rel="noopener noreferrer">Upstream project and contributors</a></p>
-    <p><a href="https://t.me/hiss" target="_blank" rel="noopener noreferrer">Contact the tx.taxi maintainer</a></p>
+      <div class="about-attribution">
+        <h2>Built on open source</h2>
+        <p>This explorer builds on the <a href="https://github.com/mempool/mempool" target="_blank" rel="noopener noreferrer">Mempool Open Source Project</a>. See the explorer source for its license and <a href="/3rdpartylicenses.txt">third-party attribution</a>.</p>
+      </div>
+    </main>
   </div>
 </div>
