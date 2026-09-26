@@ -1,8 +1,8 @@
 @if (compactBlock) {
   @if ((viewAmountMode$ | async) === 'btc' || (viewAmountMode$ | async) === 'fiat' || ignoreViewMode) {
-    {{ compactBlockAmount(satoshis) }} <span class="symbol" [style]="unitStyle">LTC</span>
+    {{ compactBlockAmount(satoshis) }} <span class="symbol" [style]="unitStyle"><ng-container *ngTemplateOutlet="prefix"></ng-container>LTC</span>
   } @else {
-    {{ compactBlockAmount(satoshis, true) }} <span class="symbol" [style]="unitStyle">lits</span>
+    {{ compactBlockAmount(satoshis, true) }} <span class="symbol" [style]="unitStyle"><ng-container *ngTemplateOutlet="prefix"></ng-container>lits</span>
   }
 } @else {
 <ng-container *ngIf="!noFiat && ignoreViewMode === false && (viewAmountMode$ | async) === 'fiat'; else viewFiatVin">
@@ -33,6 +33,8 @@
   </ng-template>
 </ng-template>
 
+}
+
 <ng-template #prefix>
   <ng-template [ngIf]="network === 'liquid' && !forceBtc">L</ng-template>
   <ng-template [ngIf]="network === 'liquidtestnet'">tL</ng-template>
@@ -40,5 +42,3 @@
   <ng-template [ngIf]="network === 'testnet4'">t</ng-template>
   <ng-template [ngIf]="network === 'signet'">s</ng-template>
 </ng-template>
-
-}
