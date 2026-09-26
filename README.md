@@ -1,38 +1,60 @@
-# The Mempool Open Source Project® [![mempool](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/ry4br7/master&style=flat-square)](https://dashboard.cypress.io/projects/ry4br7/runs)
+<p align="center">
+  <img src="frontend/src/resources/branding/ltc-favicon.svg" width="88" height="88" alt="ltc.tx.taxi logo">
+</p>
 
-https://user-images.githubusercontent.com/93150691/226236121-375ea64f-b4a1-4cc0-8fad-a6fb33226840.mp4
+<h1 align="center">Litecoin Explorer · ltc.tx.taxi</h1>
 
-<br>
+<p align="center">
+  A public Litecoin block explorer, mempool visualizer, and API.<br>
+  <a href="https://ltc.tx.taxi">Open ltc.tx.taxi</a>
+</p>
 
-Mempool is the fully-featured mempool visualizer, explorer, and API service running at [mempool.space](https://mempool.space/). 
+## Overview
 
-It is an open-source project developed and operated for the benefit of the Bitcoin community, with a focus on the emerging transaction fee market that is evolving Bitcoin into a multi-layer ecosystem.
+[ltc.tx.taxi](https://ltc.tx.taxi) is a Litecoin explorer in the [tx.taxi](https://tx.taxi) network. It presents Litecoin mainnet data through a Litecoin-specific interface and a read-only API gateway.
 
-# Installation Methods
+## Features
 
-Mempool can be self-hosted on a wide variety of your own hardware, ranging from a simple one-click installation on a Raspberry Pi full-node distro all the way to a robust production instance on a powerful FreeBSD server. 
+- Litecoin mainnet-only configuration, with LTC and litoshi denominations.
+- Read-only inspection of blocks, transactions, and transparent-address history.
+- Live mempool, fee, mining, and chain-statistics views, including the enabled Litecoin mining dashboard and historical price view.
+- A provider-backed gateway with a live WebSocket feed, cached responses, basic provider health information, and limited independent tip/block fallback.
+- Litecoin-branded pages and entity metadata. MWEB amounts remain private; transparent-chain data is the scope of address and transaction presentation.
 
-Most people should use a <a href="#one-click-installation">one-click install method</a>.
+## Development
 
-Other install methods are meant for developers and others with experience managing servers. If you want support for your own production instance of Mempool, or if you'd like to have your own instance of Mempool run by the mempool.space team on their own global ISP infrastructure—check out <a href="https://mempool.space/enterprise" target="_blank">Mempool Enterprise®</a>.
+The supported local review path is the repository script. It starts Angular on `127.0.0.1:4311`, the Litecoin adapter on `127.0.0.1:9332`, and exposes the combined review site at `http://127.0.0.1:4310`.
 
-<a id="one-click-installation"></a>
-## One-Click Installation
+```sh
+npm ci --prefix frontend
+npm ci --prefix adapter
+./scripts/local-start.sh
+```
 
-Mempool can be conveniently installed on the following full-node distros: 
-- [Umbrel](https://github.com/getumbrel/umbrel)
-- [RaspiBlitz](https://github.com/rootzoll/raspiblitz)
-- [RoninDojo](https://code.samourai.io/ronindojo/RoninDojo)
-- [myNode](https://github.com/mynodebtc/mynode)
-- [StartOS](https://github.com/Start9Labs/start-os)
-- [nix-bitcoin](https://github.com/fort-nix/nix-bitcoin/blob/a1eacce6768ca4894f365af8f79be5bbd594e1c3/examples/configuration.nix#L129)
+`local-start.sh` also expects the sibling `../ltc-router-review` checkout, with its dependencies installed, for local tx.taxi routing. Stop only this project's processes with:
 
-**We highly recommend you deploy your own Mempool instance this way.** No matter which option you pick, you'll be able to get your own fully-sovereign instance of Mempool up quickly without needing to fiddle with any settings.
+```sh
+./scripts/local-stop.sh
+```
 
-## Advanced Installation Methods
+The adapter defaults to `https://litecoinspace.org` through `LTC_PROVIDER`. Set `LTC_PROVIDER` to a compatible Litecoin explorer API when a different data source is required. A self-managed provider must expose the REST and WebSocket endpoints used by the adapter and be backed by synchronized Litecoin network data; a Litecoin full node and address indexer are therefore external prerequisites of that provider, not services bundled by this repository.
 
-Mempool can be installed in other ways too, but we only recommend doing so if you're a developer, have experience managing servers, or otherwise know what you're doing.
+Build the container image locally with the checked-in production configuration:
 
-- See the [`docker/`](./docker/) directory for instructions on deploying Mempool with Docker.
-- See the [`backend/`](./backend/) and [`frontend/`](./frontend/) directories for manual install instructions oriented for developers.
-- See the [`production/`](./production/) directory for guidance on setting up a more serious Mempool instance designed for high performance at scale.
+```sh
+docker build -t ltc-explorer .
+```
+
+The image builds the frontend and serves it through the adapter. It still requires its configured external Litecoin data provider at runtime. The image pins Node.js 24; use a compatible Node.js and npm installation for the local commands above.
+
+## Attribution and license
+
+This repository adapts the [Mempool Open Source Project](https://github.com/mempool/mempool) for Litecoin in the tx.taxi network. The original top-level README is retained in [UPSTREAM_README.md](UPSTREAM_README.md) for provenance.
+
+The code is distributed under the terms in [LICENSE](LICENSE) and [COPYING.md](COPYING.md), including the GNU Affero General Public License v3 text and applicable trademark notices.
+
+## Links
+
+- [Live explorer](https://ltc.tx.taxi)
+- [tx.taxi hub](https://tx.taxi)
+- [Telegram channel](https://t.me/txtaxi)
