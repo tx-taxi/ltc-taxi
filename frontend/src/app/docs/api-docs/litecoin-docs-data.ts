@@ -4,7 +4,7 @@ const noJs = { '': false };
 function example(path: string, response: string) {
   return {
     default: {
-      codeTemplate: { curl: path },
+      codeTemplate: { curl: path ? `/api${path}` : '' },
       codeSampleMainnet: { curl: [], esModule: [], commonJS: [], response },
       codeSampleTestnet: { curl: [], esModule: [], commonJS: [], response: '' },
       codeSampleSignet: { curl: [], esModule: [], commonJS: [], response: '' },

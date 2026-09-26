@@ -95,3 +95,5 @@ pre {
     word-break: break-all;
   }
 }
+/* Documentation code follows both native and Mempool Original palettes. */
+code, pre, pre code { color: var(--info); }
