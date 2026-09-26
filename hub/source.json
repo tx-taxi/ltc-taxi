@@ -1,0 +1,8 @@
+{
+  "chain": "ltc",
+  "commit": "6ba310edebe7fa33f4643ff4eecdbca3d1041fc7",
+  "approvedBaseline": "e66ca7ff4",
+  "reconciliation": "6ba310ede adds independently recorded shared OG metadata/card verification; native strip remains chain palette baseline",
+  "formattingBaseline": "8110000fe6ef78dae997f2f72160d2fec6357ed8",
+  "formattingReconciliation": "2026-09-26: preserve deployed native source and approved extraction wrapper; compact display only, exact overlay tooltips, DOGE consistent ETA/count. Generated provenance records actual build commit and source hashes."
+}

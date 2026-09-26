@@ -200,3 +200,7 @@
     border-bottom: solid calc(0.3 * var(--block-size)) orange;
   }
 }
+// Compact strip values keep the native fixed-height rows aligned.
+.fees, .fee-span, .block-size, .transaction-count, .time-difference {
+  white-space: nowrap;
+}

@@ -1,3 +1,4 @@
+import { blockValueDetails } from '@app/shared/block-format';
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, HostListener, Input, OnChanges, SimpleChanges, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Subscription, Observable, of, combineLatest } from 'rxjs';
 import { MempoolBlock } from '@interfaces/websocket.interface';
@@ -27,6 +28,7 @@ import { ThemeService } from '@app/services/theme.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MempoolBlocksComponent implements OnInit, OnChanges, OnDestroy {
+  blockValueDetails = blockValueDetails;
   @Input() minimal: boolean = false;
   @Input() blockWidth: number = 125;
   @Input() containerWidth: number = null;
