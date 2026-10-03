@@ -1,1 +1,1 @@
-{"name":"ltc-taxi-adapter","private":true,"version":"0.1.0","type":"commonjs","dependencies":{"ws":"^8.18.0","sharp":"^0.34.0"}}
+{"name":"ltc-taxi-adapter","private":true,"version":"0.1.0","type":"commonjs","dependencies":{"ws":"^8.18.0","sharp":"^0.35.4"}}
