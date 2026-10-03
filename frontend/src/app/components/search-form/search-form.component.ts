@@ -631,12 +631,15 @@ export class SearchFormComponent implements OnInit {
     }
   }
 
-  private assignDestination(value: string): void {
+  private assignDestination(value: string, destinationHint?: Pick<SearchTarget, 'chainId' | 'destinationId'>): void {
     let lightning = false;
     try {
       const url = new URL(value);
-      lightning = this.explorers.some(explorer => explorer.chainId === 'bitcoin' && explorer.destinations?.some(destination =>
-        destination.destinationId === 'lightning' && new URL(destination.origin).origin === url.origin));
+      const registered = this.explorers.find(explorer => explorer.chainId === 'bitcoin')?.destinations?.find(destination => destination.destinationId === 'lightning');
+      const routerOrigin = new URL(this.explorerRegistry.hubUrl).origin;
+      const scopedForward = destinationHint?.chainId === 'bitcoin' && destinationHint.destinationId === 'lightning'
+        && url.origin === routerOrigin && url.pathname.startsWith('/bitcoin/') && url.searchParams.get('destination') === 'lightning';
+      lightning = Boolean(registered && !url.username && !url.password && (new URL(registered.origin).origin === url.origin || scopedForward));
     } catch { /* Only registry-owned destinations can animate into Lightning. */ }
     const transition = (window as Window & { txTaxiLightningNavigate?: (url: string) => Promise<void> }).txTaxiLightningNavigate;
     if (lightning && transition) { void transition(value); return; }
@@ -649,7 +652,7 @@ export class SearchFormComponent implements OnInit {
       this.searchTriggered.emit();
       this.assignDestination(target.kind === 'candidate' && target.confirmed && target.directUrl
         ? this.explorerRegistry.navigationUrl(target.directUrl)
-        : this.explorerRegistry.chainSearchUrl(target.chainId!, searchText, target.destinationId));
+        : this.explorerRegistry.chainSearchUrl(target.chainId!, searchText, target.destinationId), target);
       return;
     }
     if (target.kind === 'explorer' && (!target.destinationId || target.destinationDefault) && target.chainId === this.sourceChainId && (!target.origin || this.isSourceOrigin(target.origin))) {
@@ -676,7 +679,7 @@ export class SearchFormComponent implements OnInit {
     }
 
     if (target.chainId) {
-      window.location.assign(this.explorerRegistry.chainSearchUrl(target.chainId, searchText, target.destinationId));
+      this.assignDestination(this.explorerRegistry.chainSearchUrl(target.chainId, searchText, target.destinationId), target);
       return;
     }
 
