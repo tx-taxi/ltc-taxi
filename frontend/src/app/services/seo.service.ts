@@ -3,6 +3,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
 import { StateService } from '@app/services/state.service';
+import { nativeSeoPages, nativeSeoScreenshot } from '@app/shared/native-seo-pages';
 
 @Injectable({
   providedIn: 'root'
@@ -44,25 +45,35 @@ export class SeoService {
     ).subscribe((data) => {
       this.clearSoft404();
       this.updateCanonical(this.router.url.split('?')[0].split('#')[0]);
+      if (this.documentMetadata()) { this.setTitle(''); this.setDescription(''); }
     });
   }
 
+  private documentMetadata() {
+    let path = this.router.url.split('?')[0].split('#')[0];
+    try { path = decodeURIComponent(path); } catch {}
+    return nativeSeoPages[path.replace(/\/$/, '') || '/'];
+  }
+
   setTitle(newTitle: string): void {
-    const fullTitle = newTitle + ' - ' + this.getTitle();
+    const fullTitle = this.documentMetadata()?.title || newTitle + ' - ' + this.getTitle();
+    const imageAlt = nativeSeoScreenshot.alt;
     this.titleService.setTitle(fullTitle);
     this.metaService.updateTag({ property: 'og:title', content: fullTitle});
     this.metaService.updateTag({ name: 'twitter:title', content: fullTitle});
-    this.metaService.updateTag({ property: 'og:image:alt', content: fullTitle});
-    this.metaService.updateTag({ name: 'twitter:image:alt', content: fullTitle});
+    this.metaService.updateTag({ property: 'og:image:alt', content: imageAlt});
+    this.metaService.updateTag({ name: 'twitter:image:alt', content: imageAlt});
     this.metaService.updateTag({ property: 'og:meta:ready', content: 'ready'});
   }
 
   resetTitle(): void {
-    this.titleService.setTitle(this.getTitle());
-    this.metaService.updateTag({ property: 'og:title', content: this.getTitle()});
-    this.metaService.updateTag({ name: 'twitter:title', content: this.getTitle()});
-    this.metaService.updateTag({ property: 'og:image:alt', content: this.getTitle()});
-    this.metaService.updateTag({ name: 'twitter:image:alt', content: this.getTitle()});
+    const title = this.documentMetadata()?.title || this.getTitle();
+    const imageAlt = nativeSeoScreenshot.alt;
+    this.titleService.setTitle(title);
+    this.metaService.updateTag({ property: 'og:title', content: title});
+    this.metaService.updateTag({ name: 'twitter:title', content: title});
+    this.metaService.updateTag({ property: 'og:image:alt', content: imageAlt});
+    this.metaService.updateTag({ name: 'twitter:image:alt', content: imageAlt});
     this.metaService.updateTag({ property: 'og:meta:ready', content: 'ready'});
   }
 
@@ -76,6 +87,7 @@ export class SeoService {
   }
 
   setDescription(newDescription: string): void {
+    newDescription = this.documentMetadata()?.description || newDescription;
     this.metaService.updateTag({ name: 'description', content: newDescription});
     this.metaService.updateTag({ name: 'twitter:description', content: newDescription});
     this.metaService.updateTag({ property: 'og:description', content: newDescription});
@@ -88,6 +100,8 @@ export class SeoService {
   }
 
   updateCanonical(path) {
+    try { path = decodeURIComponent(path); } catch {}
+    path = path.replace(/\/$/, '') || '/';
     const canonicalUrl = 'https://' + this.baseDomain + path;
     this.canonicalLink.setAttribute('href', canonicalUrl);
     this.metaService.updateTag({ property: 'og:url', content: canonicalUrl });
@@ -108,7 +122,7 @@ export class SeoService {
   }
 
   getDescription(): string {
-    return this.baseDescription;
+    return this.documentMetadata()?.description || this.baseDescription;
   }
 
   ucfirst(str: string) {

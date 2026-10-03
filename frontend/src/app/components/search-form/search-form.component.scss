@@ -342,3 +342,19 @@ input:focus {
 .search-chain-automatic .search-chain-name {
   white-space: normal;
 }
+
+.search-chain-automatic .search-chain-host {
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  line-height: 1.35;
+
+  code {
+    color: inherit;
+    font-size: inherit;
+    font-family: var(--bs-font-monospace, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    background: transparent;
+    padding: 0;
+  }
+}

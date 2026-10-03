@@ -1,0 +1,249 @@
+{
+  "chain": "ltc",
+  "routeCount": 25,
+  "priorBehavior": {
+    "docsRestCanonical": "https://ltc.tx.taxi/",
+    "docsRootEmpty": true
+  },
+  "crawled": [
+    {
+      "path": "/",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/",
+      "title": "ltc.tx.taxi - Litecoin Explorer",
+      "description": "Explore Litecoin blocks, transactions, addresses, fees and mining activity.",
+      "semanticBytes": 1954,
+      "markdownBytes": 366
+    },
+    {
+      "path": "/about",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/about",
+      "title": "About ltc.tx.taxi - ltc.tx.taxi",
+      "description": "Learn about ltc.tx.taxi, the Litecoin explorer in the tx.taxi family.",
+      "semanticBytes": 4434,
+      "markdownBytes": 1938
+    },
+    {
+      "path": "/privacy-policy",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/privacy-policy",
+      "title": "Privacy policy - ltc.tx.taxi",
+      "description": "Privacy notes for ltc.tx.taxi, including public Litecoin data, browser preferences, server logs, and independent verification.",
+      "semanticBytes": 3498,
+      "markdownBytes": 1492
+    },
+    {
+      "path": "/terms-of-service",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/terms-of-service",
+      "title": "Terms of service - ltc.tx.taxi",
+      "description": "Terms for using ltc.tx.taxi as an informational Litecoin block and mempool explorer.",
+      "semanticBytes": 3697,
+      "markdownBytes": 1587
+    },
+    {
+      "path": "/trademark-policy",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/trademark-policy",
+      "title": "Trademark and attribution - ltc.tx.taxi",
+      "description": "Trademark and attribution notes for ltc.tx.taxi, including upstream mempool/mempool attribution and project independence.",
+      "semanticBytes": 3058,
+      "markdownBytes": 1053
+    },
+    {
+      "path": "/docs/faq",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/docs/faq",
+      "title": "Litecoin explorer guide - ltc.tx.taxi",
+      "description": "Litecoin explorer coverage, amounts, fees, confirmations and data limits.",
+      "semanticBytes": 3497,
+      "markdownBytes": 1709
+    },
+    {
+      "path": "/docs/api/rest",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/docs/api/rest",
+      "title": "Litecoin REST API - ltc.tx.taxi",
+      "description": "Read-only REST API documentation for ltc.tx.taxi: blocks, transactions, addresses and supported observations.",
+      "semanticBytes": 7744,
+      "markdownBytes": 4359
+    },
+    {
+      "path": "/docs/api/websocket",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/docs/api/websocket",
+      "title": "Litecoin WebSocket API - ltc.tx.taxi",
+      "description": "WebSocket documentation for observed Litecoin explorer updates and supported subscriptions.",
+      "semanticBytes": 3475,
+      "markdownBytes": 1396
+    },
+    {
+      "path": "/blocks/1",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/blocks/1",
+      "title": "Litecoin blocks - ltc.tx.taxi",
+      "description": "See the most recent Litecoin blocks along with basic stats such as block height, block reward, block size, and more.",
+      "semanticBytes": 1974,
+      "markdownBytes": 464
+    },
+    {
+      "path": "/blocks/stale",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/blocks/stale",
+      "title": "Litecoin stale blocks - ltc.tx.taxi",
+      "description": "See the most recent stale chain tips on the Litecoin network.",
+      "semanticBytes": 1925,
+      "markdownBytes": 419
+    },
+    {
+      "path": "/txs",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/txs",
+      "title": "Litecoin recent transactions - ltc.tx.taxi",
+      "description": "Recent pending Litecoin transaction observations shown by the explorer.",
+      "semanticBytes": 1942,
+      "markdownBytes": 427
+    },
+    {
+      "path": "/rbf",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/rbf",
+      "title": "Litecoin replacement transactions - ltc.tx.taxi",
+      "description": "See the most recent RBF replacements on the Litecoin network, updated in real-time.",
+      "semanticBytes": 1959,
+      "markdownBytes": 444
+    },
+    {
+      "path": "/mining",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/mining",
+      "title": "Litecoin mining dashboard - ltc.tx.taxi",
+      "description": "Get real-time Litecoin mining stats like hashrate, difficulty adjustment, block rewards, pool dominance, and more.",
+      "semanticBytes": 1982,
+      "markdownBytes": 470
+    },
+    {
+      "path": "/tools/calculator",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/tools/calculator",
+      "title": "Litecoin calculator - ltc.tx.taxi",
+      "description": "Convert LTC and its smallest units, with fiat conversion when the current price observation is available.",
+      "semanticBytes": 1967,
+      "markdownBytes": 465
+    },
+    {
+      "path": "/mempool-block/0",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/mempool-block/0",
+      "title": "Litecoin pending transaction sample - ltc.tx.taxi",
+      "description": "Inspect the explorer’s observed Litecoin pending transaction sample and available fee-rate data.",
+      "semanticBytes": 1976,
+      "markdownBytes": 473
+    },
+    {
+      "path": "/graphs/mempool",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/graphs/mempool",
+      "title": "Litecoin mempool observations - ltc.tx.taxi",
+      "description": "See mempool size (in MvB) and transactions per second (in vB/s) visualized over time.",
+      "semanticBytes": 1957,
+      "markdownBytes": 453
+    },
+    {
+      "path": "/graphs/mining/hashrate-difficulty",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/graphs/mining/hashrate-difficulty",
+      "title": "Litecoin hashrate and difficulty - ltc.tx.taxi",
+      "description": "See hashrate and difficulty for the Litecoin network visualized over time.",
+      "semanticBytes": 1949,
+      "markdownBytes": 464
+    },
+    {
+      "path": "/graphs/mining/pools-dominance",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/graphs/mining/pools-dominance",
+      "title": "Litecoin mining pool dominance - ltc.tx.taxi",
+      "description": "See Litecoin mining pool dominance visualized over time: see how top mining pools&#39; share of total hashrate has fluctuated over time.",
+      "semanticBytes": 2009,
+      "markdownBytes": 516
+    },
+    {
+      "path": "/graphs/mining/pools",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/graphs/mining/pools",
+      "title": "Litecoin mining pools - ltc.tx.taxi",
+      "description": "See the top Litecoin mining pools ranked by number of blocks mined, over your desired timeframe.",
+      "semanticBytes": 1960,
+      "markdownBytes": 461
+    },
+    {
+      "path": "/graphs/mining/block-fees",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/graphs/mining/block-fees",
+      "title": "Litecoin block fees - ltc.tx.taxi",
+      "description": "See the average mining fees earned per Litecoin block visualized in LTC and USD over time.",
+      "semanticBytes": 1952,
+      "markdownBytes": 458
+    },
+    {
+      "path": "/graphs/mining/block-fees-subsidy",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/graphs/mining/block-fees-subsidy",
+      "title": "Litecoin block fees and subsidy - ltc.tx.taxi",
+      "description": "See the mining fees earned per Litecoin block compared to the Litecoin block subsidy, visualized in LTC and USD over time.",
+      "semanticBytes": 1996,
+      "markdownBytes": 510
+    },
+    {
+      "path": "/graphs/mining/block-rewards",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/graphs/mining/block-rewards",
+      "title": "Litecoin block rewards - ltc.tx.taxi",
+      "description": "See Litecoin block rewards in LTC and USD visualized over time. Block rewards are the total funds miners earn from the block subsidy and fees.",
+      "semanticBytes": 2007,
+      "markdownBytes": 516
+    },
+    {
+      "path": "/graphs/mining/block-fee-rates",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/graphs/mining/block-fee-rates",
+      "title": "Litecoin block fee rates - ltc.tx.taxi",
+      "description": "See Litecoin feerates visualized over time, including minimum and maximum feerates per block along with feerates at various percentiles.",
+      "semanticBytes": 2003,
+      "markdownBytes": 514
+    },
+    {
+      "path": "/graphs/mining/block-sizes-weights",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/graphs/mining/block-sizes-weights",
+      "title": "Litecoin block sizes and weights - ltc.tx.taxi",
+      "description": "See Litecoin block sizes (MB) and block weights (weight units) visualized over time.",
+      "semanticBytes": 1959,
+      "markdownBytes": 474
+    },
+    {
+      "path": "/graphs/price",
+      "status": 200,
+      "canonical": "https://ltc.tx.taxi/graphs/price",
+      "title": "Litecoin price chart - ltc.tx.taxi",
+      "description": "See the Litecoin price in USD visualized over time.",
+      "semanticBytes": 1914,
+      "markdownBytes": 408
+    }
+  ],
+  "client": {
+    "constructorBaseTitle": "ltc.tx.taxi",
+    "constructorBaseDescription": "Explore Litecoin blocks, transactions, addresses, fees and mining activity.",
+    "allStaticRouteMetadataConsistent": true,
+    "docsToAboutToHomeDefaultsPreserved": true,
+    "genuineScreenshotAfterClientNavigation": true
+  },
+  "staticProviderCalls": 0,
+  "handlerChecks": "passed",
+  "boundaries": [
+    "Actual server callback and metadata functions evaluated with static-file and response mocks",
+    "No providers, listeners, screenshots or images read",
+    "Entity response fixtures are fake and establish behavior only, not live chain data"
+  ]
+}

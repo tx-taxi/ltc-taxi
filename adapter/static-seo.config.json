@@ -1,0 +1,235 @@
+{
+  "host": "ltc.tx.taxi",
+  "chain": "Litecoin",
+  "symbol": "LTC",
+  "description": "Explore Litecoin blocks, transactions, addresses, fees and mining activity.",
+  "coverage": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+  "poolPages": true,
+  "aliases": {
+    "/docs": "/docs/faq",
+    "/docs/api": "/docs/api/rest",
+    "/api": "/docs/api/rest",
+    "/api/api/rest": "/docs/api/rest",
+    "/api/api/websocket": "/docs/api/websocket",
+    "/api/faq": "/docs/faq",
+    "/blocks": "/blocks/1",
+    "/mining/blocks": "/blocks/1",
+    "/graphs": "/graphs/mempool",
+    "/llm.txt": "/llms.txt",
+    "/index.html": "/",
+    "/tx": "/",
+    "/tx/preview": "/docs/faq"
+  },
+  "routes": [
+    {
+      "path": "/",
+      "kind": "home",
+      "label": "Litecoin explorer",
+      "description": "Explore Litecoin blocks, transactions, addresses, fees and mining activity.",
+      "source": "src/app/components/about/about.component.html"
+    },
+    {
+      "path": "/about",
+      "kind": "document",
+      "label": "About ltc.tx.taxi",
+      "description": "Learn about ltc.tx.taxi, the Litecoin explorer in the tx.taxi family.",
+      "source": "src/app/components/about/about.component.html"
+    },
+    {
+      "path": "/privacy-policy",
+      "kind": "document",
+      "label": "Privacy policy",
+      "description": "Privacy notes for ltc.tx.taxi, including public Litecoin data, browser preferences, server logs, and independent verification.",
+      "source": "src/app/components/privacy-policy/privacy-policy.component.html"
+    },
+    {
+      "path": "/terms-of-service",
+      "kind": "document",
+      "label": "Terms of service",
+      "description": "Terms for using ltc.tx.taxi as an informational Litecoin block and mempool explorer.",
+      "source": "src/app/components/terms-of-service/terms-of-service.component.html"
+    },
+    {
+      "path": "/trademark-policy",
+      "kind": "document",
+      "label": "Trademark and attribution",
+      "description": "Trademark and attribution notes for ltc.tx.taxi, including upstream mempool/mempool attribution and project independence.",
+      "source": "src/app/components/trademark-policy/trademark-policy.component.html"
+    },
+    {
+      "path": "/docs/faq",
+      "kind": "docs-faq",
+      "label": "Litecoin explorer guide",
+      "description": "Litecoin explorer coverage, amounts, fees, confirmations and data limits."
+    },
+    {
+      "path": "/docs/api/rest",
+      "kind": "docs-rest",
+      "label": "Litecoin REST API",
+      "description": "Read-only REST API documentation for ltc.tx.taxi: blocks, transactions, addresses and supported observations."
+    },
+    {
+      "path": "/docs/api/websocket",
+      "kind": "docs-ws",
+      "label": "Litecoin WebSocket API",
+      "description": "WebSocket documentation for observed Litecoin explorer updates and supported subscriptions."
+    },
+    {
+      "path": "/blocks/1",
+      "kind": "live",
+      "label": "Litecoin blocks",
+      "description": "See the most recent Litecoin blocks along with basic stats such as block height, block reward, block size, and more.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/blocks-list/blocks-list.component.ts"
+    },
+    {
+      "path": "/blocks/stale",
+      "kind": "live",
+      "label": "Litecoin stale blocks",
+      "description": "See the most recent stale chain tips on the Litecoin network.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/stale-list/stale-list.component.ts"
+    },
+    {
+      "path": "/txs",
+      "kind": "live",
+      "label": "Litecoin recent transactions",
+      "description": "Recent pending Litecoin transaction observations shown by the explorer.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/recent-transactions-list/recent-transactions-list.component.ts"
+    },
+    {
+      "path": "/rbf",
+      "kind": "live",
+      "label": "Litecoin replacement transactions",
+      "description": "See the most recent RBF replacements on the Litecoin network, updated in real-time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/rbf-list/rbf-list.component.ts"
+    },
+    {
+      "path": "/mining",
+      "kind": "live",
+      "label": "Litecoin mining dashboard",
+      "description": "Get real-time Litecoin mining stats like hashrate, difficulty adjustment, block rewards, pool dominance, and more.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/mining-dashboard/mining-dashboard.component.ts"
+    },
+    {
+      "path": "/tools/calculator",
+      "kind": "live",
+      "label": "Litecoin calculator",
+      "description": "Convert LTC and its smallest units, with fiat conversion when the current price observation is available.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/calculator/calculator.component.ts"
+    },
+    {
+      "path": "/mempool-block/0",
+      "kind": "live",
+      "label": "Litecoin pending transaction sample",
+      "description": "Inspect the explorer\u2019s observed Litecoin pending transaction sample and available fee-rate data.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/mempool-block/mempool-block.component.ts"
+    },
+    {
+      "path": "/graphs/mempool",
+      "kind": "live",
+      "label": "Litecoin mempool observations",
+      "description": "See mempool size (in MvB) and transactions per second (in vB/s) visualized over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/statistics/statistics.component.ts"
+    },
+    {
+      "path": "/graphs/mining/hashrate-difficulty",
+      "kind": "live",
+      "label": "Litecoin hashrate and difficulty",
+      "description": "See hashrate and difficulty for the Litecoin network visualized over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/hashrate-chart/hashrate-chart.component.ts"
+    },
+    {
+      "path": "/graphs/mining/pools-dominance",
+      "kind": "live",
+      "label": "Litecoin mining pool dominance",
+      "description": "See Litecoin mining pool dominance visualized over time: see how top mining pools' share of total hashrate has fluctuated over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/hashrates-chart-pools/hashrate-chart-pools.component.ts"
+    },
+    {
+      "path": "/graphs/mining/pools",
+      "kind": "live",
+      "label": "Litecoin mining pools",
+      "description": "See the top Litecoin mining pools ranked by number of blocks mined, over your desired timeframe.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/pool-ranking/pool-ranking.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-fees",
+      "kind": "live",
+      "label": "Litecoin block fees",
+      "description": "See the average mining fees earned per Litecoin block visualized in LTC and USD over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/block-fees-graph/block-fees-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-fees-subsidy",
+      "kind": "live",
+      "label": "Litecoin block fees and subsidy",
+      "description": "See the mining fees earned per Litecoin block compared to the Litecoin block subsidy, visualized in LTC and USD over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/block-fees-subsidy-graph/block-fees-subsidy-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-rewards",
+      "kind": "live",
+      "label": "Litecoin block rewards",
+      "description": "See Litecoin block rewards in LTC and USD visualized over time. Block rewards are the total funds miners earn from the block subsidy and fees.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/block-rewards-graph/block-rewards-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-fee-rates",
+      "kind": "live",
+      "label": "Litecoin block fee rates",
+      "description": "See Litecoin feerates visualized over time, including minimum and maximum feerates per block along with feerates at various percentiles.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/block-fee-rates-graph/block-fee-rates-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-sizes-weights",
+      "kind": "live",
+      "label": "Litecoin block sizes and weights",
+      "description": "See Litecoin block sizes (MB) and block weights (weight units) visualized over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/block-sizes-weights-graph/block-sizes-weights-graph.component.ts"
+    },
+    {
+      "path": "/graphs/price",
+      "kind": "live",
+      "label": "Litecoin price chart",
+      "description": "See the Litecoin price in USD visualized over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/price-chart/price-chart.component.ts"
+    }
+  ],
+  "docsData": "src/app/docs/api-docs/litecoin-docs-data.ts",
+  "docsExports": {
+    "faq": "litecoinFaqData",
+    "rest": "litecoinRestApiDocsData",
+    "ws": "litecoinWsApiDocsData"
+  },
+  "socialScreenshot": {
+    "url": "https://tx.taxi/assets/screenshots/hub-c0f1a521a7ad.jpg",
+    "width": 1440,
+    "height": 2611,
+    "alt": "The tx.taxi hub showing its native blockchain explorer strips and external explorer blocks.",
+    "source": "https://tx.taxi/",
+    "capturedFrom": "https://tx.taxi/",
+    "capturedAt": "2026-09-27T22:31:45.077Z",
+    "fullPage": true,
+    "sha256": "c0f1a521a7adcba14748a0a3d0fb3bf67e3e9008b365422a15fe57322fe361ba",
+    "bytes": 405004,
+    "mime": "image/jpeg",
+    "key": "hub"
+  },
+  "noindexRoutes": []
+}

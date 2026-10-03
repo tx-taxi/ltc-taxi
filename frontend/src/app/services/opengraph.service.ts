@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { StateService } from '@app/services/state.service';
+import { nativeSeoScreenshot } from '@app/shared/native-seo-pages';
 
 @Injectable({
   providedIn: 'root'
@@ -55,11 +56,15 @@ export class OpenGraphService {
   }
 
   clearOgImage() {
-    this.metaService.updateTag({ property: 'og:image', content: window.location.origin + '/og.png?v=4&path=' + encodeURIComponent(this.router.url.split('?')[0]) });
-    this.metaService.updateTag({ name: 'twitter:image', content: window.location.origin + '/og.png?v=4&path=' + encodeURIComponent(this.router.url.split('?')[0]) });
-    this.metaService.updateTag({ property: 'og:image:type', content: 'image/png' });
-    this.metaService.updateTag({ property: 'og:image:width', content: '1200' });
-    this.metaService.updateTag({ property: 'og:image:height', content: '630' });
+    // This is the verified full-page tx.taxi hub capture, not an entity screenshot.
+    const screenshot = nativeSeoScreenshot;
+    this.metaService.updateTag({ property: 'og:image', content: screenshot.url });
+    this.metaService.updateTag({ name: 'twitter:image', content: screenshot.url });
+    this.metaService.updateTag({ property: 'og:image:type', content: screenshot.mime });
+    this.metaService.updateTag({ property: 'og:image:width', content: String(screenshot.width) });
+    this.metaService.updateTag({ property: 'og:image:height', content: String(screenshot.height) });
+    this.metaService.updateTag({ property: 'og:image:alt', content: screenshot.alt });
+    this.metaService.updateTag({ name: 'twitter:image:alt', content: screenshot.alt });
   }
 
   setManualOgImage(imageFilename) {

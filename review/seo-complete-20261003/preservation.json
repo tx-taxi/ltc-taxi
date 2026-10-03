@@ -1,0 +1,60 @@
+{
+  "observedAt": "2026-10-03T19:10:03.510231+00:00",
+  "baseCommit": "2a4eed09d453d4ec922c4d741caa9fd63708f690",
+  "preservedCriticalFiles": [
+    {
+      "path": "adapter/snapshot-api.cjs",
+      "sha256": "de11ed181e73d60fd4405f3d8ea2dadf72261934a0738e8d31caa0f8cc81c272",
+      "identicalToBase": "2a4eed09d453d4ec922c4d741caa9fd63708f690"
+    },
+    {
+      "path": "adapter/provider-cache.cjs",
+      "sha256": "e238347a5c507a41cd02887df5349175f8a8d42dd8e729ce8528c2b7e737a9fd",
+      "identicalToBase": "2a4eed09d453d4ec922c4d741caa9fd63708f690"
+    },
+    {
+      "path": "adapter/shared-feed.cjs",
+      "sha256": "7420a037dd3f2517e157a82cd02537f66d1ac85a4596f8b61d945e6beaa1fa2b",
+      "identicalToBase": "2a4eed09d453d4ec922c4d741caa9fd63708f690"
+    },
+    {
+      "path": "adapter/observed-stats.cjs",
+      "sha256": "7c12f3c28d7db3c8890d63cb0d501c1c0eace4dfee4464248062157aeaac68ae",
+      "identicalToBase": "2a4eed09d453d4ec922c4d741caa9fd63708f690"
+    },
+    {
+      "path": "frontend/src/app/app-routing.module.ts",
+      "sha256": "892919b1cec6f43e680d992e34a86ac7c04ae787a716f01d22e7bc57c0c814c4",
+      "identicalToBase": "2a4eed09d453d4ec922c4d741caa9fd63708f690"
+    },
+    {
+      "path": "frontend/src/app/master-page.module.ts",
+      "sha256": "aeb4b49520e974775d26387f1d1d415930926dfb8aafce0e4ba9e54233d03581",
+      "identicalToBase": "2a4eed09d453d4ec922c4d741caa9fd63708f690"
+    },
+    {
+      "path": "frontend/src/app/graphs/graphs.routing.module.ts",
+      "sha256": "05a8448a885c36be62a62d1ac5e5b37312eee7893f7145c733b1df08b9f4c81f",
+      "identicalToBase": "2a4eed09d453d4ec922c4d741caa9fd63708f690"
+    },
+    {
+      "path": "frontend/src/app/previews.routing.module.ts",
+      "sha256": "b9d0990268d078e54bd3138b6e35752cd03124ac24c02bf2d36f6c477473b457",
+      "identicalToBase": "2a4eed09d453d4ec922c4d741caa9fd63708f690"
+    },
+    {
+      "path": "frontend/src/app/docs/docs.routing.module.ts",
+      "sha256": "4407cd70cf611f744056cc2a91dc5f182debb1db333d6c4382ae02d5100b0bc7",
+      "identicalToBase": "2a4eed09d453d4ec922c4d741caa9fd63708f690"
+    },
+    {
+      "path": "adapter/frontend-production-config.json",
+      "sha256": "9c00fd6785bc1d01d2e5cbb66e2df51bd17a484c9f7f19c456f93f5683f1d7d2",
+      "identicalToBase": "2a4eed09d453d4ec922c4d741caa9fd63708f690"
+    }
+  ],
+  "trackedFrontendScssUnchangedExceptRequestedSearchHint": true,
+  "scssException": "frontend/src/app/components/search-form/search-form.component.scss",
+  "trackedScssCount": 191,
+  "dockerRuntimePreserved": "Node 24; same /app/public root, adapter/server.cjs command, runtime env and port. Source generation added before the existing Angular build."
+}

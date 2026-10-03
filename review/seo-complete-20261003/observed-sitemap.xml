@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://ltc.tx.taxi/</loc></url>
+  <url><loc>https://ltc.tx.taxi/about</loc></url>
+  <url><loc>https://ltc.tx.taxi/privacy-policy</loc></url>
+  <url><loc>https://ltc.tx.taxi/terms-of-service</loc></url>
+  <url><loc>https://ltc.tx.taxi/trademark-policy</loc></url>
+  <url><loc>https://ltc.tx.taxi/docs/faq</loc></url>
+  <url><loc>https://ltc.tx.taxi/docs/api/rest</loc></url>
+  <url><loc>https://ltc.tx.taxi/docs/api/websocket</loc></url>
+  <url><loc>https://ltc.tx.taxi/blocks/1</loc></url>
+  <url><loc>https://ltc.tx.taxi/blocks/stale</loc></url>
+  <url><loc>https://ltc.tx.taxi/txs</loc></url>
+  <url><loc>https://ltc.tx.taxi/rbf</loc></url>
+  <url><loc>https://ltc.tx.taxi/mining</loc></url>
+  <url><loc>https://ltc.tx.taxi/tools/calculator</loc></url>
+  <url><loc>https://ltc.tx.taxi/mempool-block/0</loc></url>
+  <url><loc>https://ltc.tx.taxi/graphs/mempool</loc></url>
+  <url><loc>https://ltc.tx.taxi/graphs/mining/hashrate-difficulty</loc></url>
+  <url><loc>https://ltc.tx.taxi/graphs/mining/pools-dominance</loc></url>
+  <url><loc>https://ltc.tx.taxi/graphs/mining/pools</loc></url>
+  <url><loc>https://ltc.tx.taxi/graphs/mining/block-fees</loc></url>
+  <url><loc>https://ltc.tx.taxi/graphs/mining/block-fees-subsidy</loc></url>
+  <url><loc>https://ltc.tx.taxi/graphs/mining/block-rewards</loc></url>
+  <url><loc>https://ltc.tx.taxi/graphs/mining/block-fee-rates</loc></url>
+  <url><loc>https://ltc.tx.taxi/graphs/mining/block-sizes-weights</loc></url>
+  <url><loc>https://ltc.tx.taxi/graphs/price</loc></url>
+</urlset>

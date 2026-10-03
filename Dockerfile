@@ -4,6 +4,8 @@ WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 COPY frontend ./
+COPY adapter/generate-static-seo.cjs adapter/static-seo.config.json /app/adapter/
+RUN node /app/adapter/generate-static-seo.cjs /app/frontend /app/adapter/static-seo-pages.json
 COPY adapter/frontend-production-config.json ./mempool-frontend-config.json
 RUN npm run generate-themes && npm run generate-config && node node_modules/@angular/cli/bin/ng.js build --configuration production --localize=false && node async-native-styles.cjs
 
@@ -13,6 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends fonts-dejavu-co
 COPY adapter/package.json adapter/package-lock.json ./adapter/
 RUN cd adapter && npm ci --omit=dev
 COPY adapter ./adapter
+COPY --from=frontend-builder /app/adapter/static-seo-pages.json ./adapter/static-seo-pages.json
 COPY frontend/src/resources/branding/ltc-dark-navbar.svg ./frontend/src/resources/branding/ltc-dark-navbar.svg
 COPY --from=frontend-builder /app/frontend/dist/mempool/browser ./public
 COPY --from=frontend-builder /app/frontend/src/resources ./public/resources

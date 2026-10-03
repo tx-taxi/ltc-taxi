@@ -1,0 +1,515 @@
+{
+  "host": "ltc.tx.taxi",
+  "chain": "Litecoin",
+  "symbol": "LTC",
+  "description": "Explore Litecoin blocks, transactions, addresses, fees and mining activity.",
+  "coverage": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+  "poolPages": true,
+  "aliases": {
+    "/docs": "/docs/faq",
+    "/docs/api": "/docs/api/rest",
+    "/api": "/docs/api/rest",
+    "/api/api/rest": "/docs/api/rest",
+    "/api/api/websocket": "/docs/api/websocket",
+    "/api/faq": "/docs/faq",
+    "/blocks": "/blocks/1",
+    "/mining/blocks": "/blocks/1",
+    "/graphs": "/graphs/mempool",
+    "/llm.txt": "/llms.txt",
+    "/index.html": "/",
+    "/tx": "/",
+    "/tx/preview": "/docs/faq"
+  },
+  "routes": [
+    {
+      "path": "/",
+      "kind": "home",
+      "label": "Litecoin explorer",
+      "description": "Explore Litecoin blocks, transactions, addresses, fees and mining activity.",
+      "source": "src/app/components/about/about.component.html"
+    },
+    {
+      "path": "/about",
+      "kind": "document",
+      "label": "About ltc.tx.taxi",
+      "description": "Learn about ltc.tx.taxi, the Litecoin explorer in the tx.taxi family.",
+      "source": "src/app/components/about/about.component.html"
+    },
+    {
+      "path": "/privacy-policy",
+      "kind": "document",
+      "label": "Privacy policy",
+      "description": "Privacy notes for ltc.tx.taxi, including public Litecoin data, browser preferences, server logs, and independent verification.",
+      "source": "src/app/components/privacy-policy/privacy-policy.component.html"
+    },
+    {
+      "path": "/terms-of-service",
+      "kind": "document",
+      "label": "Terms of service",
+      "description": "Terms for using ltc.tx.taxi as an informational Litecoin block and mempool explorer.",
+      "source": "src/app/components/terms-of-service/terms-of-service.component.html"
+    },
+    {
+      "path": "/trademark-policy",
+      "kind": "document",
+      "label": "Trademark and attribution",
+      "description": "Trademark and attribution notes for ltc.tx.taxi, including upstream mempool/mempool attribution and project independence.",
+      "source": "src/app/components/trademark-policy/trademark-policy.component.html"
+    },
+    {
+      "path": "/docs/faq",
+      "kind": "docs-faq",
+      "label": "Litecoin explorer guide",
+      "description": "Litecoin explorer coverage, amounts, fees, confirmations and data limits."
+    },
+    {
+      "path": "/docs/api/rest",
+      "kind": "docs-rest",
+      "label": "Litecoin REST API",
+      "description": "Read-only REST API documentation for ltc.tx.taxi: blocks, transactions, addresses and supported observations."
+    },
+    {
+      "path": "/docs/api/websocket",
+      "kind": "docs-ws",
+      "label": "Litecoin WebSocket API",
+      "description": "WebSocket documentation for observed Litecoin explorer updates and supported subscriptions."
+    },
+    {
+      "path": "/blocks/1",
+      "kind": "live",
+      "label": "Litecoin blocks",
+      "description": "See the most recent Litecoin blocks along with basic stats such as block height, block reward, block size, and more.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/blocks-list/blocks-list.component.ts"
+    },
+    {
+      "path": "/blocks/stale",
+      "kind": "live",
+      "label": "Litecoin stale blocks",
+      "description": "See the most recent stale chain tips on the Litecoin network.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/stale-list/stale-list.component.ts"
+    },
+    {
+      "path": "/txs",
+      "kind": "live",
+      "label": "Litecoin recent transactions",
+      "description": "Recent pending Litecoin transaction observations shown by the explorer.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/recent-transactions-list/recent-transactions-list.component.ts"
+    },
+    {
+      "path": "/rbf",
+      "kind": "live",
+      "label": "Litecoin replacement transactions",
+      "description": "See the most recent RBF replacements on the Litecoin network, updated in real-time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/rbf-list/rbf-list.component.ts"
+    },
+    {
+      "path": "/mining",
+      "kind": "live",
+      "label": "Litecoin mining dashboard",
+      "description": "Get real-time Litecoin mining stats like hashrate, difficulty adjustment, block rewards, pool dominance, and more.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/mining-dashboard/mining-dashboard.component.ts"
+    },
+    {
+      "path": "/tools/calculator",
+      "kind": "live",
+      "label": "Litecoin calculator",
+      "description": "Convert LTC and its smallest units, with fiat conversion when the current price observation is available.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/calculator/calculator.component.ts"
+    },
+    {
+      "path": "/mempool-block/0",
+      "kind": "live",
+      "label": "Litecoin pending transaction sample",
+      "description": "Inspect the explorer’s observed Litecoin pending transaction sample and available fee-rate data.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/mempool-block/mempool-block.component.ts"
+    },
+    {
+      "path": "/graphs/mempool",
+      "kind": "live",
+      "label": "Litecoin mempool observations",
+      "description": "See mempool size (in MvB) and transactions per second (in vB/s) visualized over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/statistics/statistics.component.ts"
+    },
+    {
+      "path": "/graphs/mining/hashrate-difficulty",
+      "kind": "live",
+      "label": "Litecoin hashrate and difficulty",
+      "description": "See hashrate and difficulty for the Litecoin network visualized over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/hashrate-chart/hashrate-chart.component.ts"
+    },
+    {
+      "path": "/graphs/mining/pools-dominance",
+      "kind": "live",
+      "label": "Litecoin mining pool dominance",
+      "description": "See Litecoin mining pool dominance visualized over time: see how top mining pools' share of total hashrate has fluctuated over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/hashrates-chart-pools/hashrate-chart-pools.component.ts"
+    },
+    {
+      "path": "/graphs/mining/pools",
+      "kind": "live",
+      "label": "Litecoin mining pools",
+      "description": "See the top Litecoin mining pools ranked by number of blocks mined, over your desired timeframe.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/pool-ranking/pool-ranking.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-fees",
+      "kind": "live",
+      "label": "Litecoin block fees",
+      "description": "See the average mining fees earned per Litecoin block visualized in LTC and USD over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/block-fees-graph/block-fees-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-fees-subsidy",
+      "kind": "live",
+      "label": "Litecoin block fees and subsidy",
+      "description": "See the mining fees earned per Litecoin block compared to the Litecoin block subsidy, visualized in LTC and USD over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/block-fees-subsidy-graph/block-fees-subsidy-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-rewards",
+      "kind": "live",
+      "label": "Litecoin block rewards",
+      "description": "See Litecoin block rewards in LTC and USD visualized over time. Block rewards are the total funds miners earn from the block subsidy and fees.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/block-rewards-graph/block-rewards-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-fee-rates",
+      "kind": "live",
+      "label": "Litecoin block fee rates",
+      "description": "See Litecoin feerates visualized over time, including minimum and maximum feerates per block along with feerates at various percentiles.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/block-fee-rates-graph/block-fee-rates-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-sizes-weights",
+      "kind": "live",
+      "label": "Litecoin block sizes and weights",
+      "description": "See Litecoin block sizes (MB) and block weights (weight units) visualized over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/block-sizes-weights-graph/block-sizes-weights-graph.component.ts"
+    },
+    {
+      "path": "/graphs/price",
+      "kind": "live",
+      "label": "Litecoin price chart",
+      "description": "See the Litecoin price in USD visualized over time.",
+      "context": "Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.",
+      "source": "src/app/components/price-chart/price-chart.component.ts"
+    }
+  ],
+  "docsData": "src/app/docs/api-docs/litecoin-docs-data.ts",
+  "docsExports": {
+    "faq": "litecoinFaqData",
+    "rest": "litecoinRestApiDocsData",
+    "ws": "litecoinWsApiDocsData"
+  },
+  "socialScreenshot": {
+    "url": "https://tx.taxi/assets/screenshots/hub-c0f1a521a7ad.jpg",
+    "width": 1440,
+    "height": 2611,
+    "alt": "The tx.taxi hub showing its native blockchain explorer strips and external explorer blocks.",
+    "source": "https://tx.taxi/",
+    "capturedFrom": "https://tx.taxi/",
+    "capturedAt": "2026-09-27T22:31:45.077Z",
+    "fullPage": true,
+    "sha256": "c0f1a521a7adcba14748a0a3d0fb3bf67e3e9008b365422a15fe57322fe361ba",
+    "bytes": 405004,
+    "mime": "image/jpeg",
+    "key": "hub"
+  },
+  "noindexRoutes": [],
+  "pages": [
+    {
+      "path": "/",
+      "label": "Litecoin explorer",
+      "title": "ltc.tx.taxi - Litecoin Explorer",
+      "description": "Explore Litecoin blocks, transactions, addresses, fees and mining activity.",
+      "kind": "home",
+      "html": "<p>Explore Litecoin blocks, transactions, addresses, fees and mining activity.</p><p class=\"taxi-docs-eyebrow\">tx.taxi <span aria-hidden=\"true\">/</span> Litecoin documentation</p>\n<p>Paste a transaction, block or address into tx.taxi. Open a confirmed match, choose between possible networks, or head straight to your chain’s explorer.</p>\n<p>The Litecoin explorer in the tx.taxi family.</p>",
+      "markdown": "# Litecoin explorer\n\nCanonical: https://ltc.tx.taxi/\n\nExplore Litecoin blocks, transactions, addresses, fees and mining activity.\n\ntx.taxi / Litecoin documentation\n\nPaste a transaction, block or address into tx.taxi. Open a confirmed match, choose between possible networks, or head straight to your chain’s explorer.\n\nThe Litecoin explorer in the tx.taxi family.\n",
+      "source": "src/app/components/about/about.component.html"
+    },
+    {
+      "path": "/about",
+      "label": "About ltc.tx.taxi",
+      "title": "About ltc.tx.taxi - ltc.tx.taxi",
+      "description": "Learn about ltc.tx.taxi, the Litecoin explorer in the tx.taxi family.",
+      "kind": "document",
+      "html": "<div class=\"container-xl about-page\">\n  <section class=\"taxi-docs-intro\" aria-label=\"About tx.taxi\">\n  <div class=\"taxi-docs-art\" aria-hidden=\"true\"></div>\n  <div class=\"taxi-docs-copy\">\n    <p class=\"taxi-docs-eyebrow\">tx.taxi <span aria-hidden=\"true\">/</span> Litecoin documentation</p>\n    <h2>One search across chains.</h2>\n    <p>Paste a transaction, block or address into tx.taxi. Open a confirmed match, choose between possible networks, or head straight to your chain’s explorer.</p>\n    <div class=\"taxi-docs-actions\">\n      <a class=\"taxi-docs-button\" href=\"https://tx.taxi/\">Open tx.taxi <span aria-hidden=\"true\">↗︎</span></a>\n      <a class=\"taxi-docs-native\" href=\"/\">Explore Litecoin <span aria-hidden=\"true\">→</span></a>\n    </div>\n  </div>\n</section>\n\n  <div class=\"about-layout\">\n    <aside class=\"about-identity\">\n      <img src=\"/resources/branding/ltc-dark-full.svg\" alt=\"ltc.tx.taxi\" class=\"about-logo\">\n      <h2>About ltc.tx.taxi</h2>\n      <p>The Litecoin explorer in the tx.taxi family.</p>\n      <nav class=\"about-links\" aria-label=\"Project links\">\n        <a href=\"/docs\">Litecoin documentation</a>\n        <a href=\"https://t.me/hiss\" target=\"_blank\" rel=\"noopener noreferrer\">Contact the maintainer</a>\n      </nav>\n    </aside>\n    <section class=\"about-text\">\n      <h2>About ltc.tx.taxi</h2>\n    <p>ltc.tx.taxi is the Litecoin explorer in the tx.taxi multi-chain family. It preserves Mempool's proven interface for inspecting blocks, transactions, addresses, mining activity, fee estimates, and the live Litecoin mempool while using a Litecoin-specific tx.taxi identity.</p>\n\n    <h2>Litecoin-native data</h2>\n    <p>Values are denominated in LTC, litoshis, or the selected fiat currency. Fee rates remain lit/vB, transaction sizes remain vB or weight units, and all block, address, and mining concepts shown by the interface retain their Litecoin meaning.</p>\n\n    <h2>MWEB coverage</h2><p>This explorer shows transparent-chain transactions and indexed addresses. Private MWEB amounts and recipient history are not publicly observable. HogEx transactions connect the extension block to the transparent chain.</p><h2>Infrastructure</h2>\n    <p>The explorer reads public Litecoin network data through its configured backend. Explorer results are informational and can differ from another node's view of the mempool. Always verify payment details in your wallet and use your own node when independent verification matters.</p>\n      <div class=\"about-attribution\">\n        <h2>Built on open source</h2>\n        <p>This explorer builds on the <a href=\"https://github.com/mempool/mempool\" target=\"_blank\" rel=\"noopener noreferrer\">Mempool Open Source Project</a>. See <a href=\"/3rdpartylicenses.txt\">third-party attribution</a> and contact the maintainer for source and license information.</p>\n      </div>\n    </section>\n  </div>\n</div>",
+      "markdown": "# About ltc.tx.taxi\n\nCanonical: https://ltc.tx.taxi/about\n\ntx.taxi / Litecoin documentation\n\n## One search across chains.\n\n    Paste a transaction, block or address into tx.taxi. Open a confirmed match, choose between possible networks, or head straight to your chain’s explorer.\n\n      [Open tx.taxi ↗︎](https://tx.taxi/)\n      [Explore Litecoin →](https://ltc.tx.taxi/)\n\n## About ltc.tx.taxi\n\n      The Litecoin explorer in the tx.taxi family.\n\n        [Litecoin documentation](https://ltc.tx.taxi/docs)\n        [Contact the maintainer](https://t.me/hiss)\n\n## About ltc.tx.taxi\n\n    ltc.tx.taxi is the Litecoin explorer in the tx.taxi multi-chain family. It preserves Mempool's proven interface for inspecting blocks, transactions, addresses, mining activity, fee estimates, and the live Litecoin mempool while using a Litecoin-specific tx.taxi identity.\n\n## Litecoin-native data\n\n    Values are denominated in LTC, litoshis, or the selected fiat currency. Fee rates remain lit/vB, transaction sizes remain vB or weight units, and all block, address, and mining concepts shown by the interface retain their Litecoin meaning.\n\n## MWEB coverage\n\nThis explorer shows transparent-chain transactions and indexed addresses. Private MWEB amounts and recipient history are not publicly observable. HogEx transactions connect the extension block to the transparent chain.\n\n## Infrastructure\n\n    The explorer reads public Litecoin network data through its configured backend. Explorer results are informational and can differ from another node's view of the mempool. Always verify payment details in your wallet and use your own node when independent verification matters.\n\n## Built on open source\n\n        This explorer builds on the [Mempool Open Source Project](https://github.com/mempool/mempool). See [third-party attribution](https://ltc.tx.taxi/3rdpartylicenses.txt) and contact the maintainer for source and license information.\n",
+      "source": "src/app/components/about/about.component.html"
+    },
+    {
+      "path": "/privacy-policy",
+      "label": "Privacy policy",
+      "title": "Privacy policy - ltc.tx.taxi",
+      "description": "Privacy notes for ltc.tx.taxi, including public Litecoin data, browser preferences, server logs, and independent verification.",
+      "kind": "document",
+      "html": "<div class=\"container-xl\">\n  <div class=\"text-center\">\n    <br>\n    <img src=\"/resources/branding/ltc-dark-full.svg\" alt=\"ltc.tx.taxi Litecoin explorer\" style=\"display: inline-block; width: 280px; max-width: 82%; height: auto;\">\n    <br><br>\n\n    <h2>Privacy Policy</h2>\n    <h6>Updated: September 20, 2026</h6>\n\n    <br><br>\n\n    <div class=\"text-start\">\n      <h4>Use Your Own Node When Privacy Matters</h4>\n      <p>ltc.tx.taxi displays public Litecoin chain and mempool data through the backend configured by the site operator. For independent verification and the strongest network privacy, use your own Litecoin node and explorer.</p>\n\n      <br>\n\n      <h4>Request Data</h4>\n      <p>Normal website and API requests can reveal standard web metadata to the operator, including your IP address, user agent, requested URL, and request time. Server logs may be retained for reliability, abuse prevention, and debugging.</p>\n\n      <br>\n\n      <h4>Local Preferences</h4>\n      <p>Display preferences such as theme, denomination, fiat currency, language, and timezone may be stored in your browser. ltc.tx.taxi does not require an account for ordinary explorer use.</p>\n\n      <br>\n\n      <h4>Public Blockchain Data</h4>\n      <p>Litecoin transactions, addresses, scripts, and blocks are public. Looking up an address or transaction can associate that lookup with your network metadata. Do not treat a public explorer as a privacy boundary.</p>\n\n      <br>\n\n      <h4>External Links</h4>\n      <p>This site links to tx.taxi contact channels, Litecoin documentation, and upstream source code. Those external services have their own privacy policies.</p>\n\n      <br>\n\n      <h4>Open Source Attribution</h4>\n      <p>Mempool names, logos, and trademarks remain the property of their respective owners; ltc.tx.taxi is not affiliated with or endorsed by Mempool Holdings S.A. de C.V.</p>\n\n      <br>\n      \n    </div>\n  </div>\n  <br><br>\n</div>",
+      "markdown": "# Privacy policy\n\nCanonical: https://ltc.tx.taxi/privacy-policy\n\n## Privacy Policy\n\n###### Updated: September 20, 2026\n\n#### Use Your Own Node When Privacy Matters\n\n      ltc.tx.taxi displays public Litecoin chain and mempool data through the backend configured by the site operator. For independent verification and the strongest network privacy, use your own Litecoin node and explorer.\n\n#### Request Data\n\n      Normal website and API requests can reveal standard web metadata to the operator, including your IP address, user agent, requested URL, and request time. Server logs may be retained for reliability, abuse prevention, and debugging.\n\n#### Local Preferences\n\n      Display preferences such as theme, denomination, fiat currency, language, and timezone may be stored in your browser. ltc.tx.taxi does not require an account for ordinary explorer use.\n\n#### Public Blockchain Data\n\n      Litecoin transactions, addresses, scripts, and blocks are public. Looking up an address or transaction can associate that lookup with your network metadata. Do not treat a public explorer as a privacy boundary.\n\n#### External Links\n\n      This site links to tx.taxi contact channels, Litecoin documentation, and upstream source code. Those external services have their own privacy policies.\n\n#### Open Source Attribution\n\n      Mempool names, logos, and trademarks remain the property of their respective owners; ltc.tx.taxi is not affiliated with or endorsed by Mempool Holdings S.A. de C.V.\n",
+      "source": "src/app/components/privacy-policy/privacy-policy.component.html"
+    },
+    {
+      "path": "/terms-of-service",
+      "label": "Terms of service",
+      "title": "Terms of service - ltc.tx.taxi",
+      "description": "Terms for using ltc.tx.taxi as an informational Litecoin block and mempool explorer.",
+      "kind": "document",
+      "html": "<div class=\"container-xl\">\n  <div class=\"text-center\">\n    <br>\n    <img src=\"/resources/branding/ltc-dark-full.svg\" alt=\"ltc.tx.taxi Litecoin explorer\" style=\"display: inline-block; width: 280px; max-width: 82%; height: auto;\">\n    <br><br>\n\n    <h2>Terms of Service</h2>\n    <h6>Updated: September 20, 2026</h6>\n\n    <br><br>\n\n    <div class=\"text-start\">\n      <h4>Informational Explorer</h4>\n      <p>ltc.tx.taxi provides a view of public Litecoin blocks, transactions, addresses, mining data, fee estimates, and mempool state. It is an informational service, not a wallet, exchange, custodian, payment processor, or transaction-priority service.</p>\n\n      <br>\n\n      <h4>No Control Over Litecoin Transactions</h4>\n      <p>The operator cannot reverse, cancel, accelerate, recover, or redirect a Litecoin transaction. For wallet, exchange, or payment issues, contact the service that created or received the transaction.</p>\n\n      <br>\n\n      <h4>Data and Availability</h4>\n      <p>Explorer data may be delayed, incomplete, unavailable, or different from another node's view. Fee estimates are estimates only and do not guarantee confirmation. The service is provided as-is without a promise of uninterrupted availability or fitness for a particular purpose.</p>\n\n      <br>\n\n      <h4>Acceptable Use</h4>\n      <p>Do not abuse the website or API, interfere with service operation, bypass reasonable rate limits, or use the service unlawfully. Access may be limited when necessary to protect availability.</p>\n\n      <br>\n\n      <h4>External Services</h4>\n      <p>This site may link to tx.taxi contact channels, Litecoin references, upstream source code, and infrastructure dependencies. External websites have their own terms and policies.</p>\n\n      <br>\n\n      <h4>Open Source</h4>\n      <p>ltc.tx.taxi is derived from <a href=\"https://github.com/mempool/mempool\" target=\"_blank\" rel=\"noopener noreferrer\">mempool/mempool</a>. Contact <a href=\"https://t.me/hiss\" target=\"_blank\" rel=\"noopener noreferrer\">t.me/hiss</a> for the current reviewed fork source package.</p>\n\n      <br>\n      \n    </div>\n  </div>\n  <br><br>\n</div>",
+      "markdown": "# Terms of service\n\nCanonical: https://ltc.tx.taxi/terms-of-service\n\n## Terms of Service\n\n###### Updated: September 20, 2026\n\n#### Informational Explorer\n\n      ltc.tx.taxi provides a view of public Litecoin blocks, transactions, addresses, mining data, fee estimates, and mempool state. It is an informational service, not a wallet, exchange, custodian, payment processor, or transaction-priority service.\n\n#### No Control Over Litecoin Transactions\n\n      The operator cannot reverse, cancel, accelerate, recover, or redirect a Litecoin transaction. For wallet, exchange, or payment issues, contact the service that created or received the transaction.\n\n#### Data and Availability\n\n      Explorer data may be delayed, incomplete, unavailable, or different from another node's view. Fee estimates are estimates only and do not guarantee confirmation. The service is provided as-is without a promise of uninterrupted availability or fitness for a particular purpose.\n\n#### Acceptable Use\n\n      Do not abuse the website or API, interfere with service operation, bypass reasonable rate limits, or use the service unlawfully. Access may be limited when necessary to protect availability.\n\n#### External Services\n\n      This site may link to tx.taxi contact channels, Litecoin references, upstream source code, and infrastructure dependencies. External websites have their own terms and policies.\n\n#### Open Source\n\n      ltc.tx.taxi is derived from [mempool/mempool](https://github.com/mempool/mempool). Contact [t.me/hiss](https://t.me/hiss) for the current reviewed fork source package.\n",
+      "source": "src/app/components/terms-of-service/terms-of-service.component.html"
+    },
+    {
+      "path": "/trademark-policy",
+      "label": "Trademark and attribution",
+      "title": "Trademark and attribution - ltc.tx.taxi",
+      "description": "Trademark and attribution notes for ltc.tx.taxi, including upstream mempool/mempool attribution and project independence.",
+      "kind": "document",
+      "html": "<div class=\"container-xl\">\n  <div class=\"text-center\">\n    <br>\n    <img src=\"/resources/branding/ltc-dark-full.svg\" alt=\"ltc.tx.taxi Litecoin explorer\" style=\"display: inline-block; width: 280px; max-width: 82%; height: auto;\">\n    <br><br>\n\n    <h2>Trademark &amp; Attribution</h2>\n    <h6>Updated: September 20, 2026</h6>\n\n    <br><br>\n\n    <div class=\"text-start\">\n      <h4>tx.taxi Identity</h4>\n      <p>ltc.tx.taxi is an independently operated Litecoin explorer in the tx.taxi family. Its domain, wordmark, chain palette, and service identity distinguish this fork from the upstream project.</p>\n\n      <br>\n\n      <h4>Upstream Attribution</h4>\n      <p>This software is derived from <a href=\"https://github.com/mempool/mempool\" target=\"_blank\" rel=\"noopener noreferrer\">The Mempool Open Source Project</a>. The upstream source code, visual system, project names, logos, and trademarks belong to their respective owners.</p>\n\n      <br>\n\n      <h4>No Affiliation</h4>\n      <p>ltc.tx.taxi is not affiliated with, sponsored by, or endorsed by Mempool Holdings S.A. de C.V. References to mempool.space and mempool/mempool are nominative attribution to the software from which this fork derives.</p>\n\n      <br>\n\n      <h4>Litecoin</h4>\n      <p>Litecoin is an open network and protocol. References to Litecoin, LTC, litoshis, blocks, transactions, addresses, and mining describe the network data presented by this explorer.</p>\n\n      <br>\n      \n    </div>\n  </div>\n  <br><br>\n</div>",
+      "markdown": "# Trademark and attribution\n\nCanonical: https://ltc.tx.taxi/trademark-policy\n\n## Trademark & Attribution\n\n###### Updated: September 20, 2026\n\n#### tx.taxi Identity\n\n      ltc.tx.taxi is an independently operated Litecoin explorer in the tx.taxi family. Its domain, wordmark, chain palette, and service identity distinguish this fork from the upstream project.\n\n#### Upstream Attribution\n\n      This software is derived from [The Mempool Open Source Project](https://github.com/mempool/mempool). The upstream source code, visual system, project names, logos, and trademarks belong to their respective owners.\n\n#### No Affiliation\n\n      ltc.tx.taxi is not affiliated with, sponsored by, or endorsed by Mempool Holdings S.A. de C.V. References to mempool.space and mempool/mempool are nominative attribution to the software from which this fork derives.\n\n#### Litecoin\n\n      Litecoin is an open network and protocol. References to Litecoin, LTC, litoshis, blocks, transactions, addresses, and mining describe the network data presented by this explorer.\n",
+      "source": "src/app/components/trademark-policy/trademark-policy.component.html"
+    },
+    {
+      "path": "/docs/faq",
+      "label": "Litecoin explorer guide",
+      "title": "Litecoin explorer guide - ltc.tx.taxi",
+      "description": "Litecoin explorer coverage, amounts, fees, confirmations and data limits.",
+      "kind": "docs-faq",
+      "html": "<h2 id=\"litecoin\">Litecoin basics</h2>\n<article id=\"ltc-overview\"><h3>What does this explorer show?</h3><p>ltc.tx.taxi shows publicly observable Litecoin blocks, transparent transactions and addresses, node mempool data, fees, and mining activity. Litecoin targets a block every 2.5 minutes, retargets difficulty every 2,016 blocks, and halves the subsidy every 840,000 blocks.</p></article>\n<article id=\"ltc-fees\"><h3>How are Litecoin amounts and fees shown?</h3><p>One LTC equals 100,000,000 litoshis. This explorer reports transaction fees in litoshis and fee rates in <code>lit/vB</code>. A higher fee rate can make a pending transaction more competitive for inclusion, but does not guarantee a confirmation time.</p></article>\n<h2 id=\"privacy\">MWEB and privacy</h2>\n<article id=\"ltc-mweb\"><h3>Why are some MWEB details unavailable?</h3><p>MWEB is Litecoin’s MimbleWimble Extension Block. Its private transfers do not publish ordinary amounts, recipient history, or address balances for an explorer to reconstruct. The HogEx transaction and peg-in or peg-out records connect MWEB to the transparent chain; they should not be read as ordinary wallet transfers.</p></article>\n<h2 id=\"data\">Data and confirmation</h2>\n<article id=\"ltc-data-freshness\"><h3>Why can pending data or a fee estimate change?</h3><p>There is no global mempool. Nodes can observe different pending transactions, and a node can evict or later receive a transaction. Fee estimates and projected blocks are observations of this explorer’s current feed. Check the freshness indicator and headers before relying on a response.</p></article>\n<article id=\"ltc-search\"><h3>What can I search?</h3><p>Search a Litecoin block height, block hash, transaction ID, transparent Litecoin address, or a supported explorer URL. A 64-character hash can be valid on more than one chain, so tx.taxi keeps chain selection available when a match is ambiguous.</p></article>",
+      "markdown": "# Litecoin explorer guide\n\nCanonical: https://ltc.tx.taxi/docs/faq\n\n## Litecoin basics\n\n### What does this explorer show?\n\nltc.tx.taxi shows publicly observable Litecoin blocks, transparent transactions and addresses, node mempool data, fees, and mining activity. Litecoin targets a block every 2.5 minutes, retargets difficulty every 2,016 blocks, and halves the subsidy every 840,000 blocks.\n\n### How are Litecoin amounts and fees shown?\n\nOne LTC equals 100,000,000 litoshis. This explorer reports transaction fees in litoshis and fee rates in `lit/vB`. A higher fee rate can make a pending transaction more competitive for inclusion, but does not guarantee a confirmation time.\n\n## MWEB and privacy\n\n### Why are some MWEB details unavailable?\n\nMWEB is Litecoin’s MimbleWimble Extension Block. Its private transfers do not publish ordinary amounts, recipient history, or address balances for an explorer to reconstruct. The HogEx transaction and peg-in or peg-out records connect MWEB to the transparent chain; they should not be read as ordinary wallet transfers.\n\n## Data and confirmation\n\n### Why can pending data or a fee estimate change?\n\nThere is no global mempool. Nodes can observe different pending transactions, and a node can evict or later receive a transaction. Fee estimates and projected blocks are observations of this explorer’s current feed. Check the freshness indicator and headers before relying on a response.\n\n### What can I search?\n\nSearch a Litecoin block height, block hash, transaction ID, transparent Litecoin address, or a supported explorer URL. A 64-character hash can be valid on more than one chain, so tx.taxi keeps chain selection available when a match is ambiguous.\n",
+      "source": "src/app/docs/api-docs/litecoin-docs-data.ts"
+    },
+    {
+      "path": "/docs/api/rest",
+      "label": "Litecoin REST API",
+      "title": "Litecoin REST API - ltc.tx.taxi",
+      "description": "Read-only REST API documentation for ltc.tx.taxi: blocks, transactions, addresses and supported observations.",
+      "kind": "docs-rest",
+      "html": "<h2 id=\"chain\">Chain</h2>\n<article id=\"tip-height\"><h3>GET Tip Height</h3><p><code>GET /api/blocks/tip/height</code></p><p>Returns the current Litecoin tip height as plain text.</p><pre><code>curl https://ltc.tx.taxi/api/blocks/tip/height</code></pre><p>Example response</p><pre><code>2840000</code></pre></article>\n<article id=\"recent-blocks\"><h3>GET Recent Blocks</h3><p><code>GET /api/blocks</code></p><p>Returns the most recently observed blocks. This is served from the shared feed while it is fresh; otherwise the gateway uses its read-only REST source.</p><pre><code>curl https://ltc.tx.taxi/api/blocks</code></pre><p>Example response</p><pre><code>[{ &quot;id&quot;: &quot;block hash&quot;, &quot;height&quot;: 2840000, &quot;timestamp&quot;: 0, &quot;tx_count&quot;: 0 }]</code></pre></article>\n<article id=\"block-by-hash\"><h3>GET Block</h3><p><code>GET /api/block/:hash</code></p>Returns an observed block by its 64-character hash. Use <code>/block-height/:height</code> first when starting with a height.<pre><code>curl https://ltc.tx.taxi/api/block/:hash</code></pre><p>Example response</p><pre><code>{ &quot;id&quot;: &quot;block hash&quot;, &quot;height&quot;: 2840000, &quot;tx_count&quot;: 0 }</code></pre></article>\n<article id=\"block-height\"><h3>GET Block Hash by Height</h3><p><code>GET /api/block-height/:height</code></p><p>Returns the canonical block hash for a height as plain text.</p><pre><code>curl https://ltc.tx.taxi/api/block-height/:height</code></pre><p>Example response</p><pre><code>block hash</code></pre></article>\n<article id=\"block-transactions\"><h3>GET Block Transactions</h3><p><code>GET /api/block/:hash/txs</code></p><p>Returns the transparent transactions in a block. MWEB transfer details are not exposed as ordinary address history.</p><pre><code>curl https://ltc.tx.taxi/api/block/:hash/txs</code></pre><p>Example response</p><pre><code>[{ &quot;txid&quot;: &quot;transaction id&quot;, &quot;status&quot;: { &quot;confirmed&quot;: true } }]</code></pre></article>\n<h2 id=\"transactions\">Transactions and addresses</h2>\n<article id=\"transaction\"><h3>GET Transaction</h3><p><code>GET /api/tx/:txid</code></p><p>Returns a transparent transaction by ID. Pending status can change; clients should treat it as a snapshot.</p><pre><code>curl https://ltc.tx.taxi/api/tx/:txid</code></pre><p>Example response</p><pre><code>{ &quot;txid&quot;: &quot;transaction id&quot;, &quot;fee&quot;: 0, &quot;status&quot;: { &quot;confirmed&quot;: false } }</code></pre></article>\n<article id=\"transaction-status\"><h3>GET Transaction Status</h3><p><code>GET /api/tx/:txid/status</code></p><p>Returns the current confirmation state for a transaction.</p><pre><code>curl https://ltc.tx.taxi/api/tx/:txid/status</code></pre><p>Example response</p><pre><code>{ &quot;confirmed&quot;: true, &quot;block_height&quot;: 2840000 }</code></pre></article>\n<article id=\"address\"><h3>GET Address</h3><p><code>GET /api/address/:address</code></p><p>Returns aggregate transparent-chain statistics for a valid Litecoin address. It cannot reveal MWEB balances, recipients, or private transfer amounts.</p><pre><code>curl https://ltc.tx.taxi/api/address/:address</code></pre><p>Example response</p><pre><code>{ &quot;address&quot;: &quot;ltc1…&quot;, &quot;chain_stats&quot;: { &quot;tx_count&quot;: 0 } }</code></pre></article>\n<article id=\"address-transactions\"><h3>GET Address Transactions</h3><p><code>GET /api/address/:address/txs</code></p>Returns the first page of transparent transactions for an address. Continue confirmed history with <code>/address/:address/txs/chain/:last-confirmed-txid</code>.<pre><code>curl https://ltc.tx.taxi/api/address/:address/txs</code></pre><p>Example response</p><pre><code>[{ &quot;txid&quot;: &quot;transaction id&quot;, &quot;status&quot;: { &quot;confirmed&quot;: true } }]</code></pre></article>\n<h2 id=\"mempool\">Mempool and observed history</h2>\n<article id=\"mempool\"><h3>GET Mempool Summary</h3><p><code>GET /api/mempool</code></p><p>Returns the gateway’s current upstream mempool summary. It describes one node’s view, not a network-wide queue.</p><pre><code>curl https://ltc.tx.taxi/api/mempool</code></pre><p>Example response</p><pre><code>{ &quot;count&quot;: 0, &quot;vsize&quot;: 0, &quot;total_fee&quot;: 0 }</code></pre></article>\n<article id=\"fees\"><h3>GET Fee Estimates</h3><p><code>GET /api/v1/fees/recommended</code></p>Returns fee estimates in <code>lit/vB</code>. Estimates are observations, not confirmation guarantees.<pre><code>curl https://ltc.tx.taxi/api/v1/fees/recommended</code></pre><p>Example response</p><pre><code>{ &quot;fastestFee&quot;: 1, &quot;halfHourFee&quot;: 1, &quot;hourFee&quot;: 1, &quot;economyFee&quot;: 1, &quot;minimumFee&quot;: 1 }</code></pre></article>\n<article id=\"coverage\"><h3>GET Observed Coverage</h3><p><code>GET /api/local-statistics/coverage</code></p><p>Returns only locally retained observation coverage and sample counts. It does not claim archival or complete mining history.</p><pre><code>curl https://ltc.tx.taxi/api/local-statistics/coverage</code></pre><p>Example response</p><pre><code>{ &quot;historicalCoverage&quot;: &quot;observed-only&quot;, &quot;coverage&quot;: { &quot;sampleCounts&quot;: { &quot;blocks&quot;: 0 } } }</code></pre></article>\n<article id=\"series\"><h3>GET Observed Series</h3><p><code>GET /api/local-statistics/series</code></p><p>Returns bounded, locally observed samples for the available mempool, block, and native feed measurements.</p><pre><code>curl https://ltc.tx.taxi/api/local-statistics/series</code></pre><p>Example response</p><pre><code>{ &quot;mempool&quot;: [], &quot;blocks&quot;: [], &quot;native&quot;: [] }</code></pre></article>\n<h2 id=\"service\">Service behavior</h2>\n<article id=\"provider-health\"><h3>GET Provider Health</h3><p><code>GET /api/provider-health</code></p><p>Returns gateway freshness and health metadata. This endpoint may probe the current mempool summary before reporting an idle state.</p><pre><code>curl https://ltc.tx.taxi/api/provider-health</code></pre><p>Example response</p><pre><code>{ &quot;stale&quot;: false, &quot;feed&quot;: { &quot;state&quot;: &quot;live&quot; } }</code></pre></article>",
+      "markdown": "# Litecoin REST API\n\nCanonical: https://ltc.tx.taxi/docs/api/rest\n\n## Chain\n\n### GET Tip Height\n\n`GET /api/blocks/tip/height`\n\nReturns the current Litecoin tip height as plain text.\n\n```\ncurl https://ltc.tx.taxi/api/blocks/tip/height\n```\n\nExample response\n\n```\n2840000\n```\n\n### GET Recent Blocks\n\n`GET /api/blocks`\n\nReturns the most recently observed blocks. This is served from the shared feed while it is fresh; otherwise the gateway uses its read-only REST source.\n\n```\ncurl https://ltc.tx.taxi/api/blocks\n```\n\nExample response\n\n```\n[{ \"id\": \"block hash\", \"height\": 2840000, \"timestamp\": 0, \"tx_count\": 0 }]\n```\n\n### GET Block\n\n`GET /api/block/:hash`\n\nReturns an observed block by its 64-character hash. Use `/block-height/:height` first when starting with a height.\n\n```\ncurl https://ltc.tx.taxi/api/block/:hash\n```\n\nExample response\n\n```\n{ \"id\": \"block hash\", \"height\": 2840000, \"tx_count\": 0 }\n```\n\n### GET Block Hash by Height\n\n`GET /api/block-height/:height`\n\nReturns the canonical block hash for a height as plain text.\n\n```\ncurl https://ltc.tx.taxi/api/block-height/:height\n```\n\nExample response\n\n```\nblock hash\n```\n\n### GET Block Transactions\n\n`GET /api/block/:hash/txs`\n\nReturns the transparent transactions in a block. MWEB transfer details are not exposed as ordinary address history.\n\n```\ncurl https://ltc.tx.taxi/api/block/:hash/txs\n```\n\nExample response\n\n```\n[{ \"txid\": \"transaction id\", \"status\": { \"confirmed\": true } }]\n```\n\n## Transactions and addresses\n\n### GET Transaction\n\n`GET /api/tx/:txid`\n\nReturns a transparent transaction by ID. Pending status can change; clients should treat it as a snapshot.\n\n```\ncurl https://ltc.tx.taxi/api/tx/:txid\n```\n\nExample response\n\n```\n{ \"txid\": \"transaction id\", \"fee\": 0, \"status\": { \"confirmed\": false } }\n```\n\n### GET Transaction Status\n\n`GET /api/tx/:txid/status`\n\nReturns the current confirmation state for a transaction.\n\n```\ncurl https://ltc.tx.taxi/api/tx/:txid/status\n```\n\nExample response\n\n```\n{ \"confirmed\": true, \"block_height\": 2840000 }\n```\n\n### GET Address\n\n`GET /api/address/:address`\n\nReturns aggregate transparent-chain statistics for a valid Litecoin address. It cannot reveal MWEB balances, recipients, or private transfer amounts.\n\n```\ncurl https://ltc.tx.taxi/api/address/:address\n```\n\nExample response\n\n```\n{ \"address\": \"ltc1…\", \"chain_stats\": { \"tx_count\": 0 } }\n```\n\n### GET Address Transactions\n\n`GET /api/address/:address/txs`\n\nReturns the first page of transparent transactions for an address. Continue confirmed history with `/address/:address/txs/chain/:last-confirmed-txid`.\n\n```\ncurl https://ltc.tx.taxi/api/address/:address/txs\n```\n\nExample response\n\n```\n[{ \"txid\": \"transaction id\", \"status\": { \"confirmed\": true } }]\n```\n\n## Mempool and observed history\n\n### GET Mempool Summary\n\n`GET /api/mempool`\n\nReturns the gateway’s current upstream mempool summary. It describes one node’s view, not a network-wide queue.\n\n```\ncurl https://ltc.tx.taxi/api/mempool\n```\n\nExample response\n\n```\n{ \"count\": 0, \"vsize\": 0, \"total_fee\": 0 }\n```\n\n### GET Fee Estimates\n\n`GET /api/v1/fees/recommended`\n\nReturns fee estimates in `lit/vB`. Estimates are observations, not confirmation guarantees.\n\n```\ncurl https://ltc.tx.taxi/api/v1/fees/recommended\n```\n\nExample response\n\n```\n{ \"fastestFee\": 1, \"halfHourFee\": 1, \"hourFee\": 1, \"economyFee\": 1, \"minimumFee\": 1 }\n```\n\n### GET Observed Coverage\n\n`GET /api/local-statistics/coverage`\n\nReturns only locally retained observation coverage and sample counts. It does not claim archival or complete mining history.\n\n```\ncurl https://ltc.tx.taxi/api/local-statistics/coverage\n```\n\nExample response\n\n```\n{ \"historicalCoverage\": \"observed-only\", \"coverage\": { \"sampleCounts\": { \"blocks\": 0 } } }\n```\n\n### GET Observed Series\n\n`GET /api/local-statistics/series`\n\nReturns bounded, locally observed samples for the available mempool, block, and native feed measurements.\n\n```\ncurl https://ltc.tx.taxi/api/local-statistics/series\n```\n\nExample response\n\n```\n{ \"mempool\": [], \"blocks\": [], \"native\": [] }\n```\n\n## Service behavior\n\n### GET Provider Health\n\n`GET /api/provider-health`\n\nReturns gateway freshness and health metadata. This endpoint may probe the current mempool summary before reporting an idle state.\n\n```\ncurl https://ltc.tx.taxi/api/provider-health\n```\n\nExample response\n\n```\n{ \"stale\": false, \"feed\": { \"state\": \"live\" } }\n```\n",
+      "source": "src/app/docs/api-docs/litecoin-docs-data.ts"
+    },
+    {
+      "path": "/docs/api/websocket",
+      "label": "Litecoin WebSocket API",
+      "title": "Litecoin WebSocket API - ltc.tx.taxi",
+      "description": "WebSocket documentation for observed Litecoin explorer updates and supported subscriptions.",
+      "kind": "docs-ws",
+      "html": "<p>WebSocket endpoint: <code>wss://ltc.tx.taxi/api/v1/ws</code></p><h2 id=\"connection\">Connection</h2>\n<article id=\"initial-snapshot\"><h3>Initial snapshot</h3>Connect to <code>/api/v1/ws</code>, then send <code>{ \"action\": \"init\" }</code>. The server returns the current shared snapshot when one is available, followed by a <code>provider-freshness</code> object.<pre><code>{ &quot;action&quot;: &quot;init&quot; }</code></pre></article>\n<h2 id=\"streams\">Shared streams</h2>\n<article id=\"live-data\"><h3>Subscribe to shared data</h3>Send <code>action: \"want\"</code> for shared dashboard data. Available shared keys include <code>blocks</code>, <code>mempool-blocks</code>, <code>stats</code>, and <code>live-2h-chart</code>. The gateway fans out one upstream dashboard feed; it does not promise per-visitor feeds.<pre><code>{ &quot;action&quot;: &quot;want&quot;, &quot;data&quot;: [&quot;blocks&quot;, &quot;mempool-blocks&quot;, &quot;stats&quot;, &quot;live-2h-chart&quot;] }</code></pre></article>\n<article id=\"tracked-entity\"><h3>Track a transaction or address</h3>A transaction or address can be tracked through the native upstream subscription protocol. Detail feeds are shared by identical subscriptions and capped at eight across this gateway. When capacity is unavailable, the server sends <code>tracking-unavailable</code>.<pre><code>{ &quot;track-tx&quot;: &quot;transaction id&quot;, &quot;watch-mempool&quot;: true }\n\n{ &quot;track-address&quot;: &quot;ltc1…&quot; }</code></pre></article>\n<article id=\"freshness\"><h3>Interpret freshness</h3><code>provider-freshness</code> is <code>live</code>, <code>stale</code>, or <code>unavailable</code>. A cached snapshot may be delivered during an outage, but is always marked stale rather than presented as current.<pre><code>{ &quot;provider-freshness&quot;: { &quot;state&quot;: &quot;live&quot;, &quot;observedAt&quot;: 0 } }</code></pre></article>",
+      "markdown": "# Litecoin WebSocket API\n\nCanonical: https://ltc.tx.taxi/docs/api/websocket\n\nWebSocket endpoint: `wss://ltc.tx.taxi/api/v1/ws`\n\n## Connection\n\n### Initial snapshot\n\nConnect to `/api/v1/ws`, then send `{ \"action\": \"init\" }`. The server returns the current shared snapshot when one is available, followed by a `provider-freshness` object.\n\n```\n{ \"action\": \"init\" }\n```\n\n## Shared streams\n\n### Subscribe to shared data\n\nSend `action: \"want\"` for shared dashboard data. Available shared keys include `blocks`, `mempool-blocks`, `stats`, and `live-2h-chart`. The gateway fans out one upstream dashboard feed; it does not promise per-visitor feeds.\n\n```\n{ \"action\": \"want\", \"data\": [\"blocks\", \"mempool-blocks\", \"stats\", \"live-2h-chart\"] }\n```\n\n### Track a transaction or address\n\nA transaction or address can be tracked through the native upstream subscription protocol. Detail feeds are shared by identical subscriptions and capped at eight across this gateway. When capacity is unavailable, the server sends `tracking-unavailable`.\n\n```\n{ \"track-tx\": \"transaction id\", \"watch-mempool\": true }\n\n{ \"track-address\": \"ltc1…\" }\n```\n\n### Interpret freshness\n\n`provider-freshness` is `live`, `stale`, or `unavailable`. A cached snapshot may be delivered during an outage, but is always marked stale rather than presented as current.\n\n```\n{ \"provider-freshness\": { \"state\": \"live\", \"observedAt\": 0 } }\n```\n",
+      "source": "src/app/docs/api-docs/litecoin-docs-data.ts"
+    },
+    {
+      "path": "/blocks/1",
+      "label": "Litecoin blocks",
+      "title": "Litecoin blocks - ltc.tx.taxi",
+      "description": "See the most recent Litecoin blocks along with basic stats such as block height, block reward, block size, and more.",
+      "kind": "live",
+      "html": "<p>See the most recent Litecoin blocks along with basic stats such as block height, block reward, block size, and more.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin blocks\n\nCanonical: https://ltc.tx.taxi/blocks/1\n\nSee the most recent Litecoin blocks along with basic stats such as block height, block reward, block size, and more.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/blocks-list/blocks-list.component.ts"
+    },
+    {
+      "path": "/blocks/stale",
+      "label": "Litecoin stale blocks",
+      "title": "Litecoin stale blocks - ltc.tx.taxi",
+      "description": "See the most recent stale chain tips on the Litecoin network.",
+      "kind": "live",
+      "html": "<p>See the most recent stale chain tips on the Litecoin network.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin stale blocks\n\nCanonical: https://ltc.tx.taxi/blocks/stale\n\nSee the most recent stale chain tips on the Litecoin network.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/stale-list/stale-list.component.ts"
+    },
+    {
+      "path": "/txs",
+      "label": "Litecoin recent transactions",
+      "title": "Litecoin recent transactions - ltc.tx.taxi",
+      "description": "Recent pending Litecoin transaction observations shown by the explorer.",
+      "kind": "live",
+      "html": "<p>Recent pending Litecoin transaction observations shown by the explorer.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin recent transactions\n\nCanonical: https://ltc.tx.taxi/txs\n\nRecent pending Litecoin transaction observations shown by the explorer.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/recent-transactions-list/recent-transactions-list.component.ts"
+    },
+    {
+      "path": "/rbf",
+      "label": "Litecoin replacement transactions",
+      "title": "Litecoin replacement transactions - ltc.tx.taxi",
+      "description": "See the most recent RBF replacements on the Litecoin network, updated in real-time.",
+      "kind": "live",
+      "html": "<p>See the most recent RBF replacements on the Litecoin network, updated in real-time.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin replacement transactions\n\nCanonical: https://ltc.tx.taxi/rbf\n\nSee the most recent RBF replacements on the Litecoin network, updated in real-time.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/rbf-list/rbf-list.component.ts"
+    },
+    {
+      "path": "/mining",
+      "label": "Litecoin mining dashboard",
+      "title": "Litecoin mining dashboard - ltc.tx.taxi",
+      "description": "Get real-time Litecoin mining stats like hashrate, difficulty adjustment, block rewards, pool dominance, and more.",
+      "kind": "live",
+      "html": "<p>Get real-time Litecoin mining stats like hashrate, difficulty adjustment, block rewards, pool dominance, and more.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin mining dashboard\n\nCanonical: https://ltc.tx.taxi/mining\n\nGet real-time Litecoin mining stats like hashrate, difficulty adjustment, block rewards, pool dominance, and more.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/mining-dashboard/mining-dashboard.component.ts"
+    },
+    {
+      "path": "/tools/calculator",
+      "label": "Litecoin calculator",
+      "title": "Litecoin calculator - ltc.tx.taxi",
+      "description": "Convert LTC and its smallest units, with fiat conversion when the current price observation is available.",
+      "kind": "live",
+      "html": "<p>Convert LTC and its smallest units, with fiat conversion when the current price observation is available.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin calculator\n\nCanonical: https://ltc.tx.taxi/tools/calculator\n\nConvert LTC and its smallest units, with fiat conversion when the current price observation is available.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/calculator/calculator.component.ts"
+    },
+    {
+      "path": "/mempool-block/0",
+      "label": "Litecoin pending transaction sample",
+      "title": "Litecoin pending transaction sample - ltc.tx.taxi",
+      "description": "Inspect the explorer’s observed Litecoin pending transaction sample and available fee-rate data.",
+      "kind": "live",
+      "html": "<p>Inspect the explorer’s observed Litecoin pending transaction sample and available fee-rate data.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin pending transaction sample\n\nCanonical: https://ltc.tx.taxi/mempool-block/0\n\nInspect the explorer’s observed Litecoin pending transaction sample and available fee-rate data.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/mempool-block/mempool-block.component.ts"
+    },
+    {
+      "path": "/graphs/mempool",
+      "label": "Litecoin mempool observations",
+      "title": "Litecoin mempool observations - ltc.tx.taxi",
+      "description": "See mempool size (in MvB) and transactions per second (in vB/s) visualized over time.",
+      "kind": "live",
+      "html": "<p>See mempool size (in MvB) and transactions per second (in vB/s) visualized over time.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin mempool observations\n\nCanonical: https://ltc.tx.taxi/graphs/mempool\n\nSee mempool size (in MvB) and transactions per second (in vB/s) visualized over time.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/statistics/statistics.component.ts"
+    },
+    {
+      "path": "/graphs/mining/hashrate-difficulty",
+      "label": "Litecoin hashrate and difficulty",
+      "title": "Litecoin hashrate and difficulty - ltc.tx.taxi",
+      "description": "See hashrate and difficulty for the Litecoin network visualized over time.",
+      "kind": "live",
+      "html": "<p>See hashrate and difficulty for the Litecoin network visualized over time.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin hashrate and difficulty\n\nCanonical: https://ltc.tx.taxi/graphs/mining/hashrate-difficulty\n\nSee hashrate and difficulty for the Litecoin network visualized over time.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/hashrate-chart/hashrate-chart.component.ts"
+    },
+    {
+      "path": "/graphs/mining/pools-dominance",
+      "label": "Litecoin mining pool dominance",
+      "title": "Litecoin mining pool dominance - ltc.tx.taxi",
+      "description": "See Litecoin mining pool dominance visualized over time: see how top mining pools' share of total hashrate has fluctuated over time.",
+      "kind": "live",
+      "html": "<p>See Litecoin mining pool dominance visualized over time: see how top mining pools&#39; share of total hashrate has fluctuated over time.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin mining pool dominance\n\nCanonical: https://ltc.tx.taxi/graphs/mining/pools-dominance\n\nSee Litecoin mining pool dominance visualized over time: see how top mining pools' share of total hashrate has fluctuated over time.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/hashrates-chart-pools/hashrate-chart-pools.component.ts"
+    },
+    {
+      "path": "/graphs/mining/pools",
+      "label": "Litecoin mining pools",
+      "title": "Litecoin mining pools - ltc.tx.taxi",
+      "description": "See the top Litecoin mining pools ranked by number of blocks mined, over your desired timeframe.",
+      "kind": "live",
+      "html": "<p>See the top Litecoin mining pools ranked by number of blocks mined, over your desired timeframe.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin mining pools\n\nCanonical: https://ltc.tx.taxi/graphs/mining/pools\n\nSee the top Litecoin mining pools ranked by number of blocks mined, over your desired timeframe.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/pool-ranking/pool-ranking.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-fees",
+      "label": "Litecoin block fees",
+      "title": "Litecoin block fees - ltc.tx.taxi",
+      "description": "See the average mining fees earned per Litecoin block visualized in LTC and USD over time.",
+      "kind": "live",
+      "html": "<p>See the average mining fees earned per Litecoin block visualized in LTC and USD over time.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin block fees\n\nCanonical: https://ltc.tx.taxi/graphs/mining/block-fees\n\nSee the average mining fees earned per Litecoin block visualized in LTC and USD over time.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/block-fees-graph/block-fees-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-fees-subsidy",
+      "label": "Litecoin block fees and subsidy",
+      "title": "Litecoin block fees and subsidy - ltc.tx.taxi",
+      "description": "See the mining fees earned per Litecoin block compared to the Litecoin block subsidy, visualized in LTC and USD over time.",
+      "kind": "live",
+      "html": "<p>See the mining fees earned per Litecoin block compared to the Litecoin block subsidy, visualized in LTC and USD over time.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin block fees and subsidy\n\nCanonical: https://ltc.tx.taxi/graphs/mining/block-fees-subsidy\n\nSee the mining fees earned per Litecoin block compared to the Litecoin block subsidy, visualized in LTC and USD over time.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/block-fees-subsidy-graph/block-fees-subsidy-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-rewards",
+      "label": "Litecoin block rewards",
+      "title": "Litecoin block rewards - ltc.tx.taxi",
+      "description": "See Litecoin block rewards in LTC and USD visualized over time. Block rewards are the total funds miners earn from the block subsidy and fees.",
+      "kind": "live",
+      "html": "<p>See Litecoin block rewards in LTC and USD visualized over time. Block rewards are the total funds miners earn from the block subsidy and fees.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin block rewards\n\nCanonical: https://ltc.tx.taxi/graphs/mining/block-rewards\n\nSee Litecoin block rewards in LTC and USD visualized over time. Block rewards are the total funds miners earn from the block subsidy and fees.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/block-rewards-graph/block-rewards-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-fee-rates",
+      "label": "Litecoin block fee rates",
+      "title": "Litecoin block fee rates - ltc.tx.taxi",
+      "description": "See Litecoin feerates visualized over time, including minimum and maximum feerates per block along with feerates at various percentiles.",
+      "kind": "live",
+      "html": "<p>See Litecoin feerates visualized over time, including minimum and maximum feerates per block along with feerates at various percentiles.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin block fee rates\n\nCanonical: https://ltc.tx.taxi/graphs/mining/block-fee-rates\n\nSee Litecoin feerates visualized over time, including minimum and maximum feerates per block along with feerates at various percentiles.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/block-fee-rates-graph/block-fee-rates-graph.component.ts"
+    },
+    {
+      "path": "/graphs/mining/block-sizes-weights",
+      "label": "Litecoin block sizes and weights",
+      "title": "Litecoin block sizes and weights - ltc.tx.taxi",
+      "description": "See Litecoin block sizes (MB) and block weights (weight units) visualized over time.",
+      "kind": "live",
+      "html": "<p>See Litecoin block sizes (MB) and block weights (weight units) visualized over time.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin block sizes and weights\n\nCanonical: https://ltc.tx.taxi/graphs/mining/block-sizes-weights\n\nSee Litecoin block sizes (MB) and block weights (weight units) visualized over time.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/block-sizes-weights-graph/block-sizes-weights-graph.component.ts"
+    },
+    {
+      "path": "/graphs/price",
+      "label": "Litecoin price chart",
+      "title": "Litecoin price chart - ltc.tx.taxi",
+      "description": "See the Litecoin price in USD visualized over time.",
+      "kind": "live",
+      "html": "<p>See the Litecoin price in USD visualized over time.</p><p>Transparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.</p>",
+      "markdown": "# Litecoin price chart\n\nCanonical: https://ltc.tx.taxi/graphs/price\n\nSee the Litecoin price in USD visualized over time.\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+      "source": "src/app/components/price-chart/price-chart.component.ts"
+    }
+  ],
+  "llms": "# ltc.tx.taxi\n\n> Explore Litecoin blocks, transactions, addresses, fees and mining activity.\n\n## Documentation and explorer pages\n\n- [Litecoin explorer](https://ltc.tx.taxi/): Explore Litecoin blocks, transactions, addresses, fees and mining activity.\n  - [Markdown](https://ltc.tx.taxi/index.md)\n- [About ltc.tx.taxi](https://ltc.tx.taxi/about): Learn about ltc.tx.taxi, the Litecoin explorer in the tx.taxi family.\n  - [Markdown](https://ltc.tx.taxi/about.md)\n- [Privacy policy](https://ltc.tx.taxi/privacy-policy): Privacy notes for ltc.tx.taxi, including public Litecoin data, browser preferences, server logs, and independent verification.\n  - [Markdown](https://ltc.tx.taxi/privacy-policy.md)\n- [Terms of service](https://ltc.tx.taxi/terms-of-service): Terms for using ltc.tx.taxi as an informational Litecoin block and mempool explorer.\n  - [Markdown](https://ltc.tx.taxi/terms-of-service.md)\n- [Trademark and attribution](https://ltc.tx.taxi/trademark-policy): Trademark and attribution notes for ltc.tx.taxi, including upstream mempool/mempool attribution and project independence.\n  - [Markdown](https://ltc.tx.taxi/trademark-policy.md)\n- [Litecoin explorer guide](https://ltc.tx.taxi/docs/faq): Litecoin explorer coverage, amounts, fees, confirmations and data limits.\n  - [Markdown](https://ltc.tx.taxi/docs/faq.md)\n- [Litecoin REST API](https://ltc.tx.taxi/docs/api/rest): Read-only REST API documentation for ltc.tx.taxi: blocks, transactions, addresses and supported observations.\n  - [Markdown](https://ltc.tx.taxi/docs/api/rest.md)\n- [Litecoin WebSocket API](https://ltc.tx.taxi/docs/api/websocket): WebSocket documentation for observed Litecoin explorer updates and supported subscriptions.\n  - [Markdown](https://ltc.tx.taxi/docs/api/websocket.md)\n- [Litecoin blocks](https://ltc.tx.taxi/blocks/1): See the most recent Litecoin blocks along with basic stats such as block height, block reward, block size, and more.\n  - [Markdown](https://ltc.tx.taxi/blocks/1.md)\n- [Litecoin stale blocks](https://ltc.tx.taxi/blocks/stale): See the most recent stale chain tips on the Litecoin network.\n  - [Markdown](https://ltc.tx.taxi/blocks/stale.md)\n- [Litecoin recent transactions](https://ltc.tx.taxi/txs): Recent pending Litecoin transaction observations shown by the explorer.\n  - [Markdown](https://ltc.tx.taxi/txs.md)\n- [Litecoin replacement transactions](https://ltc.tx.taxi/rbf): See the most recent RBF replacements on the Litecoin network, updated in real-time.\n  - [Markdown](https://ltc.tx.taxi/rbf.md)\n- [Litecoin mining dashboard](https://ltc.tx.taxi/mining): Get real-time Litecoin mining stats like hashrate, difficulty adjustment, block rewards, pool dominance, and more.\n  - [Markdown](https://ltc.tx.taxi/mining.md)\n- [Litecoin calculator](https://ltc.tx.taxi/tools/calculator): Convert LTC and its smallest units, with fiat conversion when the current price observation is available.\n  - [Markdown](https://ltc.tx.taxi/tools/calculator.md)\n- [Litecoin pending transaction sample](https://ltc.tx.taxi/mempool-block/0): Inspect the explorer’s observed Litecoin pending transaction sample and available fee-rate data.\n  - [Markdown](https://ltc.tx.taxi/mempool-block/0.md)\n- [Litecoin mempool observations](https://ltc.tx.taxi/graphs/mempool): See mempool size (in MvB) and transactions per second (in vB/s) visualized over time.\n  - [Markdown](https://ltc.tx.taxi/graphs/mempool.md)\n- [Litecoin hashrate and difficulty](https://ltc.tx.taxi/graphs/mining/hashrate-difficulty): See hashrate and difficulty for the Litecoin network visualized over time.\n  - [Markdown](https://ltc.tx.taxi/graphs/mining/hashrate-difficulty.md)\n- [Litecoin mining pool dominance](https://ltc.tx.taxi/graphs/mining/pools-dominance): See Litecoin mining pool dominance visualized over time: see how top mining pools' share of total hashrate has fluctuated over time.\n  - [Markdown](https://ltc.tx.taxi/graphs/mining/pools-dominance.md)\n- [Litecoin mining pools](https://ltc.tx.taxi/graphs/mining/pools): See the top Litecoin mining pools ranked by number of blocks mined, over your desired timeframe.\n  - [Markdown](https://ltc.tx.taxi/graphs/mining/pools.md)\n- [Litecoin block fees](https://ltc.tx.taxi/graphs/mining/block-fees): See the average mining fees earned per Litecoin block visualized in LTC and USD over time.\n  - [Markdown](https://ltc.tx.taxi/graphs/mining/block-fees.md)\n- [Litecoin block fees and subsidy](https://ltc.tx.taxi/graphs/mining/block-fees-subsidy): See the mining fees earned per Litecoin block compared to the Litecoin block subsidy, visualized in LTC and USD over time.\n  - [Markdown](https://ltc.tx.taxi/graphs/mining/block-fees-subsidy.md)\n- [Litecoin block rewards](https://ltc.tx.taxi/graphs/mining/block-rewards): See Litecoin block rewards in LTC and USD visualized over time. Block rewards are the total funds miners earn from the block subsidy and fees.\n  - [Markdown](https://ltc.tx.taxi/graphs/mining/block-rewards.md)\n- [Litecoin block fee rates](https://ltc.tx.taxi/graphs/mining/block-fee-rates): See Litecoin feerates visualized over time, including minimum and maximum feerates per block along with feerates at various percentiles.\n  - [Markdown](https://ltc.tx.taxi/graphs/mining/block-fee-rates.md)\n- [Litecoin block sizes and weights](https://ltc.tx.taxi/graphs/mining/block-sizes-weights): See Litecoin block sizes (MB) and block weights (weight units) visualized over time.\n  - [Markdown](https://ltc.tx.taxi/graphs/mining/block-sizes-weights.md)\n- [Litecoin price chart](https://ltc.tx.taxi/graphs/price): See the Litecoin price in USD visualized over time.\n  - [Markdown](https://ltc.tx.taxi/graphs/price.md)\n\n## Machine-readable resources\n\n- [Full documentation](https://ltc.tx.taxi/llms-full.txt)\n- [Sitemap](https://ltc.tx.taxi/sitemap.xml)\n\n## Coverage\n\nTransparent Litecoin blocks, transactions, addresses, fee observations and mining data are supported. Private MWEB amounts, recipients and ordinary address history cannot be reconstructed. API observations can be live, stale or unavailable; fee estimates do not guarantee confirmation.\n",
+  "llmsFull": "# About ltc.tx.taxi\n\nCanonical: https://ltc.tx.taxi/about\n\ntx.taxi / Litecoin documentation\n\n## One search across chains.\n\n    Paste a transaction, block or address into tx.taxi. Open a confirmed match, choose between possible networks, or head straight to your chain’s explorer.\n\n      [Open tx.taxi ↗︎](https://tx.taxi/)\n      [Explore Litecoin →](https://ltc.tx.taxi/)\n\n## About ltc.tx.taxi\n\n      The Litecoin explorer in the tx.taxi family.\n\n        [Litecoin documentation](https://ltc.tx.taxi/docs)\n        [Contact the maintainer](https://t.me/hiss)\n\n## About ltc.tx.taxi\n\n    ltc.tx.taxi is the Litecoin explorer in the tx.taxi multi-chain family. It preserves Mempool's proven interface for inspecting blocks, transactions, addresses, mining activity, fee estimates, and the live Litecoin mempool while using a Litecoin-specific tx.taxi identity.\n\n## Litecoin-native data\n\n    Values are denominated in LTC, litoshis, or the selected fiat currency. Fee rates remain lit/vB, transaction sizes remain vB or weight units, and all block, address, and mining concepts shown by the interface retain their Litecoin meaning.\n\n## MWEB coverage\n\nThis explorer shows transparent-chain transactions and indexed addresses. Private MWEB amounts and recipient history are not publicly observable. HogEx transactions connect the extension block to the transparent chain.\n\n## Infrastructure\n\n    The explorer reads public Litecoin network data through its configured backend. Explorer results are informational and can differ from another node's view of the mempool. Always verify payment details in your wallet and use your own node when independent verification matters.\n\n## Built on open source\n\n        This explorer builds on the [Mempool Open Source Project](https://github.com/mempool/mempool). See [third-party attribution](https://ltc.tx.taxi/3rdpartylicenses.txt) and contact the maintainer for source and license information.\n\n---\n\n# Privacy policy\n\nCanonical: https://ltc.tx.taxi/privacy-policy\n\n## Privacy Policy\n\n###### Updated: September 20, 2026\n\n#### Use Your Own Node When Privacy Matters\n\n      ltc.tx.taxi displays public Litecoin chain and mempool data through the backend configured by the site operator. For independent verification and the strongest network privacy, use your own Litecoin node and explorer.\n\n#### Request Data\n\n      Normal website and API requests can reveal standard web metadata to the operator, including your IP address, user agent, requested URL, and request time. Server logs may be retained for reliability, abuse prevention, and debugging.\n\n#### Local Preferences\n\n      Display preferences such as theme, denomination, fiat currency, language, and timezone may be stored in your browser. ltc.tx.taxi does not require an account for ordinary explorer use.\n\n#### Public Blockchain Data\n\n      Litecoin transactions, addresses, scripts, and blocks are public. Looking up an address or transaction can associate that lookup with your network metadata. Do not treat a public explorer as a privacy boundary.\n\n#### External Links\n\n      This site links to tx.taxi contact channels, Litecoin documentation, and upstream source code. Those external services have their own privacy policies.\n\n#### Open Source Attribution\n\n      Mempool names, logos, and trademarks remain the property of their respective owners; ltc.tx.taxi is not affiliated with or endorsed by Mempool Holdings S.A. de C.V.\n\n---\n\n# Terms of service\n\nCanonical: https://ltc.tx.taxi/terms-of-service\n\n## Terms of Service\n\n###### Updated: September 20, 2026\n\n#### Informational Explorer\n\n      ltc.tx.taxi provides a view of public Litecoin blocks, transactions, addresses, mining data, fee estimates, and mempool state. It is an informational service, not a wallet, exchange, custodian, payment processor, or transaction-priority service.\n\n#### No Control Over Litecoin Transactions\n\n      The operator cannot reverse, cancel, accelerate, recover, or redirect a Litecoin transaction. For wallet, exchange, or payment issues, contact the service that created or received the transaction.\n\n#### Data and Availability\n\n      Explorer data may be delayed, incomplete, unavailable, or different from another node's view. Fee estimates are estimates only and do not guarantee confirmation. The service is provided as-is without a promise of uninterrupted availability or fitness for a particular purpose.\n\n#### Acceptable Use\n\n      Do not abuse the website or API, interfere with service operation, bypass reasonable rate limits, or use the service unlawfully. Access may be limited when necessary to protect availability.\n\n#### External Services\n\n      This site may link to tx.taxi contact channels, Litecoin references, upstream source code, and infrastructure dependencies. External websites have their own terms and policies.\n\n#### Open Source\n\n      ltc.tx.taxi is derived from [mempool/mempool](https://github.com/mempool/mempool). Contact [t.me/hiss](https://t.me/hiss) for the current reviewed fork source package.\n\n---\n\n# Trademark and attribution\n\nCanonical: https://ltc.tx.taxi/trademark-policy\n\n## Trademark & Attribution\n\n###### Updated: September 20, 2026\n\n#### tx.taxi Identity\n\n      ltc.tx.taxi is an independently operated Litecoin explorer in the tx.taxi family. Its domain, wordmark, chain palette, and service identity distinguish this fork from the upstream project.\n\n#### Upstream Attribution\n\n      This software is derived from [The Mempool Open Source Project](https://github.com/mempool/mempool). The upstream source code, visual system, project names, logos, and trademarks belong to their respective owners.\n\n#### No Affiliation\n\n      ltc.tx.taxi is not affiliated with, sponsored by, or endorsed by Mempool Holdings S.A. de C.V. References to mempool.space and mempool/mempool are nominative attribution to the software from which this fork derives.\n\n#### Litecoin\n\n      Litecoin is an open network and protocol. References to Litecoin, LTC, litoshis, blocks, transactions, addresses, and mining describe the network data presented by this explorer.\n\n---\n\n# Litecoin explorer guide\n\nCanonical: https://ltc.tx.taxi/docs/faq\n\n## Litecoin basics\n\n### What does this explorer show?\n\nltc.tx.taxi shows publicly observable Litecoin blocks, transparent transactions and addresses, node mempool data, fees, and mining activity. Litecoin targets a block every 2.5 minutes, retargets difficulty every 2,016 blocks, and halves the subsidy every 840,000 blocks.\n\n### How are Litecoin amounts and fees shown?\n\nOne LTC equals 100,000,000 litoshis. This explorer reports transaction fees in litoshis and fee rates in `lit/vB`. A higher fee rate can make a pending transaction more competitive for inclusion, but does not guarantee a confirmation time.\n\n## MWEB and privacy\n\n### Why are some MWEB details unavailable?\n\nMWEB is Litecoin’s MimbleWimble Extension Block. Its private transfers do not publish ordinary amounts, recipient history, or address balances for an explorer to reconstruct. The HogEx transaction and peg-in or peg-out records connect MWEB to the transparent chain; they should not be read as ordinary wallet transfers.\n\n## Data and confirmation\n\n### Why can pending data or a fee estimate change?\n\nThere is no global mempool. Nodes can observe different pending transactions, and a node can evict or later receive a transaction. Fee estimates and projected blocks are observations of this explorer’s current feed. Check the freshness indicator and headers before relying on a response.\n\n### What can I search?\n\nSearch a Litecoin block height, block hash, transaction ID, transparent Litecoin address, or a supported explorer URL. A 64-character hash can be valid on more than one chain, so tx.taxi keeps chain selection available when a match is ambiguous.\n\n---\n\n# Litecoin REST API\n\nCanonical: https://ltc.tx.taxi/docs/api/rest\n\n## Chain\n\n### GET Tip Height\n\n`GET /api/blocks/tip/height`\n\nReturns the current Litecoin tip height as plain text.\n\n```\ncurl https://ltc.tx.taxi/api/blocks/tip/height\n```\n\nExample response\n\n```\n2840000\n```\n\n### GET Recent Blocks\n\n`GET /api/blocks`\n\nReturns the most recently observed blocks. This is served from the shared feed while it is fresh; otherwise the gateway uses its read-only REST source.\n\n```\ncurl https://ltc.tx.taxi/api/blocks\n```\n\nExample response\n\n```\n[{ \"id\": \"block hash\", \"height\": 2840000, \"timestamp\": 0, \"tx_count\": 0 }]\n```\n\n### GET Block\n\n`GET /api/block/:hash`\n\nReturns an observed block by its 64-character hash. Use `/block-height/:height` first when starting with a height.\n\n```\ncurl https://ltc.tx.taxi/api/block/:hash\n```\n\nExample response\n\n```\n{ \"id\": \"block hash\", \"height\": 2840000, \"tx_count\": 0 }\n```\n\n### GET Block Hash by Height\n\n`GET /api/block-height/:height`\n\nReturns the canonical block hash for a height as plain text.\n\n```\ncurl https://ltc.tx.taxi/api/block-height/:height\n```\n\nExample response\n\n```\nblock hash\n```\n\n### GET Block Transactions\n\n`GET /api/block/:hash/txs`\n\nReturns the transparent transactions in a block. MWEB transfer details are not exposed as ordinary address history.\n\n```\ncurl https://ltc.tx.taxi/api/block/:hash/txs\n```\n\nExample response\n\n```\n[{ \"txid\": \"transaction id\", \"status\": { \"confirmed\": true } }]\n```\n\n## Transactions and addresses\n\n### GET Transaction\n\n`GET /api/tx/:txid`\n\nReturns a transparent transaction by ID. Pending status can change; clients should treat it as a snapshot.\n\n```\ncurl https://ltc.tx.taxi/api/tx/:txid\n```\n\nExample response\n\n```\n{ \"txid\": \"transaction id\", \"fee\": 0, \"status\": { \"confirmed\": false } }\n```\n\n### GET Transaction Status\n\n`GET /api/tx/:txid/status`\n\nReturns the current confirmation state for a transaction.\n\n```\ncurl https://ltc.tx.taxi/api/tx/:txid/status\n```\n\nExample response\n\n```\n{ \"confirmed\": true, \"block_height\": 2840000 }\n```\n\n### GET Address\n\n`GET /api/address/:address`\n\nReturns aggregate transparent-chain statistics for a valid Litecoin address. It cannot reveal MWEB balances, recipients, or private transfer amounts.\n\n```\ncurl https://ltc.tx.taxi/api/address/:address\n```\n\nExample response\n\n```\n{ \"address\": \"ltc1…\", \"chain_stats\": { \"tx_count\": 0 } }\n```\n\n### GET Address Transactions\n\n`GET /api/address/:address/txs`\n\nReturns the first page of transparent transactions for an address. Continue confirmed history with `/address/:address/txs/chain/:last-confirmed-txid`.\n\n```\ncurl https://ltc.tx.taxi/api/address/:address/txs\n```\n\nExample response\n\n```\n[{ \"txid\": \"transaction id\", \"status\": { \"confirmed\": true } }]\n```\n\n## Mempool and observed history\n\n### GET Mempool Summary\n\n`GET /api/mempool`\n\nReturns the gateway’s current upstream mempool summary. It describes one node’s view, not a network-wide queue.\n\n```\ncurl https://ltc.tx.taxi/api/mempool\n```\n\nExample response\n\n```\n{ \"count\": 0, \"vsize\": 0, \"total_fee\": 0 }\n```\n\n### GET Fee Estimates\n\n`GET /api/v1/fees/recommended`\n\nReturns fee estimates in `lit/vB`. Estimates are observations, not confirmation guarantees.\n\n```\ncurl https://ltc.tx.taxi/api/v1/fees/recommended\n```\n\nExample response\n\n```\n{ \"fastestFee\": 1, \"halfHourFee\": 1, \"hourFee\": 1, \"economyFee\": 1, \"minimumFee\": 1 }\n```\n\n### GET Observed Coverage\n\n`GET /api/local-statistics/coverage`\n\nReturns only locally retained observation coverage and sample counts. It does not claim archival or complete mining history.\n\n```\ncurl https://ltc.tx.taxi/api/local-statistics/coverage\n```\n\nExample response\n\n```\n{ \"historicalCoverage\": \"observed-only\", \"coverage\": { \"sampleCounts\": { \"blocks\": 0 } } }\n```\n\n### GET Observed Series\n\n`GET /api/local-statistics/series`\n\nReturns bounded, locally observed samples for the available mempool, block, and native feed measurements.\n\n```\ncurl https://ltc.tx.taxi/api/local-statistics/series\n```\n\nExample response\n\n```\n{ \"mempool\": [], \"blocks\": [], \"native\": [] }\n```\n\n## Service behavior\n\n### GET Provider Health\n\n`GET /api/provider-health`\n\nReturns gateway freshness and health metadata. This endpoint may probe the current mempool summary before reporting an idle state.\n\n```\ncurl https://ltc.tx.taxi/api/provider-health\n```\n\nExample response\n\n```\n{ \"stale\": false, \"feed\": { \"state\": \"live\" } }\n```\n\n---\n\n# Litecoin WebSocket API\n\nCanonical: https://ltc.tx.taxi/docs/api/websocket\n\nWebSocket endpoint: `wss://ltc.tx.taxi/api/v1/ws`\n\n## Connection\n\n### Initial snapshot\n\nConnect to `/api/v1/ws`, then send `{ \"action\": \"init\" }`. The server returns the current shared snapshot when one is available, followed by a `provider-freshness` object.\n\n```\n{ \"action\": \"init\" }\n```\n\n## Shared streams\n\n### Subscribe to shared data\n\nSend `action: \"want\"` for shared dashboard data. Available shared keys include `blocks`, `mempool-blocks`, `stats`, and `live-2h-chart`. The gateway fans out one upstream dashboard feed; it does not promise per-visitor feeds.\n\n```\n{ \"action\": \"want\", \"data\": [\"blocks\", \"mempool-blocks\", \"stats\", \"live-2h-chart\"] }\n```\n\n### Track a transaction or address\n\nA transaction or address can be tracked through the native upstream subscription protocol. Detail feeds are shared by identical subscriptions and capped at eight across this gateway. When capacity is unavailable, the server sends `tracking-unavailable`.\n\n```\n{ \"track-tx\": \"transaction id\", \"watch-mempool\": true }\n\n{ \"track-address\": \"ltc1…\" }\n```\n\n### Interpret freshness\n\n`provider-freshness` is `live`, `stale`, or `unavailable`. A cached snapshot may be delivered during an outage, but is always marked stale rather than presented as current.\n\n```\n{ \"provider-freshness\": { \"state\": \"live\", \"observedAt\": 0 } }\n```\n",
+  "sourceFiles": [
+    "src/app/components/about/about.component.html",
+    "src/app/components/block-fee-rates-graph/block-fee-rates-graph.component.ts",
+    "src/app/components/block-fees-graph/block-fees-graph.component.ts",
+    "src/app/components/block-fees-subsidy-graph/block-fees-subsidy-graph.component.ts",
+    "src/app/components/block-rewards-graph/block-rewards-graph.component.ts",
+    "src/app/components/block-sizes-weights-graph/block-sizes-weights-graph.component.ts",
+    "src/app/components/blocks-list/blocks-list.component.ts",
+    "src/app/components/calculator/calculator.component.ts",
+    "src/app/components/hashrate-chart/hashrate-chart.component.ts",
+    "src/app/components/hashrates-chart-pools/hashrate-chart-pools.component.ts",
+    "src/app/components/mempool-block/mempool-block.component.ts",
+    "src/app/components/mining-dashboard/mining-dashboard.component.ts",
+    "src/app/components/pool-ranking/pool-ranking.component.ts",
+    "src/app/components/price-chart/price-chart.component.ts",
+    "src/app/components/privacy-policy/privacy-policy.component.html",
+    "src/app/components/rbf-list/rbf-list.component.ts",
+    "src/app/components/recent-transactions-list/recent-transactions-list.component.ts",
+    "src/app/components/stale-list/stale-list.component.ts",
+    "src/app/components/statistics/statistics.component.ts",
+    "src/app/components/terms-of-service/terms-of-service.component.html",
+    "src/app/components/trademark-policy/trademark-policy.component.html",
+    "src/app/docs/api-docs/api-docs.component.html",
+    "src/app/docs/api-docs/litecoin-docs-data.ts",
+    "src/app/shared/components/tx-taxi-docs-intro/tx-taxi-docs-intro.component.html"
+  ]
+}

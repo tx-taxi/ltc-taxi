@@ -3,6 +3,7 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
+const staticSeo = require('./static-seo.cjs');
 const {WebSocketServer} = require('ws');
 const sharp = require('sharp');
 const {providerStatus} = require('./provider-health.cjs');
@@ -70,7 +71,11 @@ function send(res,status,data,type='application/json',headers={}) {
 }
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 async function metadata(path) {
- const m=path.match(/^\/(tx|block|address)\/([A-Za-z0-9]+)$/);
+ path = staticSeo.normalize(path);
+ const documentPage = staticSeo.page(path);
+ if (documentPage) return {...documentPage, cardDescription:documentPage.description};
+ const m=staticSeo.entity(path) ? path.match(/^\/(tx|block|address)\/([A-Za-z0-9:]+)$/) : null;
+ let entityStatus;
  let cardDescription='Entity data temporarily unavailable. Please retry.';
  let title='ltc.tx.taxi - Litecoin Explorer', description='Explore Litecoin blocks, transactions, addresses, fees and mining activity.';
  if(m) {
@@ -78,6 +83,7 @@ async function metadata(path) {
   let p=kind==='block'?'/api/v1/block/'+id:'/api/'+kind+'/'+id;
   if(kind==='block' && /^\d+$/.test(id)) {const h=await api('/api/block-height/'+id);if(h.status===200)p='/api/v1/block/'+h.data;}
   const r=await api(p);
+  entityStatus=r.status;
   if(r.status===200) {
    if(kind==='tx')description=`${r.data.status?.confirmed?'Confirmed':'Pending'} Litecoin transaction. Fee: ${(r.data.fee/1e8).toFixed(8)} LTC. Transparent outputs; MWEB amounts remain private.`;
    if(kind==='block')description=`Litecoin block ${r.data.height}. ${r.data.tx_count} transactions. Mined ${new Date(r.data.timestamp*1000).toISOString()}.`;
@@ -87,7 +93,7 @@ async function metadata(path) {
    if(kind==='address')cardDescription=`${r.data.chain_stats?.tx_count ?? 'Indexed'} confirmed transaction${r.data.chain_stats?.tx_count===1?'':'s'}`;
   } else description='Litecoin entity data is temporarily unavailable. Retry to retrieve current details.';
  }
- return {title,description,cardDescription,path:m?path:'/'};
+ return {title,description,cardDescription,path,entityStatus};
 }
 const cardTemplate=fs.readFileSync(__dirname+'/assets/social-card.svg','utf8');
 const cardLogo='data:image/svg+xml;base64,'+fs.readFileSync(__dirname+'/../frontend/src/resources/branding/ltc-dark-navbar.svg').toString('base64');
@@ -105,17 +111,13 @@ const server=http.createServer(async(req,res)=>{
  const u=new URL(req.url,'http://localhost');
  try {
   if(req.method!=='GET' && req.method!=='HEAD')return send(res,405,{error:'Read-only local explorer'});
-    // Bounded, host-specific crawl endpoints precede static/SPA fallback.
-    if (u.pathname === '/sitemap.xml' || u.pathname === '/robots.txt') {
-      const sitemap = u.pathname === '/sitemap.xml';
-      const body = sitemap ? "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url><loc>https://ltc.tx.taxi/</loc></url>\n</urlset>\n" : "User-agent: *\nAllow: /\n\nSitemap: https://ltc.tx.taxi/sitemap.xml\n";
-      res.writeHead(200, {
-        'Content-Type': sitemap ? 'application/xml; charset=utf-8' : 'text/plain; charset=utf-8',
-        'Cache-Control': 'public, max-age=3600',
-        'X-Content-Type-Options': 'nosniff',
-      });
-      return res.end(req.method === 'HEAD' ? undefined : body);
-    }
+  const crawl = staticSeo.endpoint(u.pathname);
+  if (crawl) {
+   res.writeHead(crawl.status || 200, {'Content-Type':crawl.type || 'text/plain; charset=utf-8','Cache-Control':'public, max-age=3600','X-Content-Type-Options':'nosniff',...crawl.headers});
+   return res.end(req.method === 'HEAD' ? undefined : crawl.body);
+  }
+  const canonicalRedirect = staticSeo.redirect(u.pathname);
+  if (canonicalRedirect) {res.writeHead(308,{Location:'https://ltc.tx.taxi'+canonicalRedirect});return res.end();}
   if(u.pathname.startsWith('/local-router/')) {
    const path=u.pathname.slice('/local-router'.length)+u.search;
    if(!/^\/(api|assets)\//.test(path)) {res.writeHead(302,{location:ROUTER_ORIGIN+path});return res.end();}
@@ -169,9 +171,14 @@ const server=http.createServer(async(req,res)=>{
   const type=r.headers.get('content-type')||'text/plain';
   if(type.includes('text/html')) {
    let html=await r.text();const m=await metadata(u.pathname),origin=SITE_ORIGIN;
+   const preview = staticSeo.data.socialScreenshot;
    html=html.replace(/<title>[\s\S]*?<\/title>/,'').replace(/<meta[^>]+(?:name|property)=["'](?:description|og:[^"']+|twitter:[^"']+)["'][^>]*>/g,'').replace(/<link[^>]+rel=["']canonical["'][^>]*>/g,'');
-   html=html.replace('</head>',`<title>${escape(m.title)}</title><meta name="description" content="${escape(m.description)}"><link id="canonical" rel="canonical" href="https://ltc.tx.taxi${escape(m.path)}"><meta property="og:title" content="${escape(m.title)}"><meta property="og:description" content="${escape(m.description)}"><meta property="og:type" content="website"><meta property="og:site_name" content="ltc.tx.taxi"><meta property="og:locale" content="en_US"><meta property="og:image" content="${origin}/og.png?v=4&amp;path=${encodeURIComponent(m.path)}"><meta property="og:url" content="https://ltc.tx.taxi${escape(m.path)}"><meta property="og:image:type" content="image/png"><meta property="og:image:alt" content="${escape(m.title)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:domain" content="ltc.tx.taxi"><meta name="twitter:image:alt" content="${escape(m.title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escape(m.title)}"><meta name="twitter:description" content="${escape(m.description)}"><meta name="twitter:image" content="${origin}/og.png?v=4&amp;path=${encodeURIComponent(m.path)}"></head>`);
-   return send(res,r.status,html,type);
+   html=html.replace('</head>',`<title>${escape(m.title)}</title><meta name="description" content="${escape(m.description)}"><link id="canonical" rel="canonical" href="https://ltc.tx.taxi${escape(m.path)}"><meta property="og:title" content="${escape(m.title)}"><meta property="og:description" content="${escape(m.description)}"><meta property="og:type" content="website"><meta property="og:site_name" content="ltc.tx.taxi"><meta property="og:locale" content="en_US"><meta property="og:image" content="${escape(preview.url)}"><meta property="og:url" content="https://ltc.tx.taxi${escape(m.path)}"><meta property="og:image:type" content="${preview.mime}"><meta property="og:image:alt" content="${escape(preview.alt)}"><meta property="og:image:width" content="${preview.width}"><meta property="og:image:height" content="${preview.height}"><meta name="twitter:domain" content="ltc.tx.taxi"><meta name="twitter:image:alt" content="${escape(preview.alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escape(m.title)}"><meta name="twitter:description" content="${escape(m.description)}"><meta name="twitter:image" content="${escape(preview.url)}"></head>`);
+   const documentPage = staticSeo.page(u.pathname);
+   const semanticPage = documentPage || (staticSeo.entity(u.pathname) ? {...m,label:m.title,html:`<p>${escape(m.description)}</p>`} : null);
+   html = staticSeo.render(html, semanticPage).replace('</head>',staticSeo.headLinks(documentPage)+'</head>');
+   const noindex = staticSeo.nonIndexable(u.pathname);
+   return send(res,noindex && !staticSeo.existingNonIndexable(u.pathname) ? 404 : m.entityStatus || r.status,req.method === 'HEAD' ? undefined : html,type,noindex ? {'X-Robots-Tag':'noindex, follow'} : {});
   }
   return send(res,r.status,Buffer.from(await r.arrayBuffer()),type);
  }catch(e){send(res,503,{error:'Local service unavailable',message:e.message});}
