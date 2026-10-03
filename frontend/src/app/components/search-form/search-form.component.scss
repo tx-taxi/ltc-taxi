@@ -343,18 +343,23 @@ input:focus {
   white-space: normal;
 }
 
-.search-chain-automatic .search-chain-host {
+.search-chain-automatic > .search-routing-hint {
+  grid-column: 1 / -1;
+  min-width: 0;
+  padding: 0 0 7px 37px;
   white-space: normal;
   overflow: visible;
-  overflow-wrap: anywhere;
   text-overflow: clip;
-  line-height: 1.35;
+  line-height: 1.4;
+}
 
-  code {
-    color: inherit;
-    font-size: inherit;
-    font-family: var(--bs-font-monospace, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
-    background: transparent;
-    padding: 0;
-  }
+.search-chain-automatic > .search-routing-hint code {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: baseline;
+  color: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  overflow-wrap: anywhere;
 }
