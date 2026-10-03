@@ -105,6 +105,17 @@ const server=http.createServer(async(req,res)=>{
  const u=new URL(req.url,'http://localhost');
  try {
   if(req.method!=='GET' && req.method!=='HEAD')return send(res,405,{error:'Read-only local explorer'});
+    // Bounded, host-specific crawl endpoints precede static/SPA fallback.
+    if (u.pathname === '/sitemap.xml' || u.pathname === '/robots.txt') {
+      const sitemap = u.pathname === '/sitemap.xml';
+      const body = sitemap ? "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url><loc>https://ltc.tx.taxi/</loc></url>\n</urlset>\n" : "User-agent: *\nAllow: /\n\nSitemap: https://ltc.tx.taxi/sitemap.xml\n";
+      res.writeHead(200, {
+        'Content-Type': sitemap ? 'application/xml; charset=utf-8' : 'text/plain; charset=utf-8',
+        'Cache-Control': 'public, max-age=3600',
+        'X-Content-Type-Options': 'nosniff',
+      });
+      return res.end(req.method === 'HEAD' ? undefined : body);
+    }
   if(u.pathname.startsWith('/local-router/')) {
    const path=u.pathname.slice('/local-router'.length)+u.search;
    if(!/^\/(api|assets)\//.test(path)) {res.writeHead(302,{location:ROUTER_ORIGIN+path});return res.end();}
