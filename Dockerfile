@@ -1,4 +1,4 @@
-FROM node:24-bookworm-slim AS frontend-builder
+FROM node:25-bookworm-slim AS frontend-builder
 ENV CYPRESS_INSTALL_BINARY=0
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
@@ -9,7 +9,7 @@ RUN node /app/adapter/generate-static-seo.cjs /app/frontend /app/adapter/static-
 COPY adapter/frontend-production-config.json ./mempool-frontend-config.json
 RUN npm run generate-themes && npm run generate-config && node node_modules/@angular/cli/bin/ng.js build --configuration production --localize=false && node async-native-styles.cjs
 
-FROM node:24-bookworm-slim
+FROM node:25-bookworm-slim
 WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends fonts-dejavu-core ca-certificates curl && rm -rf /var/lib/apt/lists/*
 COPY adapter/package.json adapter/package-lock.json ./adapter/
