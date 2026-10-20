@@ -22,7 +22,7 @@ function retryAfterMs(value, now, cap) {
 }
 
 class ProviderCache {
- constructor({primary, fallback, health, failedPaths, fetchImpl = globalThis.fetch, store,
+ constructor({primary, fallback, fallbackSupports = () => true, health, failedPaths, fetchImpl = globalThis.fetch, store,
   dataDir, now = Date.now, timeoutMs = 7000, maxRequests = 120, rateWindowMs = 60000,
   cooldownMs = 5000, maxCooldownMs = 60000, staleTtlMs = 3600000,
   historyStaleTtlMs = 24 * 3600000, maxPrimaryConcurrency = 4,
@@ -33,6 +33,7 @@ class ProviderCache {
   if (!primary || typeof fallback !== 'function') throw new TypeError('primary and fallback(path) are required');
   this.primary = primary.replace(/\/$/, '');
   this.fallback = fallback;
+  this.fallbackSupports = fallbackSupports;
   this.health = health || {primary, lastSuccess: null, lastFailure: null};
   this.failedPaths = failedPaths || new Map();
   this.fetchImpl = fetchImpl;
@@ -130,6 +131,7 @@ class ProviderCache {
   return {data: {error: 'Provider unavailable', retryable: true}, source: 'unavailable', status: 503, at: this.now()};
  }
  async tryFallback(path) {
+  if (!this.fallbackSupports(path)) return null;
   const now = this.now();
   this.fallbackRequests = this.fallbackRequests.filter(at => at > now - this.fallbackRateWindowMs);
   if (now < this.fallbackCooldownUntil || now < (this.fallbackFailedPaths.get(path) || 0) ||

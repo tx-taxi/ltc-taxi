@@ -208,3 +208,14 @@ test('hash-addressed block has finite historical stale window, status remains mu
  assert.equal((await cache.get(block)).status, 503);
  cache.close();
 });
+
+test('unsupported fallback routes do not consume the independent lookup budget', async t => {
+ const cache = new ProviderCache({primary:'https://primary.test',
+  fetchImpl:async()=>new Response('',{status:503}),
+  fallbackSupports:p=>p.includes('/address/'),
+  fallback:async()=>({data:[],source:'backup',status:200,at:Date.now()}),
+  maxRequests:1,fallbackMaxRequests:1});
+ t.after(()=>cache.close());
+ assert.equal((await cache.get('/api/statistics/unsupported')).status,503);
+ assert.equal((await cache.get('/api/address/example/utxo')).status,200);
+});

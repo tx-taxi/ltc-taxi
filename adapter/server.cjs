@@ -6,6 +6,7 @@ const path = require('node:path');
 const staticSeo = require('./static-seo.cjs');
 const {WebSocketServer} = require('ws');
 const sharp = require('sharp');
+const {completeUtxos} = require('./blockcypher-utxos.cjs');
 const {providerStatus} = require('./provider-health.cjs');
 const {DataStore} = require('./data-store.cjs');
 const {ProviderCache} = require('./provider-cache.cjs');
@@ -33,19 +34,20 @@ async function fallback(path) {
   const d=await fetchData('https://api.blockcypher.com/v1/ltc/main',4000);
   return result(path.endsWith('height')?String(d.height):d.hash,'blockcypher');
  }
- const m=path.match(/^\/api\/(?:v1\/)?block(?:-height)?\/([a-f0-9]{64}|\d+)$/);
- if(m) {
-  const b=await fetchData('https://api.blockcypher.com/v1/ltc/main/blocks/'+m[1]+'?txstart=1&limit=1',4000);
-  if(path.includes('block-height')) return result(b.hash,'blockcypher');
-  // BlockCypher does not supply weight or all fees; don't fabricate an extended block.
-  throw new Error('Extended block unavailable from fallback');
+ const address = path.match(/^\/api\/address\/([A-Za-z0-9]{26,100})\/utxo$/);
+ if (address) {
+  const data = await fetchData('https://api.blockcypher.com/v1/ltc/main/addrs/'+address[1]+'?unspentOnly=true&limit=2000',4000);
+  return result(completeUtxos(data, address[1]), 'blockcypher');
  }
+ const height = path.match(/^\/api\/block-height\/(\d+)$/);
+ if (height) return result((await fetchData('https://api.blockcypher.com/v1/ltc/main/blocks/'+height[1]+'?txstart=1&limit=1',4000)).hash,'blockcypher');
  throw new Error('No independent equivalent for this capability');
 }
 function positiveSetting(name, defaultValue) {
  const value=Number(process.env[name]);return Number.isFinite(value)&&value>0?Math.floor(value):defaultValue;
 }
-const provider = new ProviderCache({primary:PRIMARY,fallback,health,failedPaths,store,
+const provider = new ProviderCache({primary:PRIMARY,fallback,
+ fallbackSupports:p=>/^\/api\/(?:blocks\/tip\/(?:height|hash)|block-height\/\d+|address\/[A-Za-z0-9]{26,100}\/utxo)$/.test(p),health,failedPaths,store,
  maxRequests:positiveSetting('LTC_REST_REQUESTS_PER_MINUTE',60)});
 const api = requestPath => {
  const live = snapshotApi(sharedFeed, requestPath);
