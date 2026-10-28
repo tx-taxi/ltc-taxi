@@ -170,24 +170,25 @@ test('fallback request budget and 429 cooldown are independent of primary', asyn
  cache.close();
 });
 
-test('distinct-route burst respects primary concurrency and fallback limits', async t => {
+test('a healthy distinct-route burst drains within the primary concurrency limit', async t => {
  const dataDir = setup(t);
  let release;
  const gate = new Promise(resolve => {release = resolve;});
  let primaryCalls = 0;
  let fallbackCalls = 0;
+ let activeCalls = 0, peakCalls = 0;
  const cache = new ProviderCache({primary: 'https://primary.test', dataDir,
   maxPrimaryConcurrency: 4, maxFallbackConcurrency: 2,
   fallback: async () => {fallbackCalls++; await gate; return {data: 'backup', source: 'backup', status: 200, at: Date.now()};},
-  fetchImpl: async () => {primaryCalls++; await gate; return ok({value: 1});}});
+  fetchImpl: async () => {primaryCalls++; activeCalls++; peakCalls=Math.max(peakCalls,activeCalls); await gate; activeCalls--; return ok({value: 1});}});
  const requests = Array.from({length: 20}, (_, n) => cache.get('/api/burst/' + n));
  assert.equal(primaryCalls, 4);
- assert.equal(fallbackCalls, 2);
+ assert.equal(fallbackCalls, 0);
  release();
  const results = await Promise.all(requests);
- assert.equal(results.filter(result => result.source === 'litecoinspace').length, 4);
- assert.equal(results.filter(result => result.source === 'backup').length, 2);
- assert.equal(results.filter(result => result.status === 503).length, 14);
+ assert.ok(results.every(result => result.status === 200));
+ assert.ok(peakCalls <= 4);
+ assert.equal(fallbackCalls, 0);
  cache.close();
 });
 
@@ -218,4 +219,28 @@ test('unsupported fallback routes do not consume the independent lookup budget',
  t.after(()=>cache.close());
  assert.equal((await cache.get('/api/statistics/unsupported')).status,503);
  assert.equal((await cache.get('/api/address/example/utxo')).status,200);
+});
+
+test('a failed history route cannot suppress a healthy address and repeated confirmed misses do not spend the budget', async t => {
+ const dataDir=setup(t);let calls=0;
+ const p=new ProviderCache({primary:'https://primary.test',dataDir,fallback:async()=>{throw Error('offline')},fallbackSupports:()=>false,fetchImpl:async url=>{
+  calls++;if(url.endsWith('/bad-history'))throw new Error('timeout');
+  if(url.endsWith('/missing'))return new Response('missing',{status:404});
+  return ok({address:'valid'});
+ }});
+ assert.equal((await p.get('/api/bad-history')).status,503);
+ assert.equal((await p.get('/api/address/valid')).status,200);
+ assert.equal((await p.get('/api/missing')).status,404);const before=calls;
+ assert.equal((await p.get('/api/missing')).status,404);assert.equal(calls,before);p.close();
+});
+
+test('a cold address waits for a healthy occupied connection instead of returning an immediate unavailable response', async t => {
+ const dataDir=setup(t);let release;
+ const p=new ProviderCache({primary:'https://primary.test',dataDir,maxPrimaryConcurrency:1,fallback:async()=>{throw Error('offline')},fallbackSupports:()=>false,fetchImpl:async url=>{
+  if(url.endsWith('/first'))await new Promise(resolve=>release=resolve);
+  return ok({address:url});
+ }});
+ const first=p.get('/api/first');await new Promise(resolve=>setImmediate(resolve));
+ const second=p.get('/api/address/second');release();
+ assert.equal((await first).status,200);assert.equal((await second).status,200);p.close();
 });

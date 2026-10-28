@@ -55,6 +55,9 @@ class ProviderCache {
   this.maxFallbackConcurrency = maxFallbackConcurrency;
   this.maxCacheEntries = maxCacheEntries;
   this.cache = new Map();
+  this.pathFailures = new Map();
+  this.misses = new Map();
+  this.waiters = [];
   this.inflight = new Map();
   this.requests = [];
   this.cooldownUntil = 0;
@@ -70,6 +73,8 @@ class ProviderCache {
   if (typeof path !== 'string' || !/^\/api\//.test(path) || path.startsWith('//'))
    return Promise.reject(new TypeError('Expected an absolute API path'));
   const now = this.now();
+  const miss = this.misses.get(path);
+  if (miss && miss.until > now) return Promise.resolve(miss.result);
   let saved = this.cache.get(path);
   // Query strings may contain credentials; never persist or restore them.
   if (!saved && !path.includes('?')) saved = this.store.get(path);
@@ -81,9 +86,16 @@ class ProviderCache {
   return pending;
  }
  async load(path, saved) {
+  // Briefly queue cold detail reads instead of treating four healthy in-flight reads as an outage.
+  if (this.primaryActive >= this.maxPrimaryConcurrency && this.waiters.length < 32) {
+   await new Promise(resolve => {
+    const waiter = () => { clearTimeout(timer); const i = this.waiters.indexOf(waiter); if (i >= 0) this.waiters.splice(i, 1); resolve(); };
+    const timer = setTimeout(waiter, 3000); this.waiters.push(waiter);
+   });
+  }
   const now = this.now();
   this.requests = this.requests.filter(at => at > now - this.rateWindowMs);
-  if (now >= this.cooldownUntil && this.requests.length < this.maxRequests && this.primaryActive < this.maxPrimaryConcurrency) {
+  if (now >= this.cooldownUntil && now >= (this.pathFailures.get(path) || 0) && this.requests.length < this.maxRequests && this.primaryActive < this.maxPrimaryConcurrency) {
    this.requests.push(now);
    this.primaryActive++;
    try {
@@ -102,23 +114,28 @@ class ProviderCache {
     const result = {data, source: 'litecoinspace', status: 200, at: this.now(), headers};
     this.health.lastSuccess = result.at;
     this.failedPaths.delete(path);
-    this.failures = 0;
-    this.cooldownUntil = 0;
+    this.pathFailures.delete(path);
+    if (this.now() >= this.cooldownUntil) { this.failures = 0; this.cooldownUntil = 0; }
     this.save(path, result);
     return result;
    } catch (error) {
     if (error.status === 404) {
      this.failedPaths.delete(path);
-     return {data: {error: 'Not found'}, source: 'litecoinspace', status: 404, at: this.now()};
+     const result = {data: {error: 'Not found'}, source: 'litecoinspace', status: 404, at: this.now()};
+     this.misses.set(path, {result, until: this.now() + 30000});
+     while (this.misses.size > 500) this.misses.delete(this.misses.keys().next().value);
+     return result;
     }
-    if (!error.status || error.status === 429 || error.status >= 500) {
+    if (error.status === 429) {
      this.failures++;
      const delay = Math.max(Math.min(this.maxCooldownMs, this.cooldownMs * 2 ** Math.min(this.failures - 1, 16)),
       retryAfterMs(error.retryAfter, this.now(), this.maxCooldownMs));
      this.cooldownUntil = this.now() + delay;
     }
+    this.pathFailures.set(path, this.now() + this.cooldownMs);
+    while (this.pathFailures.size > 500) this.pathFailures.delete(this.pathFailures.keys().next().value);
     this.recordFailure(path, error);
-   } finally { this.primaryActive--; }
+   } finally { this.primaryActive--; this.waiters.shift()?.(); }
   } else this.recordFailure(path, new Error(now < this.cooldownUntil ? 'Provider cooling down' :
    this.primaryActive >= this.maxPrimaryConcurrency ? 'Provider concurrency limit' : 'Provider rate budget exhausted'));
   const backup = await this.tryFallback(path);
