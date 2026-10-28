@@ -11544,6 +11544,34 @@
       <trans-unit id="taxi.ltc.nav.docs" datatype="html"><source>Documentation</source>
         <target>Dokumentation</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.block.sizes" datatype="html">
+        <source>Switch to displaying block sizes</source>
+        <target>Blockgrößen anzeigen</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.block.fees" datatype="html">
+        <source>Switch to displaying total fees per block</source>
+        <target>Gesamtgebühren pro Block anzeigen</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.block.right" datatype="html">
+        <source>Switch to displaying newest blocks on the right</source>
+        <target>Neueste Blöcke rechts anzeigen</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.block.left" datatype="html">
+        <source>Switch to displaying newest blocks on the left</source>
+        <target>Neueste Blöcke links anzeigen</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.block.details" datatype="html">
+        <source>Total fees: <x id="fees" /> <x id="symbol" />. Median fee rate: <x id="median" /> <x id="feeUnit" />. Fee range: <x id="min" />–<x id="max" /> <x id="rangeUnit" />.</source>
+        <target>Gesamtgebühren: <x id="fees" /> <x id="symbol" />. Medianer Gebührensatz: <x id="median" /> <x id="feeUnit" />. Gebührenbereich: <x id="min" />–<x id="max" /> <x id="rangeUnit" />.</target>
+      </trans-unit>
+      <trans-unit id="taxi.mining-pool.logo" datatype="html">
+        <source>Logo of <x id="pool" /> mining pool</source>
+        <target>Logo des Mining-Pools <x id="pool" /></target>
+      </trans-unit>
+      <trans-unit id="taxi.mining-pool.logo-generic" datatype="html">
+        <source>Mining pool logo</source>
+        <target>Logo des Mining-Pools</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
