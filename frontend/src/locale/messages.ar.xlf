@@ -11478,6 +11478,58 @@
           <context context-type="linenumber">173</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.fees" datatype="html">
+        <source>Fees</source>
+        <target>الرسوم</target>
+      </trans-unit>
+      <trans-unit id="32fba724df729afb840693b40e3f8869356f4e33" datatype="html">
+        <source>Size</source>
+        <target>الحجم</target>
+      </trans-unit>
+      <trans-unit id="recent-transactions-title" datatype="html">
+        <source>Recent Transactions</source>
+        <target>التحويلات الاخيرة</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.explore" datatype="html">
+        <source>Explore</source>
+        <target>يستكشف</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.recent-blocks" datatype="html">
+        <source>Recent Blocks</source>
+        <target>الكتل الأخيرة</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.mining" datatype="html">
+        <source>Mining Dashboard</source>
+        <target>لوحة التعدين</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.calculator" datatype="html">
+        <source>Calculator</source>
+        <target>آلة حاسبة</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.api" datatype="html">
+        <source>API Documentation</source>
+        <target>وثائق واجهة برمجة التطبيقات</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.about" datatype="html">
+        <source>About</source>
+        <target>حول</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.status" datatype="html">
+        <source>Status</source>
+        <target>حال</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.legal" datatype="html">
+        <source>Legal</source>
+        <target>قانوني</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.terms" datatype="html">
+        <source>Terms of Service</source>
+        <target>شروط الخدمة</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.privacy" datatype="html">
+        <source>Privacy Policy</source>
+        <target>سياسة الخصوصية</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

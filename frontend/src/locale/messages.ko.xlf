@@ -11489,6 +11489,58 @@
           <context context-type="linenumber">173</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.fees" datatype="html">
+        <source>Fees</source>
+        <target>수수료</target>
+      </trans-unit>
+      <trans-unit id="32fba724df729afb840693b40e3f8869356f4e33" datatype="html">
+        <source>Size</source>
+        <target>사이즈</target>
+      </trans-unit>
+      <trans-unit id="recent-transactions-title" datatype="html">
+        <source>Recent Transactions</source>
+        <target>최근 트랜잭션</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.explore" datatype="html">
+        <source>Explore</source>
+        <target>탐색</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.recent-blocks" datatype="html">
+        <source>Recent Blocks</source>
+        <target>최근 블록</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.mining" datatype="html">
+        <source>Mining Dashboard</source>
+        <target> 채굴 대시보드</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.calculator" datatype="html">
+        <source>Calculator</source>
+        <target>계산기</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.api" datatype="html">
+        <source>API Documentation</source>
+        <target>API 문서</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.about" datatype="html">
+        <source>About</source>
+        <target>소개</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.status" datatype="html">
+        <source>Status</source>
+        <target>상태</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.legal" datatype="html">
+        <source>Legal</source>
+        <target>법적 고지사항</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.terms" datatype="html">
+        <source>Terms of Service</source>
+        <target>이용약관</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.privacy" datatype="html">
+        <source>Privacy Policy</source>
+        <target>개인정보처리방침</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

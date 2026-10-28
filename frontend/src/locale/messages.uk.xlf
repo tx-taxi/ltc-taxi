@@ -11303,6 +11303,58 @@
           <context context-type="linenumber">173</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.fees" datatype="html">
+        <source>Fees</source>
+        <target>Комісії</target>
+      </trans-unit>
+      <trans-unit id="32fba724df729afb840693b40e3f8869356f4e33" datatype="html">
+        <source>Size</source>
+        <target>Розмір</target>
+      </trans-unit>
+      <trans-unit id="recent-transactions-title" datatype="html">
+        <source>Recent Transactions</source>
+        <target>Останні транзакції</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.explore" datatype="html">
+        <source>Explore</source>
+        <target>Дослідити</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.recent-blocks" datatype="html">
+        <source>Recent Blocks</source>
+        <target>Останні блоки</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.mining" datatype="html">
+        <source>Mining Dashboard</source>
+        <target>Панель майнінгу</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.calculator" datatype="html">
+        <source>Calculator</source>
+        <target>Калькулятор</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.api" datatype="html">
+        <source>API Documentation</source>
+        <target>Документація API</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.about" datatype="html">
+        <source>About</source>
+        <target>Про</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.status" datatype="html">
+        <source>Status</source>
+        <target>Статус</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.legal" datatype="html">
+        <source>Legal</source>
+        <target>Юридичне</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.terms" datatype="html">
+        <source>Terms of Service</source>
+        <target>Умови використання</target>
+      </trans-unit>
+      <trans-unit id="taxi.footer.privacy" datatype="html">
+        <source>Privacy Policy</source>
+        <target>Політика конфіденційності</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
