@@ -2599,6 +2599,33 @@
           <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html"><source>Name</source>
+        <target>Nimi</target>
+        </trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.fees" datatype="html"><source>Fees</source>
+        <target>Siirtokulut</target>
+        </trans-unit>
+      <trans-unit id="c20172223f84462032664d717d739297e5a9e2fe" datatype="html"><source>Fees</source>
+        <target>Siirtokulut</target>
+        </trans-unit>
+      <trans-unit id="32fba724df729afb840693b40e3f8869356f4e33" datatype="html"><source>Size</source>
+        <target>Koko</target>
+        </trans-unit>
+      <trans-unit id="b151944861534c4a9e9623537dba0a95f60e4455" datatype="html"><source>Endpoint</source>
+        <target>Päätepiste</target>
+        </trans-unit>
+      <trans-unit id="eec715de352a6b114713b30b640d319fa78207a0" datatype="html"><source>Description</source>
+        <target>Kuvaus</target>
+        </trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.transactions" datatype="html"><source>transactions</source>
+        <target>siirtokulut</target>
+        </trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.data" datatype="html"><source>data</source>
+        <target>data</target>
+        </trans-unit>
+      <trans-unit id="taxi.footer.terms" datatype="html"><source>Terms of Service</source>
+        <target>Käyttöehdot</target>
+        </trans-unit>
     </body>
   </file>
 </xliff>

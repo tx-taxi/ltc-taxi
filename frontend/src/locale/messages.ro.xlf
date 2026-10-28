@@ -11527,6 +11527,9 @@
         <source>Privacy Policy</source>
         <target>Politica de confidențialitate</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.nav.docs" datatype="html"><source>Documentation</source>
+        <target>Documentație</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -11046,6 +11046,9 @@
         <source>Privacy Policy</source>
         <target>Полиса за Приватност</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.nav.docs" datatype="html"><source>Documentation</source>
+        <target>Документација</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

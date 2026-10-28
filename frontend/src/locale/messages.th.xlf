@@ -11306,6 +11306,9 @@
         <source>Privacy Policy</source>
         <target>นโยบายความเป็นส่วนตัว</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.nav.docs" datatype="html"><source>Documentation</source>
+        <target>เอกสารคำอภิบาย</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

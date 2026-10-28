@@ -2198,6 +2198,42 @@
         <note from="description" priority="1">TX Fee Rating is Danger</note>
         <note from="meaning" priority="1">tx-fee-rating.overpaid.danger</note>
       </trans-unit>
+      <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html"><source>Name</source>
+        <target>Nome</target>
+        </trans-unit>
+      <trans-unit id="ee8f8008bae6ce3a49840c4e1d39b4af23d4c263" datatype="html"><source>Assets</source>
+        <target>Ativos</target>
+        </trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.fees" datatype="html"><source>Fees</source>
+        <target>Taxas</target>
+        </trans-unit>
+      <trans-unit id="8a7b4bd44c0ac71b2e72de0398b303257f7d2f54" datatype="html"><source>Blocks</source>
+        <target>Blocos</target>
+        </trans-unit>
+      <trans-unit id="c20172223f84462032664d717d739297e5a9e2fe" datatype="html"><source>Fees</source>
+        <target>Taxas</target>
+        </trans-unit>
+      <trans-unit id="32fba724df729afb840693b40e3f8869356f4e33" datatype="html"><source>Size</source>
+        <target>Tamanho</target>
+        </trans-unit>
+      <trans-unit id="7882f2edb1d4139800b276b6b0bbf5ae0b2234ef" datatype="html"><source>Addresses</source>
+        <target>Endereços</target>
+        </trans-unit>
+      <trans-unit id="b151944861534c4a9e9623537dba0a95f60e4455" datatype="html"><source>Endpoint</source>
+        <target>Endpoint</target>
+        </trans-unit>
+      <trans-unit id="eec715de352a6b114713b30b640d319fa78207a0" datatype="html"><source>Description</source>
+        <target>Descrição</target>
+        </trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.transactions" datatype="html"><source>transactions</source>
+        <target>transações</target>
+        </trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.data" datatype="html"><source>data</source>
+        <target>dados</target>
+        </trans-unit>
+      <trans-unit id="taxi.footer.terms" datatype="html"><source>Terms of Service</source>
+        <target>Termos de Serviço</target>
+        </trans-unit>
     </body>
   </file>
 </xliff>
