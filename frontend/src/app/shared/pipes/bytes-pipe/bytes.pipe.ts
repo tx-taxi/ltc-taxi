@@ -1,6 +1,6 @@
 /* tslint:disable */
-import { Pipe, PipeTransform } from '@angular/core';
-import { isNumberFinite, isPositive, isInteger, toDecimal, toSigFigs } from '@app/shared/pipes/bytes-pipe/utils';
+import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
+import { isNumberFinite, isPositive, isInteger, localizeDecimalMark, toDecimal, toSigFigs } from '@app/shared/pipes/bytes-pipe/utils';
 
 export type ByteUnit = 'B' | 'kB' | 'MB' | 'GB' | 'TB';
 
@@ -9,6 +9,8 @@ export type ByteUnit = 'B' | 'kB' | 'MB' | 'GB' | 'TB';
     standalone: false,
 })
 export class BytesPipe implements PipeTransform {
+
+    constructor(@Inject(LOCALE_ID) private locale: string) {}
 
     static formats: { [key: string]: { max: number, prev?: ByteUnit } } = {
         'B': {max: 1000},
@@ -43,7 +45,7 @@ export class BytesPipe implements PipeTransform {
 
             const result = numberFormat(BytesPipe.calculateResult(format, bytes));
 
-            return BytesPipe.formatResult(result, to, plaintext);
+            return BytesPipe.formatResult(localizeDecimalMark(result, this.locale), to, plaintext);
         }
 
         for (const key in BytesPipe.formats) {
@@ -52,7 +54,7 @@ export class BytesPipe implements PipeTransform {
 
                 const result = numberFormat(BytesPipe.calculateResult(format, bytes));
 
-                return BytesPipe.formatResult(result, key, plaintext);
+                return BytesPipe.formatResult(localizeDecimalMark(result, this.locale), key, plaintext);
             }
         }
     }

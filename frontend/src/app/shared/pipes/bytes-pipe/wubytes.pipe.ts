@@ -1,6 +1,6 @@
 /* tslint:disable */
-import { Pipe, PipeTransform } from '@angular/core';
-import { isNumberFinite, isPositive, isInteger, toDecimal } from '@app/shared/pipes/bytes-pipe/utils';
+import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
+import { isNumberFinite, isPositive, isInteger, localizeDecimalMark, toDecimal } from '@app/shared/pipes/bytes-pipe/utils';
 
 export type ByteUnit = 'WU' | 'kWU' | 'MWU' | 'GWU' | 'TWU';
 
@@ -9,6 +9,8 @@ export type ByteUnit = 'WU' | 'kWU' | 'MWU' | 'GWU' | 'TWU';
     standalone: false,
 })
 export class WuBytesPipe implements PipeTransform {
+
+    constructor(@Inject(LOCALE_ID) private locale: string) {}
 
     static formats: { [key: string]: { max: number, prev?: ByteUnit } } = {
         'WU': {max: 1000},
@@ -39,7 +41,7 @@ export class WuBytesPipe implements PipeTransform {
 
             const result = toDecimal(WuBytesPipe.calculateResult(format, bytes), decimal);
 
-            return WuBytesPipe.formatResult(result, to, plainText);
+            return WuBytesPipe.formatResult(localizeDecimalMark(result, this.locale), to, plainText);
         }
 
         for (const key in WuBytesPipe.formats) {
@@ -48,12 +50,12 @@ export class WuBytesPipe implements PipeTransform {
 
                 const result = toDecimal(WuBytesPipe.calculateResult(format, bytes), decimal);
 
-                return WuBytesPipe.formatResult(result, key, plainText);
+                return WuBytesPipe.formatResult(localizeDecimalMark(result, this.locale), key, plainText);
             }
         }
     }
 
-    static formatResult(result: number, unit: string, plainText: boolean): string {
+    static formatResult(result: string, unit: string, plainText: boolean): string {
         if (plainText){
             return `${result} ${unit}`;
         }

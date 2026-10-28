@@ -1,6 +1,6 @@
 /* tslint:disable */
-import { Pipe, PipeTransform } from '@angular/core';
-import { isNumberFinite, isPositive, isInteger, toDecimal } from '@app/shared/pipes/bytes-pipe/utils';
+import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
+import { isNumberFinite, isPositive, isInteger, localizeDecimalMark, toDecimal } from '@app/shared/pipes/bytes-pipe/utils';
 
 export type ByteUnit = 'vB' | 'kvB' | 'MvB' | 'GvB' | 'TvB';
 
@@ -9,6 +9,8 @@ export type ByteUnit = 'vB' | 'kvB' | 'MvB' | 'GvB' | 'TvB';
     standalone: false,
 })
 export class VbytesPipe implements PipeTransform {
+
+    constructor(@Inject(LOCALE_ID) private locale: string) {}
 
     static formats: { [key: string]: { max: number, prev?: ByteUnit } } = {
         'vB': {max: 1000},
@@ -39,7 +41,7 @@ export class VbytesPipe implements PipeTransform {
 
             const result = toDecimal(VbytesPipe.calculateResult(format, bytes), decimal);
 
-            return VbytesPipe.formatResult(result, to, plainText);
+            return VbytesPipe.formatResult(localizeDecimalMark(result, this.locale), to, plainText);
         }
 
         for (const key in VbytesPipe.formats) {
@@ -48,12 +50,12 @@ export class VbytesPipe implements PipeTransform {
 
                 const result = toDecimal(VbytesPipe.calculateResult(format, bytes), decimal);
 
-                return VbytesPipe.formatResult(result, key, plainText);
+                return VbytesPipe.formatResult(localizeDecimalMark(result, this.locale), key, plainText);
             }
         }
     }
 
-    static formatResult(result: number, unit: string, plainText: boolean): string {
+    static formatResult(result: string, unit: string, plainText: boolean): string {
         if(plainText){
             return `${result} ${unit}`;
         }
