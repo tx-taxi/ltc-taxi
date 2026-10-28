@@ -259,3 +259,24 @@ test('fallback-only block-height requests share one call and reuse the verified 
  now+=300001;
  await p.fallbackOnly('/api/block-height/123');assert.equal(calls,2);p.close();
 });
+
+test('serves fresh provider data while the persistent cache is locked', async t => {
+ const dataDir = setup(t);
+ const {DatabaseSync} = require('node:sqlite');
+ const cache = new ProviderCache({primary: 'https://primary.test', fallback: async () => {throw Error('offline');},
+  dataDir, fetchImpl: async () => ok({height: 200})});
+ const lock = new DatabaseSync(path.join(dataDir, 'cache.sqlite'));
+ try {
+  lock.exec('BEGIN IMMEDIATE');
+  const result = await cache.get('/api/blocks/tip/height');
+  assert.equal(result.status, 200);
+  assert.equal(result.source, 'litecoinspace');
+  assert.equal(result.data.height, 200);
+  lock.exec('ROLLBACK');
+  cache.save('/api/blocks/tip/height', result);
+  assert.equal(cache.store.get('/api/blocks/tip/height').data.height, 200);
+ } finally {
+  try {lock.exec('ROLLBACK');} catch {}
+  lock.close(); cache.close();
+ }
+});

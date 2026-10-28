@@ -68,6 +68,7 @@ class ObservedStats {
     if (typeof directory !== 'string' || !directory) throw new TypeError('directory or LTC_DATA_DIR is required');
     fs.mkdirSync(directory, {recursive: true});
     this.db = new DatabaseSync(path.join(directory, 'observed-stats.sqlite'));
+    this.db.exec('PRAGMA busy_timeout=500');
     this.db.exec(`
       CREATE TABLE IF NOT EXISTS samples (
         sequence INTEGER PRIMARY KEY,

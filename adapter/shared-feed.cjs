@@ -1,5 +1,6 @@
 'use strict';
 const {WebSocket} = require('ws');
+const {isSqliteBusy} = require('./sqlite-contention.cjs');
 
 const SNAPSHOT_KEYS = ['blocks', 'mempool-blocks', 'mempoolInfo', 'vBytesPerSecond', 'fees', 'da', 'conversions', 'backendInfo', 'backend', 'loadingIndicators', 'transactions', 'previousRetarget', 'rbfLatestSummary', 'live-2h-chart'];
 const DETAIL_KEYS = ['track-tx', 'track-address', 'track-addresses', 'track-wallet', 'track-asset', 'track-mempool-block', 'track-rbf', 'track-stratum'];
@@ -24,6 +25,13 @@ class SharedFeed {
    this.status();
   }, 15000);
   this.timer.unref();
+ }
+ warnBusy(resource) {
+  const now = Date.now();
+  if (!this.lastBusyWarning || now - this.lastBusyWarning >= 30000) {
+   console.warn(`LTC ${resource} temporarily locked; continuing the live feed`);
+   this.lastBusyWarning = now;
+  }
  }
  send(client, data) {
   if (client.readyState !== 1) return;
@@ -87,9 +95,17 @@ class SharedFeed {
     if (useful) {
      channel.hasData=true;
      this.observedAt = Date.now(); this.health.lastSuccess = this.observedAt;
-     this.observe(message);
+     try { this.observe(message); } catch (error) {
+      if (!isSqliteBusy(error)) throw error;
+      this.warnBusy('observed history');
+     }
      if (!this.lastPersist || Date.now()-this.lastPersist > 5000 || message.block) {
-      this.store?.put('ws:snapshot', {data:this.snapshot, at:this.observedAt, blocksAt:this.blocksObservedAt}); this.lastPersist = Date.now();
+      try {
+       this.store?.put('ws:snapshot', {data:this.snapshot, at:this.observedAt, blocksAt:this.blocksObservedAt}); this.lastPersist = Date.now();
+      } catch (error) {
+       if (!isSqliteBusy(error)) throw error;
+       this.warnBusy('feed snapshot');
+      }
      }
     }
     // Never broadcast entity-specific responses through the shared channel.

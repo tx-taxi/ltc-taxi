@@ -1,6 +1,7 @@
 'use strict';
 
 const {DataStore} = require('./data-store.cjs');
+const {isSqliteBusy} = require('./sqlite-contention.cjs');
 
 function ttl(path, data) {
  if (isBlockRecord(path)) return 6 * 3600000;
@@ -194,7 +195,16 @@ class ProviderCache {
   this.cache.delete(path);
   this.cache.set(path, result);
   if (this.cache.size > this.maxCacheEntries) this.cache.delete(this.cache.keys().next().value);
-  if (!path.includes('?')) this.store.put(path, result);
+  if (!path.includes('?')) {
+   try { this.store.put(path, result); } catch (error) {
+    if (!isSqliteBusy(error)) throw error;
+    const now = this.now();
+    if (!this.lastBusyWarning || now - this.lastBusyWarning >= 30000) {
+     console.warn('LTC cache temporarily locked; serving the current provider response');
+     this.lastBusyWarning = now;
+    }
+   }
+  }
  }
  recordFailure(path, error) {
   const at = this.now();

@@ -13,6 +13,7 @@ class DataStore {
   this.now = now;
   fs.mkdirSync(dir, {recursive: true, mode: 0o700});
   this.db = new DatabaseSync(path.join(dir, filename));
+  this.db.exec('PRAGMA busy_timeout=500');
   this.db.exec(`PRAGMA journal_mode=DELETE; PRAGMA auto_vacuum=FULL;
    CREATE TABLE IF NOT EXISTS entries (key TEXT PRIMARY KEY, value TEXT NOT NULL, saved_at INTEGER NOT NULL, bytes INTEGER NOT NULL);
    CREATE INDEX IF NOT EXISTS entries_age ON entries(saved_at);`);
