@@ -50,6 +50,10 @@ export class BlockPreviewComponent implements OnInit, OnDestroy {
     private servicesApiService: ServicesApiServices,
   ) { }
 
+  poolLogoAlt(name: string): string {
+    return name ? $localize`:@@taxi.mining-pool.logo:Logo of ${name}:pool: mining pool` : $localize`:@@taxi.mining-pool.logo-generic:Mining pool logo`;
+  }
+
   ngOnInit() {
     this.network = this.stateService.network;
 

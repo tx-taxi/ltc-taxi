@@ -11978,6 +11978,122 @@
         <source>Details and opt-out</source>
         <target>Detalles y exclusión</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.terms.title" datatype="html">
+        <source>Terms of Service</source>
+        <target>Condiciones del servicio</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.updated" datatype="html">
+        <source>Updated: September 20, 2026</source>
+        <target>Actualizado: 20 de septiembre de 2026</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.informational" datatype="html">
+        <source>Informational Explorer</source>
+        <target>Explorador informativo</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.informational-body" datatype="html">
+        <source>ltc.tx.taxi provides a view of public Litecoin blocks, transactions, addresses, mining data, fee estimates, and mempool state. It is an informational service, not a wallet, exchange, custodian, payment processor, or transaction-priority service.</source>
+        <target>ltc.tx.taxi ofrece una vista de bloques, transacciones, direcciones, datos de minería, estimaciones de comisiones y estado del mempool públicos de Litecoin. Es un servicio informativo, no un monedero, exchange, custodio, procesador de pagos ni servicio de priorización de transacciones.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.no-control" datatype="html">
+        <source>No Control Over Litecoin Transactions</source>
+        <target>Sin control sobre las transacciones de Litecoin</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.no-control-body" datatype="html">
+        <source>The operator cannot reverse, cancel, accelerate, recover, or redirect a Litecoin transaction. For wallet, exchange, or payment issues, contact the service that created or received the transaction.</source>
+        <target>El operador no puede revertir, cancelar, acelerar, recuperar ni redirigir una transacción de Litecoin. Si tienes problemas con un monedero, exchange o pago, contacta con el servicio que creó o recibió la transacción.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.data" datatype="html">
+        <source>Data and Availability</source>
+        <target>Datos y disponibilidad</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.data-body" datatype="html">
+        <source>Explorer data may be delayed, incomplete, unavailable, or different from another node's view. Fee estimates are estimates only and do not guarantee confirmation. The service is provided as-is without a promise of uninterrupted availability or fitness for a particular purpose.</source>
+        <target>Los datos del explorador pueden estar retrasados, incompletos, no estar disponibles o diferir de los observados por otro nodo. Las estimaciones de comisiones son solo estimaciones y no garantizan la confirmación. El servicio se ofrece tal como está, sin promesa de disponibilidad ininterrumpida ni de idoneidad para un fin concreto.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.acceptable" datatype="html">
+        <source>Acceptable Use</source>
+        <target>Uso aceptable</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.acceptable-body" datatype="html">
+        <source>Do not abuse the website or API, interfere with service operation, bypass reasonable rate limits, or use the service unlawfully. Access may be limited when necessary to protect availability.</source>
+        <target>No abuses del sitio web o de la API, interfieras con el funcionamiento del servicio, evites límites razonables de solicitudes ni uses el servicio de forma ilícita. El acceso puede limitarse cuando sea necesario para proteger la disponibilidad.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.external" datatype="html">
+        <source>External Services</source>
+        <target>Servicios externos</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.external-body" datatype="html">
+        <source>This site may link to tx.taxi contact channels, Litecoin references, upstream source code, and infrastructure dependencies. External websites have their own terms and policies.</source>
+        <target>Este sitio puede enlazar a canales de contacto de tx.taxi, referencias de Litecoin, código fuente original y dependencias de infraestructura. Los sitios externos tienen sus propias condiciones y políticas.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.open" datatype="html">
+        <source>Open Source</source>
+        <target>Código abierto</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.title" datatype="html">
+        <source>Trademark &amp; Attribution</source>
+        <target>Marcas y atribución</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.updated" datatype="html">
+        <source>Updated: September 20, 2026</source>
+        <target>Actualizado: 20 de septiembre de 2026</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.identity" datatype="html">
+        <source>tx.taxi Identity</source>
+        <target>Identidad de tx.taxi</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.identity-body" datatype="html">
+        <source>ltc.tx.taxi is an independently operated Litecoin explorer in the tx.taxi family. Its domain, wordmark, chain palette, and service identity distinguish this fork from the upstream project.</source>
+        <target>ltc.tx.taxi es un explorador de Litecoin operado de forma independiente dentro de la familia tx.taxi. Su dominio, logotipo, paleta de la cadena e identidad del servicio distinguen esta versión del proyecto original.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.upstream" datatype="html">
+        <source>Upstream Attribution</source>
+        <target>Atribución al proyecto original</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.no-affiliation" datatype="html">
+        <source>No Affiliation</source>
+        <target>Sin afiliación</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.no-affiliation-body" datatype="html">
+        <source>ltc.tx.taxi is not affiliated with, sponsored by, or endorsed by Mempool Holdings S.A. de C.V. References to mempool.space and mempool/mempool are nominative attribution to the software from which this fork derives.</source>
+        <target>ltc.tx.taxi no está afiliado a Mempool Holdings S.A. de C.V. ni cuenta con su patrocinio o respaldo. Las referencias a mempool.space y mempool/mempool son una atribución nominativa al software del que deriva esta versión.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.litecoin" datatype="html">
+        <source>Litecoin</source>
+        <target>Litecoin</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.litecoin-body" datatype="html">
+        <source>Litecoin is an open network and protocol. References to Litecoin, LTC, litoshis, blocks, transactions, addresses, and mining describe the network data presented by this explorer.</source>
+        <target>Litecoin es una red y un protocolo abiertos. Las referencias a Litecoin, LTC, litoshis, bloques, transacciones, direcciones y minería describen los datos de la red que presenta este explorador.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.source-before" datatype="html">
+        <source>ltc.tx.taxi is derived from </source>
+        <target>ltc.tx.taxi deriva de </target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.source-middle" datatype="html">
+        <source>. Contact </source>
+        <target>. Contacta con </target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.terms.source-after" datatype="html">
+        <source> for the current reviewed fork source package.</source>
+        <target> para obtener el paquete actual revisado del código fuente de esta versión.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.source-before" datatype="html">
+        <source>This software is derived from </source>
+        <target>Este software deriva de </target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.trademark.source-after" datatype="html">
+        <source>. The upstream source code, visual system, project names, logos, and trademarks belong to their respective owners.</source>
+        <target>. El código fuente original, el sistema visual, los nombres de proyectos, logotipos y marcas pertenecen a sus respectivos titulares.</target>
+      </trans-unit>
+      <trans-unit id="taxi.mining-pool.logo" datatype="html">
+        <source>Logo of <x id="pool"/> mining pool</source>
+        <target>Logotipo del pool de minería <x id="pool"/></target>
+      </trans-unit>
+      <trans-unit id="taxi.mining-pool.logo-generic" datatype="html">
+        <source>Mining pool logo</source>
+        <target>Logotipo del pool de minería</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
