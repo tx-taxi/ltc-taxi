@@ -59,6 +59,7 @@ class ProviderCache {
   this.misses = new Map();
   this.waiters = [];
   this.inflight = new Map();
+  this.fallbackOnlyInflight = new Map();
   this.requests = [];
   this.cooldownUntil = 0;
   this.failures = 0;
@@ -83,6 +84,19 @@ class ProviderCache {
   const pending = this.load(path, saved);
   this.inflight.set(path, pending);
   pending.finally(() => this.inflight.delete(path)).catch(() => {});
+  return pending;
+ }
+ // Bypass a known-behind primary while retaining the same per-path cache and
+ // single-flight protection used for ordinary reads.
+ fallbackOnly(path) {
+  if (typeof path !== 'string' || !/^\/api\//.test(path) || path.startsWith('//'))
+   return Promise.reject(new TypeError('Expected an absolute API path'));
+  const saved = this.cache.get(path) || (!path.includes('?') && this.store.get(path));
+  if (saved?.source === 'blockcypher' && saved.status === 200 && this.now()-saved.at < ttl(path, saved.data))
+   return Promise.resolve(saved);
+  if (this.fallbackOnlyInflight.has(path)) return this.fallbackOnlyInflight.get(path);
+  const pending = this.tryFallback(path).finally(() => this.fallbackOnlyInflight.delete(path));
+  this.fallbackOnlyInflight.set(path, pending);
   return pending;
  }
  async load(path, saved) {

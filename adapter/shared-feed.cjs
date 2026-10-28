@@ -7,8 +7,8 @@ const DETAIL_KEYS = ['track-tx', 'track-address', 'track-addresses', 'track-wall
 // One durable global feed. Single-target native subscriptions are shared by
 // subscription identity, never by browser, and capped independently of traffic.
 class SharedFeed {
- constructor({url, health, store, observe = () => {}, maxDetails = 8, staleMs = 90000, WebSocketClass = WebSocket}) {
-  Object.assign(this, {url, health, store, observe, maxDetails, staleMs, WebSocketClass});
+ constructor({url, health, store, observe = () => {}, maxDetails = 8, staleMs = 90000, WebSocketClass = WebSocket, isUpstreamStale = () => false}) {
+  Object.assign(this, {url, health, store, observe, maxDetails, staleMs, WebSocketClass, isUpstreamStale});
   this.clients = new Map(); this.details = new Map(); this.stopped = false; this.connectionAttempts = [];
   const saved = store?.get('ws:snapshot');
   this.snapshot = saved?.data || {}; this.observedAt = saved?.at || 0; this.blocksObservedAt = saved?.blocksAt || 0;
@@ -31,7 +31,7 @@ class SharedFeed {
   client.send(JSON.stringify(data));
  }
  freshness() {
-  return {state: this.core?.socket?.readyState === 1 && this.core.hasData && this.observedAt && Date.now()-this.observedAt < this.staleMs ? 'live' : this.observedAt ? 'stale' : 'unavailable', observedAt:this.observedAt || null};
+  return {state: !this.isUpstreamStale() && this.core?.socket?.readyState === 1 && this.core.hasData && this.observedAt && Date.now()-this.observedAt < this.staleMs ? 'live' : this.observedAt ? 'stale' : 'unavailable', observedAt:this.observedAt || null};
  }
  status() {
   const freshness = this.freshness();

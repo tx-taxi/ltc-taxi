@@ -12,6 +12,7 @@ const {DataStore} = require('./data-store.cjs');
 const {ProviderCache} = require('./provider-cache.cjs');
 const {snapshotApi} = require('./snapshot-api.cjs');
 const {SharedFeed} = require('./shared-feed.cjs');
+const {PrimaryTipMonitor} = require('./primary-tip-monitor.cjs');
 const {ObservedStats} = require('./observed-stats.cjs');
 const STATIC_ROOT = process.env.LTC_STATIC_ROOT && path.resolve(process.env.LTC_STATIC_ROOT);
 const ROUTER_ORIGIN = process.env.LTC_ROUTER_ORIGIN || 'http://127.0.0.1:4312';
@@ -49,13 +50,48 @@ function positiveSetting(name, defaultValue) {
 const provider = new ProviderCache({primary:PRIMARY,fallback,
  fallbackSupports:p=>/^\/api\/(?:blocks\/tip\/(?:height|hash)|block-height\/\d+|address\/[A-Za-z0-9]{26,100}\/utxo)$/.test(p),health,failedPaths,store,
  maxRequests:positiveSetting('LTC_REST_REQUESTS_PER_MINUTE',60)});
-const api = requestPath => {
+const tipMonitor = new PrimaryTipMonitor({primary: PRIMARY, referenceUrl:process.env.LTC_REFERENCE_TIP_URL || undefined,
+ onChange: () => sharedFeed.status()});
+const api = async requestPath => {
+ // Avoid returning a known-behind primary tip as current. Reuse the bounded
+ // independent observation instead of consuming a fallback call per visitor.
+ const tipDependent = /^\/api\/(?:blocks(?:\/tip\/(?:height|hash))?|v1\/blocks|block-height\/\d+)$/.test(requestPath);
+ if (tipDependent && !tipMonitor.reference && tipMonitor.pending) await tipMonitor.pending;
+ let ref = tipMonitor.reference;
+ if (tipMonitor.behind && ref && (requestPath === '/api/blocks/tip/height' || requestPath === '/api/blocks/tip/hash')) {
+  let state = tipMonitor.referenceState();
+  if (state.stale) {
+   // Height and hash share one bounded reference refresh, separate from the
+   // detail fallback budget; it cannot be spent per visitor.
+   await tipMonitor.refreshReference();
+   ref = tipMonitor.reference;
+   state = tipMonitor.referenceState();
+  }
+  if (state.expired) return result({error:'Provider unavailable',retryable:true}, 'unavailable', 503);
+  return {...result(requestPath.endsWith('height') ? String(ref.height) : ref.hash, 'blockcypher'), at:ref.at,
+   stale:state.stale};
+ }
+ const height = requestPath.match(/^\/api\/block-height\/(\d+)$/);
+ if (tipMonitor.behind && height && Number(height[1]) > tipMonitor.primaryHeight) {
+  const backup = await provider.fallbackOnly(requestPath);
+  return backup || result({error:'Provider unavailable',retryable:true}, 'unavailable', 503);
+ }
  const live = snapshotApi(sharedFeed, requestPath);
- if (live) { failedPaths.delete(requestPath); return Promise.resolve(live); }
- return provider.get(requestPath);
+ if (live) { failedPaths.delete(requestPath); return live; }
+ const response = await provider.get(requestPath);
+ if (response.status === 404 && !tipMonitor.reference && tipMonitor.pending) await tipMonitor.pending;
+ if (!tipMonitor.behind || response.source !== 'litecoinspace') return response;
+ // A lagging index cannot establish that a transaction or block does not exist.
+ if (response.status === 404) {
+  provider.misses.delete(requestPath);
+  return result({error:'Provider unavailable',retryable:true}, 'unavailable', 503);
+ }
+ return {...response, stale:true};
 };
 const sharedFeed = new SharedFeed({url:PRIMARY.replace(/^http/,'ws')+'/api/v1/ws',health,store,
- observe:message=>observedStats.observe(message),maxDetails:positiveSetting('LTC_MAX_DETAIL_FEEDS',8)});
+ observe:message=>observedStats.observe(message),maxDetails:positiveSetting('LTC_MAX_DETAIL_FEEDS',8),
+ isUpstreamStale:()=>tipMonitor.behind});
+tipMonitor.start();
 let localHistoryUsed = false;
 let coverageCache = null, coverageAt = 0;
 function coverage() {
@@ -65,7 +101,10 @@ function coverage() {
 function currentHealth() {
  const status=providerStatus(health,failedPaths);
  const feed=sharedFeed.freshness();
- return {...status,feed,stale:status.stale||feed.state!=='live',cacheEntries:provider.cache.size,
+ return {...status,feed,stale:status.stale||feed.state!=='live'||tipMonitor.behind,
+  degraded:status.degraded||tipMonitor.behind,
+  tipCheck:{primaryHeight:tipMonitor.primaryHeight,referenceHeight:tipMonitor.reference?.height ?? null,
+   observedAt:tipMonitor.reference?.at ?? null,behind:tipMonitor.behind},cacheEntries:provider.cache.size,
   sharedClients:sharedFeed.clients.size,detailFeeds:sharedFeed.details.size,localHistory:localHistoryUsed?coverage().coverage.native:null};
 }
 function send(res,status,data,type='application/json',headers={}) {
@@ -85,15 +124,19 @@ async function metadata(path) {
   let p=kind==='block'?'/api/v1/block/'+id:'/api/'+kind+'/'+id;
   if(kind==='block' && /^\d+$/.test(id)) {const h=await api('/api/block-height/'+id);if(h.status===200)p='/api/v1/block/'+h.data;}
   const r=await api(p);
-  entityStatus=r.status;
-  if(r.status===200) {
+  if (!tipMonitor.reference && tipMonitor.pending) await tipMonitor.pending;
+  // Pending status and address activity are mutable and cannot be asserted
+  // from a snapshot known to come from a lagging index.
+  const staleMutable = kind !== 'block' && (r.stale || (tipMonitor.behind && r.source === 'litecoinspace'));
+  entityStatus=staleMutable ? 503 : r.status;
+  if(r.status===200 && !staleMutable) {
    if(kind==='tx')description=`${r.data.status?.confirmed?'Confirmed':'Pending'} Litecoin transaction. Fee: ${(r.data.fee/1e8).toFixed(8)} LTC. Transparent outputs; MWEB amounts remain private.`;
    if(kind==='block')description=`Litecoin block ${r.data.height}. ${r.data.tx_count} transactions. Mined ${new Date(r.data.timestamp*1000).toISOString()}.`;
    if(kind==='address')description=`Litecoin address with ${r.data.chain_stats?.tx_count ?? 'indexed'} confirmed transactions. Transparent-chain history.`;
    if(kind==='tx')cardDescription=`${r.data.status?.confirmed?'Confirmed':'Pending'} transaction · Fee: ${(r.data.fee/1e8).toFixed(8)} LTC`;
    if(kind==='block')cardDescription=`Block ${r.data.height} · ${r.data.tx_count} transaction${r.data.tx_count===1?'':'s'} · ${new Date(r.data.timestamp*1000).toISOString().slice(0,10)}`;
    if(kind==='address')cardDescription=`${r.data.chain_stats?.tx_count ?? 'Indexed'} confirmed transaction${r.data.chain_stats?.tx_count===1?'':'s'}`;
-  } else description=r.status === 404 ? 'Litecoin entity not found.' : 'Litecoin entity data is temporarily unavailable. Retry to retrieve current details.';
+  } else description=entityStatus === 404 ? 'Litecoin entity not found.' : 'Litecoin entity data is temporarily unavailable. Retry to retrieve current details.';
  }
  return {title,description,cardDescription,path,entityStatus};
 }
@@ -201,6 +244,7 @@ server.listen(Number(process.env.PORT||9332),process.env.LTC_HOST||'127.0.0.1',(
 // Separate public local review port; same handler includes initial metadata.
 if(!process.env.PORT)http.createServer(server.listeners('request')[0]).on('upgrade',server.listeners('upgrade')[0]).listen(4310,'127.0.0.1');
 function shutdown() {
+ tipMonitor.stop();
  sharedFeed.close();provider.close();observedStats.close();store.close();
  server.close(()=>process.exit(0));setTimeout(()=>process.exit(0),2000).unref();
 }

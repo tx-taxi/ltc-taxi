@@ -244,3 +244,18 @@ test('a cold address waits for a healthy occupied connection instead of returnin
  const second=p.get('/api/address/second');release();
  assert.equal((await first).status,200);assert.equal((await second).status,200);p.close();
 });
+
+test('fallback-only block-height requests share one call and reuse the verified cached result', async t => {
+ const dataDir=setup(t);let calls=0,release;let now=100000;
+ const gate=new Promise(resolve=>release=resolve);
+ const p=new ProviderCache({primary:'https://primary.test',dataDir,now:()=>now,
+  fallback:async()=>{calls++;await gate;return {data:'a'.repeat(64),source:'blockcypher',status:200,at:now};}});
+ const requests=Array.from({length:20},()=>p.fallbackOnly('/api/block-height/123'));
+ assert.equal(calls,1);release();
+ const answers=await Promise.all(requests);
+ assert.ok(answers.every(answer=>answer.data==='a'.repeat(64)));
+ assert.equal((await p.fallbackOnly('/api/block-height/123')).data,'a'.repeat(64));
+ assert.equal(calls,1);
+ now+=300001;
+ await p.fallbackOnly('/api/block-height/123');assert.equal(calls,2);p.close();
+});

@@ -13,7 +13,7 @@ const wait=ms=>new Promise(r=>setTimeout(r,ms));
 test('gateway collects without visitors and restores cache/snapshot after process restart',async()=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'ltc-shared-runtime-'));
  let hits=0,upstreamConnections=0;
- const upstream=http.createServer((req,res)=>{hits++;res.setHeader('content-type','application/json');res.end(JSON.stringify({count:3,vsize:1000,total_fee:100}));});
+ const upstream=http.createServer((req,res)=>{if(req.url==='/api/mempool')hits++;res.setHeader('content-type','application/json');res.end(JSON.stringify({count:3,vsize:1000,total_fee:100}));});
  upstream.listen(0,'127.0.0.1');await once(upstream,'listening');
  const wss=new WebSocketServer({server:upstream});
  const sample={added:Math.floor(Date.now()/1000),count:3,vbytes_per_second:2,total_fee:100,mempool_byte_weight:1000,vsizes:[1000]};
@@ -23,7 +23,7 @@ test('gateway collects without visitors and restores cache/snapshot after proces
  const allocator=http.createServer();allocator.listen(0,'127.0.0.1');await once(allocator,'listening');const port=allocator.address().port;await new Promise(r=>allocator.close(r));
  const url=`http://127.0.0.1:${port}`;let child;let errors='';
  const start=async()=>{
-  child=spawn(process.execPath,[path.join(__dirname,'server.cjs')],{env:{...process.env,PORT:String(port),LTC_DATA_DIR:dir,LTC_PROVIDER:`http://127.0.0.1:${upstream.address()?.port||upstreamPort}`},stdio:['ignore','pipe','pipe']});
+  child=spawn(process.execPath,[path.join(__dirname,'server.cjs')],{env:{...process.env,PORT:String(port),LTC_DATA_DIR:dir,LTC_PROVIDER:`http://127.0.0.1:${upstream.address()?.port||upstreamPort}`,LTC_REFERENCE_TIP_URL:`http://127.0.0.1:${upstream.address()?.port||upstreamPort}/reference-tip`},stdio:['ignore','pipe','pipe']});
   child.stderr.on('data',d=>errors+=d);
   for(let i=0;i<100;i++){try{if((await fetch(url+'/healthz')).ok)return;}catch{}await wait(20);}
   throw Error('Gateway failed to start: '+errors);
