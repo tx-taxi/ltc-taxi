@@ -48,6 +48,15 @@ test('requests only the configured valid router origin and ignores malformed URL
  assert.equal(urls.length,1);
 });
 
+test('production same-origin router proxy supplies the selected live currency', async () => {
+ let urls=[], last, info; const rates={USD:1,EUR:0.9,GBP:0.75,JPY:150,AUD:1.4,CAD:1.35,CHF:0.8};
+ const fx=new FiatReferenceConversions(true,value=>{info=value},async url=>{urls.push(url);return Response.json({base:'USD',asOf,stale:false,rates})},()=>Date.parse(asOf+'T15:00:00Z'));
+ fx.subscribe(value=>{last=value}); fx.setRouterUrl('/local-router'); fx.select('EUR'); fx.next({USD:100}); await tick();
+ assert.deepEqual(urls,['/local-router/api/v1/fiat-rates']); assert.equal(last.EUR,90); assert.deepEqual(info,{asOf,stale:false});
+ for (const currency of ['GBP','JPY','AUD','CAD','CHF']) {fx.select(currency); assert.equal(last[currency],100*rates[currency]);}
+ fx.select('USD'); assert.equal(last.USD,100); assert.equal(info,null); assert.equal(urls.length,1);
+});
+
 test('SSR never fetches, even when a non-USD currency is selected', async () => {
  let calls=0, last;
  const fx=new FiatReferenceConversions(false,()=>{},async()=>{calls++;throw Error('should not fetch')});
