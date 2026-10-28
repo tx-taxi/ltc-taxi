@@ -3,25 +3,25 @@
   <div class="about-layout">
     <aside class="about-identity">
       <img src="/resources/branding/ltc-dark-full.svg" alt="ltc.tx.taxi" class="about-logo">
-      <h1>About ltc.tx.taxi</h1>
-      <p>The Litecoin explorer in the tx.taxi family.</p>
-      <nav class="about-links" aria-label="Project links">
-        <a routerLink="/docs">Litecoin documentation</a>
-        <a href="https://t.me/hiss" target="_blank" rel="noopener noreferrer">Contact the maintainer</a>
+      <h1 i18n="@@taxi.about.title">About ltc.tx.taxi</h1>
+      <p i18n="@@taxi.about.subtitle">The Litecoin explorer in the tx.taxi family.</p>
+      <nav class="about-links" aria-label="Project links" i18n-aria-label="@@taxi.about.project-links">
+        <a routerLink="/docs" i18n="@@taxi.about.docs">Litecoin documentation</a>
+        <a href="https://t.me/hiss" target="_blank" rel="noopener noreferrer" i18n="@@taxi.about.contact">Contact the maintainer</a>
       </nav>
     </aside>
     <main class="about-text">
-      <h2>About ltc.tx.taxi</h2>
-    <p>ltc.tx.taxi is the Litecoin explorer in the tx.taxi multi-chain family. It preserves Mempool's proven interface for inspecting blocks, transactions, addresses, mining activity, fee estimates, and the live Litecoin mempool while using a Litecoin-specific tx.taxi identity.</p>
+      <h2 i18n="@@taxi.about.title">About ltc.tx.taxi</h2>
+    <p i18n="@@taxi.about.intro">ltc.tx.taxi is the Litecoin explorer in the tx.taxi multi-chain family. It preserves Mempool's proven interface for inspecting blocks, transactions, addresses, mining activity, fee estimates, and the live Litecoin mempool while using a Litecoin-specific tx.taxi identity.</p>
 
-    <h2>Litecoin-native data</h2>
-    <p>Values are denominated in LTC, litoshis, or the selected fiat currency. Fee rates remain lit/vB, transaction sizes remain vB or weight units, and all block, address, and mining concepts shown by the interface retain their Litecoin meaning.</p>
+    <h2 i18n="@@taxi.about.native-data">Litecoin-native data</h2>
+    <p i18n="@@taxi.about.native-description">Values are denominated in LTC, litoshis, or the selected fiat currency. Fee rates remain lit/vB, transaction sizes remain vB or weight units, and all block, address, and mining concepts shown by the interface retain their Litecoin meaning.</p>
 
-    <h2>MWEB coverage</h2><p>This explorer shows transparent-chain transactions and indexed addresses. Private MWEB amounts and recipient history are not publicly observable. HogEx transactions connect the extension block to the transparent chain.</p><h2>Infrastructure</h2>
-    <p>The explorer reads public Litecoin network data through its configured backend. Explorer results are informational and can differ from another node's view of the mempool. Always verify payment details in your wallet and use your own node when independent verification matters.</p>
+    <h2 i18n="@@taxi.about.mweb-title">MWEB coverage</h2><p i18n="@@taxi.about.mweb-description">This explorer shows transparent-chain transactions and indexed addresses. Private MWEB amounts and recipient history are not publicly observable. HogEx transactions connect the extension block to the transparent chain.</p><h2 i18n="@@taxi.about.infrastructure-title">Infrastructure</h2>
+    <p i18n="@@taxi.about.infrastructure-description">The explorer reads public Litecoin network data through its configured backend. Explorer results are informational and can differ from another node's view of the mempool. Always verify payment details in your wallet and use your own node when independent verification matters.</p>
       <div class="about-attribution">
-        <h2>Built on open source</h2>
-        <p>This explorer builds on the <a href="https://github.com/mempool/mempool" target="_blank" rel="noopener noreferrer">Mempool Open Source Project</a>. See <a href="/3rdpartylicenses.txt">third-party attribution</a> and contact the maintainer for source and license information.</p>
+        <h2 i18n="@@taxi.about.opensource-title">Built on open source</h2>
+        <p><span i18n="@@taxi.about.built-on">This explorer builds on the</span> <a href="https://github.com/mempool/mempool" target="_blank" rel="noopener noreferrer">Mempool Open Source Project</a>. <span i18n="@@taxi.about.see">See</span> <a href="/3rdpartylicenses.txt" i18n="@@taxi.about.third-party">third-party attribution</a> <span i18n="@@taxi.about.contact-license">and contact the maintainer for source and license information.</span></p>
       </div>
     </main>
   </div>

@@ -79,12 +79,12 @@
     <ul class="navbar-nav {{ network.val }}">
 
       <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ariaCurrentWhenActive="page" id="btn-home">
-        <a class="nav-link" [routerLink]="['/' | relativeUrl]" (click)="collapse()" aria-label="Dashboard" title="Dashboard">
+        <a class="nav-link" [routerLink]="['/' | relativeUrl]" (click)="collapse()" aria-label="Dashboard" i18n-aria-label="@@taxi.ltc.nav.dashboard" title="Dashboard" i18n-title="@@taxi.ltc.nav.dashboard">
           <div class="svg-wrapper"><app-svg-images name="nav-tachometer" width="21.59" height="100%"></app-svg-images></div>
         </a>
       </li>
       <li class="nav-item mining" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" id="btn-pools" *ngIf="stateService.env.MINING_DASHBOARD">
-        <a class="nav-link" [routerLink]="['/mining' | relativeUrl]" (click)="collapse()" aria-label="Mining dashboard" title="Mining dashboard">
+        <a class="nav-link" [routerLink]="['/mining' | relativeUrl]" (click)="collapse()" aria-label="Mining dashboard" i18n-aria-label="@@taxi.ltc.nav.mining" title="Mining dashboard" i18n-title="@@taxi.ltc.nav.mining">
           <div class="svg-wrapper"><app-svg-images name="nav-pickaxe" width="21.59" height="100%"></app-svg-images></div>
         </a>
       </li>
@@ -94,12 +94,12 @@
         </a>
       </li>
       <li class="nav-item" routerLinkActive="active" id="btn-blocks" *ngIf="!stateService.env.MINING_DASHBOARD">
-        <a class="nav-link" [routerLink]="['/blocks' | relativeUrl]" (click)="collapse()" aria-label="Recent blocks" title="Recent blocks">
+        <a class="nav-link" [routerLink]="['/blocks' | relativeUrl]" (click)="collapse()" aria-label="Recent blocks" i18n-aria-label="@@taxi.ltc.nav.blocks" title="Recent blocks" i18n-title="@@taxi.ltc.nav.blocks">
           <div class="svg-wrapper"><app-svg-images name="nav-cubes" width="21.59" height="100%"></app-svg-images></div>
         </a>
       </li>
       <li class="nav-item" routerLinkActive="active" id="btn-graphs">
-        <a class="nav-link" [routerLink]="['/graphs' | relativeUrl]" (click)="collapse()" aria-label="Litecoin graphs" title="Litecoin graphs">
+        <a class="nav-link" [routerLink]="['/graphs' | relativeUrl]" (click)="collapse()" aria-label="Litecoin graphs" i18n-aria-label="@@taxi.ltc.nav.graphs" title="Litecoin graphs" i18n-title="@@taxi.ltc.nav.graphs">
           <div class="svg-wrapper"><app-svg-images name="nav-chart-area" width="21.59" height="100%"></app-svg-images></div>
         </a>
       </li>
@@ -109,7 +109,7 @@
         </a>
       </li>
       <li class="nav-item" routerLinkActive="active" id="btn-docs">
-        <a class="nav-link" [routerLink]="['/docs']" (click)="collapse()" aria-label="Documentation" title="Documentation">
+        <a class="nav-link" [routerLink]="['/docs']" (click)="collapse()" aria-label="Documentation" i18n-aria-label="@@taxi.ltc.nav.docs" title="Documentation" i18n-title="@@taxi.ltc.nav.docs">
           <div class="svg-wrapper"><app-svg-images name="nav-book" width="21.59" height="100%"></app-svg-images></div>
         </a>
       </li>
@@ -119,7 +119,7 @@
         </a>
       </li>
       <li class="nav-item" routerLinkActive="active" id="btn-about">
-        <a class="nav-link" [routerLink]="['/about']" (click)="collapse()" aria-label="About ltc.tx.taxi" title="About ltc.tx.taxi">
+        <a class="nav-link" [routerLink]="['/about']" (click)="collapse()" aria-label="About ltc.tx.taxi" i18n-aria-label="@@taxi.ltc.nav.about" title="About ltc.tx.taxi" i18n-title="@@taxi.ltc.nav.about">
           <div class="svg-wrapper"><app-svg-images name="nav-info-circle" width="21.59" height="100%"></app-svg-images></div>
         </a>
       </li>

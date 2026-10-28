@@ -131,7 +131,7 @@
                   </ng-template>
                   <ng-template #defaultOutput>
                     <span *ngIf="vin.lazy" class="skeleton-loader"></span>
-                    <app-amount [blockConversion]="tx.price" *ngIf="vin.prevout" [satoshis]="vin.prevout.value"></app-amount>
+                    <app-amount [blockConversion]="tx.price" [forceBlockConversion]="!!tx.status?.confirmed" *ngIf="vin.prevout" [satoshis]="vin.prevout.value"></app-amount>
                   </ng-template>
                 </td>
               </tr>
@@ -392,7 +392,7 @@
                     </ng-template>
                   </ng-template>
                   <ng-template #defaultOutput>
-                    <app-amount [blockConversion]="tx.price" [satoshis]="vout.value"></app-amount>
+                    <app-amount [blockConversion]="tx.price" [forceBlockConversion]="!!tx.status?.confirmed" [satoshis]="vout.value"></app-amount>
                   </ng-template>
                 </td>
                 <td class="arrow-td">
@@ -515,7 +515,7 @@
       <div class="float-start mt-2-5" *ngIf="!transactionPage && !tx.vin[0].is_coinbase && tx.fee !== -1">
         <app-fee-rate [fee]="tx.fee" [weight]="tx.weight"></app-fee-rate>
         <span class="d-none d-sm-inline-block">&nbsp;&ndash; {{ tx.fee | number }} <span class="symbol"
-            i18n="shared.sats">lits</span> <span class="fiat"><app-fiat [blockConversion]="tx.price" [value]="tx.fee"></app-fiat></span></span>
+            i18n="shared.sats">lits</span> <span class="fiat"><app-fiat [blockConversion]="tx.price" [forceBlockConversion]="!!tx.status?.confirmed" [value]="tx.fee"></app-fiat></span></span>
       </div>
       <div class="float-start mt-2-5 grey-info-text" *ngIf="tx.fee === -1" i18n="transactions-list.load-to-reveal-fee-info">Show more inputs to reveal fee data</div>
 
@@ -526,12 +526,12 @@
         <button *ngIf="addresses.length === 0; else viewingAddress" type="button" class="btn btn-sm btn-primary mt-2 ms-2" (click)="switchCurrency()">
           <ng-template [ngIf]="(network === 'liquid' || network === 'liquidtestnet') && haveBlindedOutputValues(tx)" [ngIfElse]="defaultAmount" i18n="shared.confidential">Confidential</ng-template>
           <ng-template #defaultAmount>
-            <app-amount [blockConversion]="tx.price" [satoshis]="getTotalTxOutput(tx)"></app-amount>
+            <app-amount [blockConversion]="tx.price" [forceBlockConversion]="!!tx.status?.confirmed" [satoshis]="getTotalTxOutput(tx)"></app-amount>
           </ng-template>
         </button>
         <ng-template #viewingAddress>
           <button type="button" class="btn btn-sm mt-2 ms-2" (click)="switchCurrency()" [ngClass]="{'btn-success': tx['addressValue'] >= 0, 'btn-danger': tx['addressValue'] < 0}">
-            <app-amount [blockConversion]="tx.price" [satoshis]="tx['addressValue']" [addPlus]="true" [unitStyle]="{color: '#ffffffbb'}"></app-amount>
+            <app-amount [blockConversion]="tx.price" [forceBlockConversion]="!!tx.status?.confirmed" [satoshis]="tx['addressValue']" [addPlus]="true" [unitStyle]="{color: '#ffffffbb'}"></app-amount>
           </button>
         </ng-template>
       </div>

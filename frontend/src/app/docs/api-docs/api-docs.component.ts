@@ -43,6 +43,19 @@ export class ApiDocsComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
   ) { }
 
+  categoryLabel(category: string): string {
+    switch (category) {
+      case 'chain': return $localize`:@@taxi.ltc.docs.category.chain:chain`;
+      case 'transactions': return $localize`:@@taxi.ltc.docs.category.transactions:transactions`;
+      case 'service': return $localize`:@@taxi.ltc.docs.category.service:service`;
+      case 'connection': return $localize`:@@taxi.ltc.docs.category.connection:connection`;
+      case 'streams': return $localize`:@@taxi.ltc.docs.category.streams:streams`;
+      case 'privacy': return $localize`:@@taxi.ltc.docs.category.privacy:privacy`;
+      case 'data': return $localize`:@@taxi.ltc.docs.category.data:data`;
+      default: return category;
+    }
+  }
+
   ngAfterContentChecked() {
     if (this.faqTemplates) {
       this.faqTemplates.forEach((x) => this.dict[x.type] = x.template);

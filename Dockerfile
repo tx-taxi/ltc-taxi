@@ -7,7 +7,7 @@ COPY frontend ./
 COPY adapter/generate-static-seo.cjs adapter/static-seo.config.json /app/adapter/
 RUN node /app/adapter/generate-static-seo.cjs /app/frontend /app/adapter/static-seo-pages.json
 COPY adapter/frontend-production-config.json ./mempool-frontend-config.json
-RUN npm run generate-themes && npm run generate-config && node node_modules/@angular/cli/bin/ng.js build --configuration production --localize=false && node async-native-styles.cjs
+RUN npm run generate-themes && npm run generate-config && node node_modules/@angular/cli/bin/ng.js build --configuration production --localize=false && node node_modules/@angular/cli/bin/ng.js build --configuration production,spanish && cp -a dist/spanish/es dist/mempool/browser/es && node async-native-styles.cjs
 
 FROM node:24-bookworm-slim
 WORKDIR /app

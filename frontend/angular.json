@@ -229,6 +229,12 @@
                   "maximumWarning": "6kb"
                 }
               ]
+            },
+            "spanish": {
+              "localize": [
+                "es"
+              ],
+              "outputPath": "dist/spanish"
             }
           },
           "defaultConfiguration": ""

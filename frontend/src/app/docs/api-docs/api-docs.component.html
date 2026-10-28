@@ -19,7 +19,7 @@
           <div *ngIf="!item.hasOwnProperty('options') || ( item.hasOwnProperty('options') && item.options.hasOwnProperty('officialOnly') && item.options.officialOnly && officialMempoolInstance ) || ( item.hasOwnProperty('options') && item.options.hasOwnProperty('auditOnly') && item.options.auditOnly && auditEnabled )">
             <h3 *ngIf="item.type === 'category'">{{ item.title }}</h3>
             <div *ngIf="item.type !== 'category'" class="endpoint-container" id="{{ item.fragment }}">
-              <a id="{{ item.fragment + '-tab-header' }}" class="section-header" (click)="anchorLinkClick({event: $event, fragment: item.fragment})"><table><tr><td>{{ item.title }}</td><td><span>{{ item.category }}</span></td></tr></table></a>
+              <a id="{{ item.fragment + '-tab-header' }}" class="section-header" (click)="anchorLinkClick({event: $event, fragment: item.fragment})"><table><tr><td>{{ item.title }}</td><td><span>{{ categoryLabel(item.category) }}</span></td></tr></table></a>
               <div class="endpoint-content">
                 <ng-container *ngTemplateOutlet="dict[item.fragment]" class="endpoint"></ng-container>
               </div>
@@ -39,14 +39,14 @@
 
       <div class="doc-content">
 
-        <p class="doc-welcome-note">This reference covers the read-only Litecoin REST endpoints exposed at <code>ltc.tx.taxi/api</code>. Successful gateway responses include <code>X-LTC-Source</code>, <code>X-LTC-Stale</code>, and <code>X-LTC-Observed-At</code>.</p>
-        <p class="doc-welcome-note api-note">The gateway budgets its primary REST source to 60 requests per minute and four concurrent requests. A missing entity returns 404; an unavailable source returns 503. Do not treat a cached or pending response as permanent state.</p>
+        <p class="doc-welcome-note"><span i18n="@@taxi.ltc.docs.rest-intro">This reference covers the read-only Litecoin REST endpoints exposed at</span> <code>ltc.tx.taxi/api</code>. <span i18n="@@taxi.ltc.docs.rest-headers">Successful gateway responses include</span> <code>X-LTC-Source</code>, <code>X-LTC-Stale</code>, <span i18n="@@taxi.ltc.docs.and">and</span> <code>X-LTC-Observed-At</code>.</p>
+        <p class="doc-welcome-note api-note" i18n="@@taxi.ltc.docs.rest-limits">The gateway budgets its primary REST source to 60 requests per minute and four concurrent requests. A missing entity returns 404; an unavailable source returns 503. Do not treat a cached or pending response as permanent state.</p>
 
         <div class="doc-item-container" *ngFor="let item of restDocs">
           <div *ngIf="!item.hasOwnProperty('options') || ( item.hasOwnProperty('options') && item.options.hasOwnProperty('officialOnly') && item.options.officialOnly && officialMempoolInstance ) || ( item.hasOwnProperty('options') && item.options.hasOwnProperty('electrsOnly') && item.options.electrsOnly && runningElectrs )">
             <h3 *ngIf="( item.type === 'category' ) && ( item.showConditions.indexOf(network.val) > -1 )">{{ item.title }}</h3>
             <div *ngIf="( item.type !== 'category' ) && ( item.showConditions.indexOf(network.val) > -1 )" class="endpoint-container" id="{{ item.fragment }}">
-              <a id="{{ item.fragment + '-tab-header' }}" class="section-header" (click)="anchorLinkClick({event: $event, fragment: item.fragment})">{{ item.title }} <span>{{ item.category }}</span></a>
+              <a id="{{ item.fragment + '-tab-header' }}" class="section-header" (click)="anchorLinkClick({event: $event, fragment: item.fragment})">{{ item.title }} <span>{{ categoryLabel(item.category) }}</span></a>
               <div class="endpoint-content">
                 <div class="endpoint">
                   <div class="subtitle" i18n="Api docs endpoint">Endpoint</div>
@@ -108,21 +108,21 @@
 
       <div class="doc-content">
 
-        <p class="doc-welcome-note">Connect to the Litecoin WebSocket at <code>{{ websocketUrl(network.val) }}</code>. Send the JSON subscription payload shown for each stream; an HTTP request to this URL is not a WebSocket connection.</p>
-        <p class="doc-welcome-note api-note">Shared dashboard data comes from one upstream feed. Detail subscriptions have separate bounded capacity, and clients must handle reconnects and freshness changes.</p>
+        <p class="doc-welcome-note"><span i18n="@@taxi.ltc.docs.ws-connect">Connect to the Litecoin WebSocket at</span> <code>{{ websocketUrl(network.val) }}</code>. <span i18n="@@taxi.ltc.docs.ws-subscribe">Send the JSON subscription payload shown for each stream; an HTTP request to this URL is not a WebSocket connection.</span></p>
+        <p class="doc-welcome-note api-note" i18n="@@taxi.ltc.docs.ws-capacity">Shared dashboard data comes from one upstream feed. Detail subscriptions have separate bounded capacity, and clients must handle reconnects and freshness changes.</p>
 
         <div class="doc-item-container" *ngFor="let item of wsDocs">
           <div *ngIf="!item.hasOwnProperty('options') || ( item.hasOwnProperty('options') && item.options.hasOwnProperty('officialOnly') && item.options.officialOnly && officialMempoolInstance )">
             <h3 *ngIf="( item.type === 'category' ) && ( item.showConditions.indexOf(network.val) > -1 )">{{ item.title }}</h3>
             <div *ngIf="( item.type !== 'category' ) && ( item.showConditions.indexOf(network.val) > -1 )" class="endpoint-container" id="{{ item.fragment }}">
-              <a id="{{ item.fragment + '-tab-header' }}" class="section-header" (click)="anchorLinkClick({event: $event, fragment: item.fragment})">{{ item.title }} <span>{{ item.category }}</span></a>
+              <a id="{{ item.fragment + '-tab-header' }}" class="section-header" (click)="anchorLinkClick({event: $event, fragment: item.fragment})">{{ item.title }} <span>{{ categoryLabel(item.category) }}</span></a>
               <div class="endpoint-content">
                 <div class="description">
                   <div class="subtitle" i18n>Description</div>
                   <div [innerHTML]="item.description.default" i18n></div>
                 </div>
                 <div class="description">
-                  <div class="subtitle">Payload</div>
+                  <div class="subtitle" i18n="@@taxi.ltc.docs.payload">Payload</div>
                   <pre><code [innerText]="item.payload"></code></pre>
                 </div>
                 <app-code-template [hostname]="hostname" [baseNetworkUrl]="baseNetworkUrl" [method]="item.httpRequestMethod" [code]="item.codeExample.default" [network]="network.val" [showCodeExample]="item.showJsExamples"></app-code-template>
@@ -136,11 +136,11 @@
   </div>
 </ng-container>
 
-<ng-template type="ltc-overview"><p>ltc.tx.taxi shows publicly observable Litecoin blocks, transparent transactions and addresses, node mempool data, fees, and mining activity. Litecoin targets a block every 2.5 minutes, retargets difficulty every 2,016 blocks, and halves the subsidy every 840,000 blocks.</p></ng-template>
-<ng-template type="ltc-fees"><p>One LTC equals 100,000,000 litoshis. This explorer reports transaction fees in litoshis and fee rates in <code>lit/vB</code>. A higher fee rate can make a pending transaction more competitive for inclusion, but does not guarantee a confirmation time.</p></ng-template>
-<ng-template type="ltc-mweb"><p>MWEB is Litecoin’s MimbleWimble Extension Block. Its private transfers do not publish ordinary amounts, recipient history, or address balances for an explorer to reconstruct. The HogEx transaction and peg-in or peg-out records connect MWEB to the transparent chain; they should not be read as ordinary wallet transfers.</p></ng-template>
-<ng-template type="ltc-data-freshness"><p>There is no global mempool. Nodes can observe different pending transactions, and a node can evict or later receive a transaction. Fee estimates and projected blocks are observations of this explorer’s current feed. Check the freshness indicator and headers before relying on a response.</p></ng-template>
-<ng-template type="ltc-search"><p>Search a Litecoin block height, block hash, transaction ID, transparent Litecoin address, or a supported explorer URL. A 64-character hash can be valid on more than one chain, so tx.taxi keeps chain selection available when a match is ambiguous.</p></ng-template>
+<ng-template type="ltc-overview"><p i18n="@@taxi.ltc.faq.overview">ltc.tx.taxi shows publicly observable Litecoin blocks, transparent transactions and addresses, node mempool data, fees, and mining activity. Litecoin targets a block every 2.5 minutes, retargets difficulty every 2,016 blocks, and halves the subsidy every 840,000 blocks.</p></ng-template>
+<ng-template type="ltc-fees"><p i18n="@@taxi.ltc.faq.fees">One LTC equals 100,000,000 litoshis. This explorer reports transaction fees in litoshis and fee rates in <code>lit/vB</code>. A higher fee rate can make a pending transaction more competitive for inclusion, but does not guarantee a confirmation time.</p></ng-template>
+<ng-template type="ltc-mweb"><p i18n="@@taxi.ltc.faq.mweb">MWEB is Litecoin’s MimbleWimble Extension Block. Its private transfers do not publish ordinary amounts, recipient history, or address balances for an explorer to reconstruct. The HogEx transaction and peg-in or peg-out records connect MWEB to the transparent chain; they should not be read as ordinary wallet transfers.</p></ng-template>
+<ng-template type="ltc-data-freshness"><p i18n="@@taxi.ltc.faq.data-freshness">There is no global mempool. Nodes can observe different pending transactions, and a node can evict or later receive a transaction. Fee estimates and projected blocks are observations of this explorer’s current feed. Check the freshness indicator and headers before relying on a response.</p></ng-template>
+<ng-template type="ltc-search"><p i18n="@@taxi.ltc.faq.search">Search a Litecoin block height, block hash, transaction ID, transparent Litecoin address, or a supported explorer URL. A 64-character hash can be valid on more than one chain, so tx.taxi keeps chain selection available when a match is ambiguous.</p></ng-template>
 
 <ng-template type="what-is-a-mempool">
   <p>A mempool (short for "memory pool") is the queue of pending and unconfirmed transactions for a cryptocurrency network node. There is no one global mempool: every node on the network maintains its own mempool, so different nodes may hold different transactions in their mempools.</p>

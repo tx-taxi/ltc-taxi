@@ -37,6 +37,18 @@ export class BlockchainComponent implements OnInit, OnDestroy, OnChanges {
   };
   blockDisplayToggleStyle = {};
 
+  get displayModeLabel(): string {
+    return this.blockDisplayMode === 'fees'
+      ? $localize`:@@taxi.ltc.block.sizes:Switch to displaying block sizes`
+      : $localize`:@@taxi.ltc.block.fees:Switch to displaying total fees per block`;
+  }
+
+  get timeDirectionLabel(): string {
+    return this.timeLtr
+      ? $localize`:@@taxi.ltc.block.right:Switch to displaying newest blocks on the right`
+      : $localize`:@@taxi.ltc.block.left:Switch to displaying newest blocks on the left`;
+  }
+
   constructor(
     public stateService: StateService,
     public StorageService: StorageService,

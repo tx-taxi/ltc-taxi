@@ -199,7 +199,7 @@
     <tr>
       <td class="td-width" i18n="transaction.fee|Transaction fee">Fee</td>
       <td class="text-wrap">{{ (tx.fee | number) ?? '-' }} <span class="symbol" i18n="shared.sats">lits</span>
-        <span class="fiat"><app-fiat *ngIf="tx.fee >= 0" [blockConversion]="tx.price" [value]="tx.fee"></app-fiat></span>
+        <span class="fiat"><app-fiat *ngIf="tx.fee >= 0" [blockConversion]="tx.price" [forceBlockConversion]="!!tx.status?.confirmed" [value]="tx.fee"></app-fiat></span>
       </td>
     </tr>
   } @else {

@@ -16,7 +16,7 @@
       <td class="table-cell-satoshis-desktop">
         <app-amount [satoshis]="transaction.value" [digitsInfo]="getAmountDigits(transaction.value)" [noFiat]="true"></app-amount>
       </td>
-      <td class="table-cell-fiat" ><app-fiat [value]="transaction.value" [blockConversion]="transaction.price" digitsInfo="1.0-0"></app-fiat></td>
+      <td class="table-cell-fiat" ><app-fiat [value]="transaction.value" [blockConversion]="transaction.price" [forceBlockConversion]="!!transaction.height" digitsInfo="1.0-0"></app-fiat></td>
       <td class="table-cell-date">
         <a class="mobile-tx-link" [routerLink]="['/tx' | relativeUrl, transaction.txid]">
           <app-time kind="since" [time]="transaction.time" [fastRender]="true" [showTooltip]="true"></app-time>

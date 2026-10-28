@@ -205,7 +205,7 @@ export class WebsocketService {
 
         const freshness = response['provider-freshness'];
         if (response['tracking-unavailable']) {
-          this.stateService.providerFeedWarning$.next('Live detail tracking is temporarily unavailable. Displayed details may be stale.');
+          this.stateService.providerFeedWarning$.next($localize`:@@taxi.ltc.provider.tracking:Live detail tracking is temporarily unavailable. Displayed details may be stale.`);
         } else if (response.tx || response['projected-block-transactions'] || response['address-transactions']) {
           this.stateService.providerFeedWarning$.next('');
         }

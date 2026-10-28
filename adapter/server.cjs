@@ -203,19 +203,35 @@ const server=http.createServer(async(req,res)=>{
   }
   if(u.pathname==='/og.png') return send(res,200,await card(u.searchParams.get('path')||'/'),'image/png');
   if(u.pathname.startsWith('/source/')||u.pathname.endsWith('.map'))return send(res,404,{error:'Not found'});
+  const spanish = /^\/es(?:\/|$)/.test(u.pathname);
+  const localePath = spanish ? u.pathname.slice(3) || '/' : u.pathname;
+  if (spanish) {
+   const localizedRedirect = staticSeo.redirect(localePath);
+   if (localizedRedirect) {res.writeHead(308,{Location:'/es'+localizedRedirect+u.search});return res.end();}
+   if (u.pathname === '/es') {res.writeHead(308,{Location:'/es/'+u.search});return res.end();}
+  }
   let r;
   if(STATIC_ROOT) {
    const relative=decodeURIComponent(u.pathname).replace(/^\/+/, '');
    let file=path.resolve(STATIC_ROOT,relative);
    if(file!==STATIC_ROOT&&!file.startsWith(STATIC_ROOT+path.sep))return send(res,404,{error:'Not found'});
-   if(!path.extname(relative))file=path.join(STATIC_ROOT,'index.html');
+   if(!path.extname(relative))file=path.join(STATIC_ROOT,spanish?'es/index.html':'index.html');
    let bytes;try{bytes=await fs.promises.readFile(file);}catch{return send(res,404,{error:'Not found'});}
    const types={'.html':'text/html; charset=utf-8','.js':'application/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.ico':'image/x-icon','.woff':'font/woff','.woff2':'font/woff2','.ttf':'font/ttf','.webmanifest':'application/manifest+json','.txt':'text/plain','.wasm':'application/wasm'};
    r=new Response(bytes,{headers:{'content-type':types[path.extname(file)]||'application/octet-stream'}});
   } else r=await fetch('http://127.0.0.1:4311'+req.url,{headers:{accept:req.headers.accept||'*/*'},signal:AbortSignal.timeout(15000)});
   const type=r.headers.get('content-type')||'text/plain';
   if(type.includes('text/html')) {
-   let html=await r.text();const m=await metadata(u.pathname),origin=SITE_ORIGIN;
+   let html=await r.text();const m=await metadata(localePath),origin=SITE_ORIGIN;
+   if (spanish) {
+    const canonical = 'https://ltc.tx.taxi/es' + (m.path === '/' ? '/' : m.path);
+    const title = 'Explorador de Litecoin - ltc.tx.taxi';
+    const description = 'Explora bloques, transacciones, direcciones y comisiones de Litecoin.';
+    html=html.replace(/<title>[\s\S]*?<\/title>/,'').replace(/<meta[^>]+(?:name|property)=["'](?:description|og:[^"']+|twitter:[^"']+)["'][^>]*>/g,'').replace(/<link[^>]+rel=["']canonical["'][^>]*>/g,'').replace(/<meta\b[^>]*name=["']robots["'][^>]*>/gi,'');
+    html=html.replace('</head>',`<title>${escape(title)}</title><meta name="description" content="${escape(description)}"><link id="canonical" rel="canonical" href="${escape(canonical)}"><meta name="robots" content="noindex, follow"><meta property="og:locale" content="es_ES"><meta property="og:url" content="${escape(canonical)}"></head>`);
+    const noRoute = staticSeo.nonIndexable(localePath) && !staticSeo.existingNonIndexable(localePath);
+    return send(res,m.entityStatus || (noRoute ? 404 : r.status),req.method === 'HEAD' ? undefined : html,type,{'X-Robots-Tag':'noindex, follow', ...(m.entityStatus === 503 ? {'Retry-After':'60'} : {})});
+   }
    const preview = staticSeo.data.socialScreenshot;
    html=html.replace(/<title>[\s\S]*?<\/title>/,'').replace(/<meta[^>]+(?:name|property)=["'](?:description|og:[^"']+|twitter:[^"']+)["'][^>]*>/g,'').replace(/<link[^>]+rel=["']canonical["'][^>]*>/g,'');
    html=html.replace('</head>',`<title>${escape(m.title)}</title><meta name="description" content="${escape(m.description)}"><link id="canonical" rel="canonical" href="https://ltc.tx.taxi${escape(m.path)}"><meta property="og:title" content="${escape(m.title)}"><meta property="og:description" content="${escape(m.description)}"><meta property="og:type" content="website"><meta property="og:site_name" content="ltc.tx.taxi"><meta property="og:locale" content="en_US"><meta property="og:image" content="${escape(preview.url)}"><meta property="og:url" content="https://ltc.tx.taxi${escape(m.path)}"><meta property="og:image:type" content="${preview.mime}"><meta property="og:image:alt" content="${escape(preview.alt)}"><meta property="og:image:width" content="${preview.width}"><meta property="og:image:height" content="${preview.height}"><meta name="twitter:domain" content="ltc.tx.taxi"><meta name="twitter:image:alt" content="${escape(preview.alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escape(m.title)}"><meta name="twitter:description" content="${escape(m.description)}"><meta name="twitter:image" content="${escape(preview.url)}"></head>`);

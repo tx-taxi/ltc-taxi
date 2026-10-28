@@ -57,6 +57,7 @@ export class BlockOverviewGraphComponent implements AfterViewInit, OnDestroy, On
   @Input() gradientMode: 'fee' | 'age' = 'fee';
   @Input() relativeTime: number | null;
   @Input() blockConversion: Price;
+  @Input() forceBlockConversion = false;
   @Input() overrideColors: ((tx: TxView) => Color) | null = null;
   @Output() txClickEvent = new EventEmitter<{ tx: TransactionStripped, keyModifier: boolean}>();
   @Output() txHoverEvent = new EventEmitter<string>();

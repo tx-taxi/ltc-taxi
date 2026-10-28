@@ -18,6 +18,7 @@ export class FiatComponent implements OnInit, OnDestroy {
   @Input() value: number;
   @Input() digitsInfo = '1.2-2';
   @Input() blockConversion: Price;
+  @Input() forceBlockConversion = false;
   @Input() colorClass = 'fiat-color';
 
   constructor(

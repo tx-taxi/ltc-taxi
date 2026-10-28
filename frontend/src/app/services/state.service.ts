@@ -9,6 +9,9 @@ import { filter, map, scan, share, shareReplay } from 'rxjs/operators';
 import { StorageService } from '@app/services/storage.service';
 import { hasTouchScreen } from '@app/shared/pipes/bytes-pipe/utils';
 import { ActiveFilter } from '@app/shared/filters.utils';
+import { fiatCurrencies } from '@app/app.constants';
+import { readSharedPreference } from '@app/services/shared-preferences';
+import { FiatReferenceConversions, FiatReferenceInfo } from '@app/services/fiat-reference-conversions';
 
 export interface MarkBlockState {
   blockHeight?: number;
@@ -168,7 +171,8 @@ export class StateService {
   blocksSubject$ = new BehaviorSubject<BlockExtended[]>([]);
   blocks$: Observable<BlockExtended[]>;
   transactions$ = new BehaviorSubject<TransactionStripped[]>(null);
-  conversions$ = new ReplaySubject<Record<string, number>>(1);
+  fiatReference$ = new BehaviorSubject<FiatReferenceInfo | null>(null);
+  conversions$ = new FiatReferenceConversions(this.isBrowser, info => this.fiatReference$.next(info));
   bsqPrice$ = new ReplaySubject<number>(1);
   mempoolInfo$ = new ReplaySubject<MempoolInfo>(1);
   mempoolBlocks$ = new ReplaySubject<MempoolBlock[]>(1);
@@ -244,6 +248,7 @@ export class StateService {
     }
 
     this.env = Object.assign(defaultEnv, browserWindowEnv);
+    this.conversions$.setRouterUrl(this.env.TX_TAXI_ROUTER_URL);
     this.env.ACCELERATOR = false;
     this.env.ACCELERATOR_BUTTON = false;
     this.env.PUBLIC_ACCELERATIONS = false;
@@ -386,8 +391,25 @@ export class StateService {
       this.storageService.setValue('audit-preference', hide ? 'hide' : 'show');
     });
 
-    const fiatPreference = this.storageService.getValue('fiat-preference');
-    this.fiatCurrency$ = new BehaviorSubject<string>(fiatPreference || 'USD');
+    const supportedFiat = (value: string): boolean => !!value && Object.prototype.hasOwnProperty.call(fiatCurrencies, value) &&
+      (this.env.ADDITIONAL_CURRENCIES || ['AUD', 'CAD', 'EUR', 'JPY', 'GBP', 'CHF', 'USD'].includes(value));
+    const sharedFiat = this.isBrowser ? readSharedPreference(document, 'txtaxi_currency') : null;
+    const localFiat = this.storageService.getValue('fiat-preference');
+    this.fiatCurrency$ = new BehaviorSubject<string>(supportedFiat(sharedFiat) ? sharedFiat : supportedFiat(localFiat) ? localFiat : 'USD');
+    this.fiatCurrency$.subscribe(currency => this.conversions$.select(currency));
+    if (this.isBrowser) {
+      // Cookies are shared across origins but do not emit a storage event. Refresh
+      // when a previously open explorer becomes active after another changes it.
+      const syncFiat = () => {
+        const next = readSharedPreference(document, 'txtaxi_currency');
+        if (supportedFiat(next) && next !== this.fiatCurrency$.value) {
+          this.storageService.setValue('fiat-preference', next);
+          this.fiatCurrency$.next(next);
+        }
+      };
+      window.addEventListener('focus', syncFiat);
+      window.addEventListener('pageshow', syncFiat);
+    }
 
     const rateUnitPreference = this.storageService.getValue('rate-unit-preference');
     this.rateUnits$ = new BehaviorSubject<string>(rateUnitPreference || 'vb');

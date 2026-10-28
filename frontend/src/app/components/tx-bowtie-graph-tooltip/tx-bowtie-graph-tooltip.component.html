@@ -106,7 +106,7 @@
           </ng-template>
         </ng-template>
         <ng-template #defaultOutput>
-          <app-amount [blockConversion]="isConnector ? blockConversions[line?.status?.block_time] : blockConversions[line?.timestamp]" [satoshis]="line.displayValue" [forceBlockConversion]="isConnector && line?.status?.block_time" [unitStyle]="'color: #ffffff66'"></app-amount>
+          <app-amount [blockConversion]="isConnector ? blockConversions[line?.status?.block_time] : blockConversions[line?.timestamp]" [satoshis]="line.displayValue" [forceBlockConversion]="!!(isConnector ? line?.status?.block_time : line?.timestamp)" [unitStyle]="'color: #ffffff66'"></app-amount>
         </ng-template>
       </p>
       <p *ngIf="line.type !== 'fee' && line.address" class="address">

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, LOCALE_ID } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
@@ -22,6 +22,7 @@ export class SeoService {
     private stateService: StateService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    @Inject(LOCALE_ID) private locale: string,
   ) {
     // save original meta tags
     // A deep link's entity metadata must not become the site's reset defaults.
@@ -50,6 +51,7 @@ export class SeoService {
   }
 
   private documentMetadata() {
+    if (this.locale.startsWith('es')) { return undefined; }
     let path = this.router.url.split('?')[0].split('#')[0];
     try { path = decodeURIComponent(path); } catch {}
     return nativeSeoPages[path.replace(/\/$/, '') || '/'];
@@ -102,7 +104,8 @@ export class SeoService {
   updateCanonical(path) {
     try { path = decodeURIComponent(path); } catch {}
     path = path.replace(/\/$/, '') || '/';
-    const canonicalUrl = 'https://' + this.baseDomain + path;
+    const localePrefix = this.locale.startsWith('es') ? '/es' : '';
+    const canonicalUrl = 'https://' + this.baseDomain + localePrefix + path;
     this.canonicalLink.setAttribute('href', canonicalUrl);
     this.metaService.updateTag({ property: 'og:url', content: canonicalUrl });
   }

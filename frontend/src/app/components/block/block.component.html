@@ -119,6 +119,7 @@
             [orientation]="'top'"
             [flip]="false"
             [blockConversion]="blockConversion"
+            [forceBlockConversion]="true"
             [showFilters]="true"
             [excludeFilters]="['replacement']"
             [relativeTime]="block?.timestamp"
@@ -142,7 +143,7 @@
         <td class="td-width" i18n="block.median-fee">Median fee</td>
         <td>~<app-fee-rate [fee]="block.extras?.medianFee" rounding="1.0-0"></app-fee-rate>
           <span class="fiat">
-            <app-fiat [blockConversion]="blockConversion" [value]="block.extras?.medianFee * 140" digitsInfo="1.2-2"
+            <app-fiat [blockConversion]="blockConversion" [forceBlockConversion]="true" [value]="block.extras?.medianFee * 140" digitsInfo="1.2-2"
               i18n-ngbTooltip="Transaction fee tooltip" ngbTooltip="Based on average native segwit transaction of 140 vBytes"
               placement="bottom"></app-fiat>
           </span>
@@ -154,13 +155,13 @@
           <td *ngIf="network !== 'liquid' && network !== 'liquidtestnet'; else liquidTotalFees">
             <app-amount [satoshis]="block.extras.totalFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
             <span class="fiat">
-              <app-fiat [blockConversion]="blockConversion" [value]="block.extras.totalFees" digitsInfo="1.0-0"></app-fiat>
+              <app-fiat [blockConversion]="blockConversion" [forceBlockConversion]="true" [value]="block.extras.totalFees" digitsInfo="1.0-0"></app-fiat>
             </span>
           </td>
           <ng-template #liquidTotalFees>
             <td>
               <app-amount [satoshis]="fees * 100000000" digitsInfo="1.2-2" [noFiat]="true"></app-amount>&nbsp; <app-fiat
-              [blockConversion]="blockConversion" [value]="fees * 100000000" digitsInfo="1.2-2"></app-fiat>
+              [blockConversion]="blockConversion" [forceBlockConversion]="true" [value]="fees * 100000000" digitsInfo="1.2-2"></app-fiat>
             </td>
           </ng-template>
         </tr>
@@ -169,7 +170,7 @@
           <td>
             <app-amount [satoshis]="block.extras.reward" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
             <span class="fiat">
-              <app-fiat [blockConversion]="blockConversion" [value]="(blockSubsidy + fees) * 100000000" digitsInfo="1.0-0"></app-fiat>
+              <app-fiat [blockConversion]="blockConversion" [forceBlockConversion]="true" [value]="(blockSubsidy + fees) * 100000000" digitsInfo="1.0-0"></app-fiat>
             </span>
           </td>
         </tr>

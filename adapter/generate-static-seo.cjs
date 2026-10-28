@@ -11,9 +11,17 @@ const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<'
 const sources = new Set();
 function read(file) {sources.add(file); return fs.readFileSync(path.join(frontend, file), 'utf8');}
 const introSource = read('src/app/shared/components/tx-taxi-docs-intro/tx-taxi-docs-intro.component.html');
+// The static English documents execute their structured data in a separate VM.
+// Keep Angular's metadata out of the rendered source and preserve substitutions.
+function englishLocalize(parts, ...values) {
+  const messagePart = (part, raw) => raw.startsWith(':') ? part.replace(/^:[^:]*:/, '') : part;
+  let result = messagePart(parts[0], parts.raw[0]);
+  for (let i = 0; i < values.length; i++) result += String(values[i]) + messagePart(parts[i + 1], parts.raw[i + 1]);
+  return result;
+}
 function sanitize(source) {
   return source
-    .replace(/<app-tx-taxi-docs-intro\b[^>]*>[\s\S]*?<\/app-tx-taxi-docs-intro>/g, introSource.replace(/\{\{\s*chainName\s*\}\}/g, config.chain).replace(/\{\{\s*chainHost\s*\}\}/g, config.host).replace(/\{\{\s*context\s*\}\}/g, 'documentation'))
+    .replace(/<app-tx-taxi-docs-intro\b[^>]*>[\s\S]*?<\/app-tx-taxi-docs-intro>/g, tag => introSource.replace(/\{\{\s*chainName\s*\}\}/g, config.chain).replace(/\{\{\s*chainHost\s*\}\}/g, config.host).replace(/\{\{\s*context(?:Label)?\s*\}\}/g, /\bcontext="explorer"/.test(tag) ? 'explorer' : 'documentation').replace(/\[href\]="nativeHref"/g, 'href="/"'))
     .replace(/\s+routerLink="([^"]+)"/g, ' href="$1"')
     .replace(/\s+(?:\*[^\s=]+|\[[^\]]+\]|\([^\)]+\)|#[^\s=]+)(?:=(?:"[^"]*"|'[^']*'))?/g, '')
     .replace(/\s+(?:i18n(?:-[\w-]+)?|ngb\w+|routerLinkActive)(?:="[^"]*")?/g, '')
@@ -39,7 +47,7 @@ function markdown(html) {
 let docs;
 if (config.docsData) {
   const source = stripTypeScriptTypes(read(config.docsData), {mode: 'strip'}).replace(/\bexport\s+/g, '');
-  docs = JSON.parse(vm.runInNewContext(source + `\nJSON.stringify({faq:${config.docsExports.faq},rest:${config.docsExports.rest},ws:${config.docsExports.ws}})`, {}, {timeout: 1000}));
+  docs = JSON.parse(vm.runInNewContext(source + `\nJSON.stringify({faq:${config.docsExports.faq},rest:${config.docsExports.rest},ws:${config.docsExports.ws}})`, {$localize: englishLocalize}, {timeout: 1000}));
 }
 const apiTemplate = config.docsData ? read('src/app/docs/api-docs/api-docs.component.html') : '';
 function documentBody(kind) {

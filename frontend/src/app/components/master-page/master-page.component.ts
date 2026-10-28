@@ -28,13 +28,13 @@ export class MasterPageComponent implements OnInit, OnDestroy {
     this.http.get<any>('/api/provider-health').subscribe({
       next: h => {
         this.providerHttpWarning = h.stale
-          ? 'Provider data has not updated recently. Displayed data may be stale.'
-          : h.degraded ? 'Some provider requests recently failed. Affected data may be unavailable or stale.' : '';
+          ? $localize`:@@taxi.ltc.provider.stale:Provider data has not updated recently. Displayed data may be stale.`
+          : h.degraded ? $localize`:@@taxi.ltc.provider.degraded:Some provider requests recently failed. Affected data may be unavailable or stale.` : '';
         if (h.localHistory?.count) {
-          this.providerHttpWarning += ' Chart history contains only locally collected observations; earlier coverage is unavailable.';
+          this.providerHttpWarning += $localize`:@@taxi.ltc.provider.history: Chart history contains only locally collected observations; earlier coverage is unavailable.`;
         }
       },
-      error: () => this.providerHttpWarning = 'The data service is unavailable. Retrying.'
+      error: () => this.providerHttpWarning = $localize`:@@taxi.ltc.provider.unavailable:The data service is unavailable. Retrying.`
     });
   }
   env: Env;

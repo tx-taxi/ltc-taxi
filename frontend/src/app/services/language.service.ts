@@ -1,6 +1,7 @@
 import { DOCUMENT, getLocaleId } from '@angular/common';
 import { LOCALE_ID, Inject, Injectable } from '@angular/core';
 import { languages } from '@app/app.constants';
+import { writeSharedPreference } from '@app/services/shared-preferences';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,10 @@ export class LanguageService {
   }
 
   setLanguage(language: string): void {
+    if (!this.languages.some(lang => lang.code === language)) { return; }
+    writeSharedPreference(this.document, 'txtaxi_language', language);
     try {
-      document.cookie = `lang=${language}; expires=Thu, 18 Dec 2050 12:00:00 UTC; path=/`;
+      this.document.cookie = `lang=${language}; expires=Thu, 18 Dec 2050 12:00:00 UTC; path=/`;
     } catch (e) { }
   }
 }

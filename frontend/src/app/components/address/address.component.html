@@ -89,7 +89,7 @@
                 <textarea id="tapleavesInput" class="form-control font-monospace" rows="1" formControlName="tapleaf" placeholder="Hex or base64 encoded, comma separated PSBT_IN_TAP_LEAF_SCRIPT (<control block>:<script><leaf version>)" autocomplete="off" spellcheck="false" (input)="submitPsbt()"></textarea>
                 <label for="taptreeInput" class="form-label mt-2 mb-1 fw-bold">Taptree</label>
                 <textarea id="taptreeInput" class="form-control font-monospace" rows="1" formControlName="taptree" placeholder="Hex or base64 encoded PSBT_OUT_TAP_TREE field" autocomplete="off" spellcheck="false" (input)="submitPsbt()"></textarea>
-                <label *ngIf="!addressTypeInfo?.tapscript" for="internalKeyInput" class="form-label mt-2 mb-1 fw-bold">Internal Key</label>
+                <label *ngIf="!addressTypeInfo?.tapscript" for="internalKeyInput" class="form-label mt-2 mb-1 fw-bold" i18n="@@tx-taxi.internal-key">Internal Key</label>
                 <textarea *ngIf="!addressTypeInfo?.tapscript" id="internalKeyInput" class="form-control font-monospace" rows="1" formControlName="ikey" placeholder="Hex or base64 encoded x-only public key" autocomplete="off" spellcheck="false" (input)="submitPsbt()"></textarea>
                 <div class="text-danger mt-2 small" *ngIf="psbtError">{{ psbtError }}</div>
               </form>

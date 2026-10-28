@@ -18,6 +18,7 @@ export class BlockOverviewTooltipComponent implements OnChanges {
   @Input() clickable: boolean;
   @Input() auditEnabled: boolean = false;
   @Input() blockConversion: Price;
+  @Input() forceBlockConversion = false;
   @Input() filterFlags: bigint | null = null;
   @Input() filterMode: FilterMode = 'and';
 

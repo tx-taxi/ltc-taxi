@@ -10,11 +10,11 @@
           }
         </div>
         @if (!enterpriseInfo?.footer_img) {
-          <p class="explore-tagline-mobile">Litecoin blocks, fees, and mempool activity</p>
+          <p class="explore-tagline-mobile" i18n="@@taxi.footer.tagline">Litecoin blocks, fees, and mempool activity</p>
         }
         <div class="site-options language-selector d-flex justify-content-center align-items-center" [class]="{'services': isServicesPage}">
           <div class="selector">
-            <span>English</span>
+            <app-language-selector></app-language-selector>
           </div>
           <div class="selector">
             <app-fiat-selector></app-fiat-selector>
@@ -38,51 +38,51 @@
           }
         </div>
         @if (!enterpriseInfo?.footer_img) {
-          <p class="explore-tagline-desktop">Litecoin blocks, fees, and mempool activity</p>
+          <p class="explore-tagline-desktop" i18n="@@taxi.footer.tagline">Litecoin blocks, fees, and mempool activity</p>
         }
       </div>
     </div>
 
     <div class="row col-md-12 link-tree" [class]="{'services': isServicesPage}">
       <div class="links">
-        <p class="category">Explore</p>
-        <p><a [routerLink]="['/' | relativeUrl]">Dashboard</a></p>
-        <p><a [routerLink]="['/blocks' | relativeUrl]">Recent Blocks</a></p>
-        <p><a [routerLink]="['/mempool-block/0' | relativeUrl]">Mempool Wall</a></p>
-        <p><a *ngIf="env.MINING_DASHBOARD" [routerLink]="['/mining' | relativeUrl]">Mining Dashboard</a></p>
-        <p><a [routerLink]="['/graphs' | relativeUrl]">Litecoin Graphs</a></p>
+        <p class="category" i18n="@@taxi.footer.explore">Explore</p>
+        <p><a [routerLink]="['/' | relativeUrl]" i18n="@@taxi.footer.dashboard">Dashboard</a></p>
+        <p><a [routerLink]="['/blocks' | relativeUrl]" i18n="@@taxi.footer.recent-blocks">Recent Blocks</a></p>
+        <p><a [routerLink]="['/mempool-block/0' | relativeUrl]" i18n="@@taxi.footer.mempool-wall">Mempool Wall</a></p>
+        <p><a *ngIf="env.MINING_DASHBOARD" [routerLink]="['/mining' | relativeUrl]" i18n="@@taxi.footer.mining">Mining Dashboard</a></p>
+        <p><a [routerLink]="['/graphs' | relativeUrl]" i18n="@@taxi.footer.graphs">Litecoin Graphs</a></p>
       </div>
       <div class="links">
-        <p class="category">Tools &amp; Docs</p>
+        <p class="category" i18n="@@taxi.footer.tools">Tools &amp; Docs</p>
 
 
 
-        <p><a [routerLink]="['/tools/calculator' | relativeUrl]">Calculator</a></p>
-        <p><a [routerLink]="['/docs/faq' | relativeUrl]">Litecoin FAQ</a></p>
-        <p><a [routerLink]="['/docs/api' | relativeUrl]">API Documentation</a></p>
+        <p><a [routerLink]="['/tools/calculator' | relativeUrl]" i18n="@@taxi.footer.calculator">Calculator</a></p>
+        <p><a [routerLink]="['/docs/faq' | relativeUrl]" i18n="@@taxi.footer.faq">Litecoin FAQ</a></p>
+        <p><a [routerLink]="['/docs/api' | relativeUrl]" i18n="@@taxi.footer.api">API Documentation</a></p>
       </div>
       <div class="links">
         <p class="category">ltc.tx.taxi</p>
-        <p><a [routerLink]="['/about']">About</a></p>
-        <p><a href="https://github.com/tx-taxi/ltc-taxi" target="_blank" rel="noopener noreferrer">Source code</a></p>
-        <p><a href="https://status.tx.taxi/" target="_blank" rel="noopener noreferrer">Status</a></p>
-        <p><a href="https://t.me/txtaxi" target="_blank" rel="noopener noreferrer" aria-label="Join the tx.taxi Telegram channel">Telegram</a></p>
-        <p><a href="https://t.me/hiss" target="_blank" rel="noopener noreferrer">Contact Us</a></p>
-        <p><a href="https://github.com/mempool/mempool" target="_blank" rel="noopener noreferrer">Upstream project</a></p>
-        <p><button class="btn btn-link p-0" (click)="resetLeavingPreference()">Ask before leaving Litecoin</button></p>
+        <p><a [routerLink]="['/about']" i18n="@@taxi.footer.about">About</a></p>
+        <p><a href="https://github.com/tx-taxi/ltc-taxi" target="_blank" rel="noopener noreferrer" i18n="@@taxi.footer.source">Source code</a></p>
+        <p><a href="https://status.tx.taxi/" target="_blank" rel="noopener noreferrer" i18n="@@taxi.footer.status">Status</a></p>
+        <p><a href="https://t.me/txtaxi" target="_blank" rel="noopener noreferrer" aria-label="Join the tx.taxi Telegram channel" i18n-aria-label="@@taxi.ltc.footer.telegram">Telegram</a></p>
+        <p><a href="https://t.me/hiss" target="_blank" rel="noopener noreferrer" i18n="@@taxi.footer.contact">Contact Us</a></p>
+        <p><a href="https://github.com/mempool/mempool" target="_blank" rel="noopener noreferrer" i18n="@@taxi.footer.upstream">Upstream project</a></p>
+        <p><button class="btn btn-link p-0" (click)="resetLeavingPreference()" i18n="@@taxi.footer.leaving">Ask before leaving Litecoin</button></p>
       </div>
       <div class="links">
-        <p class="category">Legal</p>
-        <p><a [routerLink]="['/terms-of-service']">Terms of Service</a></p>
-        <p><a [routerLink]="['/privacy-policy']">Privacy Policy</a></p>
-        <p><a [routerLink]="['/trademark-policy']">Trademark &amp; Attribution</a></p>
+        <p class="category" i18n="@@taxi.footer.legal">Legal</p>
+        <p><a [routerLink]="['/terms-of-service']" i18n="@@taxi.footer.terms">Terms of Service</a></p>
+        <p><a [routerLink]="['/privacy-policy']" i18n="@@taxi.footer.privacy">Privacy Policy</a></p>
+        <p><a [routerLink]="['/trademark-policy']" i18n="@@taxi.footer.attribution">Trademark &amp; Attribution</a></p>
       </div>
     </div>
 
     <div class="row footer-credit" [style]="{'background-color': isServicesPage ? 'var(--bg)' : ''}">
       <div class="col-sm-12">
         <p>
-          Made with <span class="footer-credit-emoji" aria-hidden="true">🚕</span> by
+          <span i18n="@@taxi.ltc.footer.made-with">Made with</span> <span class="footer-credit-emoji" aria-hidden="true">🚕</span> <span i18n="@@taxi.ltc.footer.by">by</span>
           <a class="footer-credit-link" href="https://u.software" target="_blank" rel="noopener noreferrer">u.software</a>
         </p>
       </div>

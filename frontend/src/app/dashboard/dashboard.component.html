@@ -18,7 +18,7 @@
       <div class="card graph-card">
         <div class="card-body ps-lg-3 pe-lg-3 ps-2 pe-2">
           <a class="title-link mb-0" style="margin-top: -2px" href="" [routerLink]="['/mempool-block/0' | relativeUrl]">
-            <h5 class="card-title d-inline"><span>Pending Transactions</span></h5>
+            <h5 class="card-title d-inline"><span i18n="@@taxi.pending-transactions">Pending Transactions</span></h5>
             <span>&nbsp;</span>
             <fa-icon [icon]="['fas', 'external-link-alt']" [fixedWidth]="true" style="vertical-align: text-top; font-size: 13px; color: var(--title-fg)"></fa-icon>
           </a>
@@ -31,7 +31,7 @@
               </ng-container>
             </div>
           </div>
-          <p *ngIf="!webGlEnabled" class="p-4">WebGL is unavailable. <a routerLink="/txs">View pending transactions as a list.</a></p><div class="mempool-block-wrapper" *ngIf="webGlEnabled">
+          <p *ngIf="!webGlEnabled" class="p-4"><span i18n="@@tx-taxi.webgl-unavailable">WebGL is unavailable.</span> <a routerLink="/txs" i18n="@@tx-taxi.pending-list-link">View pending transactions as a list.</a></p><div class="mempool-block-wrapper" *ngIf="webGlEnabled">
             <app-mempool-block-overview
               [index]="0"
               [resolution]="goggleResolution"
@@ -76,8 +76,8 @@
               <th class="table-cell-badges" i18n="transaction.status|Transaction Status">Status</th>
             </thead>
             <tbody *ngIf="replacements$ | async as replacements; else replacementsSkeleton">
-              <tr *ngIf="(stateService.connectionState$ | async) !== 2; else replacementsOnline"><td colspan="4" class="text-center text-secondary">Replacement updates unavailable. Reconnecting...</td></tr>
-              <ng-template #replacementsOnline><tr *ngIf="!replacements.length"><td colspan="4" class="text-center text-secondary">No replacements in the current feed.</td></tr></ng-template><tr *ngFor="let replacement of replacements">
+              <tr *ngIf="(stateService.connectionState$ | async) !== 2; else replacementsOnline"><td colspan="4" class="text-center text-secondary" i18n="@@tx-taxi.replacements-reconnecting">Replacement updates unavailable. Reconnecting...</td></tr>
+              <ng-template #replacementsOnline><tr *ngIf="!replacements.length"><td colspan="4" class="text-center text-secondary" i18n="@@tx-taxi.no-replacements">No replacements in the current feed.</td></tr></ng-template><tr *ngFor="let replacement of replacements">
                 <td class="table-cell-txid">
                   <a [routerLink]="['/tx' | relativeUrl, replacement.txid]">
                     <app-truncate [text]="replacement.txid" [lastChars]="5"></app-truncate>

@@ -64,7 +64,7 @@
 
     <div class="row calculator-inline-row justify-content-center">
       <div class="fiat-text">
-        <app-fiat [value]="form.get('satoshis').value" digitsInfo="1.2-2" [blockConversion]="blockConversion"></app-fiat>
+        <app-fiat [value]="form.get('satoshis').value" digitsInfo="1.2-2" [blockConversion]="blockConversion" [forceBlockConversion]="!todaySelected"></app-fiat>
       </div>
     </div>
 
