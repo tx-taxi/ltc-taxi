@@ -11572,6 +11572,7 @@
         <source>Mining pool logo</source>
         <target>Logo des Mining-Pools</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.block.dashboard" datatype="html"><source>Litecoin explorer dashboard</source><target>Litecoin-Explorer-Dashboard</target></trans-unit>
     </body>
   </file>
 </xliff>
