@@ -11910,6 +11910,74 @@
 
         <target>Tu saldo es demasiado bajo.</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.title" datatype="html">
+        <source>Privacy Policy</source>
+        <target>Política de privacidad</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.updated" datatype="html">
+        <source>Updated: September 20, 2026</source>
+        <target>Actualizado: 20 de septiembre de 2026</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.audience" datatype="html">
+        <source>Audience measurement</source>
+        <target>Medición de audiencia</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.own-node" datatype="html">
+        <source>Use Your Own Node When Privacy Matters</source>
+        <target>Usa tu propio nodo cuando la privacidad sea importante</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.own-node-body" datatype="html">
+        <source>ltc.tx.taxi displays public Litecoin chain and mempool data through the backend configured by the site operator. For independent verification and the strongest network privacy, use your own Litecoin node and explorer.</source>
+        <target>ltc.tx.taxi muestra datos públicos de la cadena y del mempool de Litecoin a través del servidor configurado por el operador del sitio. Para verificar de forma independiente y obtener la máxima privacidad de red, utiliza tu propio nodo y explorador de Litecoin.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.request" datatype="html">
+        <source>Request Data</source>
+        <target>Datos de las solicitudes</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.request-body" datatype="html">
+        <source>Normal website and API requests can reveal standard web metadata to the operator, including your IP address, user agent, requested URL, and request time. Server logs may be retained for reliability, abuse prevention, and debugging.</source>
+        <target>Las solicitudes normales al sitio web y a la API pueden revelar metadatos web habituales al operador, como tu dirección IP, agente de usuario, URL solicitada y hora de la solicitud. Los registros del servidor pueden conservarse para garantizar la fiabilidad, prevenir abusos y depurar errores.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.preferences" datatype="html">
+        <source>Local Preferences</source>
+        <target>Preferencias locales</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.preferences-body" datatype="html">
+        <source>Display preferences such as theme, denomination, fiat currency, language, and timezone may be stored in your browser. ltc.tx.taxi does not require an account for ordinary explorer use.</source>
+        <target>Las preferencias de visualización, como el tema, la denominación, la moneda fiduciaria, el idioma y la zona horaria, pueden guardarse en tu navegador. ltc.tx.taxi no requiere una cuenta para el uso habitual del explorador.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.public-data" datatype="html">
+        <source>Public Blockchain Data</source>
+        <target>Datos públicos de la cadena de bloques</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.public-body" datatype="html">
+        <source>Litecoin transactions, addresses, scripts, and blocks are public. Looking up an address or transaction can associate that lookup with your network metadata. Do not treat a public explorer as a privacy boundary.</source>
+        <target>Las transacciones, direcciones, scripts y bloques de Litecoin son públicos. Al consultar una dirección o transacción, esa consulta puede asociarse con tus metadatos de red. No consideres un explorador público una barrera de privacidad.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.external" datatype="html">
+        <source>External Links</source>
+        <target>Enlaces externos</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.external-body" datatype="html">
+        <source>This site links to tx.taxi contact channels, Litecoin documentation, and upstream source code. Those external services have their own privacy policies.</source>
+        <target>Este sitio enlaza a los canales de contacto de tx.taxi, la documentación de Litecoin y el código fuente original. Estos servicios externos tienen sus propias políticas de privacidad.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.attribution" datatype="html">
+        <source>Open Source Attribution</source>
+        <target>Atribución de código abierto</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.attribution-body" datatype="html">
+        <source>Mempool names, logos, and trademarks remain the property of their respective owners; ltc.tx.taxi is not affiliated with or endorsed by Mempool Holdings S.A. de C.V.</source>
+        <target>Los nombres, logotipos y marcas de Mempool siguen siendo propiedad de sus respectivos titulares; ltc.tx.taxi no está afiliado a Mempool Holdings S.A. de C.V. ni cuenta con su respaldo.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.audience-body" datatype="html">
+        <source>tx.taxi uses Cloudflare Web Analytics for page views and performance, and a first-party daily cookie shared across its explorers to count browsers once per UTC day. The daily audience collector stores only a daily identifier, the explorer hostname, and whether there was interaction. It does not receive search text, addresses, transaction IDs, URLs, or IP addresses. Individual daily records expire after 31 days; aggregate counts are retained for 400 days. Do Not Track and Global Privacy Control disable this first-party measurement.</source>
+        <target>tx.taxi utiliza Cloudflare Web Analytics para medir las visitas y el rendimiento, y una cookie propia diaria compartida entre sus exploradores para contar cada navegador una vez por día UTC. El recopilador diario de audiencia almacena únicamente un identificador diario, el nombre del explorador y si hubo interacción. No recibe términos de búsqueda, direcciones, identificadores de transacciones, URL ni direcciones IP. Los registros diarios individuales caducan después de 31 días; los recuentos agregados se conservan durante 400 días. Do Not Track y Global Privacy Control desactivan esta medición propia.</target>
+      </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.opt-out" datatype="html">
+        <source>Details and opt-out</source>
+        <target>Detalles y exclusión</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
