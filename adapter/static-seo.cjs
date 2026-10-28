@@ -12,7 +12,7 @@ function page(pathname) {
   const route = normalize(pathname);
   if (pages.has(route)) return pages.get(route);
   const numbered = route.match(/^\/blocks\/([1-9][0-9]*)$/);
-  if (numbered) return {...pages.get('/blocks/1'), path: route, title: `${data.chain} blocks, page ${numbered[1]} - ${data.host}`};
+  if (numbered) return {...pages.get('/blocks/1'), path: route, noindex: true, title: `${data.chain} blocks, page ${numbered[1]} - ${data.host}`};
   const projected = route.match(/^\/mempool-block\/([0-9]+)$/);
   if (projected) return {...pages.get('/mempool-block/0'), path: route, title: `${data.chain} pending sample ${projected[1]} - ${data.host}`};
   if (data.poolPages && /^\/mining\/pool\/[^/]+$/.test(route)) return {...pages.get('/graphs/mining/pools'), path: route, title: `${data.chain} mining pool ${route.split('/').at(-1)} - ${data.host}`};
@@ -24,7 +24,9 @@ function entity(pathname) {
 }
 function nonIndexable(pathname) {
   const route = normalize(pathname);
-  if (page(route) || entity(route)) return false;
+  const document = page(route);
+  if (document) return Boolean(document.noindex);
+  if (entity(route)) return false;
   return !/\.[a-z0-9]+$/i.test(route);
 }
 function redirect(pathname) {
@@ -43,7 +45,7 @@ function existingNonIndexable(pathname) {
     || /^\/cab\/[^/]+\/[^/]+\/[^/]+$/.test(route)
     || route === '/widget/wallet'
     || /^\/preview(?:\/(?:testnet|testnet4|signet|regtest))?(?:\/(?:block|address|wallet|tx)\/[^/]+|\/mining\/pool\/[^/]+|\/lightning(?:\/[^/]+)*)?$/.test(route);
-  return data.noindexRoutes.includes(route) || presentation || (!data.poolPages && /^\/mining\/pool\/[^/]+$/.test(route));
+  return Boolean(page(route)?.noindex) || data.noindexRoutes.includes(route) || presentation || (!data.poolPages && /^\/mining\/pool\/[^/]+$/.test(route));
 }
 function markdownPath(route) { return route === '/' ? '/index.md' : `${route}.md`; }
 function endpoint(pathname) {

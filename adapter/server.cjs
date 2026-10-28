@@ -93,7 +93,7 @@ async function metadata(path) {
    if(kind==='tx')cardDescription=`${r.data.status?.confirmed?'Confirmed':'Pending'} transaction · Fee: ${(r.data.fee/1e8).toFixed(8)} LTC`;
    if(kind==='block')cardDescription=`Block ${r.data.height} · ${r.data.tx_count} transaction${r.data.tx_count===1?'':'s'} · ${new Date(r.data.timestamp*1000).toISOString().slice(0,10)}`;
    if(kind==='address')cardDescription=`${r.data.chain_stats?.tx_count ?? 'Indexed'} confirmed transaction${r.data.chain_stats?.tx_count===1?'':'s'}`;
-  } else description='Litecoin entity data is temporarily unavailable. Retry to retrieve current details.';
+  } else description=r.status === 404 ? 'Litecoin entity not found.' : 'Litecoin entity data is temporarily unavailable. Retry to retrieve current details.';
  }
  return {title,description,cardDescription,path,entityStatus};
 }
@@ -179,8 +179,9 @@ const server=http.createServer(async(req,res)=>{
    const documentPage = staticSeo.page(u.pathname);
    const semanticPage = documentPage || (staticSeo.entity(u.pathname) ? {...m,label:m.title,html:`<p>${escape(m.description)}</p>`} : null);
    html = staticSeo.render(html, semanticPage).replace('</head>',staticSeo.headLinks(documentPage)+'</head>');
-   const noindex = staticSeo.nonIndexable(u.pathname);
-   return send(res,noindex && !staticSeo.existingNonIndexable(u.pathname) ? 404 : m.entityStatus || r.status,req.method === 'HEAD' ? undefined : html,type,noindex ? {'X-Robots-Tag':'noindex, follow'} : {});
+   const noindex = m.entityStatus === 404 || staticSeo.nonIndexable(u.pathname);
+   if (noindex) html = html.replace(/<meta\b[^>]*name=["']robots["'][^>]*>/gi, '').replace('</head>', '<meta name="robots" content="noindex, follow"></head>');
+   return send(res,m.entityStatus || (noindex && !staticSeo.existingNonIndexable(u.pathname) ? 404 : r.status),req.method === 'HEAD' ? undefined : html,type,{...(noindex ? {'X-Robots-Tag':'noindex, follow'} : {}), ...(m.entityStatus === 503 ? {'Retry-After':'60'} : {})});
   }
   return send(res,r.status,Buffer.from(await r.arrayBuffer()),type);
  }catch(e){send(res,503,{error:'Local service unavailable',message:e.message});}
