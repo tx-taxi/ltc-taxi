@@ -12,7 +12,7 @@ export class TermsOfServiceComponent {
   ) { }
 
   ngOnInit(): void {
-    this.seoService.setTitle('Terms of Service');
-    this.seoService.setDescription('Terms for using ltc.tx.taxi as an informational Bitcoin block and mempool explorer.');
+    this.seoService.setTitle($localize`:@@taxi.ltc.terms.title:Terms of Service`);
+    this.seoService.setDescription($localize`:@@taxi.ltc.terms.description:Terms for using ltc.tx.taxi as an informational Litecoin block and mempool explorer.`);
   }
 }

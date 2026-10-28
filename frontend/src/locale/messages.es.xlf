@@ -12094,6 +12094,11 @@
         <source>Mining pool logo</source>
         <target>Logotipo del pool de minería</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.description" datatype="html"><source>Privacy notes for ltc.tx.taxi, including public Litecoin data, browser preferences, server logs, and independent verification.</source><target>Información de privacidad de ltc.tx.taxi, incluidos los datos públicos de Litecoin, las preferencias del navegador, los registros del servidor y la verificación independiente.</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.description" datatype="html"><source>Terms for using ltc.tx.taxi as an informational Litecoin block and mempool explorer.</source><target>Condiciones de uso de ltc.tx.taxi como explorador informativo de bloques y mempool de Litecoin.</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.description" datatype="html"><source>Trademark and attribution notes for ltc.tx.taxi, including upstream mempool/mempool attribution and project independence.</source><target>Información sobre marcas y atribuciones de ltc.tx.taxi, incluida la atribución a mempool/mempool y la independencia del proyecto.</target></trans-unit>
+      <trans-unit id="taxi.ltc.meta.base-description" datatype="html"><source>Explore Litecoin blocks, transactions, addresses, fees and mining activity.</source><target>Explora bloques, transacciones, direcciones, comisiones y actividad minera de Litecoin.</target></trans-unit>
+      <trans-unit id="taxi.ltc.meta.explorer-title" datatype="html"><source><x id="chain"/> Explorer</source><target>Explorador de <x id="chain"/></target></trans-unit>
     </body>
   </file>
 </xliff>
