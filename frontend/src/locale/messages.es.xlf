@@ -11715,6 +11715,201 @@
       <trans-unit id="tx-taxi.prevouts-error" datatype="html"><source>Error loading missing prevouts</source><target>Error al cargar las salidas anteriores que faltan</target></trans-unit>
       <trans-unit id="tx-taxi.replacements-reconnecting" datatype="html"><source>Replacement updates unavailable. Reconnecting...</source><target>Las actualizaciones de reemplazos no están disponibles. Reconectando...</target></trans-unit>
       <trans-unit id="tx-taxi.webgl-unavailable" datatype="html"><source>WebGL is unavailable.</source><target>WebGL no está disponible.</target></trans-unit>
+      <trans-unit id="6693ca41dea3f8a2b1747ba08e3f780c52d074bf" datatype="html">
+        <source>Using partner code</source>
+
+        <target>Usando código de socio</target>
+      </trans-unit>
+      <trans-unit id="53df671d02f18a96a60c3ca3f4586ff3bb584f47" datatype="html">
+        <source>LTC</source>
+
+        <target>LTC</target>
+      </trans-unit>
+      <trans-unit id="c665a0fee94cb61bbd5a13cf7763c534dbba1ead" datatype="html">
+        <source>lits</source>
+
+        <target>lits</target>
+      </trans-unit>
+      <trans-unit id="e0f4283c19259f2bd53940324cb490f797b9aae4" datatype="html">
+        <source>select filter categories to highlight matching pending transactions</source>
+
+        <target>Selecciona categorías de filtros para destacar las transacciones pendientes que coincidan</target>
+      </trans-unit>
+      <trans-unit id="e5767c23722c38d4303a11373996071b33ca0b0c" datatype="html">
+        <source> Values were capped at the max supply of 84M LTC </source>
+
+        <target> Los valores se limitaron al suministro máximo de 84 millones de LTC </target>
+      </trans-unit>
+      <trans-unit id="1cdb643999eb6d66bcd839aeaa381b62b8be8cd4" datatype="html">
+        <source>mempool chunk</source>
+
+        <target>grupo del mempool</target>
+      </trans-unit>
+      <trans-unit id="36028650a60cba9aa7f034ae34643c72f5364f1d" datatype="html">
+        <source>this transaction</source>
+
+        <target>esta transacción</target>
+      </trans-unit>
+      <trans-unit id="32fba724df729afb840693b40e3f8869356f4e33" datatype="html">
+        <source>Size</source>
+
+        <target>Tamaño</target>
+      </trans-unit>
+      <trans-unit id="1eb8a98f68c1c98884c6436650f5ad80f4b3d5bf" datatype="html">
+        <source>parents</source>
+
+        <target>transacciones ascendientes</target>
+      </trans-unit>
+      <trans-unit id="94c4e242e055d9521e1a0bfc7f1d165bbb37b94a" datatype="html">
+        <source>children</source>
+
+        <target>transacciones descendientes</target>
+      </trans-unit>
+      <trans-unit id="d1ca10f0337c02e631f15b7da5d57dddc1954704" datatype="html">
+        <source>parent</source>
+
+        <target>transacción ascendiente</target>
+      </trans-unit>
+      <trans-unit id="016d2ff8ad4b04f08717b98b5bc61eb122fb1ac8" datatype="html">
+        <source>child</source>
+
+        <target>transacción descendiente</target>
+      </trans-unit>
+      <trans-unit id="ac0f81713a84217c9bd1d9bb460245d8190b073f" datatype="html">
+        <source>More</source>
+
+        <target>Más</target>
+      </trans-unit>
+      <trans-unit id="4ce06818b8fe60a7c040ce7bfecc10b11397401b" datatype="html">
+        <source>24h Volume</source>
+
+        <target>Volumen de 24 h</target>
+      </trans-unit>
+      <trans-unit id="7729adad4cbe5f490e393a925fae8a9b90f8ac08" datatype="html">
+        <source>Reserve Deficit</source>
+
+        <target>Déficit de reservas</target>
+      </trans-unit>
+      <trans-unit id="489277af67abab02f1de98f4a7930fc611471eda" datatype="html">
+        <source>occurrence</source>
+
+        <target>aparición</target>
+      </trans-unit>
+      <trans-unit id="850e39efd95e6090598e13a01b7825f6b71b1017" datatype="html">
+        <source>occurrences</source>
+
+        <target>apariciones</target>
+      </trans-unit>
+      <trans-unit id="57d63f33e6e6f3d4716fab5381cff30d517d5c4e" datatype="html">
+        <source>usages</source>
+
+        <target>usos</target>
+      </trans-unit>
+      <trans-unit id="5983c6a2299b646b3aecc5795ed51573d7cd235a" datatype="html">
+        <source>The overall luck of all mining pools over the past week. A luck bigger than 100% means the average block time for the current epoch is less than 2.5 minutes.</source>
+
+        <target>La suerte total de todos los pools de minería durante la última semana. Una suerte superior al 100 % significa que el tiempo medio de bloque de la época actual es inferior a 2,5 minutos.</target>
+      </trans-unit>
+      <trans-unit id="0ae507a6193771292e02b78a8e3521c91d36aa53" datatype="html">
+        <source>Litecoin Price</source>
+
+        <target>Precio de Litecoin</target>
+      </trans-unit>
+      <trans-unit id="f6faae940556fd1d3f92b84772235ccfd585f799" datatype="html">
+        <source>Maximum fee rate (lit/vB)</source>
+
+        <target>Tasa máxima de comisión (lit/vB)</target>
+      </trans-unit>
+      <trans-unit id="6d1c8856044cc923fc70f32cb4be360d200cfa82" datatype="html">
+        <source>1 new transaction</source>
+
+        <target>1 transacción nueva</target>
+      </trans-unit>
+      <trans-unit id="a5c3bb57620832141bf6c51d7344e69af366c7e8" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="new transactions&lt;/span&gt; &lt;/button&gt;  &lt;div [class.container-xl]=&quot;!widget&quot; [cla" /> new transactions</source>
+
+        <target><x id="INTERPOLATION" equiv-text="new transactions&lt;/span&gt; &lt;/button&gt;  &lt;div [class.container-xl]=&quot;!widget&quot; [cla" /> transacciones nuevas</target>
+      </trans-unit>
+      <trans-unit id="487bebf9352332c5e7f5bd00a78371cacff0fd95" datatype="html">
+        <source>Pause/Resume</source>
+
+        <target>Pausar/reanudar</target>
+      </trans-unit>
+      <trans-unit id="88f27d579752fd40ef53cfff5e936c293ca19221" datatype="html">
+        <source>Pause/Resume</source>
+
+        <target>Pausar/reanudar</target>
+      </trans-unit>
+      <trans-unit id="bba7a55b8bcbfd50a697f8cf0a7b917836f453f0" datatype="html">
+        <source>vSize</source>
+
+        <target>Tamaño virtual</target>
+      </trans-unit>
+      <trans-unit id="6dd731279deed7fcfecdeec0b8e0542d0053464d" datatype="html">
+        <source>LTC/block</source>
+
+        <target>LTC/bloque</target>
+      </trans-unit>
+      <trans-unit id="839486fbcffb88439c950f00c322cd5bea72b809" datatype="html">
+        <source>lits/tx</source>
+
+        <target>lits/tx</target>
+      </trans-unit>
+      <trans-unit id="bb0132f1e3ceff9153163bff12fb8638e1c31705" datatype="html">
+        <source>Mempool by vBytes (lit/vByte)</source>
+
+        <target>Mempool por vBytes (lit/vByte)</target>
+      </trans-unit>
+      <trans-unit id="7e01b7b01feffecb2fa299353099e50b9b87f6c4" datatype="html">
+        <source>This transaction belongs to a chunk of 1 transaction, with combined effective fee rate <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;" /><x id="INTERPOLATION" equiv-text="s.chunkFeerate | feeRounding }}" /> lit/vB<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;" />.</source>
+
+        <target>Esta transacción pertenece a un grupo de 1 transacción con una tasa efectiva de comisión combinada de <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;" /><x id="INTERPOLATION" equiv-text="s.chunkFeerate | feeRounding }}" /> lit/vB<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;" />.</target>
+      </trans-unit>
+      <trans-unit id="a22deb277b0b35112d071a8b345a843dadf9a252" datatype="html">
+        <source>This transaction belongs to a chunk of <x id="INTERPOLATION" equiv-text="{{ clusterPreviewStats.chunkSize }}" /> transactions, with combined effective fee rate <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;" /><x id="INTERPOLATION_1" equiv-text="s.chunkFeerate | feeRounding }}" /> lit/vB<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;" />.</source>
+
+        <target>Esta transacción pertenece a un grupo de <x id="INTERPOLATION" equiv-text="{{ clusterPreviewStats.chunkSize }}" /> transacciones con una tasa efectiva de comisión combinada de <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;" /><x id="INTERPOLATION_1" equiv-text="s.chunkFeerate | feeRounding }}" /> lit/vB<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;" />.</target>
+      </trans-unit>
+      <trans-unit id="c7678f3be45eefaebe9bda75a0a30f97204433b5" datatype="html">
+        <source>In a mempool cluster containing 1 other chunk.</source>
+
+        <target>En un clúster del mempool que contiene otro grupo.</target>
+      </trans-unit>
+      <trans-unit id="acf9470007b6c76f037bf8aec23fc8d2ba2267a4" datatype="html">
+        <source>In a mempool cluster containing <x id="INTERPOLATION" equiv-text="{{ clusterPreviewStats.otherChunks }}" /> other chunks.</source>
+
+        <target>En un clúster del mempool que contiene <x id="INTERPOLATION" equiv-text="{{ clusterPreviewStats.otherChunks }}" /> grupos más.</target>
+      </trans-unit>
+      <trans-unit id="92626adb4b7e2aff0d35c2db5e023aac29d27f0f" datatype="html">
+        <source>Cluster</source>
+
+        <target>Clúster</target>
+      </trans-unit>
+      <trans-unit id="a3eada691bce383b4d990ab3bae548d273ea037f" datatype="html">
+        <source>Only ~<x id="INTERPOLATION" equiv-text="{{ medianFeeNeeded | feeRounding }}" /> lit/vB was needed to get into this block</source>
+
+        <target>Solo se necesitaban ~<x id="INTERPOLATION" equiv-text="{{ medianFeeNeeded | feeRounding }}" /> lit/vB para entrar en este bloque</target>
+      </trans-unit>
+      <trans-unit id="c19bde6e194e95b60145a4e312fc31941197d90c" datatype="html">
+        <source>LBTC Supply vs. BTC Holdings</source>
+
+        <target>Suministro de LBTC frente a reservas de BTC</target>
+      </trans-unit>
+      <trans-unit id="c41d162ba51c8aea1e205d010ce6c68ba36ae4b5" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="For those request" /><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="ltc.tx.taxi only" />ltc.tx.taxi only displays public data about the Litecoin network.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /> It cannot retrieve funds, resolve wallet issues, reverse transactions, or change confirmation priority.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;" /><x id="START_PARAGRAPH" ctype="x-p" equiv-text="For those request" />For those requests, contact the wallet, exchange, or payment service that created the transaction.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;" /></source>
+
+        <target><x id="START_PARAGRAPH" ctype="x-p" equiv-text="For those request" /><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="ltc.tx.taxi only" />ltc.tx.taxi solo muestra datos públicos de la red Litecoin.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;" /> No puede recuperar fondos, solucionar problemas de monederos, revertir transacciones ni cambiar la prioridad de confirmación.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;" /><x id="START_PARAGRAPH" ctype="x-p" equiv-text="For those request" />Para estas solicitudes, contacta con el monedero, exchange o servicio de pago que creó la transacción.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;" /></target>
+      </trans-unit>
+      <trans-unit id="1ee1b2c4ff9cc326c9df47240f4b80cd59082bde" datatype="html">
+        <source>lit/vB</source>
+
+        <target>lit/vB</target>
+      </trans-unit>
+      <trans-unit id="c3c520c2bccb5da8e432dd5f282a72b05e12b7e0" datatype="html">
+        <source>Your balance is too low.</source>
+
+        <target>Tu saldo es demasiado bajo.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
