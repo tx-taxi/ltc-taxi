@@ -21,7 +21,7 @@ function englishLocalize(parts, ...values) {
 }
 function sanitize(source) {
   return source
-    .replace(/<app-tx-taxi-docs-intro\b[^>]*>[\s\S]*?<\/app-tx-taxi-docs-intro>/g, tag => introSource.replace(/\{\{\s*chainName\s*\}\}/g, config.chain).replace(/\{\{\s*chainHost\s*\}\}/g, config.host).replace(/\{\{\s*context(?:Label)?\s*\}\}/g, /\bcontext="explorer"/.test(tag) ? 'explorer' : 'documentation').replace(/\[href\]="nativeHref"/g, 'href="/"'))
+    .replace(/<app-tx-taxi-docs-intro\b[^>]*>[\s\S]*?<\/app-tx-taxi-docs-intro>/g, tag => introSource.replace(/\{\{\s*chainName\s*\}\}/g, config.chain).replace(/\{\{\s*chainHost\s*\}\}/g, config.host).replace(/\{\{\s*contextLabel\s*\}\}/g, config.chain + (/\bcontext="explorer"/.test(tag) ? ' explorer' : ' documentation')).replace(/\{\{\s*context\s*\}\}/g, /\bcontext="explorer"/.test(tag) ? 'explorer' : 'documentation').replace(/\[href\]="nativeHref"/g, 'href="/"'))
     .replace(/\s+routerLink="([^"]+)"/g, ' href="$1"')
     .replace(/\s+(?:\*[^\s=]+|\[[^\]]+\]|\([^\)]+\)|#[^\s=]+)(?:=(?:"[^"]*"|'[^']*'))?/g, '')
     .replace(/\s+(?:i18n(?:-[\w-]+)?|ngb\w+|routerLinkActive)(?:="[^"]*")?/g, '')

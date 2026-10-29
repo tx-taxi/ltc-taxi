@@ -15,7 +15,8 @@ export class TxTaxiDocsIntroComponent {
   constructor(@Inject(LOCALE_ID) private locale: string) {}
 
   get nativeHref(): string {
-    return this.locale.startsWith('es') ? '/es/' : '/';
+    const language = this.locale.substring(0, 2);
+    return ['es', 'fr', 'de'].includes(language) ? `/${language}/` : '/';
   }
 
   get nativeLabel(): string {
@@ -23,6 +24,8 @@ export class TxTaxiDocsIntroComponent {
   }
 
   get contextLabel(): string {
-    return this.context === 'explorer' ? $localize`:@@taxi.intro.explorer:explorer` : $localize`:@@taxi.intro.documentation:documentation`;
+    return this.context === 'explorer'
+      ? $localize`:@@taxi.intro.chain-explorer:${this.chainName}:CHAIN: explorer`
+      : $localize`:@@taxi.intro.chain-docs:${this.chainName}:CHAIN: documentation`;
   }
 }
