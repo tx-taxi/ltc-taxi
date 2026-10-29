@@ -12906,6 +12906,10 @@
       <trans-unit id="1ee1b2c4ff9cc326c9df47240f4b80cd59082bde" datatype="html"><source>lit/vB</source><target>lit/vB</target></trans-unit>
       <trans-unit id="taxi.footer.mempool-wall" datatype="html"><source>Mempool Wall</source><target>Mempool Wall</target></trans-unit>
       <trans-unit id="meta.description.recent-transactions" datatype="html"><source>See the most recent transactions on the Litecoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/> network, updated in real-time.</source><target>Veja as transações mais recentes da rede Litecoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/>, atualizadas em tempo real.</target></trans-unit>
+      <trans-unit id="taxi.ltc.brand.dashboard" datatype="html"><source>ltc.tx.taxi dashboard</source><target>Painel do ltc.tx.taxi</target></trans-unit>
+      <trans-unit id="taxi.ltc.brand.logo" datatype="html"><source>ltc.tx.taxi Litecoin explorer</source><target>Explorador Litecoin ltc.tx.taxi</target></trans-unit>
+      <trans-unit id="taxi.intro.chain-explorer" datatype="html"><source><x id="CHAIN" equiv-text="this.chainName"/> explorer</source><target>Explorador <x id="CHAIN" equiv-text="this.chainName"/></target></trans-unit>
+      <trans-unit id="taxi.intro.chain-docs" datatype="html"><source><x id="CHAIN" equiv-text="this.chainName"/> documentation</source><target>Documentação <x id="CHAIN" equiv-text="this.chainName"/></target></trans-unit>
     </body>
   </file>
 </xliff>

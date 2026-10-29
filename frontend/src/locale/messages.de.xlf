@@ -8867,8 +8867,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="meta.description.docs.faq" datatype="html">
-        <source>Get answers to common questions like: What is a mempool? Why isn't my transaction confirming? How can I run my own instance of The Mempool Open Source Project? And more.</source>
-        <target>Erhalten Sie Antworten auf häufige Fragen wie: Was ist ein Mempool? Warum wird meine Transaktion nicht bestätigt? Wie kann ich meine eigene Instanz des Mempool Open Source Project ausführen? Und mehr.</target>
+        <source>Get answers to common Litecoin questions, including MWEB privacy, mempool behavior, transaction confirmation, fees, mining, and blocks.</source>
+        <target>Antworten auf häufige Litecoin-Fragen zu MWEB-Datenschutz, Mempool, Transaktionsbestätigungen, Gebühren, Mining und Blöcken.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/docs/docs/docs.component.ts</context>
           <context context-type="linenumber">48</context>
@@ -8891,8 +8891,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="meta.description.docs.rest-bitcoin" datatype="html">
-        <source>Documentation for the mempool.space REST API service: get info on addresses, transactions, blocks, fees, mining, the Lightning network, and more.</source>
-        <target>Dokumentation für den REST-API-Dienst mempool.space: Erhalte Informationen zu Adressen, Transaktionen, Blöcken, Gebühren, Mining, dem Lightning-Netzwerk und mehr.</target>
+        <source>Documentation for the ltc.tx.taxi REST API: query Litecoin addresses, transactions, blocks, fees, mining, and network data.</source>
+        <target>Dokumentation der ltc.tx.taxi-REST-API: Litecoin-Adressen, Transaktionen, Blöcke, Gebühren, Mining und Netzwerkdaten abfragen.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/docs/docs/docs.component.ts</context>
           <context context-type="linenumber">56</context>
@@ -8915,8 +8915,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="meta.description.docs.websocket-bitcoin" datatype="html">
-        <source>Documentation for the mempool.space WebSocket API service: get real-time info on blocks, mempools, transactions, addresses, and more.</source>
-        <target>Dokumentation für den WebSocket-API-Dienst mempool.space: Erhalte Echtzeitinformationen zu Blöcken, Mempools, Transaktionen, Adressen und mehr.</target>
+        <source>Documentation for the ltc.tx.taxi WebSocket API: receive real-time Litecoin block, mempool, transaction, and address updates.</source>
+        <target>Dokumentation der ltc.tx.taxi-WebSocket-API: Litecoin-Blöcke, Mempool, Transaktionen und Adressaktualisierungen in Echtzeit empfangen.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/docs/docs/docs.component.ts</context>
           <context context-type="linenumber">64</context>
