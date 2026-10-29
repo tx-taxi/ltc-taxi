@@ -11029,6 +11029,9 @@
       <trans-unit id="taxi.ltc.nav.docs" datatype="html"><source>Documentation</source>
         <target>कागजात</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.title" datatype="html"><source>Privacy Policy</source><target>गोपनीयता नीति</target></trans-unit>
+      <trans-unit id="taxi.search.open" datatype="html"><source>Open</source><target>खोल्नु</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.title" datatype="html"><source>Terms of Service</source><target>सेवाका सर्तहरु</target></trans-unit>
     </body>
   </file>
 </xliff>

@@ -2234,6 +2234,7 @@
       <trans-unit id="taxi.footer.terms" datatype="html"><source>Terms of Service</source>
         <target>Termos de Serviço</target>
         </trans-unit>
+      <trans-unit id="taxi.ltc.terms.title" datatype="html"><source>Terms of Service</source><target>Termos de Serviço</target></trans-unit>
     </body>
   </file>
 </xliff>

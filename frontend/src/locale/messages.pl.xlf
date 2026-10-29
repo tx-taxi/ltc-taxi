@@ -11544,6 +11544,9 @@
       <trans-unit id="taxi.ltc.nav.docs" datatype="html"><source>Documentation</source>
         <target>Dokumentacja</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.title" datatype="html"><source>Privacy Policy</source><target>Polityka prywatności</target></trans-unit>
+      <trans-unit id="taxi.search.open" datatype="html"><source>Open</source><target>Otwarty</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.title" datatype="html"><source>Terms of Service</source><target>Warunki korzystania z usługi</target></trans-unit>
     </body>
   </file>
 </xliff>

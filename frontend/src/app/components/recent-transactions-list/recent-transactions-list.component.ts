@@ -93,7 +93,7 @@ export class RecentTransactionsList implements OnInit, OnDestroy {
 
     if (!this.widget) {
       this.seoService.setTitle($localize`:@@recent-transactions-title:Recent Transactions`);
-      this.seoService.setDescription($localize`:@@meta.description.recent-transactions:See the most recent transactions on the Bitcoin${seoDescriptionNetwork(this.stateService.network)} network, updated in real-time.`);
+      this.seoService.setDescription($localize`:@@meta.description.recent-transactions:See the most recent transactions on the Litecoin${seoDescriptionNetwork(this.stateService.network)} network, updated in real-time.`);
     }
   }
 

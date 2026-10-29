@@ -11544,6 +11544,99 @@
       <trans-unit id="taxi.ltc.nav.docs" datatype="html"><source>Documentation</source>
         <target>Documentazione</target>
       </trans-unit>
+      <trans-unit id="taxi.about.project-links" datatype="html"><source>Project links</source><target>Link al progetto</target></trans-unit>
+      <trans-unit id="taxi.about.contact" datatype="html"><source>Contact the maintainer</source><target>Contatta il responsabile</target></trans-unit>
+      <trans-unit id="taxi.about.infrastructure-title" datatype="html"><source>Infrastructure</source><target>Infrastruttura</target></trans-unit>
+      <trans-unit id="taxi.about.opensource-title" datatype="html"><source>Built on open source</source><target>Basato su software open source</target></trans-unit>
+      <trans-unit id="6693ca41dea3f8a2b1747ba08e3f780c52d074bf" datatype="html"><source>Using partner code</source><target>Con codice partner</target></trans-unit>
+      <trans-unit id="tx-taxi.internal-key" datatype="html"><source>Internal Key</source><target>Chiave interna</target></trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.subsidy" datatype="html"><source>Subsidy</source><target>Sussidio</target></trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.subsidyUsd" datatype="html"><source>Subsidy (USD)</source><target>Sussidio (USD)</target></trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.feesUsd" datatype="html"><source>Fees (USD)</source><target>Commissioni (USD)</target></trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.subsidyPercent" datatype="html"><source>Subsidy (%)</source><target>Sussidio (%)</target></trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.feesPercent" datatype="html"><source>Fees (%)</source><target>Commissioni (%)</target></trans-unit>
+      <trans-unit id="e0f4283c19259f2bd53940324cb490f797b9aae4" datatype="html"><source>select filter categories to highlight matching pending transactions</source><target>seleziona le categorie dei filtri per evidenziare le transazioni in attesa corrispondenti</target></trans-unit>
+      <trans-unit id="taxi.mining-pool.logo-generic" datatype="html"><source>Mining pool logo</source><target>Logo della mining pool</target></trans-unit>
+      <trans-unit id="taxi.ltc.block.sizes" datatype="html"><source>Switch to displaying block sizes</source><target>Mostra le dimensioni dei blocchi</target></trans-unit>
+      <trans-unit id="taxi.ltc.block.fees" datatype="html"><source>Switch to displaying total fees per block</source><target>Mostra le commissioni totali per blocco</target></trans-unit>
+      <trans-unit id="taxi.ltc.block.right" datatype="html"><source>Switch to displaying newest blocks on the right</source><target>Mostra i blocchi più recenti a destra</target></trans-unit>
+      <trans-unit id="taxi.ltc.block.left" datatype="html"><source>Switch to displaying newest blocks on the left</source><target>Mostra i blocchi più recenti a sinistra</target></trans-unit>
+      <trans-unit id="1cdb643999eb6d66bcd839aeaa381b62b8be8cd4" datatype="html"><source>mempool chunk</source><target>gruppo del mempool</target></trans-unit>
+      <trans-unit id="36028650a60cba9aa7f034ae34643c72f5364f1d" datatype="html"><source>this transaction</source><target>questa transazione</target></trans-unit>
+      <trans-unit id="1eb8a98f68c1c98884c6436650f5ad80f4b3d5bf" datatype="html"><source>parents</source><target>genitori</target></trans-unit>
+      <trans-unit id="94c4e242e055d9521e1a0bfc7f1d165bbb37b94a" datatype="html"><source>children</source><target>figlie</target></trans-unit>
+      <trans-unit id="d1ca10f0337c02e631f15b7da5d57dddc1954704" datatype="html"><source>parent</source><target>genitore</target></trans-unit>
+      <trans-unit id="016d2ff8ad4b04f08717b98b5bc61eb122fb1ac8" datatype="html"><source>child</source><target>figlia</target></trans-unit>
+      <trans-unit id="taxi.pending-transactions" datatype="html"><source>Pending Transactions</source><target>Transazioni in attesa</target></trans-unit>
+      <trans-unit id="ac0f81713a84217c9bd1d9bb460245d8190b073f" datatype="html"><source>More</source><target>Altro</target></trans-unit>
+      <trans-unit id="4ce06818b8fe60a7c040ce7bfecc10b11397401b" datatype="html"><source>24h Volume</source><target>Volume nelle 24 ore</target></trans-unit>
+      <trans-unit id="7729adad4cbe5f490e393a925fae8a9b90f8ac08" datatype="html"><source>Reserve Deficit</source><target>Deficit delle riserve</target></trans-unit>
+      <trans-unit id="489277af67abab02f1de98f4a7930fc611471eda" datatype="html"><source>occurrence</source><target>occorrenza</target></trans-unit>
+      <trans-unit id="850e39efd95e6090598e13a01b7825f6b71b1017" datatype="html"><source>occurrences</source><target>occorrenze</target></trans-unit>
+      <trans-unit id="57d63f33e6e6f3d4716fab5381cff30d517d5c4e" datatype="html"><source>usages</source><target>utilizzi</target></trans-unit>
+      <trans-unit id="taxi.ltc.nav.dashboard" datatype="html"><source>Dashboard</source><target>Panoramica</target></trans-unit>
+      <trans-unit id="taxi.ltc.nav.mining" datatype="html"><source>Mining dashboard</source><target>Panoramica del mining</target></trans-unit>
+      <trans-unit id="taxi.ltc.nav.blocks" datatype="html"><source>Recent blocks</source><target>Blocchi recenti</target></trans-unit>
+      <trans-unit id="6d1c8856044cc923fc70f32cb4be360d200cfa82" datatype="html"><source>1 new transaction</source><target>1 nuova transazione</target></trans-unit>
+      <trans-unit id="487bebf9352332c5e7f5bd00a78371cacff0fd95" datatype="html"><source>Pause/Resume</source><target>Metti in pausa/Riprendi</target></trans-unit>
+      <trans-unit id="88f27d579752fd40ef53cfff5e936c293ca19221" datatype="html"><source>Pause/Resume</source><target>Metti in pausa/Riprendi</target></trans-unit>
+      <trans-unit id="bba7a55b8bcbfd50a697f8cf0a7b917836f453f0" datatype="html"><source>vSize</source><target>Dimensione virtuale</target></trans-unit>
+      <trans-unit id="taxi.search.choose-chain" datatype="html"><source>Choose search chain</source><target>Scegli la blockchain per la ricerca</target></trans-unit>
+      <trans-unit id="taxi.search.selected-explorer" datatype="html"><source>Selected explorer</source><target>Esploratore selezionato</target></trans-unit>
+      <trans-unit id="taxi.search.selected" datatype="html"><source>SELECTED</source><target>SELEZIONATO</target></trans-unit>
+      <trans-unit id="taxi.search.automatic" datatype="html"><source>Automatic Routing</source><target>Instradamento automatico</target></trans-unit>
+      <trans-unit id="taxi.search.view-hub" datatype="html"><source>View Hub</source><target>Vai alla home</target></trans-unit>
+      <trans-unit id="taxi.search.native" datatype="html"><source>NATIVE EXPLORERS</source><target>ESPLORATORI NATIVI</target></trans-unit>
+      <trans-unit id="taxi.search.registry-unavailable" datatype="html"><source>Explorer registry unavailable</source><target>Registro degli esploratori non disponibile</target></trans-unit>
+      <trans-unit id="taxi.search.third-party" datatype="html"><source>3RD-PARTY EXPLORERS</source><target>ESPLORATORI DI TERZE PARTI</target></trans-unit>
+      <trans-unit id="taxi.search.opened" datatype="html"><source>Opened</source><target>Aperto</target></trans-unit>
+      <trans-unit id="taxi.search.switch" datatype="html"><source>Switch</source><target>Cambia</target></trans-unit>
+      <trans-unit id="taxi.search.loading" datatype="html"><source>Loading explorers</source><target>Caricamento degli esploratori</target></trans-unit>
+      <trans-unit id="taxi.search.placeholder" datatype="html"><source>Wave a taxi, paste anything here.</source><target>Chiama un taxi, incolla qui quello che vuoi.</target></trans-unit>
+      <trans-unit id="taxi.search.found" datatype="html"><source>Found</source><target>Trovato</target></trans-unit>
+      <trans-unit id="taxi.search.possible" datatype="html"><source>Possible</source><target>Possibile</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus12" datatype="html"><source>Anywhere on Earth (AoE)</source><target>Ora valida ovunque sulla Terra (AoE)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus11" datatype="html"><source>Samoa Standard Time (SST)</source><target>Ora standard delle Samoa (SST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus10" datatype="html"><source>Hawaii Standard Time (HST)</source><target>Ora standard delle Hawaii (HST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus9" datatype="html"><source>Alaska Standard Time (AKST)</source><target>Ora standard dell’Alaska (AKST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus8" datatype="html"><source>Pacific Standard Time (PST)</source><target>Ora standard del Pacifico (PST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus7" datatype="html"><source>Mountain Standard Time (MST)</source><target>Ora standard delle Montagne Rocciose (MST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus6" datatype="html"><source>Central Standard Time (CST)</source><target>Ora standard centrale (CST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus5" datatype="html"><source>Eastern Standard Time (EST)</source><target>Ora standard orientale (EST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus4" datatype="html"><source>Atlantic Standard Time (AST)</source><target>Ora standard dell’Atlantico (AST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus3" datatype="html"><source>Argentina Time (ART)</source><target>Ora dell’Argentina (ART)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus2" datatype="html"><source>Fernando de Noronha Time (FNT)</source><target>Ora di Fernando de Noronha (FNT)</target></trans-unit>
+      <trans-unit id="taxi.timezone.minus1" datatype="html"><source>Azores Time (AZOT)</source><target>Ora delle Azzorre (AZOT)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus0" datatype="html"><source>Greenwich Mean Time (GMT)</source><target>Ora media di Greenwich (GMT)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus1" datatype="html"><source>Central European Time (CET)</source><target>Ora dell’Europa centrale (CET)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus2" datatype="html"><source>Eastern European Time (EET)</source><target>Ora dell’Europa orientale (EET)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus3" datatype="html"><source>Moscow Standard Time (MSK)</source><target>Ora standard di Mosca (MSK)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus4" datatype="html"><source>Armenia Time (AMT)</source><target>Ora dell’Armenia (AMT)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus5" datatype="html"><source>Pakistan Standard Time (PKT)</source><target>Ora standard del Pakistan (PKT)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus6" datatype="html"><source>Xinjiang Time (XJT)</source><target>Ora dello Xinjiang (XJT)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus7" datatype="html"><source>Indochina Time (ICT)</source><target>Ora dell’Indocina (ICT)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus8" datatype="html"><source>Hong Kong Time (HKT)</source><target>Ora di Hong Kong (HKT)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus9" datatype="html"><source>Japan Standard Time (JST)</source><target>Ora standard del Giappone (JST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus10" datatype="html"><source>Australian Eastern Standard Time (AEST)</source><target>Ora standard orientale australiana (AEST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus11" datatype="html"><source>Norfolk Time (NFT)</source><target>Ora di Norfolk (NFT)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus12" datatype="html"><source>New Zealand Standard Time (NZST)</source><target>Ora standard della Nuova Zelanda (NZST)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus13" datatype="html"><source>Tonga Time (TOT)</source><target>Ora di Tonga (TOT)</target></trans-unit>
+      <trans-unit id="taxi.timezone.plus14" datatype="html"><source>Line Islands Time (LINT)</source><target>Ora delle isole della Linea (LINT)</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.title" datatype="html"><source>Trademark &amp; Attribution</source><target>Marchi e attribuzioni</target></trans-unit>
+      <trans-unit id="c7678f3be45eefaebe9bda75a0a30f97204433b5" datatype="html"><source>In a mempool cluster containing 1 other chunk.</source><target>In un cluster del mempool contenente un altro gruppo.</target></trans-unit>
+      <trans-unit id="tx-taxi.missing-prevouts" datatype="html"><source>Missing prevouts are not loaded. Some fields like fee rate cannot be calculated.</source><target>Gli output precedenti mancanti non sono caricati. Alcuni campi, come il tasso delle commissioni, non possono essere calcolati.</target></trans-unit>
+      <trans-unit id="tx-taxi.prevouts-error" datatype="html"><source>Error loading missing prevouts</source><target>Errore nel caricamento degli output precedenti mancanti</target></trans-unit>
+      <trans-unit id="tx-taxi.cpfp-error" datatype="html"><source>Error loading CPFP data</source><target>Errore nel caricamento dei dati CPFP</target></trans-unit>
+      <trans-unit id="92626adb4b7e2aff0d35c2db5e023aac29d27f0f" datatype="html"><source>Cluster</source><target>Cluster</target></trans-unit>
+      <trans-unit id="taxi.footer.dashboard" datatype="html"><source>Dashboard</source><target>Panoramica</target></trans-unit>
+      <trans-unit id="taxi.footer.tools" datatype="html"><source>Tools &amp; Docs</source><target>Strumenti e documentazione</target></trans-unit>
+      <trans-unit id="taxi.footer.source" datatype="html"><source>Source code</source><target>Codice sorgente</target></trans-unit>
+      <trans-unit id="taxi.ltc.footer.telegram" datatype="html"><source>Join the tx.taxi Telegram channel</source><target>Unisciti al canale Telegram di tx.taxi</target></trans-unit>
+      <trans-unit id="taxi.footer.contact" datatype="html"><source>Contact Us</source><target>Contattaci</target></trans-unit>
+      <trans-unit id="taxi.footer.attribution" datatype="html"><source>Trademark &amp; Attribution</source><target>Marchi e attribuzioni</target></trans-unit>
+      <trans-unit id="taxi.ltc.footer.made-with" datatype="html"><source>Made with</source><target>Creato con</target></trans-unit>
+      <trans-unit id="taxi.ltc.footer.by" datatype="html"><source>by</source><target>da</target></trans-unit>
+      <trans-unit id="c3c520c2bccb5da8e432dd5f282a72b05e12b7e0" datatype="html"><source>Your balance is too low.</source><target>Il saldo è insufficiente.</target></trans-unit>
     </body>
   </file>
 </xliff>

@@ -2626,6 +2626,8 @@
       <trans-unit id="taxi.footer.terms" datatype="html"><source>Terms of Service</source>
         <target>Käyttöehdot</target>
         </trans-unit>
+      <trans-unit id="2303359202781425764" datatype="html"><source>Genesis</source><target>Genesis</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.title" datatype="html"><source>Terms of Service</source><target>Käyttöehdot</target></trans-unit>
     </body>
   </file>
 </xliff>

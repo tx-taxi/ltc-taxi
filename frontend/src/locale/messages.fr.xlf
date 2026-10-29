@@ -11600,6 +11600,66 @@
       <trans-unit id="taxi.timezone.plus12" datatype="html"><source>New Zealand Standard Time (NZST)</source><target>Heure normale de Nouvelle-Zélande (NZST)</target></trans-unit>
       <trans-unit id="taxi.timezone.plus13" datatype="html"><source>Tonga Time (TOT)</source><target>Heure des Tonga (TOT)</target></trans-unit>
       <trans-unit id="taxi.timezone.plus14" datatype="html"><source>Line Islands Time (LINT)</source><target>Heure des îles de la Ligne (LINT)</target></trans-unit>
+      <trans-unit id="taxi.about.project-links" datatype="html"><source>Project links</source><target>Liens du projet</target></trans-unit>
+      <trans-unit id="taxi.about.contact" datatype="html"><source>Contact the maintainer</source><target>Contacter le responsable</target></trans-unit>
+      <trans-unit id="taxi.about.infrastructure-title" datatype="html"><source>Infrastructure</source><target>Infrastructure</target></trans-unit>
+      <trans-unit id="taxi.about.opensource-title" datatype="html"><source>Built on open source</source><target>Construit sur l’open source</target></trans-unit>
+      <trans-unit id="6693ca41dea3f8a2b1747ba08e3f780c52d074bf" datatype="html"><source>Using partner code</source><target>Utilisation du code partenaire</target></trans-unit>
+      <trans-unit id="tx-taxi.internal-key" datatype="html"><source>Internal Key</source><target>Clé interne</target></trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.subsidy" datatype="html"><source>Subsidy</source><target>Subvention</target></trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.subsidyUsd" datatype="html"><source>Subsidy (USD)</source><target>Subvention (USD)</target></trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.feesUsd" datatype="html"><source>Fees (USD)</source><target>Frais (USD)</target></trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.subsidyPercent" datatype="html"><source>Subsidy (%)</source><target>Subvention (%)</target></trans-unit>
+      <trans-unit id="graphs.blockFeesSubsidy.feesPercent" datatype="html"><source>Fees (%)</source><target>Frais (%)</target></trans-unit>
+      <trans-unit id="e0f4283c19259f2bd53940324cb490f797b9aae4" datatype="html"><source>select filter categories to highlight matching pending transactions</source><target>Sélectionnez des catégories de filtres pour mettre en évidence les transactions en attente correspondantes</target></trans-unit>
+      <trans-unit id="1cdb643999eb6d66bcd839aeaa381b62b8be8cd4" datatype="html"><source>mempool chunk</source><target>segment du mempool</target></trans-unit>
+      <trans-unit id="36028650a60cba9aa7f034ae34643c72f5364f1d" datatype="html"><source>this transaction</source><target>cette transaction</target></trans-unit>
+      <trans-unit id="1eb8a98f68c1c98884c6436650f5ad80f4b3d5bf" datatype="html"><source>parents</source><target>parents</target></trans-unit>
+      <trans-unit id="94c4e242e055d9521e1a0bfc7f1d165bbb37b94a" datatype="html"><source>children</source><target>enfants</target></trans-unit>
+      <trans-unit id="d1ca10f0337c02e631f15b7da5d57dddc1954704" datatype="html"><source>parent</source><target>parent</target></trans-unit>
+      <trans-unit id="016d2ff8ad4b04f08717b98b5bc61eb122fb1ac8" datatype="html"><source>child</source><target>enfant</target></trans-unit>
+      <trans-unit id="taxi.pending-transactions" datatype="html"><source>Pending Transactions</source><target>Transactions en attente</target></trans-unit>
+      <trans-unit id="ac0f81713a84217c9bd1d9bb460245d8190b073f" datatype="html"><source>More</source><target>Plus</target></trans-unit>
+      <trans-unit id="4ce06818b8fe60a7c040ce7bfecc10b11397401b" datatype="html"><source>24h Volume</source><target>Volume sur 24 h</target></trans-unit>
+      <trans-unit id="7729adad4cbe5f490e393a925fae8a9b90f8ac08" datatype="html"><source>Reserve Deficit</source><target>Déficit des réserves</target></trans-unit>
+      <trans-unit id="489277af67abab02f1de98f4a7930fc611471eda" datatype="html"><source>occurrence</source><target>occurrence</target></trans-unit>
+      <trans-unit id="850e39efd95e6090598e13a01b7825f6b71b1017" datatype="html"><source>occurrences</source><target>occurrences</target></trans-unit>
+      <trans-unit id="57d63f33e6e6f3d4716fab5381cff30d517d5c4e" datatype="html"><source>usages</source><target>utilisations</target></trans-unit>
+      <trans-unit id="taxi.ltc.nav.dashboard" datatype="html"><source>Dashboard</source><target>Tableau de bord</target></trans-unit>
+      <trans-unit id="taxi.ltc.nav.mining" datatype="html"><source>Mining dashboard</source><target>Tableau de bord du minage</target></trans-unit>
+      <trans-unit id="taxi.ltc.nav.blocks" datatype="html"><source>Recent blocks</source><target>Blocs récents</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.title" datatype="html"><source>Privacy Policy</source><target>Politique de confidentialité</target></trans-unit>
+      <trans-unit id="6d1c8856044cc923fc70f32cb4be360d200cfa82" datatype="html"><source>1 new transaction</source><target>1 nouvelle transaction</target></trans-unit>
+      <trans-unit id="487bebf9352332c5e7f5bd00a78371cacff0fd95" datatype="html"><source>Pause/Resume</source><target>Pause/Reprendre</target></trans-unit>
+      <trans-unit id="88f27d579752fd40ef53cfff5e936c293ca19221" datatype="html"><source>Pause/Resume</source><target>Pause/Reprendre</target></trans-unit>
+      <trans-unit id="bba7a55b8bcbfd50a697f8cf0a7b917836f453f0" datatype="html"><source>vSize</source><target>Taille virtuelle</target></trans-unit>
+      <trans-unit id="taxi.search.choose-chain" datatype="html"><source>Choose search chain</source><target>Choisir la blockchain à rechercher</target></trans-unit>
+      <trans-unit id="taxi.search.selected-explorer" datatype="html"><source>Selected explorer</source><target>Explorateur sélectionné</target></trans-unit>
+      <trans-unit id="taxi.search.selected" datatype="html"><source>SELECTED</source><target>SÉLECTIONNÉ</target></trans-unit>
+      <trans-unit id="taxi.search.automatic" datatype="html"><source>Automatic Routing</source><target>Routage automatique</target></trans-unit>
+      <trans-unit id="taxi.search.view-hub" datatype="html"><source>View Hub</source><target>Voir l’accueil</target></trans-unit>
+      <trans-unit id="taxi.search.native" datatype="html"><source>NATIVE EXPLORERS</source><target>EXPLORATEURS NATIFS</target></trans-unit>
+      <trans-unit id="taxi.search.registry-unavailable" datatype="html"><source>Explorer registry unavailable</source><target>Registre des explorateurs indisponible</target></trans-unit>
+      <trans-unit id="taxi.search.third-party" datatype="html"><source>3RD-PARTY EXPLORERS</source><target>EXPLORATEURS TIERS</target></trans-unit>
+      <trans-unit id="taxi.search.opened" datatype="html"><source>Opened</source><target>Ouvert</target></trans-unit>
+      <trans-unit id="taxi.search.switch" datatype="html"><source>Switch</source><target>Changer</target></trans-unit>
+      <trans-unit id="taxi.search.loading" datatype="html"><source>Loading explorers</source><target>Chargement des explorateurs</target></trans-unit>
+      <trans-unit id="taxi.search.placeholder" datatype="html"><source>Wave a taxi, paste anything here.</source><target>Hélez un taxi, collez ce que vous voulez ici.</target></trans-unit>
+      <trans-unit id="taxi.search.found" datatype="html"><source>Found</source><target>Trouvé</target></trans-unit>
+      <trans-unit id="taxi.search.possible" datatype="html"><source>Possible</source><target>Possible</target></trans-unit>
+      <trans-unit id="c7678f3be45eefaebe9bda75a0a30f97204433b5" datatype="html"><source>In a mempool cluster containing 1 other chunk.</source><target>Dans un cluster du mempool contenant 1 autre segment.</target></trans-unit>
+      <trans-unit id="tx-taxi.missing-prevouts" datatype="html"><source>Missing prevouts are not loaded. Some fields like fee rate cannot be calculated.</source><target>Les sorties précédentes manquantes ne sont pas chargées. Certains champs, comme le taux de frais, ne peuvent pas être calculés.</target></trans-unit>
+      <trans-unit id="tx-taxi.prevouts-error" datatype="html"><source>Error loading missing prevouts</source><target>Erreur lors du chargement des sorties précédentes manquantes</target></trans-unit>
+      <trans-unit id="tx-taxi.cpfp-error" datatype="html"><source>Error loading CPFP data</source><target>Erreur lors du chargement des données CPFP</target></trans-unit>
+      <trans-unit id="92626adb4b7e2aff0d35c2db5e023aac29d27f0f" datatype="html"><source>Cluster</source><target>Cluster</target></trans-unit>
+      <trans-unit id="taxi.footer.dashboard" datatype="html"><source>Dashboard</source><target>Tableau de bord</target></trans-unit>
+      <trans-unit id="taxi.footer.tools" datatype="html"><source>Tools &amp; Docs</source><target>Outils et documentation</target></trans-unit>
+      <trans-unit id="taxi.footer.source" datatype="html"><source>Source code</source><target>Code source</target></trans-unit>
+      <trans-unit id="taxi.ltc.footer.telegram" datatype="html"><source>Join the tx.taxi Telegram channel</source><target>Rejoindre le canal Telegram de tx.taxi</target></trans-unit>
+      <trans-unit id="taxi.footer.contact" datatype="html"><source>Contact Us</source><target>Nous contacter</target></trans-unit>
+      <trans-unit id="taxi.ltc.footer.made-with" datatype="html"><source>Made with</source><target>Fait avec</target></trans-unit>
+      <trans-unit id="taxi.ltc.footer.by" datatype="html"><source>by</source><target>par</target></trans-unit>
+      <trans-unit id="c3c520c2bccb5da8e432dd5f282a72b05e12b7e0" datatype="html"><source>Your balance is too low.</source><target>Votre solde est insuffisant.</target></trans-unit>
     </body>
   </file>
 </xliff>

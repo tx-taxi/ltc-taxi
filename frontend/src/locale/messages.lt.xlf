@@ -11111,6 +11111,9 @@
       <trans-unit id="taxi.ltc.nav.docs" datatype="html"><source>Documentation</source>
         <target>Dokumentacija</target>
       </trans-unit>
+      <trans-unit id="taxi.ltc.privacy.title" datatype="html"><source>Privacy Policy</source><target>Privatumo Politika</target></trans-unit>
+      <trans-unit id="taxi.search.open" datatype="html"><source>Open</source><target>Atidarytas</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.title" datatype="html"><source>Terms of Service</source><target>Paslaugų Teikimo Sąlygos</target></trans-unit>
     </body>
   </file>
 </xliff>

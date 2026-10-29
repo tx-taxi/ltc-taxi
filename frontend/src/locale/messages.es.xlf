@@ -193,7 +193,7 @@
       <trans-unit id="graphs.blockFeesSubsidy.subsidy" datatype="html"><source>Subsidy</source><target>Subsidio</target></trans-unit>
       <trans-unit id="graphs.blockFeesSubsidy.subsidyPercent" datatype="html"><source>Subsidy (%)</source><target>Subsidio (%)</target></trans-unit>
       <trans-unit id="graphs.blockFeesSubsidy.subsidyUsd" datatype="html"><source>Subsidy (USD)</source><target>Subsidio (USD)</target></trans-unit>
-      <trans-unit id="meta.description.recent-transactions" datatype="html"><source>See the most recent transactions on the Bitcoin<x id="PH"/> network, updated in real-time.</source><target>Consulta las transacciones más recientes de la red Litecoin<x id="PH"/>, actualizadas en tiempo real.</target></trans-unit>
+      <trans-unit id="meta.description.recent-transactions" datatype="html"><source>See the most recent transactions on the Litecoin<x id="PH"/> network, updated in real-time.</source><target>Consulta las transacciones más recientes de la red Litecoin<x id="PH"/>, actualizadas en tiempo real.</target></trans-unit>
       <trans-unit id="recent-transactions-title" datatype="html"><source>Recent Transactions</source><target>Transacciones recientes</target></trans-unit>
       <trans-unit id="taxi.search.placeholder" datatype="html"><source>Wave a taxi, paste anything here.</source><target>Pide un taxi: pega aquí lo que quieras.</target></trans-unit>
       <trans-unit id="taxi.footer.tagline" datatype="html"><source>Litecoin blocks, fees, and mempool activity</source><target>Bloques, comisiones y actividad de la mempool de Litecoin</target></trans-unit>
