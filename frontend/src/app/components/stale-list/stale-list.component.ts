@@ -60,7 +60,7 @@ export class StaleList implements OnInit {
     );
 
     this.seoService.setTitle($localize`:@@page.stale-chain-tips:Stale Chain Tips`);
-    this.seoService.setDescription($localize`:@@meta.description.stale-chain-tips:See the most recent stale chain tips on the Bitcoin${seoDescriptionNetwork(this.stateService.network)} network.`);
+    this.seoService.setDescription($localize`:@@meta.description.stale-chain-tips:See the most recent stale chain tips on the Litecoin${seoDescriptionNetwork(this.stateService.network)} network.`);
   }
 
   getBlockGradient(block: BlockExtended): string {
