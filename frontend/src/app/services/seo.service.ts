@@ -51,7 +51,7 @@ export class SeoService {
   }
 
   private documentMetadata() {
-    if (['es', 'fr', 'de', 'it'].includes(this.locale.substring(0, 2))) { return undefined; }
+    if (['es', 'fr', 'de', 'it', 'pt'].includes(this.locale.substring(0, 2))) { return undefined; }
     let path = this.router.url.split('?')[0].split('#')[0];
     try { path = decodeURIComponent(path); } catch {}
     return nativeSeoPages[path.replace(/\/$/, '') || '/'];
@@ -105,7 +105,7 @@ export class SeoService {
     try { path = decodeURIComponent(path); } catch {}
     path = path.replace(/\/$/, '') || '/';
     const locale = this.locale.substring(0, 2);
-    const localePrefix = ['es', 'fr', 'de', 'it'].includes(locale) ? '/' + locale : '';
+    const localePrefix = ['es', 'fr', 'de', 'it', 'pt'].includes(locale) ? '/' + locale : '';
     const canonicalUrl = 'https://' + this.baseDomain + localePrefix + path;
     this.canonicalLink.setAttribute('href', canonicalUrl);
     this.metaService.updateTag({ property: 'og:url', content: canonicalUrl });

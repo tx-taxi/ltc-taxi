@@ -203,7 +203,7 @@ const server=http.createServer(async(req,res)=>{
   }
   if(u.pathname==='/og.png') return send(res,200,await card(u.searchParams.get('path')||'/'),'image/png');
   if(u.pathname.startsWith('/source/')||u.pathname.endsWith('.map'))return send(res,404,{error:'Not found'});
-  const locale = u.pathname.match(/^\/(es|fr|de|it)(?:\/|$)/)?.[1] || '';
+  const locale = u.pathname.match(/^\/(es|fr|de|it|pt)(?:\/|$)/)?.[1] || '';
   const localePath = locale ? u.pathname.slice(3) || '/' : u.pathname;
   if (locale) {
    const localizedRedirect = staticSeo.redirect(localePath);
@@ -225,10 +225,10 @@ const server=http.createServer(async(req,res)=>{
    let html=await r.text();const m=await metadata(localePath),origin=SITE_ORIGIN;
    if (locale) {
     const canonical = 'https://ltc.tx.taxi/' + locale + (m.path === '/' ? '/' : m.path);
-    const title = {es:'Explorador de Litecoin - ltc.tx.taxi',fr:'Explorateur Litecoin - ltc.tx.taxi',de:'Litecoin-Explorer - ltc.tx.taxi',it:'Esploratore Litecoin - ltc.tx.taxi'}[locale];
-    const description = {es:'Explora bloques, transacciones, direcciones y comisiones de Litecoin.',fr:'Explorez les blocs, transactions, adresses et frais Litecoin.',de:'Erkunden Sie Litecoin-Blöcke, Transaktionen, Adressen und Gebühren.',it:'Esplora blocchi, transazioni, indirizzi e commissioni Litecoin.'}[locale];
+    const title = {es:'Explorador de Litecoin - ltc.tx.taxi',fr:'Explorateur Litecoin - ltc.tx.taxi',de:'Litecoin-Explorer - ltc.tx.taxi',it:'Esploratore Litecoin - ltc.tx.taxi',pt:'Explorador Litecoin - ltc.tx.taxi'}[locale];
+    const description = {es:'Explora bloques, transacciones, direcciones y comisiones de Litecoin.',fr:'Explorez les blocs, transactions, adresses et frais Litecoin.',de:'Erkunden Sie Litecoin-Blöcke, Transaktionen, Adressen und Gebühren.',it:'Esplora blocchi, transazioni, indirizzi e commissioni Litecoin.',pt:'Explore blocos, transações, endereços e taxas Litecoin.'}[locale];
     html=html.replace(/<title>[\s\S]*?<\/title>/,'').replace(/<meta[^>]+(?:name|property)=["'](?:description|og:[^"']+|twitter:[^"']+)["'][^>]*>/g,'').replace(/<link[^>]+rel=["']canonical["'][^>]*>/g,'').replace(/<meta\b[^>]*name=["']robots["'][^>]*>/gi,'');
-    html=html.replace('</head>',`<title>${escape(title)}</title><meta name="description" content="${escape(description)}"><link id="canonical" rel="canonical" href="${escape(canonical)}"><meta name="robots" content="noindex, follow"><meta property="og:locale" content="${{es:'es_ES',fr:'fr_FR',de:'de_DE',it:'it_IT'}[locale]}"><meta property="og:url" content="${escape(canonical)}"></head>`);
+    html=html.replace('</head>',`<title>${escape(title)}</title><meta name="description" content="${escape(description)}"><link id="canonical" rel="canonical" href="${escape(canonical)}"><meta name="robots" content="noindex, follow"><meta property="og:locale" content="${{es:'es_ES',fr:'fr_FR',de:'de_DE',it:'it_IT',pt:'pt_PT'}[locale]}"><meta property="og:url" content="${escape(canonical)}"></head>`);
     const noRoute = staticSeo.nonIndexable(localePath) && !staticSeo.existingNonIndexable(localePath);
     return send(res,m.entityStatus || (noRoute ? 404 : r.status),req.method === 'HEAD' ? undefined : html,type,{'X-Robots-Tag':'noindex, follow', ...(m.entityStatus === 503 ? {'Retry-After':'60'} : {})});
    }

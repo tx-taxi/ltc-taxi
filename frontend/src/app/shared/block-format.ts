@@ -4,7 +4,7 @@ const DECIMALS = 8, SYMBOL = 'LTC', FEE_UNIT = 'lit/vB', FEE_SCALE = 1;
 // its own URL. Never use browser preferences to change an English page.
 function blockLocale(): string {
   const language = typeof document !== 'undefined' ? (document.documentElement?.lang || '').split('-')[0].toLowerCase() : '';
-  return ['es', 'fr', 'de', 'it'].includes(language) ? language : 'en-US';
+  return ['es', 'fr', 'de', 'it', 'pt'].includes(language) ? language : 'en-US';
 }
 
 // Keep exact values intact; only change the decimal separator for supported comma-decimal locales.
