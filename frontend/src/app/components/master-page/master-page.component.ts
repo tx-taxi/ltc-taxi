@@ -80,15 +80,7 @@ export class MasterPageComponent implements OnInit, OnDestroy {
     this.subdomain = this.enterpriseService.getSubdomain();
     this.navigationService.subnetPaths.subscribe((paths) => {
       this.networkPaths = paths;
-      if (this.footerVisibleOverride === null) {
-        if (paths.mainnet.indexOf('docs') > -1) {
-          this.footerVisible = false;
-        } else {
-          this.footerVisible = true;
-        }
-      } else {
-        this.footerVisible = this.footerVisibleOverride;
-      }
+      this.footerVisible = this.footerVisibleOverride ?? true;
     });
     this.enterpriseInfo$ = this.enterpriseService.info$.subscribe(info => {
       this.enterpriseInfo = info;
