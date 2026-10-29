@@ -21,10 +21,11 @@
   const hubOrigin = local ? (script?.dataset.hubOrigin || 'http://127.0.0.1:4330') : 'https://tx.taxi';
   // The hub must explicitly advertise a locale before links target it.
   let hubAvailableLocales = [];
+  let hubLocaleLoad = Promise.resolve();
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 3000);
-    fetch(hubOrigin + '/api/v1/locale-capabilities', { credentials: 'omit', redirect: 'error', signal: controller.signal })
+    hubLocaleLoad = fetch(hubOrigin + '/api/v1/locale-capabilities', { credentials: 'omit', redirect: 'error', signal: controller.signal })
       .then(response => response.ok ? response.json() : null)
       .then(data => {
         hubAvailableLocales = data?.version === 1 && Array.isArray(data?.hosts?.['tx.taxi']) ? data.hosts['tx.taxi'].filter(locale => ['es', 'fr', 'de'].includes(locale)) : [];
@@ -199,13 +200,14 @@
     observer.observe(document.documentElement,{childList:true,subtree:true});
     addEventListener('popstate', updateBrandLinks);
     addEventListener('txTaxiLocaleCapabilities', updateBrandLinks);
-    document.addEventListener('click', event => {
+    document.addEventListener('click', async event => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const link = event.composedPath().find(n => n instanceof HTMLAnchorElement && n.matches('.navbar-brand, .chain-divider-mark'));
       if (!link || link.target === '_blank' || !isDashboard()) return;
       event.preventDefault(); event.stopImmediatePropagation();
       if (leaving) return;
       leaving = true;
+      await hubLocaleLoad;
       cookie(encodeURIComponent(JSON.stringify({chain:source,direction:'hub',at:Date.now()})));
       location.assign(hubOrigin + localizedHubPath());
     },true);
