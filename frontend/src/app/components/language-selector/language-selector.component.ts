@@ -13,7 +13,7 @@ import { LanguageService } from '@app/services/language.service';
 })
 export class LanguageSelectorComponent implements OnInit {
   languageForm: UntypedFormGroup;
-  languages = languages.filter(lang => lang.code === 'en' || lang.code === 'es');
+  languages = languages.filter(lang => ['en', 'es', 'fr', 'de'].includes(lang.code));
 
   constructor(
     @Inject(DOCUMENT) private document: Document,

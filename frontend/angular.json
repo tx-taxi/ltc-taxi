@@ -36,6 +36,7 @@
           },
           "de": {
             "translation": "src/locale/messages.de.xlf",
+            "baseHref": "/de/",
             "baseHref": "/de/"
           },
           "da": {
@@ -52,6 +53,7 @@
           },
           "fr": {
             "translation": "src/locale/messages.fr.xlf",
+            "baseHref": "/fr/",
             "baseHref": "/fr/"
           },
           "hr": {
@@ -235,6 +237,10 @@
                 "es"
               ],
               "outputPath": "dist/spanish"
+            },
+            "translated": {
+              "localize": ["es", "fr", "de"],
+              "outputPath": "dist/translated"
             }
           },
           "defaultConfiguration": ""

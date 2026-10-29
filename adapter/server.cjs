@@ -203,19 +203,19 @@ const server=http.createServer(async(req,res)=>{
   }
   if(u.pathname==='/og.png') return send(res,200,await card(u.searchParams.get('path')||'/'),'image/png');
   if(u.pathname.startsWith('/source/')||u.pathname.endsWith('.map'))return send(res,404,{error:'Not found'});
-  const spanish = /^\/es(?:\/|$)/.test(u.pathname);
-  const localePath = spanish ? u.pathname.slice(3) || '/' : u.pathname;
-  if (spanish) {
+  const locale = u.pathname.match(/^\/(es|fr|de)(?:\/|$)/)?.[1] || '';
+  const localePath = locale ? u.pathname.slice(3) || '/' : u.pathname;
+  if (locale) {
    const localizedRedirect = staticSeo.redirect(localePath);
-   if (localizedRedirect) {res.writeHead(308,{Location:'/es'+localizedRedirect+u.search});return res.end();}
-   if (u.pathname === '/es') {res.writeHead(308,{Location:'/es/'+u.search});return res.end();}
+   if (localizedRedirect) {res.writeHead(308,{Location:'/'+locale+localizedRedirect+u.search});return res.end();}
+   if (u.pathname === '/'+locale) {res.writeHead(308,{Location:'/'+locale+'/'+u.search});return res.end();}
   }
   let r;
   if(STATIC_ROOT) {
    const relative=decodeURIComponent(u.pathname).replace(/^\/+/, '');
    let file=path.resolve(STATIC_ROOT,relative);
    if(file!==STATIC_ROOT&&!file.startsWith(STATIC_ROOT+path.sep))return send(res,404,{error:'Not found'});
-   if(!path.extname(relative))file=path.join(STATIC_ROOT,spanish?'es/index.html':'index.html');
+   if(!path.extname(relative))file=path.join(STATIC_ROOT,locale ? locale+'/index.html' : 'index.html');
    let bytes;try{bytes=await fs.promises.readFile(file);}catch{return send(res,404,{error:'Not found'});}
    const types={'.html':'text/html; charset=utf-8','.js':'application/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.ico':'image/x-icon','.woff':'font/woff','.woff2':'font/woff2','.ttf':'font/ttf','.webmanifest':'application/manifest+json','.txt':'text/plain','.wasm':'application/wasm'};
    r=new Response(bytes,{headers:{'content-type':types[path.extname(file)]||'application/octet-stream'}});
@@ -223,12 +223,12 @@ const server=http.createServer(async(req,res)=>{
   const type=r.headers.get('content-type')||'text/plain';
   if(type.includes('text/html')) {
    let html=await r.text();const m=await metadata(localePath),origin=SITE_ORIGIN;
-   if (spanish) {
-    const canonical = 'https://ltc.tx.taxi/es' + (m.path === '/' ? '/' : m.path);
-    const title = 'Explorador de Litecoin - ltc.tx.taxi';
-    const description = 'Explora bloques, transacciones, direcciones y comisiones de Litecoin.';
+   if (locale) {
+    const canonical = 'https://ltc.tx.taxi/' + locale + (m.path === '/' ? '/' : m.path);
+    const title = {es:'Explorador de Litecoin - ltc.tx.taxi',fr:'Explorateur Litecoin - ltc.tx.taxi',de:'Litecoin-Explorer - ltc.tx.taxi'}[locale];
+    const description = {es:'Explora bloques, transacciones, direcciones y comisiones de Litecoin.',fr:'Explorez les blocs, transactions, adresses et frais Litecoin.',de:'Erkunden Sie Litecoin-Blöcke, Transaktionen, Adressen und Gebühren.'}[locale];
     html=html.replace(/<title>[\s\S]*?<\/title>/,'').replace(/<meta[^>]+(?:name|property)=["'](?:description|og:[^"']+|twitter:[^"']+)["'][^>]*>/g,'').replace(/<link[^>]+rel=["']canonical["'][^>]*>/g,'').replace(/<meta\b[^>]*name=["']robots["'][^>]*>/gi,'');
-    html=html.replace('</head>',`<title>${escape(title)}</title><meta name="description" content="${escape(description)}"><link id="canonical" rel="canonical" href="${escape(canonical)}"><meta name="robots" content="noindex, follow"><meta property="og:locale" content="es_ES"><meta property="og:url" content="${escape(canonical)}"></head>`);
+    html=html.replace('</head>',`<title>${escape(title)}</title><meta name="description" content="${escape(description)}"><link id="canonical" rel="canonical" href="${escape(canonical)}"><meta name="robots" content="noindex, follow"><meta property="og:locale" content="${{es:'es_ES',fr:'fr_FR',de:'de_DE'}[locale]}"><meta property="og:url" content="${escape(canonical)}"></head>`);
     const noRoute = staticSeo.nonIndexable(localePath) && !staticSeo.existingNonIndexable(localePath);
     return send(res,m.entityStatus || (noRoute ? 404 : r.status),req.method === 'HEAD' ? undefined : html,type,{'X-Robots-Tag':'noindex, follow', ...(m.entityStatus === 503 ? {'Retry-After':'60'} : {})});
    }
