@@ -1773,7 +1773,7 @@
       </trans-unit>
       <trans-unit id="57cde27765d527a0d9195212fa5a7ce06408c827" datatype="html">
         <source>Bid Boost</source>
-        <target>Bid Boost</target>
+        <target>Incremento dell’offerta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/acceleration/accelerations-list/accelerations-list.component.html</context>
           <context context-type="linenumber">17</context>
@@ -2040,7 +2040,7 @@
       </trans-unit>
       <trans-unit id="841f2a74ae5095e6e37f5749f3cc1851cf36a420" datatype="html">
         <source>Avg Max Bid</source>
-        <target>Avg Max Bid</target>
+        <target>Offerta massima media</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/acceleration/pending-stats/pending-stats.component.html</context>
           <context context-type="linenumber">11</context>
@@ -2577,7 +2577,7 @@
       </trans-unit>
       <trans-unit id="c5b2c0d65b8fd12ebf8c0d79f562703776fc954e" datatype="html">
         <source>Pegged in</source>
-        <target>Pegged in</target>
+        <target>Fondi in entrata</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/asset/asset.component.html</context>
           <context context-type="linenumber">37</context>
@@ -2587,7 +2587,7 @@
       </trans-unit>
       <trans-unit id="8f5d6ce525a24b049fee47f9b2d8447cca97ccc8" datatype="html">
         <source>Pegged out</source>
-        <target>Pegged out</target>
+        <target>Fondi in uscita</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/asset/asset.component.html</context>
           <context context-type="linenumber">41</context>
@@ -2936,8 +2936,8 @@
         <note priority="1" from="description">mining.avg-block-fee-1m</note>
       </trans-unit>
       <trans-unit id="meta.description.bitcoin.graphs.block-fee-rates" datatype="html">
-        <source>See Bitcoin feerates visualized over time, including minimum and maximum feerates per block along with feerates at various percentiles.</source>
-        <target>Vedi i feerates di Bitcoin visualizzati nel tempo, inclusi i feerates minimi e massimi per blocco insieme ai feerates ai vari percentili.</target>
+        <source>See Litecoin feerates visualized over time, including minimum and maximum feerates per block along with feerates at various percentiles.</source>
+        <target>Vedi i feerates di Litecoin visualizzati nel tempo, inclusi i feerates minimi e massimi per blocco insieme ai feerates ai vari percentili.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/block-fee-rates-graph/block-fee-rates-graph.component.ts</context>
           <context context-type="linenumber">74</context>
@@ -2977,8 +2977,8 @@
         <note priority="1" from="description">mining.block-fees</note>
       </trans-unit>
       <trans-unit id="meta.description.bitcoin.graphs.block-fees" datatype="html">
-        <source>See the average mining fees earned per Bitcoin block visualized in BTC and USD over time.</source>
-        <target>Vedi le commissioni medie di mining guadagnate per blocco di Bitcoin visualizzate in BTC e USD nel tempo.</target>
+        <source>See the average mining fees earned per Litecoin block visualized in LTC and USD over time.</source>
+        <target>Vedi le commissioni medie di mining guadagnate per blocco di Litecoin visualizzate in LTC e USD nel tempo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/block-fees-graph/block-fees-graph.component.ts</context>
           <context context-type="linenumber">71</context>
@@ -3042,8 +3042,8 @@
         <note priority="1" from="description">mining.block-fees-subsidy-subsidy</note>
       </trans-unit>
       <trans-unit id="meta.description.bitcoin.graphs.block-fees-subsidy" datatype="html">
-        <source>See the mining fees earned per Bitcoin block compared to the Bitcoin block subsidy, visualized in BTC and USD over time.</source>
-        <target>Visualizza le commissioni minerarie guadagnate per blocco Bitcoin rispetto al sussidio, visualizzato in BTC e USD nel tempo.</target>
+        <source>See the mining fees earned per Litecoin block compared to the Litecoin block subsidy, visualized in LTC and USD over time.</source>
+        <target>Visualizza le commissioni minerarie guadagnate per blocco Litecoin rispetto al sussidio, visualizzato in LTC e USD nel tempo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/block-fees-subsidy-graph/block-fees-subsidy-graph.component.ts</context>
           <context context-type="linenumber">80</context>
@@ -3480,8 +3480,8 @@
         <note priority="1" from="description">mining.block-rewards</note>
       </trans-unit>
       <trans-unit id="meta.description.bitcoin.graphs.block-rewards" datatype="html">
-        <source>See Bitcoin block rewards in BTC and USD visualized over time. Block rewards are the total funds miners earn from the block subsidy and fees.</source>
-        <target>Vedi le ricompense dei blocchi di Bitcoin in BTC e USD visualizzate nel tempo. Le ricompense dei blocchi sono i fondi totali che i minatori guadagnano dal sussidio del blocco e dalle commissioni.</target>
+        <source>See Litecoin block rewards in LTC and USD visualized over time. Block rewards are the total funds miners earn from the block subsidy and fees.</source>
+        <target>Vedi le ricompense dei blocchi di Litecoin in LTC e USD visualizzate nel tempo. Le ricompense dei blocchi sono i fondi totali che i minatori guadagnano dal sussidio del blocco e dalle commissioni.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/block-rewards-graph/block-rewards-graph.component.ts</context>
           <context context-type="linenumber">69</context>
@@ -3505,8 +3505,8 @@
         <note priority="1" from="description">mining.block-sizes-weights</note>
       </trans-unit>
       <trans-unit id="meta.description.bitcoin.graphs.block-sizes" datatype="html">
-        <source>See Bitcoin block sizes (MB) and block weights (weight units) visualized over time.</source>
-        <target>Vedi le dimensioni dei blocchi Bitcoin (MB) e i pesi dei blocchi (unità di peso) visualizzati nel tempo.</target>
+        <source>See Litecoin block sizes (MB) and block weights (weight units) visualized over time.</source>
+        <target>Vedi le dimensioni dei blocchi Litecoin (MB) e i pesi dei blocchi (unità di peso) visualizzati nel tempo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/block-sizes-weights-graph/block-sizes-weights-graph.component.ts</context>
           <context context-type="linenumber">66</context>
@@ -3661,8 +3661,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="meta.description.bitcoin.block" datatype="html">
-        <source>See size, weight, fee range, included transactions, audit (expected v actual), and more for Bitcoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/> block <x id="BLOCK_HEIGHT" equiv-text="block.height"/> (<x id="BLOCK_ID" equiv-text="block.id"/>).</source>
-        <target>Vedi dimensione, peso, intervallo di commissioni, transazioni incluse, audit (previsto vs effettivo) e altro per il blocco Bitcoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/> <x id="BLOCK_HEIGHT" equiv-text="block.height"/> (<x id="BLOCK_ID" equiv-text="block.id"/>).</target>
+        <source>See size, weight, fee range, included transactions, audit (expected v actual), and more for Litecoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/> block <x id="BLOCK_HEIGHT" equiv-text="block.height"/> (<x id="BLOCK_ID" equiv-text="block.id"/>).</source>
+        <target>Vedi dimensione, peso, intervallo di commissioni, transazioni incluse, audit (previsto vs effettivo) e altro per il blocco Litecoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/> <x id="BLOCK_HEIGHT" equiv-text="block.height"/> (<x id="BLOCK_ID" equiv-text="block.id"/>).</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/block-view/block-view.component.ts</context>
           <context context-type="linenumber">115</context>
@@ -4216,7 +4216,7 @@
       </trans-unit>
       <trans-unit id="cbfb79ff517493268a49acffa81ecc02336d8372" datatype="html">
         <source>Block Header Hex</source>
-        <target>Block Header Hex</target>
+        <target>Intestazione del blocco in esadecimale</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/block/block.component.html</context>
           <context context-type="linenumber">357</context>
@@ -5090,7 +5090,7 @@
       </trans-unit>
       <trans-unit id="2d1bb593bedb956071b14cbb5cdd5e3150f0e575" datatype="html">
         <source>Halving Countdown</source>
-        <target>Halving Countdown</target>
+        <target>Conto alla rovescia per l’halving</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/difficulty/difficulty.component.html</context>
           <context context-type="linenumber">2</context>
@@ -6087,7 +6087,7 @@
       </trans-unit>
       <trans-unit id="a681a4e2011bb28157689dbaa387de0dd0aa0c11" datatype="html">
         <source>Mining Dashboard</source>
-        <target>Mining Dashboard</target>
+        <target>Dashboard di mining</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/mining-dashboard/mining-dashboard.component.ts</context>
           <context context-type="linenumber">30</context>
@@ -6098,8 +6098,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="meta.description.mining.dashboard" datatype="html">
-        <source>Get real-time Bitcoin mining stats like hashrate, difficulty adjustment, block rewards, pool dominance, and more.</source>
-        <target>Ottieni statistiche di mining di Bitcoin in tempo reale come hashrate, regolazione della difficoltà, ricompense per blocco, dominanza del pool e altro ancora.</target>
+        <source>Get real-time Litecoin mining stats like hashrate, difficulty adjustment, block rewards, pool dominance, and more.</source>
+        <target>Ottieni statistiche di mining di Litecoin in tempo reale come hashrate, regolazione della difficoltà, ricompense per blocco, dominanza del pool e altro ancora.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/mining-dashboard/mining-dashboard.component.ts</context>
           <context context-type="linenumber">31</context>
@@ -6410,7 +6410,7 @@
       </trans-unit>
       <trans-unit id="2158ea60725d3a97aed6f0f00aa7df48d7bb42ff" datatype="html">
         <source>mining pool</source>
-        <target>mining pool</target>
+        <target>pool di mining</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/pool/pool-preview.component.html</context>
           <context context-type="linenumber">3</context>
@@ -6698,16 +6698,16 @@
         <note priority="1" from="description">price-chart.percent-change</note>
       </trans-unit>
       <trans-unit id="price-chart.title" datatype="html">
-        <source>Bitcoin Price</source>
-        <target>Prezzo Bitcoin</target>
+        <source>Litecoin Price</source>
+        <target>Prezzo Litecoin</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/price-chart/price-chart.component.ts</context>
           <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="price-chart.description" datatype="html">
-        <source>See the Bitcoin price in USD visualized over time.</source>
-        <target>Visualizza il prezzo del Bitcoin in USD nel tempo.</target>
+        <source>See the Litecoin price in USD visualized over time.</source>
+        <target>Visualizza il prezzo del Litecoin in USD nel tempo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/price-chart/price-chart.component.ts</context>
           <context context-type="linenumber">78</context>
@@ -7381,7 +7381,7 @@
       </trans-unit>
       <trans-unit id="69a200e30802920bc6d619bd543cc2a332a8c390" datatype="html">
         <source>Stratum Jobs</source>
-        <target>Stratum Jobs</target>
+        <target>Attività Stratum</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/stratum/stratum-list/stratum-list.component.html</context>
           <context context-type="linenumber">2</context>
@@ -8983,7 +8983,7 @@
       </trans-unit>
       <trans-unit id="3ec76ccfe1fdcbfd7ea152392f6472d93d4e8cab" datatype="html">
         <source>Zero base fee</source>
-        <target>Zero base fee</target>
+        <target>Commissione base zero</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/lightning/channel/channel-box/channel-box.component.html</context>
           <context context-type="linenumber">45</context>
@@ -9001,7 +9001,7 @@
       </trans-unit>
       <trans-unit id="09a1bc9c4198e87e9e974a51e86b181429b480d3" datatype="html">
         <source>Non-zero base fee</source>
-        <target>Non-zero base fee</target>
+        <target>Commissione base diversa da zero</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/lightning/channel/channel-box/channel-box.component.html</context>
           <context context-type="linenumber">51</context>
@@ -9028,7 +9028,7 @@
       </trans-unit>
       <trans-unit id="9fe79011b50c2ca1f9b7db7066046631bfc6b3cb" datatype="html">
         <source>Timelock delta</source>
-        <target>Timelock delta</target>
+        <target>Intervallo di blocco temporale</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/lightning/channel/channel-box/channel-box.component.html</context>
           <context context-type="linenumber">69</context>
@@ -9877,7 +9877,7 @@
       </trans-unit>
       <trans-unit id="142e923d3b04186ac6ba23387265d22a2fa404e0" datatype="html">
         <source>Lightning Explorer</source>
-        <target>Lightning Explorer</target>
+        <target>Esploratore Lightning</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/lightning/lightning-dashboard/lightning-dashboard.component.ts</context>
           <context context-type="linenumber">34</context>
@@ -10991,7 +10991,7 @@
       </trans-unit>
       <trans-unit id="40966c5744cc46092c2ae9dee1957e15c1faef4d" datatype="html">
         <source>bare multisig</source>
-        <target>bare multisig</target>
+        <target>multifirma senza wrapper</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/address-type/address-type.component.html</context>
           <context context-type="linenumber">21</context>
@@ -11355,7 +11355,7 @@
       </trans-unit>
       <trans-unit id="2259944601214794924" datatype="html">
         <source>Sighash Flags</source>
-        <target>Sighash Flags</target>
+        <target>Flag Sighash</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/filters.utils.ts</context>
           <context context-type="linenumber">125</context>
@@ -11511,7 +11511,7 @@
       </trans-unit>
       <trans-unit id="taxi.footer.mining" datatype="html">
         <source>Mining Dashboard</source>
-        <target>Mining Dashboard</target>
+        <target>Dashboard di mining</target>
       </trans-unit>
       <trans-unit id="taxi.footer.calculator" datatype="html">
         <source>Calculator</source>
@@ -11637,6 +11637,202 @@
       <trans-unit id="taxi.ltc.footer.made-with" datatype="html"><source>Made with</source><target>Creato con</target></trans-unit>
       <trans-unit id="taxi.ltc.footer.by" datatype="html"><source>by</source><target>da</target></trans-unit>
       <trans-unit id="c3c520c2bccb5da8e432dd5f282a72b05e12b7e0" datatype="html"><source>Your balance is too low.</source><target>Il saldo è insufficiente.</target></trans-unit>
+      <trans-unit id="taxi.about.title" datatype="html"><source>About ltc.tx.taxi</source><target>Informazioni su ltc.tx.taxi</target></trans-unit>
+      <trans-unit id="taxi.about.subtitle" datatype="html"><source>The Litecoin explorer in the tx.taxi family.</source><target>L’esploratore Litecoin della famiglia tx.taxi.</target></trans-unit>
+      <trans-unit id="taxi.about.docs" datatype="html"><source>Litecoin documentation</source><target>Documentazione Litecoin</target></trans-unit>
+      <trans-unit id="taxi.about.intro" datatype="html"><source>ltc.tx.taxi is the Litecoin explorer in the tx.taxi multi-chain family. It preserves Mempool's proven interface for inspecting blocks, transactions, addresses, mining activity, fee estimates, and the live Litecoin mempool while using a Litecoin-specific tx.taxi identity.</source><target>ltc.tx.taxi è l’esploratore Litecoin della famiglia multichain tx.taxi. Mantiene la collaudata interfaccia di Mempool per esaminare blocchi, transazioni, indirizzi, attività di mining, stime delle commissioni e mempool Litecoin in tempo reale, con un’identità tx.taxi dedicata a Litecoin.</target></trans-unit>
+      <trans-unit id="taxi.about.native-data" datatype="html"><source>Litecoin-native data</source><target>Dati nativi Litecoin</target></trans-unit>
+      <trans-unit id="taxi.about.native-description" datatype="html"><source>Values are denominated in LTC, litoshis, or the selected fiat currency. Fee rates remain lit/vB, transaction sizes remain vB or weight units, and all block, address, and mining concepts shown by the interface retain their Litecoin meaning.</source><target>I valori sono espressi in LTC, litoshi o nella valuta fiat selezionata. I tassi delle commissioni rimangono in lit/vB, le dimensioni delle transazioni in vB o unità di peso e tutti i concetti relativi a blocchi, indirizzi e mining conservano il loro significato Litecoin.</target></trans-unit>
+      <trans-unit id="taxi.about.mweb-title" datatype="html"><source>MWEB coverage</source><target>Copertura MWEB</target></trans-unit>
+      <trans-unit id="taxi.about.mweb-description" datatype="html"><source>This explorer shows transparent-chain transactions and indexed addresses. Private MWEB amounts and recipient history are not publicly observable. HogEx transactions connect the extension block to the transparent chain.</source><target>Questo esploratore mostra le transazioni della catena trasparente e gli indirizzi indicizzati. Gli importi privati MWEB e la cronologia dei destinatari non sono pubblicamente osservabili. Le transazioni HogEx collegano il blocco di estensione alla catena trasparente.</target></trans-unit>
+      <trans-unit id="taxi.about.infrastructure-description" datatype="html"><source>The explorer reads public Litecoin network data through its configured backend. Explorer results are informational and can differ from another node's view of the mempool. Always verify payment details in your wallet and use your own node when independent verification matters.</source><target>L’esploratore legge i dati pubblici della rete Litecoin tramite il backend configurato. I risultati sono informativi e possono differire dalla vista del mempool di un altro nodo. Verifica sempre i dettagli del pagamento nel tuo portafoglio e usa il tuo nodo quando è necessaria una verifica indipendente.</target></trans-unit>
+      <trans-unit id="taxi.about.built-on" datatype="html"><source>This explorer builds on the</source><target>Questo esploratore è basato su</target></trans-unit>
+      <trans-unit id="taxi.about.see" datatype="html"><source>See</source><target>Vedi</target></trans-unit>
+      <trans-unit id="taxi.about.third-party" datatype="html"><source>third-party attribution</source><target>attribuzioni di terze parti</target></trans-unit>
+      <trans-unit id="taxi.about.contact-license" datatype="html"><source>and contact the maintainer for source and license information.</source><target>e contatta il responsabile per informazioni sul codice sorgente e sulla licenza.</target></trans-unit>
+      <trans-unit id="taxi.ltc.nav.about" datatype="html"><source>About ltc.tx.taxi</source><target>Informazioni su ltc.tx.taxi</target></trans-unit>
+      <trans-unit id="taxi.ltc.about.description" datatype="html"><source>Learn about ltc.tx.taxi, a Litecoin block and mempool explorer in the tx.taxi multi-chain family.</source><target>Scopri ltc.tx.taxi, un esploratore di blocchi e mempool Litecoin della famiglia multichain tx.taxi.</target></trans-unit>
+      <trans-unit id="53df671d02f18a96a60c3ca3f4586ff3bb584f47" datatype="html"><source>LTC</source><target>LTC</target></trans-unit>
+      <trans-unit id="c665a0fee94cb61bbd5a13cf7763c534dbba1ead" datatype="html"><source>lits</source><target>lits</target></trans-unit>
+      <trans-unit id="graphs.blockFees.feesBtc" datatype="html"><source>Fees LTC</source><target>Commissioni LTC</target></trans-unit>
+      <trans-unit id="graphs.blockFees.feesFiat" datatype="html"><source>Fees <x id="currency" equiv-text="this.currency"/></source><target>Commissioni <x id="currency" equiv-text="this.currency"/></target></trans-unit>
+      <trans-unit id="graphs.blockFees.avgBlock" datatype="html"><source>* On average around block <x id="block" equiv-text="data[0].data[2]"/></source><target>* In media intorno al blocco <x id="block" equiv-text="data[0].data[2]"/></target></trans-unit>
+      <trans-unit id="taxi.mining-pool.logo" datatype="html"><source>Logo of <x id="pool" equiv-text="name"/> mining pool</source><target>Logo del pool di mining <x id="pool" equiv-text="name"/> mining pool</target></trans-unit>
+      <trans-unit id="taxi.ltc.block.dashboard" datatype="html"><source>Litecoin explorer dashboard</source><target>Dashboard dell’esploratore Litecoin</target></trans-unit>
+      <trans-unit id="e5767c23722c38d4303a11373996071b33ca0b0c" datatype="html"><source> Values were capped at the max supply of 84M LTC </source><target>Valori limitati all’offerta massima di 84 milioni di LTC</target></trans-unit>
+      <trans-unit id="taxi.ltc.fiat.stale" datatype="html"><source>stale</source><target>non aggiornato</target></trans-unit>
+      <trans-unit id="taxi.ltc.fiat.reference-stale" datatype="html"><source>ECB reference rate; update unavailable</source><target>Tasso di riferimento BCE; aggiornamento non disponibile</target></trans-unit>
+      <trans-unit id="taxi.ltc.fiat.reference" datatype="html"><source>ECB reference rate</source><target>Tasso di riferimento BCE</target></trans-unit>
+      <trans-unit id="taxi.ltc.nav.graphs" datatype="html"><source>Litecoin graphs</source><target>Grafici Litecoin</target></trans-unit>
+      <trans-unit id="taxi.ltc.provider.stale" datatype="html"><source>Provider data has not updated recently. Displayed data may be stale.</source><target>I dati del provider non sono stati aggiornati di recente. I dati visualizzati potrebbero non essere aggiornati.</target></trans-unit>
+      <trans-unit id="taxi.ltc.provider.degraded" datatype="html"><source>Some provider requests recently failed. Affected data may be unavailable or stale.</source><target>Alcune richieste al provider sono fallite di recente. I dati interessati potrebbero essere indisponibili o non aggiornati.</target></trans-unit>
+      <trans-unit id="taxi.ltc.provider.history" datatype="html"><source> Chart history contains only locally collected observations; earlier coverage is unavailable.</source><target>La cronologia del grafico contiene solo osservazioni raccolte localmente; i dati precedenti non sono disponibili.</target></trans-unit>
+      <trans-unit id="taxi.ltc.provider.unavailable" datatype="html"><source>The data service is unavailable. Retrying.</source><target>Il servizio dati non è disponibile. Nuovo tentativo in corso.</target></trans-unit>
+      <trans-unit id="5983c6a2299b646b3aecc5795ed51573d7cd235a" datatype="html"><source>The overall luck of all mining pools over the past week. A luck bigger than 100% means the average block time for the current epoch is less than 2.5 minutes.</source><target>La fortuna complessiva di tutti i pool di mining nell’ultima settimana. Un valore superiore al 100% significa che il tempo medio tra i blocchi nell’epoca attuale è inferiore a 2,5 minuti.</target></trans-unit>
+      <trans-unit id="0ae507a6193771292e02b78a8e3521c91d36aa53" datatype="html"><source>Litecoin Price</source><target>Prezzo Litecoin</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.title" datatype="html"><source>Privacy Policy</source><target>Informativa sulla privacy</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.updated" datatype="html"><source>Updated: September 20, 2026</source><target>Aggiornata: 20 settembre 2026</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.audience" datatype="html"><source>Audience measurement</source><target>Misurazione del pubblico</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.audience-body" datatype="html"><source>tx.taxi uses Cloudflare Web Analytics for page views and performance, and a first-party daily cookie shared across its explorers to count browsers once per UTC day. The daily audience collector stores only a daily identifier, the explorer hostname, and whether there was interaction. It does not receive search text, addresses, transaction IDs, URLs, or IP addresses. Individual daily records expire after 31 days; aggregate counts are retained for 400 days. Do Not Track and Global Privacy Control disable this first-party measurement.</source><target>tx.taxi usa Cloudflare Web Analytics per misurare visualizzazioni e prestazioni, e un cookie giornaliero proprietario condiviso tra i suoi esploratori per contare i browser una sola volta per giorno UTC. Il sistema di misurazione giornaliera conserva solo un identificativo giornaliero, il nome host dell’esploratore e l’eventuale interazione. Non riceve testo delle ricerche, indirizzi, ID delle transazioni, URL o indirizzi IP. I singoli record giornalieri scadono dopo 31 giorni; i conteggi aggregati vengono conservati per 400 giorni. Do Not Track e Global Privacy Control disattivano questa misurazione proprietaria.</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.opt-out" datatype="html"><source>Details and opt-out</source><target>Dettagli e disattivazione</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.own-node" datatype="html"><source>Use Your Own Node When Privacy Matters</source><target>Usa il tuo nodo quando la privacy è importante</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.own-node-body" datatype="html"><source>ltc.tx.taxi displays public Litecoin chain and mempool data through the backend configured by the site operator. For independent verification and the strongest network privacy, use your own Litecoin node and explorer.</source><target>ltc.tx.taxi mostra i dati pubblici della catena e del mempool Litecoin tramite il backend configurato dal gestore. Per una verifica indipendente e la massima privacy di rete, usa il tuo nodo Litecoin e il tuo esploratore.</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.request" datatype="html"><source>Request Data</source><target>Dati delle richieste</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.request-body" datatype="html"><source>Normal website and API requests can reveal standard web metadata to the operator, including your IP address, user agent, requested URL, and request time. Server logs may be retained for reliability, abuse prevention, and debugging.</source><target>Le normali richieste al sito e all’API possono rivelare al gestore metadati web standard, inclusi indirizzo IP, user agent, URL richiesto e ora della richiesta. I log del server possono essere conservati per affidabilità, prevenzione degli abusi e risoluzione dei problemi.</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.preferences" datatype="html"><source>Local Preferences</source><target>Preferenze locali</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.preferences-body" datatype="html"><source>Display preferences such as theme, denomination, fiat currency, language, and timezone may be stored in your browser. ltc.tx.taxi does not require an account for ordinary explorer use.</source><target>Le preferenze di visualizzazione, come tema, unità, valuta fiat, lingua e fuso orario, possono essere salvate nel browser. ltc.tx.taxi non richiede un account per l’uso ordinario dell’esploratore.</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.public-data" datatype="html"><source>Public Blockchain Data</source><target>Dati pubblici della blockchain</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.public-body" datatype="html"><source>Litecoin transactions, addresses, scripts, and blocks are public. Looking up an address or transaction can associate that lookup with your network metadata. Do not treat a public explorer as a privacy boundary.</source><target>Transazioni, indirizzi, script e blocchi Litecoin sono pubblici. La ricerca di un indirizzo o di una transazione può associare tale ricerca ai tuoi metadati di rete. Non considerare un esploratore pubblico una protezione della privacy.</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.external" datatype="html"><source>External Links</source><target>Link esterni</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.external-body" datatype="html"><source>This site links to tx.taxi contact channels, Litecoin documentation, and upstream source code. Those external services have their own privacy policies.</source><target>Questo sito contiene link ai canali di contatto tx.taxi, alla documentazione Litecoin e al codice sorgente del progetto originale. Tali servizi esterni hanno proprie informative sulla privacy.</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.attribution" datatype="html"><source>Open Source Attribution</source><target>Attribuzione open source</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.attribution-body" datatype="html"><source>Mempool names, logos, and trademarks remain the property of their respective owners; ltc.tx.taxi is not affiliated with or endorsed by Mempool Holdings S.A. de C.V.</source><target>Nomi, loghi e marchi Mempool rimangono proprietà dei rispettivi titolari; ltc.tx.taxi non è affiliato né approvato da Mempool Holdings S.A. de C.V.</target></trans-unit>
+      <trans-unit id="taxi.ltc.privacy.description" datatype="html"><source>Privacy notes for ltc.tx.taxi, including public Litecoin data, browser preferences, server logs, and independent verification.</source><target>Informativa sulla privacy di ltc.tx.taxi: dati Litecoin pubblici, preferenze del browser, log del server e verifica indipendente.</target></trans-unit>
+      <trans-unit id="f6faae940556fd1d3f92b84772235ccfd585f799" datatype="html"><source>Maximum fee rate (lit/vB)</source><target>Tasso massimo delle commissioni (lit/vB)</target></trans-unit>
+      <trans-unit id="a5c3bb57620832141bf6c51d7344e69af366c7e8" datatype="html"><source><x id="INTERPOLATION" equiv-text="new transactions&lt;/span&gt; &lt;/button&gt;  &lt;div [class.container-xl]=&quot;!widget&quot; [cla"/> new transactions</source><target><x id="INTERPOLATION" equiv-text="new transactions&lt;/span&gt; &lt;/button&gt;  &lt;div [class.container-xl]=&quot;!widget&quot; [cla"/> new transactions nuove transazioni</target></trans-unit>
+      <trans-unit id="meta.description.recent-transactions" datatype="html"><source>See the most recent transactions on the Litecoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/> network, updated in real-time.</source><target>Consulta le transazioni più recenti della rete Litecoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/> network, updated in real-time., aggiornate in tempo reale.</target></trans-unit>
+      <trans-unit id="6dd731279deed7fcfecdeec0b8e0542d0053464d" datatype="html"><source>LTC/block</source><target>LTC/blocco</target></trans-unit>
+      <trans-unit id="839486fbcffb88439c950f00c322cd5bea72b809" datatype="html"><source>lits/tx</source><target>lits/tx</target></trans-unit>
+      <trans-unit id="taxi.search.open-hub-new-tab" datatype="html"><source>Open tx.taxi in a new tab</source><target>Apri tx.taxi in una nuova scheda</target></trans-unit>
+      <trans-unit id="taxi.search.routing-hint" datatype="html"><source>Or go straight to <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>tx.taxi/[your search]<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/></source><target>Oppure vai direttamente a <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>tx.taxi/[your search]tx.taxi/[la tua ricerca]<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/></target></trans-unit>
+      <trans-unit id="taxi.search.open" datatype="html"><source>Open</source><target>Apri</target></trans-unit>
+      <trans-unit id="taxi.search.additional-explorers" datatype="html"><source><x id="name" equiv-text="name"/> additional explorers</source><target>Altri esploratori per <x id="name" equiv-text="name"/> additional explorers</target></trans-unit>
+      <trans-unit id="taxi.search.open-explorer" datatype="html"><source>Open <x id="name" equiv-text="name"/></source><target>Apri <x id="name" equiv-text="name"/></target></trans-unit>
+      <trans-unit id="taxi.search.open-explorer-new-tab" datatype="html"><source>Open <x id="name" equiv-text="name"/> in a new tab</source><target>Apri <x id="name" equiv-text="name"/> in a new tab in una nuova scheda</target></trans-unit>
+      <trans-unit id="taxi.search.switch-explorer" datatype="html"><source>Switch to <x id="name" equiv-text="name"/></source><target>Passa a <x id="name" equiv-text="name"/></target></trans-unit>
+      <trans-unit id="taxi.search.hide-option" datatype="html"><source>Hide <x id="count" equiv-text="count"/> additional <x id="name" equiv-text="name"/> option</source><target>Nascondi <x id="count" equiv-text="count"/> additional opzione aggiuntiva per <x id="name" equiv-text="name"/> option</target></trans-unit>
+      <trans-unit id="taxi.search.hide-options" datatype="html"><source>Hide <x id="count" equiv-text="count"/> additional <x id="name" equiv-text="name"/> options</source><target>Nascondi <x id="count" equiv-text="count"/> additional opzioni aggiuntive per <x id="name" equiv-text="name"/> options</target></trans-unit>
+      <trans-unit id="taxi.search.show-option" datatype="html"><source>Show <x id="count" equiv-text="count"/> additional <x id="name" equiv-text="name"/> option</source><target>Mostra <x id="count" equiv-text="count"/> additional opzione aggiuntiva per <x id="name" equiv-text="name"/> option</target></trans-unit>
+      <trans-unit id="taxi.search.show-options" datatype="html"><source>Show <x id="count" equiv-text="count"/> additional <x id="name" equiv-text="name"/> options</source><target>Mostra <x id="count" equiv-text="count"/> additional opzioni aggiuntive per <x id="name" equiv-text="name"/> options</target></trans-unit>
+      <trans-unit id="bb0132f1e3ceff9153163bff12fb8638e1c31705" datatype="html"><source>Mempool by vBytes (lit/vByte)</source><target>Mempool per vByte (lit/vByte)</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.title" datatype="html"><source>Terms of Service</source><target>Termini di servizio</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.updated" datatype="html"><source>Updated: September 20, 2026</source><target>Aggiornati: 20 settembre 2026</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.informational" datatype="html"><source>Informational Explorer</source><target>Esploratore informativo</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.informational-body" datatype="html"><source>ltc.tx.taxi provides a view of public Litecoin blocks, transactions, addresses, mining data, fee estimates, and mempool state. It is an informational service, not a wallet, exchange, custodian, payment processor, or transaction-priority service.</source><target>ltc.tx.taxi offre una vista di blocchi, transazioni, indirizzi, dati di mining, stime delle commissioni e stato del mempool Litecoin pubblici. È un servizio informativo, non un portafoglio, un exchange, un custode, un elaboratore di pagamenti o un servizio di priorità delle transazioni.</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.no-control" datatype="html"><source>No Control Over Litecoin Transactions</source><target>Nessun controllo sulle transazioni Litecoin</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.no-control-body" datatype="html"><source>The operator cannot reverse, cancel, accelerate, recover, or redirect a Litecoin transaction. For wallet, exchange, or payment issues, contact the service that created or received the transaction.</source><target>Il gestore non può annullare, accelerare, recuperare o reindirizzare una transazione Litecoin. Per problemi con portafogli, exchange o pagamenti, contatta il servizio che ha creato o ricevuto la transazione.</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.data" datatype="html"><source>Data and Availability</source><target>Dati e disponibilità</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.data-body" datatype="html"><source>Explorer data may be delayed, incomplete, unavailable, or different from another node's view. Fee estimates are estimates only and do not guarantee confirmation. The service is provided as-is without a promise of uninterrupted availability or fitness for a particular purpose.</source><target>I dati dell’esploratore possono essere ritardati, incompleti, indisponibili o diversi dalla vista di un altro nodo. Le stime delle commissioni sono solo stime e non garantiscono la conferma. Il servizio è fornito così com’è, senza garanzie di disponibilità continua o idoneità a uno scopo particolare.</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.acceptable" datatype="html"><source>Acceptable Use</source><target>Uso consentito</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.acceptable-body" datatype="html"><source>Do not abuse the website or API, interfere with service operation, bypass reasonable rate limits, or use the service unlawfully. Access may be limited when necessary to protect availability.</source><target>Non abusare del sito o dell’API, interferire con il funzionamento del servizio, aggirare limiti ragionevoli di richieste o usare il servizio illegalmente. L’accesso può essere limitato quando necessario per proteggere la disponibilità.</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.external" datatype="html"><source>External Services</source><target>Servizi esterni</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.external-body" datatype="html"><source>This site may link to tx.taxi contact channels, Litecoin references, upstream source code, and infrastructure dependencies. External websites have their own terms and policies.</source><target>Questo sito può contenere link ai canali di contatto tx.taxi, a risorse Litecoin, al codice sorgente del progetto originale e alle dipendenze infrastrutturali. I siti esterni hanno propri termini e informative.</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.open" datatype="html"><source>Open Source</source><target>Open source</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.source-before" datatype="html"><source>ltc.tx.taxi is derived from </source><target>ltc.tx.taxi deriva da</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.source-middle" datatype="html"><source>. Contact </source><target>. Contatta</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.source-after" datatype="html"><source> for the current reviewed fork source package.</source><target>per il pacchetto sorgente aggiornato e verificato del fork.</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.description" datatype="html"><source>Terms for using ltc.tx.taxi as an informational Litecoin block and mempool explorer.</source><target>Termini di utilizzo di ltc.tx.taxi come esploratore informativo di blocchi e mempool Litecoin.</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.updated" datatype="html"><source>Updated: September 20, 2026</source><target>Aggiornata: 20 settembre 2026</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.identity" datatype="html"><source>tx.taxi Identity</source><target>Identità tx.taxi</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.identity-body" datatype="html"><source>ltc.tx.taxi is an independently operated Litecoin explorer in the tx.taxi family. Its domain, wordmark, chain palette, and service identity distinguish this fork from the upstream project.</source><target>ltc.tx.taxi è un esploratore Litecoin gestito indipendentemente nella famiglia tx.taxi. Dominio, marchio grafico, palette della catena e identità del servizio distinguono questo fork dal progetto originale.</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.upstream" datatype="html"><source>Upstream Attribution</source><target>Attribuzione al progetto originale</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.source-before" datatype="html"><source>This software is derived from </source><target>Questo software deriva da</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.source-after" datatype="html"><source>. The upstream source code, visual system, project names, logos, and trademarks belong to their respective owners.</source><target>. Il codice sorgente, il sistema visivo, i nomi dei progetti, i loghi e i marchi del progetto originale appartengono ai rispettivi titolari.</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.no-affiliation" datatype="html"><source>No Affiliation</source><target>Nessuna affiliazione</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.no-affiliation-body" datatype="html"><source>ltc.tx.taxi is not affiliated with, sponsored by, or endorsed by Mempool Holdings S.A. de C.V. References to mempool.space and mempool/mempool are nominative attribution to the software from which this fork derives.</source><target>ltc.tx.taxi non è affiliato, sponsorizzato o approvato da Mempool Holdings S.A. de C.V. I riferimenti a mempool.space e mempool/mempool costituiscono attribuzione nominativa al software da cui deriva questo fork.</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.litecoin" datatype="html"><source>Litecoin</source><target>Litecoin</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.litecoin-body" datatype="html"><source>Litecoin is an open network and protocol. References to Litecoin, LTC, litoshis, blocks, transactions, addresses, and mining describe the network data presented by this explorer.</source><target>Litecoin è una rete e un protocollo aperti. I riferimenti a Litecoin, LTC, litoshi, blocchi, transazioni, indirizzi e mining descrivono i dati di rete presentati da questo esploratore.</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.description" datatype="html"><source>Trademark and attribution notes for ltc.tx.taxi, including upstream mempool/mempool attribution and project independence.</source><target>Note su marchi e attribuzioni di ltc.tx.taxi, inclusi i riferimenti al progetto originale mempool/mempool e l’indipendenza del progetto.</target></trans-unit>
+      <trans-unit id="7e01b7b01feffecb2fa299353099e50b9b87f6c4" datatype="html"><source>This transaction belongs to a chunk of 1 transaction, with combined effective fee rate <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="s.chunkFeerate | feeRounding }}"/> lit/vB<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>.</source><target>Questa transazione appartiene a un gruppo di una transazione, con tasso effettivo combinato delle commissioni pari a <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="s.chunkFeerate | feeRounding }}"/> lit/vB lit/vB<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>..</target></trans-unit>
+      <trans-unit id="a22deb277b0b35112d071a8b345a843dadf9a252" datatype="html"><source>This transaction belongs to a chunk of <x id="INTERPOLATION" equiv-text="{{ clusterPreviewStats.chunkSize }}"/> transactions, with combined effective fee rate <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION_1" equiv-text="s.chunkFeerate | feeRounding }}"/> lit/vB<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>.</source><target>Questa transazione appartiene a un gruppo di <x id="INTERPOLATION" equiv-text="{{ clusterPreviewStats.chunkSize }}"/> transactions, with combined effective fee rate transazioni, con tasso effettivo combinato delle commissioni pari a <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION_1" equiv-text="s.chunkFeerate | feeRounding }}"/> lit/vB lit/vB<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>..</target></trans-unit>
+      <trans-unit id="acf9470007b6c76f037bf8aec23fc8d2ba2267a4" datatype="html"><source>In a mempool cluster containing <x id="INTERPOLATION" equiv-text="{{ clusterPreviewStats.otherChunks }}"/> other chunks.</source><target>In un cluster del mempool contenente altri <x id="INTERPOLATION" equiv-text="{{ clusterPreviewStats.otherChunks }}"/> other chunks. gruppi.</target></trans-unit>
+      <trans-unit id="a3eada691bce383b4d990ab3bae548d273ea037f" datatype="html"><source>Only ~<x id="INTERPOLATION" equiv-text="{{ medianFeeNeeded | feeRounding }}"/> lit/vB was needed to get into this block</source><target>Per entrare in questo blocco erano necessari solo ~<x id="INTERPOLATION" equiv-text="{{ medianFeeNeeded | feeRounding }}"/> lit/vB was needed to get into this block lit/vB</target></trans-unit>
+      <trans-unit id="tx-taxi.webgl-unavailable" datatype="html"><source>WebGL is unavailable.</source><target>WebGL non è disponibile.</target></trans-unit>
+      <trans-unit id="tx-taxi.pending-list-link" datatype="html"><source>View pending transactions as a list.</source><target>Visualizza le transazioni in attesa come elenco.</target></trans-unit>
+      <trans-unit id="tx-taxi.replacements-reconnecting" datatype="html"><source>Replacement updates unavailable. Reconnecting...</source><target>Aggiornamenti delle sostituzioni non disponibili. Riconnessione in corso…</target></trans-unit>
+      <trans-unit id="tx-taxi.no-replacements" datatype="html"><source>No replacements in the current feed.</source><target>Nessuna sostituzione nel flusso attuale.</target></trans-unit>
+      <trans-unit id="c19bde6e194e95b60145a4e312fc31941197d90c" datatype="html"><source>LBTC Supply vs. BTC Holdings</source><target>Offerta LBTC rispetto alle riserve BTC</target></trans-unit>
+      <trans-unit id="c41d162ba51c8aea1e205d010ce6c68ba36ae4b5" datatype="html"><source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="For those request"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="ltc.tx.taxi only"/>ltc.tx.taxi only displays public data about the Litecoin network.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> It cannot retrieve funds, resolve wallet issues, reverse transactions, or change confirmation priority.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="For those request"/>For those requests, contact the wallet, exchange, or payment service that created the transaction.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source><target><x id="START_PARAGRAPH" ctype="x-p" equiv-text="For those request"/>For those requests, contact the wallet, exchange, or payment service that created the transaction.<x id="START_BOLD_TEXT" ctype="x-b" equiv-text="ltc.tx.taxi only"/>ltc.tx.taxi only displays public data about the Litecoin network.ltc.tx.taxi mostra solo dati pubblici sulla rete Litecoin.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> It cannot retrieve funds, resolve wallet issues, reverse transactions, or change confirmation priority. Non può recuperare fondi, risolvere problemi del portafoglio, annullare transazioni o modificare la priorità di conferma.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="For those request"/>For those requests, contact the wallet, exchange, or payment service that created the transaction.Per queste richieste, contatta il portafoglio, l’exchange o il servizio di pagamento che ha creato la transazione.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.rest-intro" datatype="html"><source>This reference covers the read-only Litecoin REST endpoints exposed at</source><target>Questa guida descrive gli endpoint REST Litecoin di sola lettura disponibili su</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.rest-headers" datatype="html"><source>Successful gateway responses include</source><target>Le risposte corrette del gateway includono</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.and" datatype="html"><source>and</source><target>e</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.rest-limits" datatype="html"><source>The gateway budgets its primary REST source to 60 requests per minute and four concurrent requests. A missing entity returns 404; an unavailable source returns 503. Do not treat a cached or pending response as permanent state.</source><target>Il gateway limita la fonte REST primaria a 60 richieste al minuto e quattro richieste simultanee. Un’entità inesistente restituisce 404; una fonte non disponibile restituisce 503. Non considerare uno stato permanente una risposta in cache o in attesa.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.ws-connect" datatype="html"><source>Connect to the Litecoin WebSocket at</source><target>Connettiti al WebSocket Litecoin su</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.ws-subscribe" datatype="html"><source>Send the JSON subscription payload shown for each stream; an HTTP request to this URL is not a WebSocket connection.</source><target>Invia il payload di sottoscrizione JSON indicato per ogni flusso; una richiesta HTTP a questo URL non è una connessione WebSocket.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.ws-capacity" datatype="html"><source>Shared dashboard data comes from one upstream feed. Detail subscriptions have separate bounded capacity, and clients must handle reconnects and freshness changes.</source><target>I dati condivisi della dashboard provengono da un solo flusso upstream. Le sottoscrizioni ai dettagli hanno una capacità limitata distinta e i client devono gestire riconnessioni e variazioni di aggiornamento.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.payload" datatype="html"><source>Payload</source><target>Payload</target></trans-unit>
+      <trans-unit id="taxi.ltc.faq.overview" datatype="html"><source>ltc.tx.taxi shows publicly observable Litecoin blocks, transparent transactions and addresses, node mempool data, fees, and mining activity. Litecoin targets a block every 2.5 minutes, retargets difficulty every 2,016 blocks, and halves the subsidy every 840,000 blocks.</source><target>ltc.tx.taxi mostra blocchi Litecoin osservabili pubblicamente, transazioni e indirizzi trasparenti, dati del mempool di un nodo, commissioni e attività di mining. Litecoin punta a un blocco ogni 2,5 minuti, ricalcola la difficoltà ogni 2.016 blocchi e dimezza la ricompensa ogni 840.000 blocchi.</target></trans-unit>
+      <trans-unit id="taxi.ltc.faq.fees" datatype="html"><source>One LTC equals 100,000,000 litoshis. This explorer reports transaction fees in litoshis and fee rates in <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>lit/vB<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/>. A higher fee rate can make a pending transaction more competitive for inclusion, but does not guarantee a confirmation time.</source><target>Un LTC equivale a 100.000.000 di litoshi. Questo esploratore indica le commissioni delle transazioni in litoshi e i relativi tassi in <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/>lit/vBlit/vB<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/>. A higher fee rate can make a pending transaction more competitive for inclusion, but does not guarantee a confirmation time.. Un tasso maggiore può rendere più competitiva l’inclusione di una transazione in attesa, ma non garantisce un tempo di conferma.</target></trans-unit>
+      <trans-unit id="taxi.ltc.faq.mweb" datatype="html"><source>MWEB is Litecoin’s MimbleWimble Extension Block. Its private transfers do not publish ordinary amounts, recipient history, or address balances for an explorer to reconstruct. The HogEx transaction and peg-in or peg-out records connect MWEB to the transparent chain; they should not be read as ordinary wallet transfers.</source><target>MWEB è il blocco di estensione MimbleWimble di Litecoin. I suoi trasferimenti privati non pubblicano importi ordinari, cronologia dei destinatari o saldi degli indirizzi ricostruibili da un esploratore. La transazione HogEx e le operazioni di peg-in o peg-out collegano MWEB alla catena trasparente; non devono essere interpretate come normali trasferimenti tra portafogli.</target></trans-unit>
+      <trans-unit id="taxi.ltc.faq.data-freshness" datatype="html"><source>There is no global mempool. Nodes can observe different pending transactions, and a node can evict or later receive a transaction. Fee estimates and projected blocks are observations of this explorer’s current feed. Check the freshness indicator and headers before relying on a response.</source><target>Non esiste un mempool globale. I nodi possono osservare transazioni in attesa diverse e un nodo può rimuovere o ricevere in seguito una transazione. Le stime delle commissioni e i blocchi previsti riflettono le osservazioni del flusso attuale di questo esploratore. Verifica l’indicatore di aggiornamento e le intestazioni prima di usare una risposta.</target></trans-unit>
+      <trans-unit id="taxi.ltc.faq.search" datatype="html"><source>Search a Litecoin block height, block hash, transaction ID, transparent Litecoin address, or a supported explorer URL. A 64-character hash can be valid on more than one chain, so tx.taxi keeps chain selection available when a match is ambiguous.</source><target>Cerca l’altezza o l’hash di un blocco Litecoin, un ID di transazione, un indirizzo Litecoin trasparente o l’URL di un esploratore supportato. Un hash di 64 caratteri può essere valido su più catene, quindi tx.taxi mantiene disponibile la scelta della rete quando la corrispondenza è ambigua.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.chain" datatype="html"><source>chain</source><target>catena</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.transactions" datatype="html"><source>transactions</source><target>transazioni</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.service" datatype="html"><source>service</source><target>servizio</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.connection" datatype="html"><source>connection</source><target>connessione</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.streams" datatype="html"><source>streams</source><target>flussi</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.privacy" datatype="html"><source>privacy</source><target>privacy</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.data" datatype="html"><source>data</source><target>dati</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.chain" datatype="html"><source>Chain</source><target>Catena</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.tip-height-title" datatype="html"><source>GET Tip Height</source><target>GET Altezza dell’ultimo blocco</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.tip-height-description" datatype="html"><source>Returns the current Litecoin tip height as plain text.</source><target>Restituisce in testo semplice l’altezza attuale dell’ultimo blocco Litecoin.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.recent-blocks-title" datatype="html"><source>GET Recent Blocks</source><target>GET Blocchi recenti</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.recent-blocks-description" datatype="html"><source>Returns the most recently observed blocks. This is served from the shared feed while it is fresh; otherwise the gateway uses its read-only REST source.</source><target>Restituisce gli ultimi blocchi osservati. I dati provengono dal flusso condiviso finché è aggiornato; altrimenti il gateway usa la propria fonte REST di sola lettura.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.block-by-hash-title" datatype="html"><source>GET Block</source><target>GET Blocco</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.block-by-hash-description" datatype="html"><source>Returns an observed block by its 64-character hash. Use &lt;code&gt;/block-height/:height&lt;/code&gt; first when starting with a height.</source><target>Restituisce un blocco osservato tramite il suo hash di 64 caratteri. Se parti da un’altezza, usa prima &lt;code&gt;/block-height/:height&lt;/code&gt;.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.block-height-title" datatype="html"><source>GET Block Hash by Height</source><target>GET Hash del blocco per altezza</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.block-height-description" datatype="html"><source>Returns the canonical block hash for a height as plain text.</source><target>Restituisce in testo semplice l’hash canonico del blocco a una determinata altezza.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.block-transactions-title" datatype="html"><source>GET Block Transactions</source><target>GET Transazioni del blocco</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.block-transactions-description" datatype="html"><source>Returns the transparent transactions in a block. MWEB transfer details are not exposed as ordinary address history.</source><target>Restituisce le transazioni trasparenti di un blocco. I dettagli dei trasferimenti MWEB non vengono esposti come cronologia ordinaria degli indirizzi.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.tx-addresses" datatype="html"><source>Transactions and addresses</source><target>Transazioni e indirizzi</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.transaction-title" datatype="html"><source>GET Transaction</source><target>GET Transazione</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.transaction-description" datatype="html"><source>Returns a transparent transaction by ID. Pending status can change; clients should treat it as a snapshot.</source><target>Restituisce una transazione trasparente tramite ID. Lo stato di attesa può cambiare; i client devono considerarlo un’istantanea.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.tx-status-title" datatype="html"><source>GET Transaction Status</source><target>GET Stato della transazione</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.tx-status-description" datatype="html"><source>Returns the current confirmation state for a transaction.</source><target>Restituisce lo stato attuale di conferma di una transazione.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.address-title" datatype="html"><source>GET Address</source><target>GET Indirizzo</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.address-description" datatype="html"><source>Returns aggregate transparent-chain statistics for a valid Litecoin address. It cannot reveal MWEB balances, recipients, or private transfer amounts.</source><target>Restituisce statistiche aggregate della catena trasparente per un indirizzo Litecoin valido. Non può rivelare saldi MWEB, destinatari o importi di trasferimenti privati.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.address-txs-title" datatype="html"><source>GET Address Transactions</source><target>GET Transazioni dell’indirizzo</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.address-txs-description" datatype="html"><source>Returns the first page of transparent transactions for an address. Continue confirmed history with &lt;code&gt;/address/:address/txs/chain/:last-confirmed-txid&lt;/code&gt;.</source><target>Restituisce la prima pagina delle transazioni trasparenti di un indirizzo. Continua la cronologia confermata con &lt;code&gt;/address/:address/txs/chain/:last-confirmed-txid&lt;/code&gt;.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.mempool-history" datatype="html"><source>Mempool and observed history</source><target>Mempool e cronologia osservata</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.mempool-title" datatype="html"><source>GET Mempool Summary</source><target>GET Riepilogo del mempool</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.mempool-description" datatype="html"><source>Returns the gateway’s current upstream mempool summary. It describes one node’s view, not a network-wide queue.</source><target>Restituisce il riepilogo attuale del mempool della fonte upstream del gateway. Descrive la vista di un nodo, non una coda globale della rete.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.fees-title" datatype="html"><source>GET Fee Estimates</source><target>GET Stime delle commissioni</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.fees-description" datatype="html"><source>Returns fee estimates in &lt;code&gt;lit/vB&lt;/code&gt;. Estimates are observations, not confirmation guarantees.</source><target>Restituisce le stime delle commissioni in &lt;code&gt;lit/vB&lt;/code&gt;. Le stime sono osservazioni, non garanzie di conferma.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.coverage-title" datatype="html"><source>GET Observed Coverage</source><target>GET Copertura osservata</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.coverage-description" datatype="html"><source>Returns only locally retained observation coverage and sample counts. It does not claim archival or complete mining history.</source><target>Restituisce solo la copertura delle osservazioni conservate localmente e il numero di campioni. Non dichiara di essere un archivio o una cronologia completa del mining.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.series-title" datatype="html"><source>GET Observed Series</source><target>GET Serie osservate</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.series-description" datatype="html"><source>Returns bounded, locally observed samples for the available mempool, block, and native feed measurements.</source><target>Restituisce campioni limitati osservati localmente per le misurazioni disponibili del mempool, dei blocchi e del flusso nativo.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.service" datatype="html"><source>Service behavior</source><target>Funzionamento del servizio</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.health-title" datatype="html"><source>GET Provider Health</source><target>GET Stato del provider</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.health-description" datatype="html"><source>Returns gateway freshness and health metadata. This endpoint may probe the current mempool summary before reporting an idle state.</source><target>Restituisce metadati sull’aggiornamento e lo stato del gateway. Questo endpoint può interrogare il riepilogo attuale del mempool prima di segnalare uno stato inattivo.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.connection" datatype="html"><source>Connection</source><target>Connessione</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.snapshot-title" datatype="html"><source>Initial snapshot</source><target>Istantanea iniziale</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.snapshot-description" datatype="html"><source>Connect to &lt;code&gt;/api/v1/ws&lt;/code&gt;, then send &lt;code&gt;{ "action": "init" }&lt;/code&gt;. The server returns the current shared snapshot when one is available, followed by a &lt;code&gt;provider-freshness&lt;/code&gt; object.</source><target>Connettiti a &lt;code&gt;/api/v1/ws&lt;/code&gt;, quindi invia &lt;code&gt;{ "action": "init" }&lt;/code&gt;. Il server restituisce l’istantanea condivisa attuale quando disponibile, seguita da un oggetto &lt;code&gt;provider-freshness&lt;/code&gt;.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.streams" datatype="html"><source>Shared streams</source><target>Flussi condivisi</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.live-title" datatype="html"><source>Subscribe to shared data</source><target>Sottoscrivi i dati condivisi</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.live-description" datatype="html"><source>Send &lt;code&gt;action: "want"&lt;/code&gt; for shared dashboard data. Available shared keys include &lt;code&gt;blocks&lt;/code&gt;, &lt;code&gt;mempool-blocks&lt;/code&gt;, &lt;code&gt;stats&lt;/code&gt;, and &lt;code&gt;live-2h-chart&lt;/code&gt;. The gateway fans out one upstream dashboard feed; it does not promise per-visitor feeds.</source><target>Invia &lt;code&gt;action: "want"&lt;/code&gt; per ricevere i dati condivisi della dashboard. Le chiavi disponibili includono &lt;code&gt;blocks&lt;/code&gt;, &lt;code&gt;mempool-blocks&lt;/code&gt;, &lt;code&gt;stats&lt;/code&gt; e &lt;code&gt;live-2h-chart&lt;/code&gt;. Il gateway distribuisce un unico flusso upstream della dashboard; non promette flussi separati per visitatore.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.track-title" datatype="html"><source>Track a transaction or address</source><target>Segui una transazione o un indirizzo</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.track-description" datatype="html"><source>A transaction or address can be tracked through the native upstream subscription protocol. Detail feeds are shared by identical subscriptions and capped at eight across this gateway. When capacity is unavailable, the server sends &lt;code&gt;tracking-unavailable&lt;/code&gt;.</source><target>Una transazione o un indirizzo può essere seguito tramite il protocollo di sottoscrizione nativo upstream. I flussi di dettaglio sono condivisi tra sottoscrizioni identiche e limitati a otto per questo gateway. Quando non c’è capacità disponibile, il server invia &lt;code&gt;tracking-unavailable&lt;/code&gt;.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.freshness-title" datatype="html"><source>Interpret freshness</source><target>Interpretare l’aggiornamento</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.freshness-description" datatype="html"><source>&lt;code&gt;provider-freshness&lt;/code&gt; is &lt;code&gt;live&lt;/code&gt;, &lt;code&gt;stale&lt;/code&gt;, or &lt;code&gt;unavailable&lt;/code&gt;. A cached snapshot may be delivered during an outage, but is always marked stale rather than presented as current.</source><target>&lt;code&gt;provider-freshness&lt;/code&gt; può essere &lt;code&gt;live&lt;/code&gt;, &lt;code&gt;stale&lt;/code&gt; o &lt;code&gt;unavailable&lt;/code&gt;. Durante un’interruzione può essere fornita un’istantanea in cache, ma viene sempre contrassegnata come non aggiornata e mai presentata come attuale.</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.faq-basics" datatype="html"><source>Litecoin basics</source><target>Nozioni di base su Litecoin</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.faq-overview" datatype="html"><source>What does this explorer show?</source><target>Che cosa mostra questo esploratore?</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.faq-fees" datatype="html"><source>How are Litecoin amounts and fees shown?</source><target>Come vengono mostrati gli importi e le commissioni Litecoin?</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.faq-privacy" datatype="html"><source>MWEB and privacy</source><target>MWEB e privacy</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.faq-mweb" datatype="html"><source>Why are some MWEB details unavailable?</source><target>Perché alcuni dettagli MWEB non sono disponibili?</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.faq-data" datatype="html"><source>Data and confirmation</source><target>Dati e conferma</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.faq-freshness" datatype="html"><source>Why can pending data or a fee estimate change?</source><target>Perché i dati in attesa o le stime delle commissioni possono cambiare?</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.faq-search" datatype="html"><source>What can I search?</source><target>Che cosa posso cercare?</target></trans-unit>
+      <trans-unit id="taxi.ltc.fiat.unavailable" datatype="html"><source>Fiat price unavailable</source><target>Prezzo fiat non disponibile</target></trans-unit>
+      <trans-unit id="taxi.ltc.meta.base-description" datatype="html"><source>Explore Litecoin blocks, transactions, addresses, fees and mining activity.</source><target>Esplora blocchi, transazioni, indirizzi, commissioni e attività di mining Litecoin.</target></trans-unit>
+      <trans-unit id="taxi.ltc.meta.explorer-title" datatype="html"><source><x id="chain" equiv-text="chain"/> Explorer</source><target>Esploratore <x id="chain" equiv-text="chain"/> Explorer</target></trans-unit>
+      <trans-unit id="taxi.ltc.provider.tracking" datatype="html"><source>Live detail tracking is temporarily unavailable. Displayed details may be stale.</source><target>Il monitoraggio dei dettagli in tempo reale è temporaneamente indisponibile. I dettagli mostrati potrebbero non essere aggiornati.</target></trans-unit>
+      <trans-unit id="taxi.ltc.block.details" datatype="html"><source>Total fees: <x id="fees" equiv-text="exactDisplay(exactBlockAmount(total))"/> <x id="symbol" equiv-text="SYMBOL"/>. Median fee rate: <x id="median" equiv-text="rate(median)"/> <x id="feeUnit" equiv-text="FEE_UNIT"/>. Fee range: <x id="min" equiv-text="rate(min)"/>–<x id="max" equiv-text="rate(max)"/> <x id="rangeUnit" equiv-text="FEE_UNIT"/>.</source><target>Commissioni totali: <x id="fees" equiv-text="exactDisplay(exactBlockAmount(total))"/> <x id="symbol" equiv-text="SYMBOL"/>. Median fee rate:. Tasso mediano delle commissioni: <x id="median" equiv-text="rate(median)"/> <x id="feeUnit" equiv-text="FEE_UNIT"/>. Fee range:. Intervallo delle commissioni: <x id="min" equiv-text="rate(min)"/>––<x id="max" equiv-text="rate(max)"/> <x id="rangeUnit" equiv-text="FEE_UNIT"/>..</target></trans-unit>
+      <trans-unit id="1ee1b2c4ff9cc326c9df47240f4b80cd59082bde" datatype="html"><source>lit/vB</source><target>lit/vB</target></trans-unit>
+      <trans-unit id="taxi.footer.tagline" datatype="html"><source>Litecoin blocks, fees, and mempool activity</source><target>Blocchi, commissioni e attività del mempool Litecoin</target></trans-unit>
+      <trans-unit id="taxi.footer.mempool-wall" datatype="html"><source>Mempool Wall</source><target>Mempool Wall</target></trans-unit>
+      <trans-unit id="taxi.footer.graphs" datatype="html"><source>Litecoin Graphs</source><target>Grafici Litecoin</target></trans-unit>
+      <trans-unit id="taxi.footer.faq" datatype="html"><source>Litecoin FAQ</source><target>FAQ Litecoin</target></trans-unit>
+      <trans-unit id="taxi.footer.upstream" datatype="html"><source>Upstream project</source><target>Progetto originale</target></trans-unit>
+      <trans-unit id="taxi.footer.leaving" datatype="html"><source>Ask before leaving Litecoin</source><target>Chiedi prima di lasciare Litecoin</target></trans-unit>
+      <trans-unit id="taxi.intro.label" datatype="html"><source>About tx.taxi</source><target>Informazioni su tx.taxi</target></trans-unit>
+      <trans-unit id="taxi.intro.title" datatype="html"><source>One search across chains.</source><target>Una ricerca su più catene.</target></trans-unit>
+      <trans-unit id="taxi.intro.description" datatype="html"><source>Paste a transaction, block or address into tx.taxi. Open a confirmed match, choose between possible networks, or head straight to your chain’s explorer.</source><target>Incolla una transazione, un blocco o un indirizzo in tx.taxi. Apri una corrispondenza confermata, scegli tra le reti possibili o vai direttamente all’esploratore della tua catena.</target></trans-unit>
+      <trans-unit id="taxi.intro.open" datatype="html"><source>Open tx.taxi</source><target>Apri tx.taxi</target></trans-unit>
+      <trans-unit id="taxi.intro.native" datatype="html"><source>Explore <x id="INTERPOLATION" equiv-text="{{ chainName }}"/></source><target>Esplora <x id="INTERPOLATION" equiv-text="{{ chainName }}"/></target></trans-unit>
+      <trans-unit id="taxi.intro.native-label" datatype="html"><source>Open <x id="host" equiv-text="this.chainHost"/></source><target>Apri <x id="host" equiv-text="this.chainHost"/></target></trans-unit>
+      <trans-unit id="taxi.intro.explorer" datatype="html"><source>explorer</source><target>esploratore</target></trans-unit>
+      <trans-unit id="taxi.intro.documentation" datatype="html"><source>documentation</source><target>documentazione</target></trans-unit>
     </body>
   </file>
 </xliff>
