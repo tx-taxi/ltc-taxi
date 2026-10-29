@@ -4494,8 +4494,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="meta.description.bitcoin.blocks" datatype="html">
-        <source>See the most recent Bitcoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/> blocks along with basic stats such as block height, block reward, block size, and more.</source>
-        <target>Zeige die neuesten Bitcoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/>-Blöcke zusmmen mit grundlegenden Statistiken wie Blockhöhe, Blockbelohnung, Blockgröße und mehr an.</target>
+        <source>See the most recent Litecoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/> blocks along with basic stats such as block height, block reward, block size, and more.</source>
+        <target>Zeige die neuesten Litecoin<x id="PH" equiv-text="seoDescriptionNetwork(this.stateService.network)"/>-Blöcke zusammen mit grundlegenden Statistiken wie Blockhöhe, Blockbelohnung, Blockgröße und mehr an.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/blocks-list/blocks-list.component.ts</context>
           <context context-type="linenumber">76</context>
