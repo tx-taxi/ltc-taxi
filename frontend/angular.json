@@ -239,7 +239,7 @@
               "outputPath": "dist/spanish"
             },
             "translated": {
-              "localize": ["es", "fr", "de"],
+              "localize": ["es", "fr", "de", "it"],
               "outputPath": "dist/translated"
             }
           },

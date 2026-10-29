@@ -16,7 +16,7 @@ export class TxTaxiDocsIntroComponent {
 
   get nativeHref(): string {
     const language = this.locale.substring(0, 2);
-    return ['es', 'fr', 'de'].includes(language) ? `/${language}/` : '/';
+    return ['es', 'fr', 'de', 'it'].includes(language) ? `/${language}/` : '/';
   }
 
   get nativeLabel(): string {

@@ -2,13 +2,14 @@ const DECIMALS = 8, SYMBOL = 'LTC', FEE_UNIT = 'lit/vB', FEE_SCALE = 1;
 
 // Hub strips share the page document, while explorers serve each language at
 // its own URL. Never use browser preferences to change an English page.
-function blockLocale(): 'es' | 'en-US' {
-  return typeof document !== 'undefined' && /^es(?:-|$)/i.test(document.documentElement?.lang || '') ? 'es' : 'en-US';
+function blockLocale(): string {
+  const language = typeof document !== 'undefined' ? (document.documentElement?.lang || '').split('-')[0].toLowerCase() : '';
+  return ['es', 'fr', 'de', 'it'].includes(language) ? language : 'en-US';
 }
 
-// Keep exact values intact; only change the decimal separator in Spanish.
+// Keep exact values intact; only change the decimal separator for supported comma-decimal locales.
 function exactDisplay(value: string): string {
-  return blockLocale() === 'es' ? value.replace('.', ',') : value;
+  return blockLocale() !== 'en-US' ? value.replace('.', ',') : value;
 }
 
 // Presentation only: never round provider data or detail-page amounts.
