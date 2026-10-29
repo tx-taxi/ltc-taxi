@@ -130,8 +130,16 @@ export class ApiDocsComponent implements OnInit, AfterViewInit {
     // sidebar aligned with the tab content without a hard-coded scroll offset.
   }
 
+  anchorHref(fragment: string): string {
+    return `${document.location.pathname}${document.location.search}#${fragment}`;
+  }
+
   anchorLinkClick( e ) {
+    const mouse = e.event as MouseEvent | null;
+    if (mouse && (mouse.button !== 0 || mouse.ctrlKey || mouse.metaKey || mouse.shiftKey || mouse.altKey)) return;
+    mouse?.preventDefault();
     const targetId = e.fragment;
+    if (!document.getElementById(targetId)) return;
     const vOffset = ( window.innerWidth <= 992 ) ? 100 : 60;
     window.scrollTo({
       top: document.getElementById( targetId ).offsetTop - vOffset

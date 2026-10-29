@@ -44,7 +44,12 @@ export class ApiDocsNavComponent implements OnInit {
     }
   }
 
-  navLinkClick(event, fragment) {
+  anchorHref(fragment: string): string {
+    return `${document.location.pathname}${document.location.search}#${fragment}`;
+  }
+
+  navLinkClick(event: MouseEvent, fragment: string) {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     this.navLinkClickEvent.emit({event: event, fragment: fragment});
   }
