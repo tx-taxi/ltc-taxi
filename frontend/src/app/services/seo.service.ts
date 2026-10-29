@@ -102,10 +102,11 @@ export class SeoService {
   }
 
   updateCanonical(path) {
-    try { path = decodeURIComponent(path); } catch {}
-    path = path.replace(/\/$/, '') || '/';
     const locale = this.locale.substring(0, 2);
     const localePrefix = ['es', 'fr', 'de', 'it', 'pt'].includes(locale) ? '/' + locale : '';
+    if (localePrefix) path = path.split('?')[0].split('#')[0];
+    try { path = decodeURIComponent(path); } catch {}
+    path = path.replace(/\/$/, '') || '/';
     const canonicalUrl = 'https://' + this.baseDomain + localePrefix + path;
     this.canonicalLink.setAttribute('href', canonicalUrl);
     this.metaService.updateTag({ property: 'og:url', content: canonicalUrl });
