@@ -3,13 +3,13 @@
     <div class="search-box-container me-2">
       <div class="search-input-row">
         <div ngbDropdown #chainMenu="ngbDropdown" [autoClose]="false" class="search-chain-selector" placement="bottom-start">
-          <button ngbDropdownToggle type="button" class="search-chain-trigger" aria-label="Choose search chain" i18n-aria-label="@@taxi.search.choose-chain" title="Choose search chain" i18n-title="@@taxi.search.choose-chain">
+          <button ngbDropdownToggle type="button" class="search-chain-trigger" [attr.aria-label]="searchSelectorLabel(activeTarget$ | async)" title="Choose search chain" i18n-title="@@taxi.search.choose-chain">
             <ng-container *ngIf="activeTarget$ | async as activeTarget; else defaultChainIcon">
-              <img [src]="activeTarget.iconUrl" [alt]="activeTarget.iconAlt">
+              <img [src]="activeTarget.iconUrl" alt="">
               <span *ngIf="activeTarget.destinationId && !activeTarget.destinationDefault" class="search-chain-target-label">{{ activeTarget.name }}</span>
             </ng-container>
             <ng-template #defaultChainIcon>
-              <img [src]="defaultChainIconUrl" [alt]="defaultChainIconAlt">
+              <img [src]="defaultChainIconUrl" alt="">
             </ng-template>
           </button>
           <div ngbDropdownMenu class="search-chain-menu" aria-label="Choose search chain" i18n-aria-label="@@taxi.search.choose-chain">

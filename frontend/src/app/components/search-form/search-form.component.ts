@@ -397,6 +397,15 @@ export class SearchFormComponent implements OnInit {
     }
   }
 
+  searchSelectorLabel(target: SearchTarget | null | undefined): string {
+    const choose = $localize`:@@taxi.search.choose-chain:Choose search chain`;
+    const selected = $localize`:@@taxi.search.selected-explorer:Selected explorer`;
+    const name = target?.kind === 'router'
+      ? $localize`:@@taxi.search.automatic:Automatic Routing`
+      : target?.name || 'Litecoin';
+    return `${choose} — ${selected}: ${name}`;
+  }
+
   trackExplorer(_index: number, explorer: TxTaxiExplorer): string {
     return explorer.id;
   }
