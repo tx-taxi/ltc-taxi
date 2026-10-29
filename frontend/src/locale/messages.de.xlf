@@ -11856,6 +11856,8 @@
       <trans-unit id="taxi.intro.native-label" datatype="html"><source>Open <x id="host" equiv-text="this.chainHost"/></source><target><x id="host" equiv-text="this.chainHost"/> öffnen</target></trans-unit>
       <trans-unit id="taxi.intro.chain-explorer" datatype="html"><source><x id="CHAIN" equiv-text="this.chainName"/> explorer</source><target><x id="CHAIN" equiv-text="this.chainName"/>-Explorer</target></trans-unit>
       <trans-unit id="taxi.intro.chain-docs" datatype="html"><source><x id="CHAIN" equiv-text="this.chainName"/> documentation</source><target><x id="CHAIN" equiv-text="this.chainName"/>-Dokumentation</target></trans-unit>
+      <trans-unit id="taxi.ltc.brand.dashboard" datatype="html"><source>ltc.tx.taxi dashboard</source><target>ltc.tx.taxi-Dashboard</target></trans-unit>
+      <trans-unit id="taxi.ltc.brand.logo" datatype="html"><source>ltc.tx.taxi Litecoin explorer</source><target>ltc.tx.taxi Litecoin-Explorer</target></trans-unit>
     </body>
   </file>
 </xliff>

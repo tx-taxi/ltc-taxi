@@ -18,7 +18,7 @@
   </ng-container>
 
   <!-- Large screen -->
-  <a class="navbar-brand d-none d-md-flex" [ngClass]="{'dual-logos': enterpriseInfo?.dualLogo}" [routerLink]="['/' | relativeUrl]" (click)="brandClick($event)" aria-label="ltc.tx.taxi dashboard" title="ltc.tx.taxi dashboard">
+  <a class="navbar-brand d-none d-md-flex" [ngClass]="{'dual-logos': enterpriseInfo?.dualLogo}" [routerLink]="['/' | relativeUrl]" (click)="brandClick($event)" aria-label="ltc.tx.taxi dashboard" i18n-aria-label="@@taxi.ltc.brand.dashboard" title="ltc.tx.taxi dashboard" i18n-title="@@taxi.ltc.brand.dashboard">
     <ng-container *ngIf="{ val: connectionState$ | async } as connectionState">
       @if (enterpriseInfo) {
         <div class="subdomain_container">
@@ -29,7 +29,7 @@
         }
       }
       @if (!enterpriseInfo || enterpriseInfo.dualLogo) {
-        <img *ngIf="!officialMempoolSpace" src="/resources/branding/ltc-dark-navbar.svg" alt="ltc.tx.taxi Litecoin explorer" class="btc-brand-navbar" [style.opacity]="connectionState.val === 2 ? 1 : 0.5">
+        <img *ngIf="!officialMempoolSpace" src="/resources/branding/ltc-dark-navbar.svg" alt="ltc.tx.taxi Litecoin explorer" i18n-alt="@@taxi.ltc.brand.logo" class="btc-brand-navbar" [style.opacity]="connectionState.val === 2 ? 1 : 0.5">
         <app-svg-images *ngIf="officialMempoolSpace" name="officialMempoolSpace" viewBox="0 0 500 126"></app-svg-images>
       }
       <div class="connection-badge">
@@ -39,7 +39,7 @@
     </ng-container>
   </a>
   <!-- Mobile -->
-  <a class="navbar-brand d-flex d-md-none justify-content-center" [ngClass]="{'dual-logos': enterpriseInfo?.dualLogo, 'me-0': enterpriseInfo?.dualLogo}" [routerLink]="['/' | relativeUrl]" (click)="brandClick($event)" aria-label="ltc.tx.taxi dashboard" title="ltc.tx.taxi dashboard">
+  <a class="navbar-brand d-flex d-md-none justify-content-center" [ngClass]="{'dual-logos': enterpriseInfo?.dualLogo, 'me-0': enterpriseInfo?.dualLogo}" [routerLink]="['/' | relativeUrl]" (click)="brandClick($event)" aria-label="ltc.tx.taxi dashboard" i18n-aria-label="@@taxi.ltc.brand.dashboard" title="ltc.tx.taxi dashboard" i18n-title="@@taxi.ltc.brand.dashboard">
     <ng-container *ngIf="{ val: connectionState$ | async } as connectionState">
       @if (enterpriseInfo) {
         <div class="subdomain_container">
@@ -50,7 +50,7 @@
         }
       }
       @if (!enterpriseInfo || enterpriseInfo.dualLogo) {
-        <img *ngIf="!officialMempoolSpace" src="/resources/branding/ltc-dark-navbar.svg" alt="ltc.tx.taxi Litecoin explorer" class="btc-brand-navbar" [style.opacity]="connectionState.val === 2 ? 1 : 0.5">
+        <img *ngIf="!officialMempoolSpace" src="/resources/branding/ltc-dark-navbar.svg" alt="ltc.tx.taxi Litecoin explorer" i18n-alt="@@taxi.ltc.brand.logo" class="btc-brand-navbar" [style.opacity]="connectionState.val === 2 ? 1 : 0.5">
         <app-svg-images *ngIf="officialMempoolSpace" name="officialMempoolSpace" viewBox="0 0 500 126"></app-svg-images>
       }
       <div class="connection-badge">
