@@ -12525,7 +12525,7 @@
       </trans-unit>
       <trans-unit id="taxi.ltc.docs.snapshot-description" datatype="html">
         <source>Connect to &lt;code&gt;/api/v1/ws&lt;/code&gt;, then send &lt;code&gt;{ "action": "init" }&lt;/code&gt;. The server returns the current shared snapshot when one is available, followed by a &lt;code&gt;provider-freshness&lt;/code&gt; object.</source>
-        <target state="needs-review-translation">Ligue-se a &lt;code&gt;/api/v1/ws&lt;/code&gt; e envie &lt;code&gt;{ "action": "init" }&lt;/code&gt;. O servidor devolve o instantâneo partilhado atual quando disponível, seguido de um objeto &lt;code&gt;provider-freshness&lt;/code&gt;.</target><context-group purpose="location">
+        <target state="needs-review-translation">Ligue-se a &lt;code&gt;/api/v1/ws&lt;/code&gt; e envie a mensagem de inicialização indicada abaixo. O servidor devolve o instantâneo partilhado atual quando disponível, seguido de um objeto &lt;code&gt;provider-freshness&lt;/code&gt;.</target><context-group purpose="location">
           <context context-type="sourcefile">src/app/docs/api-docs/litecoin-docs-data.ts</context>
           <context context-type="linenumber">71</context>
         </context-group>
