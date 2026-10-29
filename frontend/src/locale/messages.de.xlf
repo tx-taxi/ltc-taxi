@@ -11702,16 +11702,16 @@
       <trans-unit id="taxi.ltc.terms.external" datatype="html"><source>External Services</source><target>Externe Dienste</target></trans-unit>
       <trans-unit id="taxi.ltc.terms.external-body" datatype="html"><source>This site may link to tx.taxi contact channels, Litecoin references, upstream source code, and infrastructure dependencies. External websites have their own terms and policies.</source><target>Diese Website kann auf tx.taxi-Kontaktkanäle, Litecoin-Referenzen, ursprünglichen Quellcode und Infrastrukturabhängigkeiten verlinken. Externe Websites haben eigene Bedingungen und Richtlinien.</target></trans-unit>
       <trans-unit id="taxi.ltc.terms.open" datatype="html"><source>Open Source</source><target>Open Source</target></trans-unit>
-      <trans-unit id="taxi.ltc.terms.source-before" datatype="html"><source>ltc.tx.taxi is derived from </source><target>ltc.tx.taxi basiert auf</target></trans-unit>
-      <trans-unit id="taxi.ltc.terms.source-middle" datatype="html"><source>. Contact </source><target>. Kontaktieren Sie</target></trans-unit>
-      <trans-unit id="taxi.ltc.terms.source-after" datatype="html"><source> for the current reviewed fork source package.</source><target>für das aktuelle geprüfte Quellcodepaket dieses Forks.</target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.source-before" datatype="html"><source>ltc.tx.taxi is derived from </source><target>ltc.tx.taxi basiert auf </target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.source-middle" datatype="html"><source>. Contact </source><target>. Kontaktieren Sie </target></trans-unit>
+      <trans-unit id="taxi.ltc.terms.source-after" datatype="html"><source> for the current reviewed fork source package.</source><target> für das aktuelle geprüfte Quellcodepaket dieses Forks.</target></trans-unit>
       <trans-unit id="taxi.ltc.terms.description" datatype="html"><source>Terms for using ltc.tx.taxi as an informational Litecoin block and mempool explorer.</source><target>Nutzungsbedingungen für ltc.tx.taxi als informativen Litecoin-Block- und Mempool-Explorer.</target></trans-unit>
       <trans-unit id="taxi.ltc.trademark.title" datatype="html"><source>Trademark &amp; Attribution</source><target>Marken und Nachweise</target></trans-unit>
       <trans-unit id="taxi.ltc.trademark.updated" datatype="html"><source>Updated: September 20, 2026</source><target>Aktualisiert am 20. September 2026</target></trans-unit>
       <trans-unit id="taxi.ltc.trademark.identity" datatype="html"><source>tx.taxi Identity</source><target>tx.taxi-Identität</target></trans-unit>
       <trans-unit id="taxi.ltc.trademark.identity-body" datatype="html"><source>ltc.tx.taxi is an independently operated Litecoin explorer in the tx.taxi family. Its domain, wordmark, chain palette, and service identity distinguish this fork from the upstream project.</source><target>ltc.tx.taxi ist ein unabhängig betriebener Litecoin-Explorer der tx.taxi-Familie. Domain, Wortmarke, Blockchain-Farbpalette und Dienstidentität unterscheiden diesen Fork vom ursprünglichen Projekt.</target></trans-unit>
       <trans-unit id="taxi.ltc.trademark.upstream" datatype="html"><source>Upstream Attribution</source><target>Nachweis des ursprünglichen Projekts</target></trans-unit>
-      <trans-unit id="taxi.ltc.trademark.source-before" datatype="html"><source>This software is derived from </source><target>Diese Software basiert auf</target></trans-unit>
+      <trans-unit id="taxi.ltc.trademark.source-before" datatype="html"><source>This software is derived from </source><target>Diese Software basiert auf </target></trans-unit>
       <trans-unit id="taxi.ltc.trademark.source-after" datatype="html"><source>. The upstream source code, visual system, project names, logos, and trademarks belong to their respective owners.</source><target>. Der ursprüngliche Quellcode, das visuelle System, Projektnamen, Logos und Marken gehören ihren jeweiligen Inhabern.</target></trans-unit>
       <trans-unit id="taxi.ltc.trademark.no-affiliation" datatype="html"><source>No Affiliation</source><target>Keine Verbindung</target></trans-unit>
       <trans-unit id="taxi.ltc.trademark.no-affiliation-body" datatype="html"><source>ltc.tx.taxi is not affiliated with, sponsored by, or endorsed by Mempool Holdings S.A. de C.V. References to mempool.space and mempool/mempool are nominative attribution to the software from which this fork derives.</source><target>ltc.tx.taxi ist weder mit Mempool Holdings S.A. de C.V. verbunden noch wird es von ihr gesponsert oder unterstützt. Verweise auf mempool.space und mempool/mempool benennen die Software, aus der dieser Fork hervorgegangen ist.</target></trans-unit>
@@ -11732,6 +11732,19 @@
       <trans-unit id="taxi.intro.open" datatype="html"><source>Open tx.taxi</source><target>tx.taxi öffnen</target></trans-unit>
       <trans-unit id="taxi.intro.explorer" datatype="html"><source>explorer</source><target>Explorer</target></trans-unit>
       <trans-unit id="taxi.intro.documentation" datatype="html"><source>documentation</source><target>Dokumentation</target></trans-unit>
+      <trans-unit id="taxi.about.native-data" datatype="html"><source>Litecoin-native data</source><target>Litecoin-spezifische Daten</target></trans-unit>
+      <trans-unit id="53df671d02f18a96a60c3ca3f4586ff3bb584f47" datatype="html"><source>LTC</source><target>LTC</target></trans-unit>
+      <trans-unit id="graphs.blockFees.feesBtc" datatype="html"><source>Fees LTC</source><target>Gebühren LTC</target></trans-unit>
+      <trans-unit id="5983c6a2299b646b3aecc5795ed51573d7cd235a" datatype="html"><source>The overall luck of all mining pools over the past week. A luck bigger than 100% means the average block time for the current epoch is less than 2.5 minutes.</source><target>Das gesamte Glück aller Mining-Pools während der vergangenen Woche. Ein Glück über 100 % bedeutet, dass die durchschnittliche Blockzeit der aktuellen Epoche unter 2,5 Minuten liegt.</target></trans-unit>
+      <trans-unit id="0ae507a6193771292e02b78a8e3521c91d36aa53" datatype="html"><source>Litecoin Price</source><target>Litecoin-Preis</target></trans-unit>
+      <trans-unit id="6dd731279deed7fcfecdeec0b8e0542d0053464d" datatype="html"><source>LTC/block</source><target>LTC/Block</target></trans-unit>
+      <trans-unit id="c19bde6e194e95b60145a4e312fc31941197d90c" datatype="html"><source>LBTC Supply vs. BTC Holdings</source><target>LBTC-Angebot gegenüber BTC-Bestand</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.payload" datatype="html"><source>Payload</source><target>Nutzdaten</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.transactions" datatype="html"><source>transactions</source><target>Transaktionen</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.category.connection" datatype="html"><source>connection</source><target>Verbindung</target></trans-unit>
+      <trans-unit id="taxi.ltc.docs.faq-basics" datatype="html"><source>Litecoin basics</source><target>Litecoin-Grundlagen</target></trans-unit>
+      <trans-unit id="taxi.ltc.provider.tracking" datatype="html"><source>Live detail tracking is temporarily unavailable. Displayed details may be stale.</source><target>Die Detailverfolgung ist vorübergehend nicht verfügbar. Angezeigte Details können veraltet sein.</target></trans-unit>
+      <trans-unit id="taxi.footer.tagline" datatype="html"><source>Litecoin blocks, fees, and mempool activity</source><target>Litecoin-Blöcke, Gebühren und Mempool-Aktivität</target></trans-unit>
     </body>
   </file>
 </xliff>
